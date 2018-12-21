@@ -1,0 +1,106 @@
+<!--zh_tcwq/pages/shun/shun.wxml-->
+<!-- bindtap="shuninfo"  -->
+<view class="shun">
+  <!--轮播部分  -->
+  <view class='header' wx:if="{{slide.length!=0}}">
+    <view class="swiper-container">
+      <swiper autoplay="auto" interval="5000" indicator-dots="true" indicator-color="#e5e5e5" indicator-active-color="#fff" class="swiper">
+        <block wx:for="{{slide}}" wx:key="{{item.value}}">
+          <swiper-item>
+            <image  bindtap='jumps' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}'mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!--轮播部分  -->
+
+  <!--———————————人找车，车招人部分———————————  -->
+  <view class="section flex2">
+    <view class="section_list" wx:for="{{release}}" wx:key="{{item.value}}" bindtap='carlist' data-typename='{{item.name}}'>{{item.name}}</view>
+  </view>
+
+  <!--———————公告部分———————————  -->
+  <!--公告部分开始  -->
+  <view class='ad flex-center'>
+    <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image>
+    <swiper class="newest_content gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{msgList}}" wx:key="{{item.value}}">
+        <swiper-item>
+          <view class='adinfo' bindtap='notice' data-id='{{item.id}}'>{{item.title}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+<ad wx:for="{{unitid}}" unit-id="{{item.src}}"></ad>
+  <!--———————信息部分———————————  -->
+  <view class="banner rel" wx:if="{{pc.length!=0}}">
+    <view class="banner_title flex-center" bindtap='whole'>
+      <image class="banner_che" src="../image/che.png"></image>
+      <view>全部信息</view>
+    </view>
+    <view class="banner_list rel" wx:for="{{pc}}" wx:key="{{item.value}}" bindtap='carinfo' data-id='{{item.tz.id}}'>
+      <view class="mation_title flex-bet" bindtap="shuninfo">
+        <view class="flex-center madizhi">
+          <view class='gobyndsingle {{item.tz.class3}}' style='max-width:200rpx'>{{item.tz.start_place}}</view>
+          <image class="daoda" src="../image/282792329038474488.png"></image>
+          <view class='gobyndsingle {{item.tz.class3}}' style='max-width:200rpx'>{{item.tz.end_place}}</view>
+        </view>
+        <view class="banner_time {{item.tz.class3}}">{{item.tz.time}} 发布</view>
+      </view>
+
+      <view class="flex-bet banner_menu">
+        <view class="flex-center banner_content" bindtap="shuninfo">
+          <image class="timeimg" src="../image/naozhong@2x.png"></image>
+          <view class=' {{item.tz.class3}}'>{{item.tz.start_time1}}日 {{item.tz.start_time2}} {{item.tz.num}}人</view>
+        </view>
+        <view class="flex-center banner_tel {{item.tz.class4}}" bindtap="call_phone" data-tel="{{item.tz.link_tel}}">
+          <image class="banner_telimg" src="../image/baidianhua.png"></image>
+          <view class=' '>电话</view>
+        </view>
+      </view>
+      <view class='already_stated ab ud' wx:if="{{item.tz.is_open==2}}">
+        <image mode='aspectFill' src='../image/already_stated.png'></image>
+      </view>
+      <view class="car {{item.tz.class1}}" wx:if="{{item.tz.is_open==1}}">{{item.tz.typename}}</view>
+      <view class="car {{item.tz.class2}}" wx:if="{{item.tz.is_open==2}}">{{item.tz.typename}}</view>
+      <view class="beizhu gobyndmulit {{item.tz.class3}}" wx:if="{{item.tz.other!=''}}" bindtap="shuninfo">备注：{{item.tz.other}}</view>
+    </view>
+  </view>
+  <view class='none_car_info rel' wx:if="{{pc.length==0}}">
+    <image mode='aspectFill' class='ab udlr' src='../image/tie2.png'></image>
+  </view>
+  <view wx:if="{{pc.length==0}}" style='color:#999;background:#fff;text-align:center;font-size:26rpx;padding:0 0 30rpx 0;'>该分类暂无拼车信息</view>
+  <view class="foot"></view>
+  <view class='classfinal' wx:if="{{foot==true}}">
+    <view>顺风车</view>
+    <view wx:for="{{release}}" wx:key="{{item.value}}" bindtap='shunfabu' id="{{item.id}}">{{item.name}}</view>
+    <view bindtap='footbtn'>取消</view>
+  </view>
+</view>
+<view class='nav'>
+  <view bindtap='shouye'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/shouye.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>首页</view>
+  </view>
+  <view>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/carpooling-one.png' class='ab lr'></image>
+    </view>
+    <view style='color:#ed414a'>掌上拼车</view>
+  </view>
+  <view bindtap='footbtn'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/release-car.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>我要发布</view>
+  </view>
+  <view bindtap='mine_yellow'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/wode.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>我的拼车</view>
+  </view>
+</view>

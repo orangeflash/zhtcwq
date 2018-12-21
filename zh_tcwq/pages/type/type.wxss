@@ -1,0 +1,110 @@
+/* pages/tongcheng/tongcheng.wxss */
+@import "../index/index.wxss";
+.llfb{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 28rpx;
+  padding: 15rpx 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #666;
+}
+.llfbrt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.llfbrt view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.llfbrt image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.llfbrt>view{
+  margin-right: 20rpx;
+}
+.llfbleft image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.banner{
+  margin-top: 0rpx;
+}
+.bold {
+  color: #ed414a;
+  border-bottom: 0rpx solid #ed414a;
+}
+/* 商家入驻结束 */
+
+/* 二级导航开始 */
+
+.recommend {
+  width: 100%;
+  height: 88rpx;
+  margin-top: 12rpx;
+}
+
+.recommend>view:nth-child(1) {
+  width: 15%;
+  text-align: center;
+  background: #fff;
+  float: left;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  color: rgb(102, 102, 102);
+}
+.recommend>view:nth-child(2) {
+  width: 15%;
+  text-align: center;
+  background: #fff;
+  float: left;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  color: rgb(102, 102, 102);
+}
+.normal {
+  color: #999;
+}
+
+.nav-two {
+  height: 88rpx;
+  background: #fff;
+  width: 70%;
+  white-space: nowrap;
+  float: left;
+  border-bottom: none;
+}
+
+.nav-two view {
+  width: auto;
+  display: inline-block;
+  box-sizing: content-box;height: 88rpx;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  padding: 0 10rpx;
+}
+
+.uls {
+  height: 88rpx;
+  width: auto;
+  background: orange;
+}
+
+.listss {
+  width: auto;
+  padding: 0 20rpx;
+  height: 83rpx;
+  display: inline-block;
+  line-height: 88rpx;
+  font-size: 26rpx;
+  color: rgb(102, 102, 102);
+  /* border-bottom: 5rpx solid #FF8F0B */
+}
+.none_store{margin-top: 4rpx;}

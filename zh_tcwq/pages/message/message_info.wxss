@@ -1,0 +1,400 @@
+page{
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+}
+.header {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding-top: 20rpx;
+}
+
+.body {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-top: 10rpx;
+}
+
+.header .title {
+  width: 95%;
+  height: auto;
+  margin: 0 auto 0;
+  line-height: 60rpx;
+  font-size: 40rpx;
+  color: #000;
+  padding-bottom: 10rpx;
+}
+
+.header .header_info {
+  width: 95%;
+  height: 60rpx;
+  line-height: 60rxp;
+  font-size: 24rpx;
+  color: #999;
+  margin: 0 auto 0;
+}
+
+.header .header_info text {
+  margin-right: 30rpx;
+}
+
+.header .header_info text:nth-child(3) {
+  color: #ED414A;
+}
+
+.body .body_info {
+  width: 95%;
+  height: 100rpx;
+  margin: 0 auto 0;
+}
+
+.body .body_info>view:nth-child(1) {
+  width: 110rpx;
+  height: 100rpx;
+  float: left;
+}
+
+.body .body_info>view:nth-child(2) {
+  width: 400rpx;
+  height: 100rpx;
+  float: left;
+}
+
+.body .body_info>view image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+}
+
+.body .body_info>view view:nth-child(1) {
+  width: 100%;
+  height: 50rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.body .body_info>view view:nth-child(2) {
+  width: 100%;
+  height: 50rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.body_content {
+  width: 95%;
+  height: auto;
+  margin: 0 auto 0;
+  font-size: 25rpx;
+  letter-spacing: 4rpx;
+  padding-bottom: 40rpx;
+  padding-top: 0;
+  overflow: hidden;
+}
+.body_content rich-text{
+  width: 100%;
+  height: 100%;
+}
+.body_content image{
+  width: 100%;
+}
+.body_content text{
+  padding: 20rpx 0;
+  display: inline-block;
+}
+.thumbs {
+  width: 100%;
+  height: auto;
+  padding: 30rpx 0;
+  background: #fff;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+
+.thumbs view {
+  width: 95%;
+  height: auto;
+  line-height: 40rpx;
+  margin: 0 auto 0;
+}
+
+.thumbs view image:nth-child(1){
+  width: 40rpx;
+  height: 40rpx;
+}
+.thumbs view image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left:20rpx;
+  border-radius: 50%;
+}
+.thumbs view text {
+  padding: 0 10rpx;
+  color: #646c81;
+}
+
+.footer .footer_head {
+  width: 100%;
+  height: 90rpx;
+  /* border-bottom: 1rpx solid #e5e5e5; */
+}
+
+.footer .footer_head>view {
+  width: 95%;
+  height: 40rpx;
+  font-size: 28rpx;
+  border-left: 8rpx solid orange;
+  line-height: 40rpx;
+  text-indent: 20rpx;
+}
+
+.footer .footer_body {
+  width: 95%;
+  height: auto;
+  margin: 0 auto 0;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.footer .footer_body>view {
+  display: inline-block;
+  vertical-align:top;
+}
+.none_comment{
+  width: 100%;
+  height: 300rpx;
+}
+.none_comment>view image{
+  width: 200rpx;
+}
+.none_comment>view:nth-child(1){
+  width: 100%;
+  height: 250rpx;
+}
+.none_comment>view:nth-child(2){
+  width: 100%;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.foot_left{
+  height: 150rpx;
+  width: 20%;
+}
+.foot_left image{
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 50%;
+}
+.foot_right{
+  width: 80%;
+  height: auto;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.foot_right:last-child{
+  border:none;
+}
+.foot_right>view:nth-child(1){
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+}
+.foot_left image{
+  width: 100rpx;
+  height: 100rpx;
+  top: 10rpx;
+  border-radius: 50%;
+}
+.foot_right>view:nth-child(2){
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.foot_right>view:nth-child(3){
+  width: 100%;
+  height: auto;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.foot_right>view:nth-child(4){
+  width: 90%;
+  height: auto;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  background: #f4f5f7;
+  color: #333;
+  padding: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+.color1{
+  color: #4395f5;
+}
+.fixed{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  background: #f4f5f7;
+  bottom: 0;
+}
+.fixed>view{
+  width: 90%;
+  height: 50rpx;
+}
+.fixed>view input{
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #666;
+}
+.fixed>view view{
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-block;
+  margin-left: 70rpx;
+  margin-bottom: 5rpx;
+}
+.fixed>view view image{
+  width: 100%;
+  height: 100%;
+}
+.btn{
+  width: 120%;
+  height: 120%;
+  float: left;
+  margin-top: -50rpx;
+  background: none;
+  z-index: 500;
+}
+.btn::after{
+  border: none;
+}
+.bussniess{
+  width: 80%;
+  height: 450rpx;
+  background: #fff;
+  border:1rpx solid #e5e5e5;
+  border-radius: 15rpx;
+  position: fixed;
+}
+.bussniess>view:nth-child(1){
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.bussniess>view:nth-child(2){
+  width: 100%;
+  height: 260rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+}
+.bussniess>view:nth-child(3){
+  width: 100%;
+  height: 80rpx;
+  border-top: 1rpx solid #e5e5e5;
+}
+.bussniess>view textarea{
+  width: 95%;
+  height: 90%;
+  margin:  24rpx auto 0;
+}
+.bussniess>view view{
+  width: 50%;
+  height: 100%;
+  float: left;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border-right: 1rpx solid #e5e5e5;
+}
+.bussniess>view view:last-child{
+  border: none;
+}
+.replay{
+  float: right;
+  color: orange;
+}
+
+
+
+
+
+
+
+
+
+.footers{
+  width: 100%;
+  height: 90rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+}
+.footers>view{
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+}
+.footers>view:nth-child(1){
+  width: 20%;
+}
+.footers>view:nth-child(2){
+  width: 20%;
+}
+.footers>view:nth-child(3){
+  width: 20%;
+}
+.footers>view:nth-child(4){
+  width: 40%;
+  text-align: center;
+  background: #ED414A;
+  color: #fff;
+  overflow: hidden;
+}
+.nav_phone>view{
+  height: 100%;
+  font-size: 30rpx;
+  width: 100%;
+  line-height: 80rpx;
+}
+.icon{
+  width: 100%;
+  height: 60%;
+}
+.icon image{
+  width: 45rpx;
+}
+.nav_title{
+  width: 100%;
+  height: 40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}

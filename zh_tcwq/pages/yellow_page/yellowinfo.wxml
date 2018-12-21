@@ -1,0 +1,59 @@
+<view class='container'> 
+    <view class='head'>
+        <view class='rel'>
+            <image class='ab ud' mode='aspectFill' src='{{url}}{{yellow_info.logo}}'></image>
+        </view>
+        <view>
+            <view>{{yellow_info.company_name}}</view>
+            <view>
+                <text style='max-width:300rpx;background:{{System.color}}'>{{yellow_info.type_name}}</text>
+                <text>入驻日期：{{yellow_info.sh_time}}</text>
+            </view> 
+        </view>
+    </view>
+    <view class='tel' bindtap='phone' data-tel='{{yellow_info.link_tel}}'>
+       <text> 电话:</text>
+       <text>{{yellow_info.link_tel}}</text>
+    </view>
+    <view class='address' bindtap='address'>
+        <view>详细地址</view>
+        <view>
+            <image mode='aspectFill' src='../image/address3.png'></image>
+            <text class=' gobyndsingle'>{{yellow_info.company_address}}</text>
+            <text style='background:{{System.color}}'>导航</text>
+        </view>
+    </view>
+    <view class='detail'>
+        <view>
+            商家介绍:
+        </view>
+        <view>{{yellow_info.content}}</view>
+    </view>
+</view> 
+<view class='footer'>
+  <view bindtap='shouye'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/index.png'></image>
+    </view>
+    <view class='nav_title center'>首页</view>
+  </view>
+  <view class='rel'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/nav1.png'></image>
+    </view>
+    <view class='nav_title center'>
+      <text>转发</text>
+    </view>
+    <button open-type='share'></button>
+  </view>
+  <view bindtap='address'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/nav.png'></image>
+    </view>
+    <view class='nav_title center'>导航</view>
+  </view>
+  <view bindtap='phone' class='nav_phone' style='background:{{System.color}}'>
+    <view>一键拨号</view>
+    <view>{{yellow_info.link_tel}}</view>
+  </view>
+</view>

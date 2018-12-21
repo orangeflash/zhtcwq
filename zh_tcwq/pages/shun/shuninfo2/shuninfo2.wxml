@@ -1,0 +1,101 @@
+<view class="ride">
+  <view class="banner">
+
+    <!--—————————————头部部分开始———————————  -->
+    <view class="header flex-center">
+      <image class="touxiang" src="{{pc.user_img}}"></image>
+      <view class="header_right">
+        <view class="header_title">{{pc.user_name}}</view>
+        <view class="flex-bet">
+          <view class="header_cart">{{pc.typename}}</view>
+          <view class="header_time">发布于{{pc.time}}</view>
+        </view>
+      </view>
+    </view>
+    <!--—————————————头部部分结束———————————  -->
+
+    <view class="section">
+
+      <view class="section_one flex-center" bindtap='dizhi1'>
+        <view class="blue_box"></view>
+        <view>出发地：{{pc.start_place}}</view>
+      </view>
+
+      <view class="section_one flex-center" bindtap='dizhi2'>
+        <view class="red_box"></view>
+        <view>目的地：{{pc.end_place}}</view>
+      </view>
+
+      <view class="section_one flex-center" wx:if="{{pc.tj_place!=' '}}">
+        <view class="red_box"></view>
+        <view>途径地：{{pc.tj_place}}</view>
+      </view>
+      <view class="section_one flex-center">
+        <image class="carimg" src="../../image/naozhong@2x.png"></image>
+        <view>出发时间：{{pc.start_time1}}日 {{pc.start_time2}}出发</view>
+      </view>
+
+      <view class="section_one flex-center">
+        <image class="manimg" src="../../image/renqun.png"></image>
+        <view wx:if="{{pc.typename=='货找车'}}">货物重量：{{pc.hw_wet}}公斤</view>
+        <view wx:if="{{pc.typename=='车找货'}}">车辆数量：{{pc.num}}辆</view>
+        <view wx:if="{{pc.typename=='人找车'}}">乘车人数：{{pc.num}}人</view>
+        <view wx:if="{{pc.typename=='车找人'}}">可乘人数：{{pc.num}}人</view>
+      </view>
+
+    </view>
+
+    <!--——————————备注部分——————————  -->
+    <view class="menu" wx:if="{{pc.other!=''}}">
+      <view class="menu_one">备注：</view>
+      <view class="menu_one">{{pc.other}}</view>
+    </view>
+    <view class='tagname'>
+        <view wx:for="{{tag}}">{{item.tagname}}</view>
+    </view>
+    <view class="footbtn flex1" bindtap="call_phone" data-tel="{{pc.link_tel}}" wx:if="{{pc.is_open==1}}">
+      <image class="footel" src="../../image/baidianhua.png"></image>
+      <view>电话联系</view>
+    </view>
+    <view class="footbtn1 flex1" wx:if="{{pc.is_open==2}}">
+      已发车
+    </view>
+  </view>
+</view>
+<view class='footer'>
+  <view bindtap='shouye'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../../image/index.png'></image>
+    </view>
+    <view class='nav_title center'>首页</view>
+  </view>
+  <view class='rel'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../../image/nav1.png'></image>
+    </view>
+    <view class='nav_title center'>
+      <text>转发</text>
+    </view>
+    <button open-type='share'></button>
+  </view>
+  <view bindtap='fabu'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../../image/nav.png'></image>
+    </view>
+    <view class='nav_title center'>发布</view>
+  </view>
+  <view bindtap='call_phone' class='nav_phone' data-tel="{{pc.link_tel}}" style='background:{{system.color}}'>
+    <view>一键拨号</view>
+    <view>{{pc.link_tel}}</view>
+  </view>
+</view>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>

@@ -1,0 +1,10 @@
+<!--zh_zbkq/pages/my/tjhxy/hx.wxml-->
+<view class="container">
+  <view class="head">
+    <icon type="info" size="93"></icon>
+  </view>
+  <view class="text">是否核销此订单</view>
+  <view class="btn">
+    <button class="weui-btn" type="primary" bindtap='hx' style="background-color:{{color}}">确定</button>
+  </view>
+</view>

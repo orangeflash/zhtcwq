@@ -1,0 +1,117 @@
+<!--zh_tcwq/pages/shun/shuninfo/shuninfo.wxml-->
+<view class="shuninfo">
+  <!--—————————————头部部分开始———————————————  -->
+  <view class="infoheader">
+    <view class="headertop">
+      <image class="touxiang" src="../../image/chong.png"></image>
+      <view class="headercon">
+        <view class="flex-center">
+          <view class="manfind">人找车</view>
+          <view class="headername">王呵呵牛肉面馆欢迎光临</view>
+        </view>
+        <view class="headertel">15107187042</view>
+        <view class="headertime">2017-11-22</view>
+      </view>
+    </view>
+    <view class="headerban">61人浏览、7次转发、0人点赞</view>
+  </view>
+  <!--—————————————头部部分结束———————————————  -->
+
+  <!--————————————内容详情部分开始——————————————  -->
+  <view class="content1">
+    <view class="flex-center content">
+      <view class="leftbox">乘车时间：</view>
+      <view class="">2017-11-21 22:55:00</view>
+    </view>
+    <view class="flex-center content">
+      <view class="leftbox">出发地：</view>
+      <view class="">济南</view>
+    </view>
+    <view class="flex-center content">
+      <view class="leftbox">目的地：</view>
+      <view class="">滨州</view>
+    </view>
+    <view class="flex-center content">
+      <view class="leftbox">乘车人数：</view>
+      <view class="">3人</view>
+    </view>
+  </view>
+  <view class="content1 banner">
+    <view class="flex2">
+      <view class="travel">分摊路费</view>
+      <view class="high">需走高速</view>
+      <view class="safe">安全第一</view>
+      <view class="child">有小孩</view>
+      <view class="afterbox">需要后备箱</view>
+    </view>
+    <view class="bannertext">这是内容的备注吧这是内容的备注吧这是内容的备注吧这是内容的备注吧这是内容的备注吧</view>
+    <view class="flex-center">
+      <image class="bannerzan" src="../../image/zan.png"></image>
+      <view class="zannum">0</view>
+    </view>
+  </view>
+  <!--————————————内容详情部分结束——————————————  -->
+
+  <view class="store flex-bet">
+    <view>
+      <view class="storename gobyndsingle">联系人：王呵呵牛肉面馆欢迎光临</view>
+      <view class="storetz gobyndsingle">联系时请告知在TOM同城上面看到的</view>
+    </view>
+    <image class="lvtel" src="../../image/lvdianhua.png"></image>
+  </view>
+
+  <!--————————————评论部分开始——————————————  -->
+  <view class="pinglun">
+    <view class="comment flex-bet">
+      <view>全部评论</view>
+      <view class="commentext" bindtap="comment">评论</view>
+    </view>
+
+    <!--评论的框子部分  -->
+    <view class="section" hidden="{{comment}}">
+      <textarea class="secbox" placeholder="用户评论：" placeholder-style="color:#999;"/>
+      <view class="flex4">
+        <view class="sectionbtn2">
+          <button class="cancel" bindtap="cancel">取消</button>
+          <button class="confirm">发表</button>
+        </view>
+      </view>
+    </view>
+
+    <!--用户评论的内容开始  -->
+    <view class="commentbox">
+      <image class="userimg" src="../../image/chong.png"></image>
+      <view class="comneirong">
+        <view class="flex-bet">
+          <view class="time">
+            <text class="timename">王呵呵</text>
+            <text>2017-11-22 14:25</text>
+          </view>
+          <image class="duihua" src="../../image/duihua.png"></image>
+        </view>
+        <view class="context">这是评论的内容</view>
+      </view>
+    </view>
+    <view class="commentbox">
+      <image class="userimg" src="../../image/chong.png"></image>
+      <view class="comneirong">
+        <view class="flex-bet">
+          <view class="time">
+            <text class="timename">王呵呵</text>
+            <text>2017-11-22 14:25</text>
+          </view>
+          <image class="duihua" src="../../image/duihua.png"></image>
+        </view>
+        <view class="context">这是评论的内容</view>
+      </view>
+    </view>
+    
+    <!--用户评论的内容结束  -->
+
+    <view class="nomore">没有更多评论...</view>
+  </view>
+  <!--————————————评论部分结束——————————————  -->
+
+  <view class=""></view>
+
+</view>

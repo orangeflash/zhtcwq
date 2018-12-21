@@ -1,0 +1,152 @@
+/* pages/fabu/fabu.wxss */
+
+.plate_form {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.plate_form button {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+}
+
+.plate_form button::after{
+  border: none;
+}
+.base {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  background: #e5e5e5;z-index: 2000;
+}
+
+.base>view:first-child {
+  height: 80rpx;
+  width: 100%;
+  background: #ed414a;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.base>view:last-child {
+  height: 80rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  color: #333;
+  text-align: center;
+  background: #fff;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.array {
+  width: 100%;
+  height: auto;
+  max-height: 320rpx;
+  overflow: scroll;
+}
+
+.array view {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  color: #333;
+  /* background: red; */
+  font-size: 30rpx;
+  background: #fff;
+  text-align: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+/* page{background-color: white;} */
+
+.header {
+  background-color: white;
+  padding: 30rpx;
+}
+
+.header_text {
+  background-color: #e6f5ff;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.banner {
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  padding: 20rpx 30rpx 20rpx 50rpx;
+  background: #fff;
+}
+
+.banner_addimg {
+  width: 20rpx;
+  height: 30rpx;
+}
+
+.banner_seller {
+  width: 55rpx;
+  height: 55rpx;
+  margin-right: 20rpx;
+  background: #fff;
+}
+
+.banner_font1 {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.banner_font2 {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.select {
+  height: 75rpx;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+}
+
+.xian {
+  width: 60rpx;
+  height: 1rpx;
+  background-color: #999;
+}
+
+.select_text {
+  margin: 0rpx 25rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.content {
+  padding: 10rpx;
+  background: #fff;
+}
+
+.content_list {
+  width: 20%;
+  height: 140rpx;
+  font-size: 28rpx;
+  color: #666;
+  /* margin: 15rpx 20rpx 0rpx; */
+  text-align: center;
+}
+
+.content_img {
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 15rpx;
+  border-radius: 10rpx;
+}

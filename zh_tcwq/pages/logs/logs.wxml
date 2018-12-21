@@ -1,0 +1,170 @@
+<!--logs.wxml-->
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class="header" style='background:{{System.color}}'>
+  <navigator wx:if="{{qdset[0].is_open=='1'}}" url='../qd/qd' class="header_set">
+    <image src="../image/qdimg.png"></image>
+  </navigator>
+  <image class="header_back" src="../image/mybgimg.png"></image>
+  <view class="header_box">
+    <!-- <navigator wx:if="{{qdset[0].is_open=='1'}}" url='../qd/qd' class="header_set1">
+      <image src="../image/qdimg.png"></image>
+      <view>我要签到</view>
+    </navigator>
+    <navigator wx:if="{{System.is_jf==1}}" url='../integral/myintegral' class="header_set2">
+      <image src="../image/jifen.png"></image>
+      <view>我的积分</view>
+    </navigator> -->
+    <view class="flex-center">
+      <image class="picture" src="{{avatarUrl}}"></image>
+      <view class="header_name">
+        <view>{{nickName}}</view>
+        <view class='head_hhr flex-center' bindtap='tchhr' wx:if="{{System.is_hhr==1&&System.is_hhrqx==1&&UserInfo}}">
+          <image mode='aspectFit' class='head_hhr1' src='../image/myhz.png'></image>
+          <view class='head_hhr2' wx:if="{{MyDistribution.state=='2'}}">{{MyDistribution.name}}</view>
+          <view class='head_hhr2' wx:else>加盟合伙人</view>
+          <image mode='aspectFit' class='head_hhr3' src='../image/baise.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--订单部分开始  -->
+<view class="list">
+  <view class="list_content">
+    <!-- <view class="list_top flex-bet">
+      <view class="list_all flex-center">
+        <image class="list_allimg1" src="../image/order.png"></image>
+        <view class="list_alltext">我的订单</view>
+      </view>
+      <view class="list_alllist flex-center" bindtap='order'>
+        <view>查看全部订单</view>
+        <image class="list_right" src="../image/huise@2x.png"></image>
+      </view>
+    </view> -->
+
+    <view class="list_fukuan flex-bet">
+      <view class="flex3 list_collet" bindtap='wallet'>
+        <view style='color:{{System.color}}' class="mytext">{{UserInfo.money}}</view>
+        <view>钱包</view>
+      </view>
+      <navigator wx:if="{{System.is_jf==1&&System.is_jfqx==1}}" url='../integral/myintegral' class="flex3 list_collet" bindtap='payment_one'>
+        <view style='color:{{System.color}}' class="mytext">{{UserInfo.total_score}}</view>
+        <view>积分</view>
+      </navigator>
+      <view class="flex3 list_collet" bindtap='collection'>
+        <view style='color:{{System.color}}' class="mytext">{{MyCollection.length}}</view>
+        <view>收藏</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--订单部分开始  -->
+
+<!--我的收藏部分开始  -->
+<view class="banner" wx:if="{{UserInfo}}">
+  <view class='bhead'>
+    <image src="../image/Already.png"></image>
+    <view>我的服务</view>
+  </view>
+  <view class='bbd'>
+    <view class='banner_list' bindtap='my_post'>
+      <image class="list_allimg" src="../image/card.png"></image>
+      <view class="list_alltext">我的{{System.tzmc}}</view>
+    </view>
+    <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class='banner_list' bindtap='order'>
+      <image class="list_allimg" src="../image/order.png"></image>
+      <view class="list_alltext">我的订单</view>
+    </view>
+    <view class='banner_list' bindtap='wdyhq' wx:if="{{System.is_coupon==1&&System.is_yhqqx==1}}">
+      <image class="list_allimg" src="../image/hunqing.png"></image>
+      <view class="list_alltext">我的卡券</view>
+    </view>
+    <view class='banner_list' bindtap='wdqg' wx:if="{{System.is_xsqg==1&&System.is_qgqx==1}}">
+      <image class="list_allimg" src="../image/jiancai.png"></image>
+      <view class="list_alltext">我的抢购</view>
+    </view>
+    <view class='banner_list' bindtap='wdpt' wx:if="{{System.g_open==1&&System.g_qx==1}}">
+      <image class="list_allimg" src="../image/renqun.png"></image>
+      <view class="list_alltext">我的拼团</view>
+    </view>
+    <view class='banner_list' bindtap='jfsc' wx:if="{{System.is_jf==1&&System.is_jfqx==1}}">
+      <image class="list_allimg" src="../image/welfare.png"></image>
+      <view class="list_alltext">积分商城</view>
+    </view>
+    <view class='banner_list' bindtap='tchhr' wx:if="{{System.is_hhr==1&&System.is_hhrqx==1}}">
+      <image class="list_allimg" src="../image/qiuzhi.png"></image>
+      <view class="list_alltext">合伙人</view>
+    </view>
+    <view class='banner_list' bindtap='wdbm' wx:if="{{System.is_hd==1&&System.is_hdqx==1}}">
+      <image class="list_allimg" src="../image/mine.png"></image>
+      <view class="list_alltext">我的报名</view>
+    </view>
+    <view class='banner_list' bindtap='mine_car' wx:if="{{System.is_pcfw==1&&System.is_pcqx==1}}">
+      <image class="list_allimg" src="../image/mine_car.png"></image>
+      <view class="list_alltext">我的拼车</view>
+    </view>
+    <!-- <view class='banner_list' bindtap='collection'>
+      <image class="list_allimg" src="../image/wujiao.png"></image>
+      <view class="list_alltext">我的收藏</view>
+    </view>
+    <view class='banner_list' bindtap='wallet'>
+      <image class="list_allimg" src="../image/qianbao.png"></image>
+      <view class="list_alltext">我的钱包</view>
+    </view> -->
+    <view class='banner_list' bindtap='yellow_page' wx:if="{{System.is_pageopen==1&&System.is_hyqx==1}}">
+      <image class="list_allimg" src="../image/mine_yellow.png"></image>
+      <view class="list_alltext">我的{{System.hy_title}}</view>
+    </view>
+    <view class='banner_list' bindtap='address'>
+      <image class="list_allimg" src="../image/ding.png"></image>
+      <view class="list_alltext">我的地址</view>
+    </view>
+  </view>
+</view>
+<!--我的收藏部分结束  -->
+<!--我的收藏部分开始  -->
+<view class="banner">
+  <view class='bhead'>
+    <image src="../image/Already.png"></image>
+    <view>平台服务</view>
+  </view>
+  <view class='bbd'>
+    <view class='banner_list' bindtap='content'>
+      <image class="list_allimg" src="../image/kefu.png"></image>
+      <view class="list_alltext">联系客服</view>
+    </view>
+    <view class='banner_list' bindtap='help'>
+      <image class="list_allimg" src="../image/help.png"></image>
+      <view class="list_alltext">帮助中心</view>
+    </view>
+    <view class='banner_list' bindtap='about'>
+      <image class="list_allimg" src="../image/about.png"></image>
+      <view class="list_alltext">关于我们</view>
+    </view>
+    <!-- <view class='banner_list' bindtap='ptgl'>
+      <image class="list_allimg" src="../image/gongju.png"></image>
+      <view class="list_alltext">平台管理</view>
+    </view> -->
+  </view>
+</view>
+<view class="banner">
+  <view class='bhead'>
+    <image src="../image/Already.png"></image>
+    <view>商家服务</view>
+  </view>
+  <view class='bbd'>
+    <view class='banner_list' bindtap='settled' wx:if="{{System.is_rz=='1'}}">
+      <image class="list_allimg" src="../image/feiji.png"></image>
+      <view class="list_alltext">我要入驻</view>
+    </view>
+    <view class='banner_list' bindtap='logs_store'>
+      <image class="list_allimg" src="../image/selle.png"></image>
+      <view class="list_alltext">商家入口</view>
+    </view>
+  </view>
+</view>
+<view class='footer' bindtap='jump'>
+  <image src='{{url}}{{bq_logo}}'></image>
+  <text>{{System.bq_name}}</text>
+</view>
+<!--我的收藏部分结束  -->

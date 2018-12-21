@@ -1,0 +1,10 @@
+/* zh_cjdianc/pages/sjzx/dndd/dnddlb.wxss */
+@import "/zh_tcwq/utils/ddlb.wxss";
+.main{padding-top: 100rpx;}
+.spimage{
+  min-width: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.ddxh text{font-size:11pt;color: #666;}

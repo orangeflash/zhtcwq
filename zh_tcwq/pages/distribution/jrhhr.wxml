@@ -1,0 +1,88 @@
+<!--zh_tcwq/pages/distribution/jrhhr.wxml-->
+<form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+  <view class="integral">
+    <view class='banner' wx:if="{{img!=''}}">
+      <view class="swiper-container">
+        <!-- <swiper autoplay="true" circular='true' indicator-dots='true' interval="5000" duration="500" class="swiper">
+          <block wx:for="{{lblist}}" wx:key="unique">
+            <swiper-item data-index="{{index}}" bindtap='tzweb'>
+              <image src="{{url}}{{item.logo}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper> -->
+        <view class='swiper'>
+          <image src="{{url}}{{img}}" class="img"></image>
+        </view>
+      </view>
+    </view>
+    <view class="banner1">
+      <view class="huanying">欢迎加入
+        <text>{{pt_name}}</text>，请填写申请信息。</view>
+      <view class="bannerbox">
+        <view class="">邀请人</view>
+        <input type="text" value='{{yqr}}' disabled='true' style='color:#ff4544' placeholder-style="color:#999;" />
+      </view>
+      <view class="bannerbox">
+        <view class="">姓名</view>
+        <input type="text" name='name' placeholder="请填写真实姓名" placeholder-style="color:#999;" />
+      </view>
+      <view class="bannerbox">
+        <view class="">手机号</view>
+        <input type="text" type='number' name='tel' placeholder="请填写手机号码" placeholder-style="color:#999;" />
+      </view>
+      <view class="read">
+        <checkbox-group name="checkbox">
+          <checkbox style='zoom:80%' color='#ff6161' value="1" />
+        </checkbox-group>
+        <view>我已阅读并同意
+          <text class="readfont" bindtap='lookck'>《合伙人须知》</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">请选择合伙人等级</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker bindchange="bindAccountChange" range-key='name' value="{{accountIndex}}" range="{{accounts}}">
+            <view class="weui-select">{{accounts[accountIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">费用及等级特权</view>
+    <view class='flex1'>
+      <view class='flex3'>
+        <image src='../image/mine.png'></image>
+        <view>加入费用</view>
+        <view>￥{{accounts[accountIndex].money}}</view>
+      </view>
+      <view class='flex3'>
+        <image src='../image/qianbao.png'></image>
+        <view>提成比例</view>
+        <view>
+          <text>一级：{{accounts[accountIndex].commission}}%</text>
+          <text wx:if="{{fxset.is_ej=='1'}}">，二级：{{accounts[accountIndex].commission2}}%</text>
+        </view>
+      </view>
+    </view>
+    <view class='hhr'>
+      <view>
+        <text>{{accounts[accountIndex].name}}</text>加入费用
+        <text>{{accounts[accountIndex].money}}元</text>
+      </view>
+      <view>您的粉丝付费发布，置顶，刷新，入驻商户，加入合伙人等，您可获得提成
+        <text>{{accounts[accountIndex].djbl}}</text>,躺着就能赚钱。</view>
+    </view>
+    <view class="weui-btn-area">
+      <button formType="submit" class="weui-btn" style='background:{{system.color}}'>立即成为合伙人</button>
+    </view>
+  </view>
+</form>
+<view class="zhezhao" hidden="{{fwxy}}"></view>
+<view class="kcrzxy" hidden="{{fwxy}}">
+  <view class="kcrzxyhd">合伙人须知</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <rich-text nodes="{{fx_details}}" />
+  </scroll-view>
+  <view class="queren" bindtap="queren">确定</view>
+</view>

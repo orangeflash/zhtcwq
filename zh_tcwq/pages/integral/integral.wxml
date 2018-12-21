@@ -1,0 +1,58 @@
+<!--zh_tcwq/pages/integral/integral.wxml-->
+<view class="integral">
+<!--轮播部分  -->
+  <view class='banner' wx:if="{{lblist.length!=0}}">
+    <view class="swiper-container">
+      <swiper autoplay="true" circular='true' indicator-dots='true' interval="5000" duration="500"  class="swiper">
+        <block wx:for="{{lblist}}" wx:key="unique">
+          <swiper-item data-index="{{index}}" bindtap='tzweb'>
+            <image  src="{{url}}{{item.logo}}" class="img"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+<!--轮播部分  -->
+
+  <view class="list flex-center">
+    <view class="listleft flex1">
+      <image class="cost" src="../images/cost.png"></image>
+      <view>积分<text class="incolor1">{{integral}}</text></view>
+    </view>
+    <view class="listright flex1" bindtap="record">
+      <image class="cost" src="../images/dhjl.png"></image>
+      <view>兑换记录</view>
+    </view>
+  </view>
+
+  <!--—————分类部分开始———————  -->
+  <view class="fenlei flex2">
+    <view class="fenlist flex3" wx:for="{{fenlei}}" wx:key="*this" bindtap='cxfl' id='{{item.id}}'>
+      <image class="fenimg" src="{{url}}{{item.img}}"></image>
+      <view class="fename gobyndsingle">{{item.name}}</view>
+    </view>
+  </view>
+  <!--—————分类部分结束———————  -->
+
+  <!--————————————商品列表部分开始————————————————  -->
+  <view class="commodity">
+    <view class="comtitle">大家都在兑</view>
+    <view wx:if="{{commodity.length!=0}}" class="comlist flex2">
+      <view class="comone" wx:for="{{commodity}}" wx:key="*this" id='{{item.id}}' bindtap="interinfo">
+        <view class="onetitle gobyndsingle">{{item.name}}</view>
+        <view class="flex-center">
+          <view class="comnum">{{item.money}}</view>
+          <view class="comcost">积分</view>
+          <view class="comred" wx:if="{{item.type=='1'}}">虚拟</view>
+          <view class="comred" wx:if="{{item.type=='2'}}">实物</view>
+        </view>
+        <view class="comimgwai flex1">
+          <image class="comimg" src="{{url}}{{item.img}}"></image>
+        </view>
+      </view>
+      <view class="comone flex2"></view>
+    </view>
+    <view wx:else class='wsj'>此分类暂无数据</view>
+  </view>
+
+</view>

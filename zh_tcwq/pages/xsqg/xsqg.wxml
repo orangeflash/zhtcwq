@@ -1,0 +1,126 @@
+<!--zh_cjdianc/pages/index/xsqg.wxml-->
+<!-- <view class="mask {{mask1Hidden?'':'maskactive'}}" bindtap="mask1Cancel">
+  <view class='maskbody'>
+    <view class="navbarlist">
+      <block wx:for="{{navbar}}" wx:key="*this">
+        <view class="navbaritem" data-index='{{index}}' class="toatal_head  {{selectedindex==index?'selsect':'default'}}" bindtap="selectednavbar" style="color:{{selectedindex==index?color:''}}" id='a{{index}}'>{{item.name}}</view>
+      </block>
+      <view class='downpng1' bindtap='onOverallTag'>
+        <image class="{{mask1Hidden?'sortimg':'sortimg1'}}" src='../image/icon-down-black.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='sjinfonav' wx:if="{{mask1Hidden&&store_id==null}}">
+  <scroll-view class="nav-two" scroll-x="true" scroll-into-view="{{toView}}">
+    <view wx:for='{{navbar}}' wx:key="*this" data-index='{{index}}' class="toatal_head  {{selectedindex==index?'selsect':'default'}}" bindtap="selectednavbar" style="color:{{selectedindex==index?color:''}}" id='a{{index}}'>
+      {{item.name}}
+      <view wx:if='{{selectedindex==index}}' class="toatal_text" style="background-color: {{color}}"></view>
+    </view>
+  </scroll-view>
+  <view class='downpng' bindtap='onOverallTag'>
+    <image src='../image/icon-down-black.png'></image>
+  </view>
+</view> -->
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class="body" wx:if="{{slide.length!=0}}">
+  <view class='banner'>
+    <view class="swiper-container">
+      <swiper autoplay="auto" circular='true' interval="5000" indicator-dots="true" indicator-color="#fff" indicator-active-color="{{color}}" duration="500" class="swiper">
+        <block wx:for="{{slide}}" wx:key="{{item.value}}">
+          <swiper-item>
+            <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view class='join'>
+  <image class='jion-jtimg' src="../image/huodong.png"></image>
+  <swiper class="jionbo gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+    <navigator bindtap='tzsjxq' data-sjid='{{item.store_id}}' wx:for="{{ZbOrder}}" wx:key="*this">
+      <swiper-item>
+        <view class="gobyndsingle">
+          <text class='join-name'>{{item.user_name}}</text>{{item.time2}}前,买了{{item.good_name}}
+        </view>
+      </swiper-item>
+    </navigator>
+  </swiper>
+  <navigator url='order' class='ctwz' style="color:{{color}}">我的订单</navigator>
+</view>
+<block wx:if="{{store_id==null}}">
+  <swiper wx:if="{{nav.length>0}}" indicator-dots='{{nav.length>1}}' indicator-active-color='{{color}}' indicator-color='#f2f2f2' class='classify' style='height:{{height}}rpx' autoplay="true" interval="4000" duration="1000" circular="true">
+    <block wx:for="{{nav}}" wx:key="{{item.value}}">
+      <swiper-item>
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view data-id='{{item.id}}' bindtap='selectednavbar'>
+            <view class='classify_logo rel'>
+              <image class='ab udlr' mode='aspectFill' src='{{url}}{{item.img}}'></image>
+            </view>
+            <view class='classify_name center gobyndsingle'>{{item.name}}</view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+</block>
+<block wx:if="{{order_list.length==0&&mygd}}">
+  <view class="no-data-tip zwdd">
+    <image mode='aspectFit' src='../image/list.png'></image>
+    <view>暂无相关数据~</view>
+    <!-- <navigator style='border:2rpx solid {{color}};color:{{color}}' open-type='reLaunch' url='../index/index' class='sygg'>去首页逛逛吧</navigator> -->
+  </view>
+</block>
+<view class="{{store_id==null?'qgmain':'qgmain'}} pbnavbar">
+  <block wx:for="{{order_list}}" wx:for-item="oitem" wx:for-index="index">
+    <navigator url='xsqgxq?id={{oitem.id}}' class='qgcell flex-row'>
+      <view class='qgleft flex-grow-0 flex-y-center'>
+        <view class='discount' style="background: {{color}}">{{oitem.discount}}折</view>
+        <image mode='aspectFill' src='{{url}}{{oitem.logo}}'></image>
+      </view>
+      <view class='qgright flex-grow-1 flex-col'>
+        <view class='flex-row'>
+          <view class='flex-grow-1 name gobyndsingle'>{{oitem.name}}</view>
+          <view class='flex-grow-0 hotimg'>
+            <image src='../image/huodong.png'></image>
+            <view>
+              {{oitem.hot}}人关注
+            </view>
+          </view>
+        </view>
+        <view class='address gobyndsingle'>{{oitem.store_name}}</view>
+        <view class='flex-bet flex-y-center' style="color:{{color}}">
+          <view class='xlfs' style="border-color: {{color}}">限量{{oitem.number}}份</view>
+          <!-- <view style='font-size:10pt;'>还剩{{oitem.surplus}}份</view> -->
+        </view>
+        <view class='flex-bet flex-y-center'>
+          <view class='money' style="color:{{color}}">￥{{oitem.money}}
+            <text>￥{{oitem.price}}</text>
+          </view>
+          <view style='font-size:9pt;margin-right:30rpx;color:{{color}}'>剩{{oitem.surplus}}份</view>
+          <!-- <view wx:if="{{oitem.surplus>0}}" class='msq' style="background:{{color}}">马上抢</view>
+          <view wx:else class='msq' style="background:#d5d5d5">抢光了</view> -->
+        </view>
+        <view class='flex-bet flex-y-center'>
+          <view class='bfb'>
+            <view class='qgtext'>{{oitem.yqnum}}%</view>
+            <view class='qgbfb1' style="border-color:{{color}}"></view>
+            <view wx:if="{{oitem.yqnum!='0.0'}}" class='qgbfb2' style='width: {{oitem.yqnum}}%;background:{{color}};border-color:{{color}}'></view>
+          </view>
+          <view wx:if="{{oitem.surplus>0}}" class='msq' style="background:{{color}}">马上抢></view>
+          <view wx:else class='msq' style="background:#d5d5d5">抢光了</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <view class='loading' hidden='{{mygd}}'>
+    <image mode='aspectFit' class='' src='../image/loading.gif'></image>
+    <view>加载中...</view>
+  </view>
+  <view wx:if="{{mygd}}" class='jzwb'>
+    <view class='hx'></view>
+    <view class='wz'>加载完毕</view>
+    <view class='hx'></view>
+  </view>
+</view>

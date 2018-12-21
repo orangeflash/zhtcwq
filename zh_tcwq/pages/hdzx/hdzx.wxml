@@ -1,0 +1,73 @@
+<!--pages/tongcheng/tongcheng.wxml-->
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class="body" wx:if="{{slide.length!=0}}">
+  <view class='lbbanner'>
+    <view class="swiper-container">
+      <swiper autoplay="auto" circular='true' interval="5000" indicator-dots="true" indicator-color="#fff" indicator-active-color="{{System.color}}" duration="500" class="swiper">
+        <block wx:for="{{slide}}" wx:key="{{item.value}}">
+          <swiper-item>
+            <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<view class='home pbnavbar'>
+  <!-- 热门模块开始 -->
+  <!-- <scroll-view class="marry" scroll-x="true">
+    <block wx:for="{{infortype}}" wx:key="*this">
+      <view data-index="{{index}}" id="{{item.id}}" style="display:inline-block;color:{{activeIndex == index ?System.color:''}};border-color:{{activeIndex == index ?System.color:''}}" class="proitem {{activeIndex == index ? 'weuibaron' : ''}}" bindtap="tabClick">
+        <view>{{item.type_name}}</view>
+      </view>
+    </block>
+  </scroll-view> -->
+  <swiper wx:if="{{nav.length>0}}" indicator-dots='{{nav.length>1}}' indicator-active-color='{{System.color}}' indicator-color='#f2f2f2' class='classify' style='height:{{height}}rpx' autoplay="true" interval="4000" duration="1000" circular="true">
+    <block wx:for="{{nav}}" wx:key="{{item.value}}">
+      <swiper-item>
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view data-id='{{item.id}}' data-name='{{item.type_name}}' bindtap='selectednavbar'>
+            <view class='classify_logo rel'>
+              <image class='ab udlr' mode='aspectFill' src='{{url}}{{item.img}}'></image>
+            </view>
+            <view class='classify_name center gobyndsingle'>{{item.type_name}}</view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='tcbanner' wx:if="{{seller.length!=0}}" wx:for="{{seller}}" wx:key="{{item.id}}">
+    <navigator url='hdzxinfo?hdid={{item.id}}'>
+      <view class="tcsection">
+        <image mode='aspectFill' src='{{url}}{{item.logo}}'></image>
+        <!-- <video id="myVideo" src="{{item.url}}" danmu-list="{{danmuList}}" poster="{{url}}{{item.fm_logo}}" objectFit="fill" controls="true"></video> -->
+      </view>
+      <view class='vdtitle'>{{item.title}}</view>
+      <view class='tcremark flex-bet'>
+        <view class='hdleft'>{{item.type_name}}
+          <text class='hdmoney' wx:if="{{item.money!=0.00}}">{{item.money}}元起</text>
+          <text wx:else class='mf' style='background:{{System.color}}'>免费</text>
+          <text class='hdjxz' wx:if="{{item.isgq=='2'&&item.is_bm=='1'}}">预报名</text>
+          <text class='hdjxz1' wx:if="{{item.isgq=='2'&&item.is_bm=='2'}}">已截止</text>
+          <text class='hdjxz1' wx:if="{{item.isgq=='1'}}">已结束</text>
+        </view>
+        <view class='flex-center hdright'>
+          <view>
+            <text style='color:{{System.color}}'>{{item.sign_num}}</text>已报名</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+    没有更多了~
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==false}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class="none_store" wx:if="{{refresh_top==true&&seller.length==0}}">
+    <view class='rel'>
+      <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+    </view>
+    <view class='center'>该分类还没有活动</view>
+  </view>
+</view>

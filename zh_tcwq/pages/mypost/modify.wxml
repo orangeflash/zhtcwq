@@ -1,0 +1,50 @@
+<!--pages/fabu/edit/edit.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="header" style='background:{{color}}'>
+    <view class="header_title">发布{{info}}信息</view>
+    <!-- <view class="header_right" bindtap='know'>发布须知</view> -->
+  </view>
+  <view class="content">
+    <view class="content_miao">内容描述</view>
+    <view class="miaoshu_box">
+      <textarea maxlength='-1' class="miaoshu" value='{{post.details}}' name="content" placeholder="请输入内容描述" />
+    </view>
+  </view>
+  <view class='upload'>
+    <view class='content_add rel' wx:for="{{imgArray}}">
+      <view class='delete ab' bindtap='delete' data-index="{{index}}">
+        <image mode='aspectFill' class='ab' src='../image/delete.png'></image>
+      </view>
+      <image bindtap='previewImage' data-index='{{index}}' mode='aspectFill' class="add_img" src="{{url}}{{item}}"></image>
+    </view>
+    <view class='content_add' bindtap='chooseImage2'>
+      <image class="add_img" src="../image/add.png"></image>
+    </view>
+  </view>
+  <view class="banner">
+    <view class="banner_list border flex-center">
+      <view class="banner_name">联系人：</view>
+      <input class="banner_text" name="name" value='{{post.user_name}}' placeholder-style="color:#999;font-size:28rpx;" />
+    </view>
+    <view class="banner_list2 border  flex-center">
+      <view class="banner_name">联系方式：</view>
+      <input class="banner_text" name="tel" placeholder="请输入您的联系方式" value='{{post.user_tel}}' placeholder-style="color:#999;font-size:28rpx;" />
+    </view>
+    <view class="banner_list3 flex-center">
+      <view class="banner_name">具体位置</view>
+      <view style='flex:1'>
+        <input name="address" placeholder='输入地址或点击地图选择-->' value="{{post.address}}"></input>
+      </view>
+      <image bindtap='add' class='dt' src='../image/address3.png'></image>
+      <!-- <view class="banner_text" bindtap='add'>{{post.address}}</view> -->
+    </view>
+  </view>
+  <view class='modify' wx:if="{{post.dq==false}}">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{stock}}" wx:key="*this">
+        <radio value="{{item}}" color='#ed414a' checked="{{item.checked}}" />{{item}}
+      </label>
+    </radio-group>
+  </view>
+  <button form-type='submit'  style='background:{{color}};z-index:500;'>确认修改</button>
+</form>

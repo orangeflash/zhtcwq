@@ -1,0 +1,87 @@
+<view class='container'>
+  <view class='launch pa ba_f'>
+    <image class='dis_in' mode='aspectFill' src='{{goods_info.img}}'></image>
+    <view class='dis_in mar_l'>
+      <view class='fon_30'>{{goods_info.name}}</view>
+      <view class='fon_24 color_9'>发起了{{goods.people}}人团</view>
+    </view>
+  </view>
+  <view class='shop_info pa ba_f'>
+    <view class='shop_list bor_bottom'>
+      <view class='dis_in'>
+        <image mode='aspectFill' src='{{url}}{{goods.logo}}'></image>
+      </view>
+      <view class='dis_in'>
+        <view class='fon_30 hydlnr'>{{goods.name}}</view>
+        <view class='color_text'>
+          <text class='fon_28'>{{goods.people}}人拼购价</text>
+          <text class='fon_24 mar_l'>￥</text>
+          <text class='fon_30 wei'>{{goods.pt_price}}</text>
+        </view>
+        <view>
+          <text class='fon_28 color_9'>原价</text>
+          <text class='fon_28 text_c color_9 mar_l'>￥{{goods.y_price}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='ba_f t_c pa' wx:if="{{sec!=null&&group=='拼团开始'}}">
+    <text class='fon_28 wei'>还差</text>
+    <text class='fon_28 wei color_text'>{{sy_num}}人</text>
+    <text class='fon_28 wei'>拼购成功,</text>
+    <text class='fon_28 wei'>剩余时间</text>
+    <text class='fon_28 wei timeBack' wx:for="{{hour}}">{{item}}</text>
+    <text>:</text>
+    <text class='fon_28 wei timeBack' wx:for="{{min}}">{{item}}</text>
+    <text>:</text>
+    <text class='fon_28 wei timeBack' wx:for="{{sec}}">{{item}}</text>
+  </view>
+  <view class='ba_f t_c pa' wx:else>
+    <text class='fon_28 wei'>拼团已结束</text>
+  </view>
+  <view class='ba_f t_c launchNum pa'>
+    <view class='dis_in mar_l' wx:for="{{group_user}}" style='margin-bottom:20rpx;'>
+      <image mode='aspectFill' src='{{item.img}}'></image>
+    </view>
+    <view class='dis_in mar_l border_dash' wx:for="{{sy_num}}" style='margin-bottom:20rpx;'>
+      <image mode='aspectFill' src=''></image>
+    </view>
+  <block wx:if="{{sy_num>0}}">
+         <form bindsubmit="tjddformSubmit" report-submit="true" bindreset="formReset">
+      <button class='joinGroup' formType="submit" style='background:{{color}}' open-type="{{button_type}}" wx:if="{{sec!=null&&group=='拼团开始'}}" bindtap='{{button}}'>{{button_text}}</button>
+      <button class='joinGroup' formType="submit" style='background:{{color}}' wx:else>拼团已失效</button>
+    </form>
+  </block>
+  <block wx:else>
+  <button class='joinGroup' formType="submit" style='background:{{color}}' >拼团已完成</button>
+  </block>
+
+  </view>
+  <!--  拼购玩法  -->
+  <view class='playMethod pa_1 ba_f mar_t'>
+    <view class='pa_0 fon_30 bor_bottom'>
+      拼购玩法
+    </view>
+    <view class='fon_24 pa_0 rule'>
+      <view class='dis_in'>
+        <image mode='aspectFill' src='../../img/collage/num_one.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        <text class='dis_in'>开团/参团</text>
+      </view>
+      <view class='dis_in t_c'>></view>
+      <view class='dis_in'>
+        <image mode='aspectFill' src='../../img/collage/num_two.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        <text class='dis_in'>邀请好友</text>
+      </view>
+      <view class='dis_in t_c'>></view>
+      <view class='dis_in t_c'>
+        <view class='dis_in'>
+          <image mode='aspectFill' src='../../img/collage/num_three.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        </view>
+        <view class='dis_in'>
+          <view>满员发货</view>
+          <view class='color_9'>(不满自动退款)</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

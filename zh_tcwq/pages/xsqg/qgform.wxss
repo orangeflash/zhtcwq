@@ -1,0 +1,9 @@
+@import '/zh_tcwq/utils/takeoutform.wxss';
+@import "/zh_tcwq/utils/ccsc.wxss";
+.formmain{width:100%;position: relative;top: 0;left: 0;padding-bottom: 0;margin-top: 30rpx;background:none;}
+.formhdzq .zqaddress {text-align: left;padding: 20rpx;background: #fff;}
+.formftyh{border-top: none;margin-top: 30rpx;background: #fff;}
+.formbd{border-top: none;margin-top: 30rpx;}
+.formft{border-top: none;margin-top: 30rpx;}
+.sfk{padding: 20rpx 30rpx;}
+.cart-item{background: #fff;}

@@ -1,0 +1,74 @@
+<view class="container">
+  <view class='head' style='background:{{color}}'>
+    <view wx:if="{{order.state==1}}">待付款</view>
+    <view wx:if="{{order.state==2}}">待发货</view>
+    <view wx:if="{{order.state==3}}">待收货</view>
+    <view wx:if="{{order.state==4}}">已完成</view>
+    <view wx:if="{{order.state==5}}">退款中</view>
+    <view wx:if="{{order.state==6}}">已退款</view>
+    <view wx:if="{{order.state==7}}">退款已被拒绝</view>
+    <view>订单金额:￥{{order.money}}</view>
+  </view>
+  <view class='address' wx:if="{{order.is_zt!='1'}}">
+    <view class='rel'>
+      <image class='ab udlr' src='../image/address3.png' mode=''></image>
+    </view>
+    <view>
+      <text>{{order.user_name}}  {{order.tel}}</text>
+      <text>{{order.address}}</text>
+    </view>
+  </view>
+  <view class='info'>
+    <view>{{order.store_name}}</view>
+    <view class='commodity'>
+      <view class='rel'>
+        <image class='ab ud' mode='aspectFill' src="{{url}}{{order.good_img}}"></image>
+      </view>
+      <view>
+        <text class='gobyndsingle'>{{order.good_name}}</text>
+        <text>￥{{order.good_money}}</text>
+        <text>x{{order.good_num}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='money'>
+    <view>
+      <text>商品小计</text>
+      <text>￥{{shop_price}}</text>
+    </view>
+    <view>
+      <text>运费</text>
+      <text>￥{{order.freight}}</text>
+    </view>
+    <view>
+      <text>实付费(含运费)</text>
+      <text>￥{{order.money}}</text>
+    </view>
+    <view wx:if="{{order.is_zt=='1'}}">
+      <text>自提时间</text>
+      <text>{{order.zt_time}}</text>
+    </view>
+  </view>
+  <view class='order_time'>
+    <view>
+      <view>订单编号：{{order.order_num}}</view>
+      <view>创建时间：{{order.time}}</view>
+      <view wx:if="{{order.state==3&&order.is_zt==2}}">快递名称：{{order.kd_name}}</view>
+      <view wx:if="{{order.state==3&&order.is_zt==2}}">快递单号：{{order.kd_num}}</view>
+    </view>
+    <view wx:if="{{order.note!=''}}">
+      备注： {{order.note}}
+    </view>
+  </view>
+  <view class='label rel'>
+    <text class='ud ab' bindtap='tzkf'>客服</text>
+    <text class='ud ab' wx:if="{{order.state==1}}" bindtap='pay' data-id='{{order.id}}' data-money='{{order.money}}'>付款</text>
+    <text class='ud ab' wx:if="{{order.state==2}}" bindtap='toorder' data-id='{{order.id}}'>申请退款</text>
+    <text class='ud ab' wx:if="{{order.state==3}}" bindtap='complete' data-id='{{order.id}}'>确认收货</text>
+    <text class='ud ab' wx:if="{{order.state==4}}" bindtap='delorder' data-id='{{order.id}}'>删除订单</text>
+  </view>
+  <view class='ewm' wx:if="{{order.state==3}}">
+    <view>出示给商家扫码核销</view>
+    <image src="data:image/png;base64,{{order.code_url}}"></image>
+  </view>
+</view>

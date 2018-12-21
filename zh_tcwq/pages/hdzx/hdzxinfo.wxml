@@ -1,0 +1,135 @@
+<!--zh_tcwq/pages/hdzx/hdzxinfo.wxml-->
+<view class="body" wx:if="{{slide.length!=0}}">
+  <view class='banner'>
+    <view class="swiper-container">
+      <swiper autoplay="auto" circular='true' interval="5000" indicator-dots="true" indicator-color="#fff" indicator-active-color="#ED414A" duration="500" class="swiper">
+        <block wx:for="{{hdinfo.img}}" wx:key="{{item.value}}">
+          <swiper-item>
+            <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' src="{{url}}{{item}}" class="img"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+<navigator url='canvas?id={{hdinfo.id}}&url={{url}}' class='fxhb'>
+  <image mode='aspectFit' src='../image/xcxm.png'></image>
+</navigator>
+<!-- <view class='hdzj'>
+  <view class='yddz'>
+    <view class='flex1 cyuedu'>阅读数
+      <text class='cfont3'>{{spinfo.info.yd_num}}</text>
+    </view>
+    <view class='flex1' bindtap='dz'>
+      <view class='flex1 {{dz?"clike":"like"}}'>
+        <image class='clikeimg' src='../image/{{dz?"staoxin":"taoxin"}}.png'></image>
+        <text>{{spinfo.dz.length}}人喜欢</text>
+      </view>
+    </view>
+  </view>
+  <button open-type="share" class="share-bottom">
+    <image class='cshareimg' src='../image/onshare.png'></image>
+  </button>
+</view> -->
+<view class='hdzj'>
+  <view class='hdname'>{{hdinfo.title}}</view>
+  <button open-type="share" class="share-bottom">
+    <image class='cshareimg' src='../image/onshare.png'></image>
+  </button>
+</view>
+<view class='hdinfo flex-bet'>
+  <view class='hdleft'>仅
+    <text style='color:{{color}}'>{{hdinfo.number}}</text>个名额
+  </view>
+  <view class='flex-center hdright'>
+    <view style='color:{{color}}'>￥{{hdinfo.money}}</view>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title" style='margin-top:30rpx;'>
+  <navigator bindtap='maketel' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__hd">
+      <image src="../image/xiangqingdianhua@2x.png" style="margin-right: 10px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">联系电话：{{hdinfo.tel}}</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__hd">
+      <image src="../image/life.png" style="margin-right: 10px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">活动时间：{{hdinfo.start_time}}至{{hdinfo.end_time}}</view>
+    <view class="weui-cell__ft"></view>
+  </navigator>
+  <navigator bindtap='location' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__hd">
+      <image src="../image/address3.png" style="margin-right: 10px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">地址：{{hdinfo.address}}</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+</view>
+<ad wx:for="{{unitid}}" unit-id="{{item.src}}"></ad>
+<view style='margin: 30rpx 0 120rpx;'>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="../image/infomation.png" style="margin-right: 10px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">详情内容</view>
+    </view>
+  </view>
+  <view class='seller_info margin'>
+    <rich-text nodes="{{hdinfo.details}}"></rich-text>
+  </view>
+</view>
+<view class='foot'>
+  <navigator url='../index/index' open-type='reLaunch' class='footl'>
+    <image src='../image/tubia1o@2x.png'></image>
+    <view>首页</view>
+  </navigator>
+  <block wx:if="{{userisbm=='1'}}">
+    <view wx:if="{{hdinfo.isgq=='2'&&hdinfo.is_bm=='1'}}" bindtap='wybm' class='footr' style='background:{{color}}'>我要报名</view>
+    <view wx:if="{{hdinfo.isgq=='2'&&hdinfo.is_bm=='2'}}" class='footr' style='background:#d5d5d5'>报名已截止</view>
+    <view wx:if="{{hdinfo.isgq=='1'}}" class='footr' style='background:#d5d5d5'>活动已结束</view>
+  </block>
+  <block wx:if="{{userisbm=='2'}}">
+    <view wx:if="{{hdinfo.isgq=='1'}}" class='footr' style='background:#d5d5d5'>活动已结束</view>
+    <view wx:if="{{hdinfo.isgq=='2'}}" class='footr' style='background:#d5d5d5'>您已报名</view>
+  </block>
+</view>
+<view class="zhezhao" hidden="{{kpgg}}" bindtap='ycgg'></view>
+<view class="kpgg" hidden="{{kpgg}}">
+  <view class='txdz'>填写报名信息</view>
+  <form bindsubmit="formSubmit" report-submit='true'>
+    <view class="weui-cells weui-cells_after-title" style="font-size:30rpx;margin-top:30rpx;">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="lxr" placeholder="请输入联系人" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input" style='border-bottom: 1rpx solid #e6e6e6;'>
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="tel" type="number" placeholder="请输入联系电话" />
+        </view>
+      </view>
+    </view>
+    <view class='txdz1'>您需支付报名费{{hdinfo.money}}元</view>
+    <button class="qddh" disabled='{{qddh}}' formType="submit">{{tjwz}}</button>
+  </form>
+</view>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>

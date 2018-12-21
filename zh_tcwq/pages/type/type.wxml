@@ -1,0 +1,180 @@
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class='big_border pbnavbar'>
+  <!-- <view class="search flex-center rel" style='background:{{System.color}}'>
+    <view class="search_dizhi flex-center">
+      <view class="" bindtap='city_select' wx:if="{{System.many_city==2}}">{{city}}</view>
+      <view class="" wx:if="{{System.many_city==1}}">{{city}}</view>
+      <image class="search_xiala" src="../image/Path-2@2x.png"></image>
+    </view>
+    <view class="flex-center search_rit">
+      <image class="searchk" src="../image/sousuo@3x.png"></image>
+      <input class="search_inp" type="text" bindblur="bindinput" placeholder="请输入帖子内容搜索" placeholder-style="color:#999;" />
+    </view>
+  </view> -->
+  <!--——————————————————首页轮播图——————————————————  -->
+  <view class="body" wx:if="{{slide.length!=0}}">
+    <view class='banner'>
+      <view class="swiper-container">
+        <swiper autoplay="auto" circular='true' interval="5000" indicator-dots="true" indicator-color="#fff" indicator-active-color="{{System.color}}" duration="500" bindchange="swiperChange" class="swiper">
+          <block wx:for="{{slide}}" wx:key="{{item.value}}">
+            <swiper-item>
+              <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 导航模块开始 -->
+  <view class='llfb'>
+    <view class='llfbleft'>
+      <image mode='aspectFill' src='../image/gif.gif'></image>
+    </view>
+    <view class='llfbrt'>
+      <view>
+        <text>总浏览量：</text>
+        <!-- <image src='../image/lll.png'></image> -->
+        <text style='color:#f44444'>{{System.total_num}}</text>
+      </view>
+      <view>
+        <text>总{{System.tzmc}}量：</text>
+        <!-- <image src='../image/feiji.png'></image> -->
+        <text style='color:#97C7FF'>{{Num}}</text>
+      </view>
+    </view>
+  </view>
+  <swiper wx:if="{{nav.length>0}}" indicator-dots='{{nav.length>1}}' indicator-active-color='{{System.color}}' indicator-color='#f2f2f2' class='classify' style='height:{{height}}rpx' autoplay="true" interval="4000" duration="1000" circular="true">
+    <block wx:for="{{nav}}" wx:key="{{item.value}}">
+      <swiper-item>
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view data-id='{{item.id}}' bindtap='jump' data-name='{{item.type_name}}'>
+            <view class='classify_logo rel'>
+              <image style='border-radius:10rpx;' class='ab udlr' mode='aspectFill' src='{{url}}{{item.img}}'></image>
+            </view>
+            <view class='classify_name center gobyndsingle'>{{item.type_name}}</view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 导航模块结束 -->
+
+  <!--公告部分开始  -->
+  <view class='ad' wx:if="{{msgList.length>0}}">
+    <!-- <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image> -->
+    <view class='tctt' style='color:{{System.color}}'>{{System.flgg_name}}</view>
+    <swiper class="newest_content gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{msgList}}" wx:key="{{item.value}}">
+        <swiper-item>
+          <view class='adinfo gobyndsingle' bindtap='notice' data-id='{{item.id}}'>
+            {{item.title}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--公告部分结束  -->
+  <!-- 二级导航开始 -->
+  <!-- <view class='nav-two'> -->
+  <view class='recommend'>
+    <view wx:for="{{sxtab}}" data-index='{{index}}' bindtap='whole' style="color:{{activesxtab == index ?System.color:''}};border-bottom:{{activesxtab == index ?4:0}}rpx solid {{activesxtab == index ?System.color:''}};width:{{sxtab.length==2?'15%':'30%;'}}">{{item}}</view>
+    <scroll-view class="nav-two" scroll-x="true">
+      <view wx:for="{{navs}}" wx:key="{{item.value}}" bindtap='commend' data-index='{{index}}' id="{{index}}" class="fon {{activeIndex == index ? 'bold' : 'normal'}}" style="color:{{activeIndex == index ?System.color:''}}">{{item.type_name}}</view>
+    </scroll-view>
+  </view>
+  <!-- </view> -->
+  <!-- 二级导航结束 -->
+  <view class="content" wx:if="{{seller.length!=0}}" wx:for="{{seller}}" wx:key="{{item.value}}">
+    <!--上面部分开始  -->
+    <view class="content_top">
+      <view class="content_left">
+        <image wx:if="{{item.tz.user_img!=null}}" src="{{item.tz.user_img}}" class="content_img"></image>
+        <image wx:else src="{{url}}{{item.tz.user_img2}}" class="content_img"></image>
+        <view class="content_zhong">
+          <view class="content_name">{{item.tz.user_name}}</view>
+          <view class="content_text">
+            <view class="content_zhi color2" wx:if="{{item.tz.top==1}}">置顶</view>
+            <view class="content_zhi color1" wx:if="{{item.tz.type_name!=null}}">{{item.tz.type_name}}</view>
+            <view class="content_zhi color2" wx:if="{{item.tz.type2_name!=null}}">{{item.tz.type2_name}}</view>
+            <view class="content_zhi" wx:if="{{item.tz.hb_money>0}}">
+              <image mode='aspectFill' style='width:55rpx;height:55rpx;' src='../image/hongbao.gif'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <block wx:if="{{System.is_bdtel=='1'}}">
+        <view wx:if="{{System.is_ff=='2'}}" class="content_right" bindtap='phone' data-id='{{item.tz.user_tel}}' style='background:{{System.color}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+        <view wx:if="{{System.is_ff=='1'}}" class="content_right" bindtap='see' data-id='{{item.tz.id}}' style='background:{{System.color}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+      </block>
+    </view>
+    <!-- 上面部分结束   -->
+
+    <!--文字部分  -->
+    <view class="content_wen gobyndmulit rel" bindtap='see' data-id='{{item.tz.id}}'>
+      <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+        <button form-type='submit'></button>
+      </form>
+      {{item.tz.details}}</view>
+    <view class="content_wen" bindtap='see' data-id='{{item.tz.id}}'>
+      <view wx:for="{{item.label}}" wx:key="{{item.value}}">{{item.label_name}}</view>
+    </view>
+
+    <!--图片部分  -->
+    <view class="content_picture" wx:if="{{item.tz.img!=''}}">
+      <view wx:for="{{item.tz.img1}}" wx:for-item="tpitem" wx:key="{{item.value}}">
+        <image bindtap='previewImage' data-id='{{item.tz.id}}' data-inde='{{index}}' style='border-radius:10rpx;' mode='aspectFill' src="{{url}}{{tpitem}}"></image>
+        <view></view>
+      </view>
+    </view>
+
+    <view class="content_chakan" bindtap='see' data-id='{{item.tz.id}}'>
+      <view class="content_info time1">{{item.tz.time}}发布</view>
+      <view wx:if="{{item.tz.lat!=''}}" class="content_info">离你{{item.tz.juli}}</view>
+    </view>
+    <view wx:if="{{System.is_tzdz=='1'&&item.tz.address!=''}}" class="content_chakan" bindtap='see' data-id='{{item.tz.id}}'>
+      <view class="content_info">
+        <image mode='widthFix' src='../image/address3.png'></image>
+        <text>{{item.tz.address}}</text>
+      </view>
+    </view>
+    <view class="content_liulan">
+      <image src="../image/liulan.png" class="eye"></image>
+      <view class="content_num">{{item.tz.views}}</view>
+      <view class="content_ren">人浏览</view>
+      <image src='../image/zan.png' class='zan' wx:if="{{item.tz.thumbs_ups==null}}" bindtap='thumbs_up' data-id='{{item.tz.id}}' data-num='{{item.tz.givelike}}'></image>
+      <image src='../image/thumbs_up.png' class='zan' wx:if="{{item.tz.thumbs_ups==true}}"></image>
+      <view class='zannum' wx:if="{{item.tz.thumbs_up==null}}">{{item.tz.givelike}}</view>
+      <view class='zannum' wx:if="{{item.tz.thumbs_up!=null}}">{{item.tz.givelike}}</view>人点赞
+      <view class='zannum rel' bindtap='see' data-id='{{item.tz.id}}' style='margin-left:150rpx;'>
+        <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+          <button form-type='submit'></button>
+        </form>
+        查看详情>></view>
+      <view class="kuang"></view>
+    </view>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+    我也是有底线的
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==false&&seller.length!=0}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class="none_store" wx:if="{{seller.length==0}}">
+    <view class='rel'>
+      <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+    </view>
+    <view class='center'>该分类还没有发布的{{System.tzmc}}</view>
+  </view>
+</view>
+<button wx:if="{{System.is_kf=='1'}}" session-from='{{userinfo.name}}' open-type='contact' class='kefu'>客服</button>
+<button wx:if="{{System.is_kf=='1'}}" class='hddb' bindtap='hddb'><image src='../image/zd.png'></image></button>

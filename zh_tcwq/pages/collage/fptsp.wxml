@@ -1,0 +1,241 @@
+<block wx:if="{{issq}}">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="container">
+      <view class="hhead">
+        <view class="left" bindtap='chooselogo'>
+          <image mode='aspectFill' class="img" src="{{logo}}"></image>
+        </view>
+        <view class="right">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">排序</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='px' type='number' value='{{px}}' placeholder="从小到大排序" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商品名称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='spmc' value='{{spmc}}' placeholder="请输入商品名称" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="head">
+        <view class="weui-cells weui-cells_after-title">
+          <!-- 商品类型 -->
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label">商品分类</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange='bindTypeChange' name='splx' value="{{countryIndex}}" range-key='name' range="{{countries}}">
+                <view class="weui-select weui-select_in-select-after">{{countries[countryIndex].name}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">拼团价格</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='sj' type='digit' placeholder="请输入售价" />
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='yj' type='digit' placeholder="请输入原价" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              元
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">开团人数</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='ktrs' type='number' placeholder="请输入开团人数" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              人
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">单独购价格</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='ddgjg' type='digit' placeholder="请输入单独购价格" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              元
+            </view>
+          </view>
+          <!-- 优惠金额 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商品库存</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='spsl' type="number" placeholder="请输入商品库存" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商品销量</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='spxl' type="number" placeholder="请输入商品销量" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">已成团数量</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='yctsl' type="number" placeholder="请输入已成团数量" />
+            </view>
+          </view>
+          <!-- 优惠条件 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商品简介</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='spjj' placeholder="请输入商品简介(可不填)" />
+            </view>
+          </view>
+          <!-- 发放数量 -->
+          <!-- <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">发放数量</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='ffsl' type="number" placeholder="请输入数量" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              张
+            </view>
+          </view> -->
+          <!-- 日期 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">活动日期</view>
+            </view>
+            <view class="weui-cell__bd picker">
+              <picker mode="date" name='starttime' value="{{timestart}}" start="{{start}}" end="" bindchange="bindTimeChange">
+                <view class="weui-input weui-select weui-select_in-select-after">{{timestart}}</view>
+              </picker>
+              <view style='margin-right:20rpx'>至</view>
+              <picker mode="date" name='endtime' value="{{timeend}}" start="{{start}}" end="" bindchange="bindTimeChange1">
+                <view class="weui-input weui-select weui-select_in-select-after">{{timeend}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">消费截止时间</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="date" name='jztime' value="{{jztime}}" start="{{start}}" end="" bindchange="bindTimeChange2">
+                <view style='font-size: 28rpx;text-align:center' class="weui-input weui-select weui-select_in-select-after">{{jztime}}</view>
+              </picker>
+            </view>
+            <!-- <view class="weui-cell__ft" style="color:black">
+              天
+            </view> -->
+          </view>
+          <!-- <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">消费截止日期</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="date" name='jztime' value="{{jztime}}" start="{{start}}" end="" bindchange="bindTimeChange2">
+                <view style='font-size: 28rpx;text-align:center' class="weui-input">{{jztime}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view> -->
+        </view>
+      </view>
+      <view class="mdtp">
+        <view class="left">顶部轮播图片：</view>
+        <view class="right">
+          <view class='tpjy'>至多上传3张图片</view>
+        </view>
+      </view>
+      <view class='mdtp1' style='margin-bottom:15rpx;'>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{lbimages}}" wx:key="*this">
+              <view class="weui-uploader__file">
+                <view class='x' bindtap='deleteImage' data-index='{{index}}'>
+                  <image src='../image/delete.png'></image>
+                </view>
+                <image class="weui-uploader__img" bindtap="previewImage" src="{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box" wx:if="{{lbimages.length<3}}">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+        <view class='tpsl'>{{lbimages.length}}/3</view>
+      </view>
+      <!-- 使用须知 -->
+      <view class="weui-cells__title">商品详情</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" name='spxq' bindinput="gongg" maxlength='100' placeholder="商品详情说明" style="height: 4.5em" />
+            <view class="weui-textarea-counter">
+              <text style='color:{{color}}'>{{zsnum}}</text>/100</view>
+          </view>
+        </view>
+      </view>
+      <view class="mdtp">
+        <view class="left">商品介绍图片：</view>
+        <view class="right">
+          <view class='tpjy'>至多上传3张图片</view>
+        </view>
+      </view>
+      <view class='mdtp1' style='margin-bottom:15rpx;'>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{jsimages}}" wx:key="*this">
+              <view class="weui-uploader__file">
+                <view class='x' bindtap='deleteImage1' data-index='{{index}}'>
+                  <image src='../image/delete.png'></image>
+                </view>
+                <image class="weui-uploader__img" bindtap="previewImage" src="{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box" wx:if="{{jsimages.length<3}}">
+            <view class="weui-uploader__input" bindtap="chooseImage1"></view>
+          </view>
+        </view>
+        <view class='tpsl'>{{jsimages.length}}/3</view>
+      </view>
+      <!-- <view class="read">
+        <radio style='zoom:80%' color='#ff6161' checked='true' />
+        <view>我已阅读并同意
+          <text class="readfont" bindtap='lookck'>《商品发布协议》</text>
+        </view>
+      </view> -->
+      <view class="weui-btn-area">
+        <button class="weui-btn" formType="submit" type="primary" style="background-color:{{color}}">发布</button>
+      </view>
+    </view>
+  </form>
+</block>
+<view class="zhezhao" hidden="{{fwxy}}"></view>
+<view class="kcrzxy" hidden="{{fwxy}}">
+  <view class="kcrzxyhd">商品发布协议</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <rich-text nodes="{{ptxx.kq_agreement}}" />
+  </scroll-view>
+  <view class="queren" bindtap="queren">确定</view>
+</view>

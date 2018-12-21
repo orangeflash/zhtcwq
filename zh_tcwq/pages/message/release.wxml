@@ -1,0 +1,46 @@
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class='container'>
+    <view class='header'>
+      选择主题分类
+    </view>
+    <view class='classifation rel'>
+      <view class='ab udlr'>
+        <scroll-view scroll-x="true">
+          <view wx:for="{{zx}}" bindtap='classifation' data-id='{{item.id}}'  data-index='{{index}}' class="{{activeIndex == index ? 'bold' : 'normal'}}">{{item.type_name}}</view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class='body'>
+      <view class='write'>
+        <view class='zxinput'>
+          <input name="details" placeholder='标题' placeholder-style='font-size:30rpx;'></input>
+        </view>
+        <view style='border-bottom:1rpx solid #e5e5e5' class='increase1' wx:if="{{add1.length>=1}}">
+          <view>
+            <textarea name="text1" placeholder='输入内容' placeholder-style='font-size:30rpx;' maxlength="600" auto-height="true"></textarea>
+          </view>
+          <view class='message_image1 rel' wx:for="{{imgArray1}}">
+            <image class='ab ' mode='aspectFill' src='{{img_url}}{{item}}'></image>
+            <view class='ab' bindtap='delete1' data-inde='{{index}}'>
+              <image src='../image/delete.png'></image>
+            </view>
+          </view>
+          <view class='message_image' bindtap='imgArray1' data-index='{{index}}'>
+            <image src='../image/add.png'></image>
+          </view>
+        </view>
+        <view class='zxinput'>
+          <input name="video" placeholder='视频连接地址' placeholder-style='font-size:30rpx;'></input>
+        </view>
+      </view>
+    </view>
+    <view class='append'>
+        <!-- <view bindtap='add'>
+            回到首页
+        </view> -->
+        <view>
+            <button form-type="submit" style='background:{{color}}'>发布</button>
+        </view>
+    </view>
+  </view>
+</form>

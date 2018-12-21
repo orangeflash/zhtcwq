@@ -1,0 +1,271 @@
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+}
+
+.fixed {
+  width: 95%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  background: #fff;
+  margin: 0 auto;
+}
+.fixed>view:nth-child(3){
+  width: 60rpx;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+.fixed>view:nth-child(4){
+  width: 60rpx;
+  height: 100%;
+  right: 60rpx;
+  top: 0;
+}
+.fixed>view image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.header>view:nth-child(3) {
+  margin-bottom: 20rpx;
+}
+.classification{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: fixed;
+  border-top: 1rpx solid #e5e5e5;
+  bottom: 0;
+}
+.classification>view{
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.classification>view:nth-child(1){
+    height: 80rpx;
+    background: #ED414A;
+    color: #fff;
+}
+.classification>view:nth-child(1){
+    height: auto;
+}
+.classification>view view{
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.classification>view view:last-child{
+  border: none;
+}
+.classification>view:nth-child(1){
+    height: 80rpx;
+}
+.header>view:nth-child(1) {
+  margin-top: 20rpx;
+}
+
+.header>view text {
+  width: 20%;
+  margin-left: 5%;
+  height: 100%;
+  display: inline-block;
+}
+
+.header>view input {
+  width: 75%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.label {
+  width: 95%;
+  height: auto;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  margin: 0 auto;
+  padding: 0 0 20rpx 0;
+}
+
+.checkbox:nth-child(1) {
+  margin-left: 5%;
+}
+
+.checkbox:nth-child(4) {
+  margin-left: 5%;
+}
+
+.checkbox {
+  font-size: 28rpx;
+  zoom: 70%;
+  width: 30%;
+  margin-top: 40rpx;
+  display: inline-block;
+}
+
+.body {
+  width: 95%;
+  height: auto;
+  margin: 20rpx auto;
+}
+.goods_details{
+  width: 95%;
+  height: auto;
+  min-height: 200rpx;
+  background: #fff;
+  margin-left: 2.5%;
+  margin-bottom: 20rpx;
+}
+.goods_details>view{
+  width: 95%;
+  height: 80rpx;
+  margin-left:5%;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+.goods_details>textarea{
+  width: 90%;
+  height: 120rpx;
+  margin-left: 5%;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.fix {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  background: #fff;
+  text-indent: 5%;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.upload{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding-bottom: 30rpx;
+}
+.upload>view:nth-child(1){
+  margin-left: 5%;
+}
+.upload>view:nth-child(5){
+  margin-left: 5%;
+}
+.upload>view:nth-child(9){
+  margin-left: 5%;
+}
+.upload>view{
+  display: inline-block;
+  vertical-align: top;
+  height: 170rpx;
+  margin-top: 30rpx;
+  width: 22.5%;
+}
+.upload_img1 image:nth-child(1){
+  width: 95%;
+  height: 100%;
+  left: 0;
+}
+.upload_img1 image:nth-child(2){
+  width: 40rpx;
+  height: 40rpx;
+  right: 0;
+  top: 0;
+}
+.upload_img2 image:nth-child(1){
+  width: 95%;
+  height: 100%;
+  left: 0;
+}
+.upload_img2 image:nth-child(2){
+  width: 40rpx;
+  height: 40rpx;
+  right: 0;
+  top: 0;
+}
+.upload_img{
+  border: 1rpx solid #e5e5e5;
+  box-sizing: border-box;
+}
+.upload_img image{
+  width: 100%;
+  height: 100%;
+}
+.bottom{
+  margin-bottom: 100rpx;
+}
+.spec{
+  width: 95%;
+  height: 80rpx;
+  background: #fff;
+  margin: 0 auto;
+  /* border-bottom: 1rpx solid #F2F2F2; */
+}
+.one{
+  display: inline-block;
+  font-size: 26rpx;
+}
+.one{
+  vertical-align: top;
+  height: 100%;
+}
+.one>view{
+  display: inline-block;
+  vertical-align: top;
+}
+.spec_one{
+  width: 40%;
+  height: 100%;
+  line-height: 80rpx;
+  margin-left: 5%;
+}
+.spec_two{
+  width: 40%;
+  height: 100%;
+  line-height: 80rpx;
+}
+/* .spec>view:nth-child(3){
+  width: 28%;
+  height: 100%;
+  line-height: 80rpx;
+} */
+.spec_three{
+  width: 7.5%;
+  height: 100%;
+}
+.spec_three image{
+  width: 50rpx;
+  height: 50rpx;
+  z-index: 5000;
+}
+.one>view:nth-child(1){
+  width: 60rpx;
+  height: 100%;
+}
+.one>view:nth-child(2){
+  width: 220rpx;
+  height: 100%;
+}
+.entry{
+  width: 100%;
+  height: 50rpx;
+  border:1rpx solid #e5e5e5;
+  box-sizing: border-box;
+}
+button{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border:1rpx solid #ED414A;
+  background: #ED414A;
+  color: #fff;
+}

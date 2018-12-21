@@ -1,0 +1,301 @@
+/* zh_tcwq/pages/merchant/merchant.wxss */
+.base{
+  width: 100%;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  z-index: 2000;
+  background: #e5e5e5;
+}
+.procedures{
+  width: 95%;
+  margin: 0 auto 0;
+  height: 60rpx;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 70rpx;
+  text-align: right;
+}
+.base>view:first-child{
+  height: 80rpx;
+  width: 100%;
+  background: #ED414A;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+.base>view:last-child{
+  height: 80rpx;
+  width: 100%;
+  margin-top:20rpx;
+  color: #333;
+  text-align: center;
+  background: #fff;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+.array{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 100%;
+  color: #333;
+  /* background: red; */
+  font-size: 30rpx;
+  background: #fff;
+  text-align: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.merchant {
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 150rpx;
+}
+
+.logs_header {
+  width: 100%;
+  background-color: white;
+  position: relative;
+  font-size: 28rpx;
+}
+
+.headerimgbox {
+  width: 100%;
+  height: 220rpx;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+.headerimgbox>view:nth-child(3) {
+  right: 30rpx;
+  top: 40rpx;
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  z-index: 50000;
+  background: #fff;
+  border-radius: 10rpx;
+  background: #ed414a;
+}
+.headerimgbox>view:nth-child(4) {
+  right: 30rpx;
+  top: 120rpx;
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  z-index: 50000;
+  background: #fff;
+  border-radius: 10rpx;
+  background: #ed414a;
+}
+.headerimgbox>view:nth-child(5) {
+  left: 0rpx;
+  top:20rpx;
+  width: 310rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  z-index: 50000;
+  color: #fff;
+}
+.headerimg {
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  bottom: 0rpx;
+  border-radius: 40%;
+  z-index: 1;
+}
+
+.touxiang {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-bottom: 15rpx;
+}
+
+.logs_box {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.myorder {
+  padding: 10rpx 20rpx;
+  margin-top: 5px;
+  border-top: 2rpx solid #eee;
+}
+
+.myorderimg {
+  font-size: 26rpx;
+  color: #999;
+  padding: 15rpx 20rpx 20rpx;
+  width: 20%;
+}
+
+.myorderimg>image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.myorderbox {
+  padding: 0px 20rpx;
+}
+
+.myyue {
+  margin-top: 15rpx;
+  background-color: white;
+  padding: 0rpx 20rpx;
+}
+
+.myyuelist {
+  font-size: 26rpx;
+  height: 70rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.myyuelist>view:nth-child(1) {
+  color: #333;
+}
+
+.myyuelist>view:nth-child(2) {
+  color: #999;
+}
+
+.myyueright {
+  width: 20rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.cash {
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  color: #999;
+}
+
+.cashbox:last-child {
+  border: none;
+}
+
+.cashbox {
+  border-right: 2rpx solid #eee;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  width: 20%;
+}
+
+.cashbox>view:nth-child(2) {
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.cashred {
+  color: white;
+  background-color: #ff5f3e;
+  border-radius: 6rpx;
+  border: none;
+  font-size: 26rpx;
+  padding: 12rpx 15rpx;
+}
+
+/*————————————————头部部分结束——————————————————  */
+.logs_content {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  margin-top: 15rpx;
+}
+.content_left {
+  width: 33%;
+  height: 120rpx;
+  border-right: 1rp solid #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content_left1 {
+  color: #f90;
+}
+.content_integral {
+  font-size: 24rpx;
+}
+.content_font {
+  font-size: 42rpx;
+}
+.content_coll {
+  font-size: 22rpx;
+}
+.content_middle {
+  color: #ff5f3e;
+}
+.content_right {
+  color: #6ac20b;
+}
+/*———————————营销部分—————————————  */
+
+.section {
+  background-color: white;
+  margin-top: 15rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.sec_title {
+  font-weight: bold;
+  height: 70rpx;
+  padding-left: 20rpx;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.secbox {
+  padding: 0rpx 20rpx 0rpx;
+}
+.seclist {
+  padding: 20rpx 0rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+.secimg {
+  width: 70rpx;
+  height: 70rpx;
+}
+.sectext {
+  margin-top: 15rpx;
+  text-align: center;
+}
+.weui-cells{
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.weui-cell{
+  padding: 10rpx 30rpx;
+}
+.weui-btn-area{
+  padding:20rpx 30rpx;
+  position: fixed;width: 100%;background: #fff;
+  margin: 0;bottom: 0;
+  box-sizing: border-box;
+}
+.weui-btn-area .weui-btn{
+  font-size: 33rpx;
+}
+.weui-btn-area text{font-size: 24rpx;margin-left: 20rpx;}

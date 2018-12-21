@@ -1,0 +1,117 @@
+<!--zh_tcwq/pages/index/search.wxml-->
+<view style='width:100%;overflow-x:hidden'>
+  <view class="page__bd">
+    <view class="weui-panel__hd">
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="16"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder-style='font-size:26rpx;' placeholder="请输搜索内容" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+              <icon type="clear" size="18"></icon>
+            </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="18"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+          </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" style='background:{{color}}' hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>
+      </view>
+    </view>
+  </view>
+  <view class="content" wx:if="{{seller.length!=0}}" wx:for="{{seller}}" wx:key="{{item.value}}">
+    <!--上面部分开始  -->
+    <view class="content_top">
+      <view class="content_left">
+        <image wx:if="{{item.tz.user_img!=null}}" src="{{item.tz.user_img}}" class="content_img"></image>
+        <image wx:else src="{{url}}{{item.tz.user_img2}}" class="content_img"></image>
+        <view class="content_zhong">
+          <view class="content_name">{{item.tz.user_name}}</view>
+          <view class="content_text">
+            <view class="content_zhi color2" wx:if="{{item.tz.top==1}}">置顶</view>
+            <view class="content_zhi color1" wx:if="{{item.tz.type_name!=null}}">{{item.tz.type_name}}</view>
+            <view class="content_zhi color1" wx:if="{{item.tz.type2_name!=null}}">{{item.tz.type2_name}}</view>
+            <view class="content_zhi" wx:if="{{item.tz.hb_money>0}}">
+              <image mode='aspectFill' style='width:55rpx;height:55rpx;' src='../image/hongbao.gif'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <block wx:if="{{system.is_bdtel=='1'}}">
+        <view wx:if="{{system.is_ff=='2'}}" class="content_right" bindtap='phone' data-id='{{item.tz.user_tel}}' style='background:{{system.color}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+        <view wx:if="{{system.is_ff=='1'}}" class="content_right" bindtap='see' data-id='{{item.tz.id}}' style='background:{{system.color}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+      </block>
+    </view>
+    <!-- 上面部分结束   -->
+
+    <!--文字部分  -->
+    <view class="content_wen gobyndmulit rel" bindtap='see' data-id='{{item.tz.id}}'>
+      <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+        <button form-type='submit'></button>
+      </form>
+      {{item.tz.details}}</view>
+    <view class="content_wen" bindtap='see' data-id='{{item.tz.id}}'>
+      <view wx:for="{{item.label}}" wx:key="{{item.value}}">{{item.label_name}}</view>
+    </view>
+
+    <!--图片部分  -->
+    <view class="content_picture" wx:if="{{item.tz.img!=''}}">
+      <view wx:for="{{item.tz.img1}}" wx:for-item="tpitem" wx:key="{{item.value}}">
+        <image bindtap='previewImage' data-id='{{item.tz.id}}' data-inde='{{index}}' style='border-radius:10rpx;' mode='aspectFill' src="{{url}}{{tpitem}}"></image>
+        <view></view>
+      </view>
+    </view>
+
+    <view class="content_chakan" bindtap='see' data-id='{{item.tz.id}}'>
+      <view class="content_info time1">{{item.tz.time}}发布</view>
+      <view wx:if="{{item.tz.lat!=''}}" class="content_info">离你{{item.tz.juli}}</view>
+    </view>
+    <view class="content_chakan" bindtap='see' data-id='{{item.tz.id}}'>
+      <view class="content_info">
+        <image mode='widthFix' src='../image/address3.png'></image>
+        <text>{{item.tz.address}}</text>
+      </view>
+    </view>
+    <view class="content_liulan">
+      <image src="../image/liulan.png" class="eye"></image>
+      <view class="content_num">{{item.tz.views}}</view>
+      <view class="content_ren">人浏览</view>
+      <image src='../image/zan.png' class='zan' wx:if="{{item.tz.thumbs_ups==null}}" bindtap='thumbs_up' data-id='{{item.tz.id}}' data-num='{{item.tz.givelike}}'></image>
+      <image src='../image/thumbs_up.png' class='zan' wx:if="{{item.tz.thumbs_ups==true}}"></image>
+      <view class='zannum' wx:if="{{item.tz.thumbs_up==null}}">{{item.tz.givelike}}</view>
+      <view class='zannum' wx:if="{{item.tz.thumbs_up!=null}}">{{item.tz.givelike}}</view>人点赞
+      <view class='zannum rel' bindtap='see' data-id='{{item.tz.id}}' style='margin-left:150rpx;'>
+        <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+          <button form-type='submit'></button>
+        </form>
+        查看详情>></view>
+      <view class="kuang"></view>
+    </view>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+    没有更多了~
+  </view>
+  <view class='loading rel' wx:if="{{djss==true}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==false&&seller.length!=0}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class="none_store" wx:if="{{refresh_top==true&&seller.length==0}}">
+    <view class='rel'>
+      <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+    </view>
+    <view class='center'>暂无符合您搜索的内容</view>
+  </view>
+</view>

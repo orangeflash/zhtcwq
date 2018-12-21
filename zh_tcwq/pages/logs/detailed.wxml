@@ -1,0 +1,32 @@
+<!--zh_hdbm/pages/logs/income/detailed.wxml-->
+<view class='container' wx:if="{{state==1}}" wx:for="{{detailed}}">
+  <view class='detailed'>
+    <view wx:if="{{item.state==1}}">
+      待审核 (
+      <text wx:if="{{item.type==1}}">提现到支付宝</text>
+      <text wx:if="{{item.type==2}}">提现到微信</text>
+      <text wx:if="{{item.type==3}}">提现到银行卡</text>)
+    </view>
+    <view wx:if="{{item.state==2}}">
+      已通过 (
+      <text wx:if="{{item.type==1}}">提现到支付宝</text>
+      <text wx:if="{{item.type==2}}">提现到微信</text>
+      <text wx:if="{{item.type==3}}">提现到银行卡</text>)
+    </view>
+    <view wx:if="{{item.state==3}}">
+      被拒绝 (
+      <text wx:if="{{item.type==1}}">提现到支付宝</text>
+      <text wx:if="{{item.type==2}}">提现到微信</text>
+      <text wx:if="{{item.type==3}}">提现到银行卡</text>)
+    </view>
+    <view>{{item.time}}</view>
+    <view>-{{item.tx_cost}} 元</view>
+  </view>
+</view>
+<view class='container' wx:for="{{detaileds}}" wx:if="{{state==2}}">
+  <view class='detailed'>
+    <view>抢{{system.fl_name}}</view>
+    <view>{{item.time}}</view>
+    <view>+{{item.money}} 元</view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<view class="container">
+  <view class='head'>
+    <view style="color:{{activeIndex == index ?color:''}};border-color:{{activeIndex == index ?color:''}}" class="{{activeIndex == index ? 'border_one' : 'border_two'}}" bindtap='select' data-index='{{index}}' wx:for="{{array}}" wx:key="*this">{{item}}</view>
+  </view>
+  <view class='body'>
+    <view class='list rel' wx:for="{{order}}" wx:key="*this" wx:if="{{order.length!=0}}" bindtap='order_info' data-id='{{item.id}}'>
+      <view class='ab udlr'>
+        <view>
+          <image mode='aspectFill' src='{{url}}{{item.good_img}}'></image>
+        </view>
+        <view>
+          <text class='gobyndsingle'>{{item.good_name}}</text>
+          <text class='gobyndsingle'>客户姓名：{{item.user_name}}</text>
+          <text class='gobyndsingle'>下单时间：{{item.time}}</text>
+          <text style='color:{{color}}' wx:if='{{item.is_zt=="1"}}'>自提订单</text>
+          <text style='color:{{color}}' wx:if='{{item.is_zt=="2"}}'>快递订单</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='none' wx:if="{{order.length!=0}}">没有更多了</view>
+  <view class='none' wx:if="{{order.length==0}}">没有数据</view>
+</view>

@@ -1,0 +1,24 @@
+<view class='container'>
+  <view class='head'>
+    <view wx:for="{{array}}" wx:key="*this" class="{{activeindex==index?'select':''}}" bindtap='select' data-index='{{index}}'>{{item}}</view>
+  </view>
+  <view class='info rel' wx:for="{{store_shop}}" wx:key="*this">
+    <view class='rel'>
+      <image class='ab img1 ud' mode='aspectFill' src='{{url}}{{item.lb_imgs}}'></image>
+    </view>
+    <view class='information'>
+      <view class='gobyndsingle'>{{item.goods_name}}</view>
+      <view>￥{{item.goods_cost}}
+        <text style='color:#ED414A;font-size:22rpx' wx:if="{{item.is_show==2}}">(已下架)</text>
+      </view>
+      <view class='info_three'>
+        <text bindtap='shelves' class="{{item.is_show==1?'back1':'back2'}}" data-id='{{item.id}}'>上架</text>
+        <text bindtap='shelf' class="{{item.is_show==1?'back2':'back1'}}" data-id='{{item.id}}'>下架</text>
+        <text bindtap='modify' class='back2' data-id='{{item.id}}'>修改资料</text>
+      </view>
+    </view>
+    <view class='cancel ab' bindtap='delgood' data-id='{{item.id}}'>
+      <image class='ab udlr' mode='aspectFill' src='../image/cancel.png'></image>
+    </view>
+  </view>
+</view>

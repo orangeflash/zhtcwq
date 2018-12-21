@@ -1,0 +1,41 @@
+<!--zh_hdbm/pages/income/income.wxml-->
+<view  class='container' wx:if="{{close==false}}">
+    <view class='modal' bindtap='modal'></view>
+    <view class='total'> 
+        <view>
+            为了你的账户资金安全,需要对你的真实身份进行认证,认证通过后,即可设置你本人的收款账户进行提现
+        </view>
+        <button bindtap='authentication'>立即认证</button>
+    </view>
+</view>
+<view class="income font">
+  <view class="income_header" style='background:{{System.color}}'>
+    <view>可提现（元）</view>
+    <view class="income_flex">
+      <view class="cash">{{money}}</view>
+      <view class="income_go" bindtap="cash">
+        <view>去提现</view>
+        <image src="../image/baise.png"></image>
+      </view>
+    </view>
+  </view>
+
+   <view class="refer">
+     <view class="refer_flex" bindtap='detailed3'>
+      <view>提现明细</view>
+      <view class="refer_right">
+        <view class="refer_content"></view>
+        <image class="right_img" src="../image/huise@2x.png"></image>
+      </view>
+    </view> 
+  </view> 
+
+  <view class="refer" bindtap='detailed2'>
+    <view class="refer_flex2">
+      <view>{{System.hb_name}}明细</view>
+      <view class="refer_right">
+        <image class="right_img" src="../image/huise@2x.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

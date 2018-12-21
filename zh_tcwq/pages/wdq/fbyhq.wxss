@@ -1,0 +1,142 @@
+/* zh_zbkq/pages/my/fbyhq.wxss */
+page{
+  background: #efeff4;
+  font-family: '微软雅黑', Helvetica, sans-serif;
+}
+.weui-cells__title{
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  font-size: 30rpx;
+  color: #000;
+} 
+.head .weui-cell{
+  height: 100rpx;
+}
+.weui-cell{
+  font-size: 30rpx;
+}
+.picker{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.picker picker{
+  width: 200rpx
+}
+.weui-btn-area{
+ margin: 1em 15px 1em; 
+}
+.weui-select{
+  border-right: none;
+}
+.weui-label image{
+  width: 60rpx;
+  height: 60rpx;
+}
+/**/
+.sqzt{
+  width: 100%;
+  height: 100%;
+  background: white;
+  font-size: 30rpx;
+  color: #666;
+}
+.list_imgbk{
+  width: 250rpx;
+  height: 250rpx;
+  margin-bottom: 30rpx;
+}
+.list_imgbk2{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  height: 500rpx;
+}
+.list_imgbk3{
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  line-height: 30rpx;
+}
+.button1{
+  margin:80rpx;
+}
+.button1 button{
+  font-size: 30rpx;
+}
+.weui-cell:before {
+border-top:1rpx solid #e5e5e5;
+}
+/*门店图片*/
+.mdtp {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+  margin-top: 20rpx;
+}
+
+.mdtp .left {
+  font-size: 30rpx;
+  width: 150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 0 0 15px;
+}
+
+.mdtp .right {
+  flex: 1;
+  font-size: 30rpx;
+  /* padding: 20rpx 0 */
+}
+.mdtp .right .tpjy{
+  color: #999;
+   height: 80rpx;
+  line-height: 80rpx; 
+}
+.tpsl{
+  background: white;
+  font-size: 30rpx;
+  text-align: right;
+  padding: 10rpx 40rpx;
+}
+.mdtp1{
+    overflow-x: hidden;
+}
+.weui-uploader__bd{
+  background: white;
+  padding: 0 0 0 40rpx;
+}
+.weui-uploader__file {
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.weui-uploader__img{
+  margin-top: 20rpx;
+  width:160rpx;
+  height: 160rpx;
+}
+.weui-uploader__input-box{
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+  width:160rpx;
+  height: 160rpx;
+}
+.x{
+  float: right;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+  z-index: 999;
+}
+.x image{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,21 @@
+<view class='container'>
+  <view class='head'>
+    <view wx:for="{{array}}" wx:key="*this" class="{{activeindex==index?'select':''}}" bindtap='select' data-index='{{index}}'>{{item}}</view>
+  </view>
+  <view class='commodity'>
+    <view class='child'>
+      <view class='goods rel' wx:for="{{store_shop}}" wx:key='{{item.value}}' id='{{item.id}}' bindtap='goods_info'>
+        <image class='goods_img' mode='aspectFill' src='{{url}}{{item.lb_imgs}}'></image>
+        <view>{{item.goods_name}}</view>
+        <view style='color:#ED414A'>￥{{item.goods_cost}}</view>
+        <view class='ab'>
+          <text>推荐</text>
+        </view>
+        <view class='ab'>
+          <image mode='aspectFill' src='../image/car1.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='none_info'>没有更多信息了</view>
+</view>

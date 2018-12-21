@@ -1,0 +1,95 @@
+.container{
+  width: 100%;
+}
+.select{
+  color: #ED414A;
+  border-bottom: 5rpx solid #ED414A;
+}
+.head{
+  height: 90rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+}
+.head>view{
+  flex: 3;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+.info{
+  width: 100%;
+  height: 200rpx;
+  margin-top: 20rpx;padding: 20rpx 0;
+  background: #fff;
+}
+.info>view:nth-child(1){
+  width: 200rpx;
+  height: 200rpx;
+  display: inline-block;
+  vertical-align: top;
+}
+.info>view:nth-child(2){
+  width: 65%;
+  height: 100%;
+  display: inline-block;
+}
+.information>view{
+  width: 100%;
+}
+.information>view:nth-child(1){
+  height: 60rpx;
+  width: 60%;
+  line-height: 70rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  text-align: left;
+  text-indent: 40rpx;
+}
+
+.information>view:nth-child(2){
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  text-align: left;
+  color: #ED414A;
+  text-indent: 40rpx;
+}
+.information>view:nth-child(3){
+  height: 100rpx;
+  font-size: 28rpx;
+}
+.info_three text{
+  text-align: center;
+  line-height: 100rpx;
+  width: auto;
+  padding: 10rpx 25rpx;
+  border-radius: 25rpx;
+  margin-left: 40rpx;
+}
+.back1{
+  background: #ED414A;
+  color: #fff;
+}
+.back2{
+  background: #f7f7f7;
+  color: #333;
+  border: 1rpx solid #e5e5e5;
+}
+.img1{
+  width: 90%;
+  height: 90%;
+  right: 0;
+  border-radius: 8rpx;
+  top: 0;
+}
+.cancel{
+  width: 50rpx;
+  height: 50rpx;
+  right: 5%;
+  top: 5%;
+}
+.cancel image{
+  width: 40rpx;
+  height: 40rpx;
+}

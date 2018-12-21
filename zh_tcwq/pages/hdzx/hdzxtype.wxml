@@ -1,0 +1,35 @@
+<!--zh_tcwq/pages/hdzx/hdzxtype.wxml-->
+<view class='tcbanner' wx:if="{{seller.length!=0}}" wx:for="{{seller}}" wx:key="{{item.id}}">
+    <navigator url='hdzxinfo?hdid={{item.id}}'>
+      <view class="tcsection">
+        <image mode='aspectFill' src='{{url}}{{item.logo}}'></image>
+        <!-- <video id="myVideo" src="{{item.url}}" danmu-list="{{danmuList}}" poster="{{url}}{{item.fm_logo}}" objectFit="fill" controls="true"></video> -->
+      </view>
+      <view class='vdtitle'>{{item.title}}</view>
+      <view class='tcremark flex-bet'>
+        <view class='hdleft'>{{item.type_name}}
+          <text class='hdmoney' wx:if="{{item.money!=0.00}}">{{item.money}}元起</text>
+          <text wx:else class='mf' style='background:{{System.color}}'>免费</text>
+          <text class='hdjxz' wx:if="{{item.isgq=='2'&&item.is_bm=='1'}}">预报名</text>
+          <text class='hdjxz1' wx:if="{{item.isgq=='2'&&item.is_bm=='2'}}">已截止</text>
+          <text class='hdjxz1' wx:if="{{item.isgq=='1'}}">已结束</text>
+        </view>
+        <view class='flex-center hdright'>
+          <view>
+            <text style='color:{{System.color}}'>{{item.sign_num}}</text>已报名</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+    没有更多了~
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==false}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class="none_store" wx:if="{{refresh_top==true&&seller.length==0}}">
+    <view class='rel'>
+      <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+    </view>
+    <view class='center'>该分类还没有活动</view>
+  </view>

@@ -1,0 +1,227 @@
+/* zh_cjdianc/pages/sjzx/dndd/dnddlb.wxss */
+@import "/zh_tcwq/style/ccsc.wxss";
+.page{
+  padding-bottom: 140rpx;
+}
+.head{
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+  display: flex;flex-direction: row;align-items: center;background: #fff;padding: 20rpx 0;
+}
+.topnav{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-size: 26rpx;
+}
+.topimg{
+  border-radius: 10rpx;
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.topimg image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.main{
+  padding-top: 170rpx;
+}
+.ddxh{
+  font-size: 38rpx;
+  margin-right: 20rpx;
+}
+.xx{
+ transform: rotate(0deg);
+ transition: 1s,
+}
+.xs{
+ transform: rotate(-180deg);
+ transition: 1s,
+}
+.weui-cells{
+  font-size:28rpx;
+  margin-top: 20rpx; 
+}
+.weui-cell {
+padding:20rpx 30rpx;
+}
+.weui-cell:before {
+  border-top: 1rpx solid #efeff4;
+}
+.weui-cell__hd{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;margin-right: 30rpx;
+}
+.weui-cell__hd image{
+  min-width: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.ssfl{padding: 5rpx 15rpx;border: 1rpx solid #333;border-radius: 10rpx;}
+.bjsc{display:flex;align-items:center;margin-left: 30rpx;font-size: 30rpx;}
+.dsh{padding: 8rpx 18rpx;color: #fff;background: #FF7F50;border-radius: 10rpx;}
+.czbtn{width: 25%;text-align: center;padding: 15rpx 20rpx;border-radius: 10rpx;border: 1rpx solid #000;}
+.zdbtn{padding: 5rpx 10rpx;color: #fff;border-radius: 10rpx;background: #34aaff;margin-right: 8rpx;}
+/**/
+.cpjg{
+  min-width: 50rpx;
+}
+/**/
+.weui-cell__ft image{
+  min-width: 35rpx;
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+.ddxx{
+  padding: 10rpx 30rpx;
+  border-top: 1rpx solid #efeff4;
+  font-size: 28rpx;
+  color: #333;
+}
+.ddxx view{
+  margin: 10rpx 0;
+}
+/**/
+.zwdd{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.zwdd image{
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 40rpx;
+}
+.footbtn{
+  padding:0 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 30rpx; 
+}
+.footbtn button{
+  width: 40%;
+  font-size: 28rpx;
+  color: #999;
+}
+.jjjd{
+  /* background: #fff; */
+  color: #F8F8F8
+}
+.djjd{
+  color: #fff;
+}
+.dyxp{padding: 10rpx 20rpx;border: 1rpx solid red;border-radius: 10rpx;width: 140rpx;text-align: center;font-size: 22rpx;}
+/*****/
+.topnav{
+  width: 25%;
+}
+.dbbtn{
+  width: 100%;
+  position: fixed;bottom: 0;
+  padding:20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff; 
+  border-top: 1rpx solid #e5e5e5;
+}
+.dbbtn button{
+  width: 80%;
+  font-size: 30rpx;
+  color: #999;
+}
+.datebtn{
+  width: 100%;
+  padding:30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff; 
+  border-top: 1rpx solid #e5e5e5;
+}
+.datebtn button{
+  width: 40%;
+  font-size: 30rpx;
+  color: #999;
+}
+.head{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 80rpx;
+  display: flex;flex-direction: row;align-items: center;background: #fff;padding: 20rpx 0;border-bottom: 1rpx solid #e5e5e5;border-top: 1rpx solid #e5e5e5;
+}
+.main{
+  padding-top: 250rpx;
+}
+.sxlb{
+  position: fixed;background: #fff;height: 80rpx;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+  display: flex;flex-direction: row;align-items: center}
+.sxlbv{width: 33.33%;display: flex;flex-direction: row;justify-content: space-around;align-items: center;height: 80rpx;z-index: 9;background: #fff;}
+.sxlbv image{width: 40rpx;height: 40rpx;}
+/**/
+.sorting-list{
+  /* margin-top: 2rpx; */
+  position: absolute;
+  top: 80rpx;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
+  font-size: 14px;
+  /* border-bottom: 1rpx solid #ddd; */
+}
+.sorting-item {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 40rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.chioce-list-show {
+  top: 80rpx;
+  animation: slide 500ms;
+}
+@keyframes slide {
+  0% {
+    top: -500rpx;
+  }
+
+  100% {
+    top: 80rpx;
+  }
+}
+.chioce-list-hide {
+  display: none !important;
+}
+.mask{
+  position: fixed;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.55;
+  z-index: 2;
+}
+.bold{font-weight: bolder;}

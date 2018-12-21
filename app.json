@@ -1,0 +1,174 @@
+{
+  "pages": [
+    "zh_tcwq/pages/index/Liar",
+    "zh_tcwq/pages/index/index",
+    "zh_tcwq/pages/index/getdl",
+    "zh_tcwq/pages/distribution/yaoqing",
+    "zh_tcwq/pages/distribution/wdtd",
+    "zh_tcwq/pages/distribution/symx",
+    "zh_tcwq/pages/distribution/fxyj",
+    "zh_tcwq/pages/distribution/txmx",
+    "zh_tcwq/pages/distribution/jrhhr",
+    "zh_tcwq/pages/distribution/sjhhr",
+    "zh_tcwq/pages/index/city",
+    "zh_tcwq/pages/logs/city_man",
+    "zh_tcwq/pages/car/car",
+    "zh_tcwq/pages/settled/settled",
+    "zh_tcwq/pages/content/content",
+    "zh_tcwq/pages/partner/partner",
+    "zh_tcwq/pages/infodetial/infodetial",
+    "zh_tcwq/pages/fabu/edit/edit",
+    "zh_tcwq/pages/fabu/fabu/fabu",
+    "zh_tcwq/pages/sellerinfo/sellerinfo",
+    "zh_tcwq/pages/marry/marry",
+    "we7/pages/index/index",
+    "we7/pages/user/index/index",
+    "zh_tcwq/pages/store/store",
+    "zh_tcwq/pages/store/business",
+    "zh_tcwq/pages/store/help",
+    "zh_tcwq/pages/notice/notice",
+    "zh_tcwq/pages/Collection/Collection",
+    "zh_tcwq/pages/fabu/knows/knows",
+    "zh_tcwq/pages/logs/logs",
+    "zh_tcwq/pages/logs/publish",
+    "zh_tcwq/pages/logs/index",
+    "zh_tcwq/pages/logs/income",
+    "zh_tcwq/pages/logs/detailed",
+    "zh_tcwq/pages/logs/cash",
+    "zh_tcwq/pages/logs/order",
+    "zh_tcwq/pages/logs/bbaa",
+    "zh_tcwq/pages/logs/system",
+    "zh_tcwq/pages/logs/mine_car",
+    "zh_tcwq/pages/logs/order_info",
+    "zh_tcwq/pages/logs/hxorder",
+    "zh_tcwq/pages/shun/shun",
+    "zh_tcwq/pages/shun/shunfabu/shunfabu",
+    "zh_tcwq/pages/shun/shuninfo/shuninfo",
+    "zh_tcwq/pages/shun/shuninfo2/shuninfo2",
+    "zh_tcwq/pages/message/message",
+    "zh_tcwq/pages/message/footprint",
+    "zh_tcwq/pages/message/release",
+    "zh_tcwq/pages/message/message_info",
+    "zh_tcwq/pages/mypost/modify",
+    "zh_tcwq/pages/mypost/mypost",
+    "zh_tcwq/pages/sellerinfo/shop",
+    "zh_tcwq/pages/sellerinfo/place_order",
+    "zh_tcwq/pages/sellerinfo/good_info",
+    "zh_tcwq/pages/sellerinfo/md",
+    "zh_tcwq/pages/sellerinfo/yhqinfo",
+    "zh_tcwq/pages/type/type",
+    "zh_tcwq/pages/spzx/spzx",
+    "zh_tcwq/pages/spzx/spzxinfo",
+    "zh_tcwq/pages/index/search",
+    "zh_tcwq/pages/qd/qd",
+    "zh_tcwq/pages/qd/pm",
+    "zh_tcwq/pages/integral/integralinfo/integralinfo",
+    "zh_tcwq/pages/integral/record/record",
+    "zh_tcwq/pages/integral/integral",
+    "zh_tcwq/pages/integral/myintegral",
+    "zh_tcwq/pages/wdbm/wdbm",
+    "zh_tcwq/pages/wdbm/hx",
+    "zh_tcwq/pages/wdbm/hxq",
+    "zh_tcwq/pages/infodetial/canvas",
+    "zh_tcwq/pages/sellerinfo/canvas"
+  ],
+  "subPackages": [
+    {
+      "root": "zh_tcwq/pages/wdq",
+      "pages": [
+        "wdq",
+        "hxyhq",
+        "fbyhq",
+        "yhqzx",
+        "yhqtype",
+        "glyhq/glyhq",
+        "glyhq/glyhqdl"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/xsqg",
+      "pages": [
+        "canvas",
+        "fqgsp",
+        "bjqgsp",
+        "wqpsp",
+        "xsqg",
+        "xsqgxq",
+        "qgform",
+        "order",
+        "yqgyh",
+        "qghx",
+        "qgdd"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/collage",
+      "pages": [
+        "bjptsp",
+        "canvas",
+        "fptsp",
+        "wptsp",
+        "ptdd",
+        "ptgl",
+        "ptxq",
+        "index",
+        "info",
+        "group",
+        "place_order",
+        "yz_code",
+        "nav",
+        "group_order",
+        "order_info"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/yellow_page",
+      "pages": [
+        "settled",
+        "yellow",
+        "yellowinfo",
+        "releace",
+        "active",
+        "activeinfo",
+        "yellowtype",
+        "mine_yellow"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/redbag",
+      "pages": [
+        "merchant",
+        "customer/customer",
+        "wallet/wallet",
+        "modify",
+        "commodity",
+        "mine_order",
+        "mine_order_info"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/hdzx",
+      "pages": [
+        "hdzx",
+        "hdzxtype",
+        "hdzxinfo",
+        "canvas"
+      ]
+    },
+    {
+      "root": "zh_tcwq/pages/extra",
+      "pages": [
+        "canvas",
+        "ptgly/bbaa",
+        "ptgly/tzlb",
+        "ptgly/bjtz"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ED414A",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "#fff"
+  }
+}

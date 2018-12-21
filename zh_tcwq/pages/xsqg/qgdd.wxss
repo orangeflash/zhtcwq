@@ -1,0 +1,3 @@
+/* zh_cjdianc/pages/sjzx/dndd/dnddlb.wxss */
+@import "/zh_tcwq/utils/ddlb.wxss";
+.main{padding-top: 100rpx;}

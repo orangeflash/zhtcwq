@@ -1,0 +1,151 @@
+<view class="container">
+  <view class='head'>
+    <view>
+      <swiper indicator-dots="true" autoplay="true" interval="2500" duration="1000">
+        <block wx:for="{{store_good.lb_imgs}}">
+          <swiper-item>
+            <image mode='aspectFill' src="{{url}}{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class='goods rel'>
+      <view>{{store_good.goods_name}}</view>
+      <view class='price rel' style='color:{{system.color}}'>
+        <text>￥{{store_good.goods_cost}}</text>
+        <text style='border-color:{{system.color}}'>热卖</text>
+        <image class='post ab' src='../image/onshare.png' bindtap='openshare'></image>
+      </view>
+      <view class='freight'>
+        <text>剩余：{{store_good.goods_num}}</text>
+        <text>运费：{{store_good.freight}}</text>
+        <button style='background:{{system.color}}' class='vr_store ab' bindtap='Demonstration' wx:if="{{store_good.vr.length>0}}">VR演示</button>
+      </view>
+    </view>
+    <view class='label'>
+      <view>
+        <view wx:if="{{store_good.quality==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>正品保证</view>
+        <view wx:if="{{store_good.free==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>24h发货</view>
+        <view wx:if="{{store_good.all_day==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>全程包邮</view>
+        <view wx:if="{{store_good.service==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>售后保障</view>
+        <view wx:if="{{store_good.refund==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>极速退款</view>
+        <view wx:if="{{store_good.weeks==1}}">
+          <image mode='aspectFill' src='../image/gou.png'></image>七天包退</view>
+      </view>
+    </view>
+  </view>
+  <view class='body'>
+    <view class='spec' wx:if="{{result.length!=0}}" bindtap='select_spec'>选择:商品规格</view>
+    <view class='delivery'>
+      <text>关于发货</text>
+      <text>{{store_good.delivery}}</text>
+    </view>
+    <view class='info'>
+      <view class='info_head'>
+        <block wx:for="{{tabs2}}" wx:key="*this">
+          <view id="{{index}}" style="color:{{activeIndex == index ?system.color:''}};border-color:{{activeIndex == index ?system.color:''}}" class="selle {{activeIndex == index ? 'selle_on' : 'selle_hide'}}" bindtap="tabClick">
+            <view>{{item}}</view>
+          </view>
+        </block>
+      </view>
+      <view class='none_shop' wx:if="{{activeIndex==1}}">暂无商品推荐</view>
+      <block wx:if="{{activeIndex==0}}">
+        <view class='info_bogy'>
+          <view>{{store_good.goods_details}}</view>
+          <view>
+            <image mode='widthFix' wx:for="{{store_good.imgs}}" wx:key="*this" src='{{url}}{{item}}'></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='standard_big' wx:if="{{select_spec==true}}">
+    <view bindtap='select_spec'></view>
+    <view class='standard'>
+      <view class='stand_head'>
+        <view class='rel'>
+          <image class='ab ud' mode='aspectFill' src='{{url}}{{store_good.lb_imgs[0]}}'></image>
+        </view>
+        <view>
+          <view>￥{{goods_cost}}</view>
+          <view>库存{{store_good.goods_num}}件</view>
+          <view>
+            <text>已选</text>
+            <text wx:if="{{result[0].value[spec_index].name!=null}}">'{{result[0].value[spec_index].name}}'</text>
+            <text wx:if="{{result[1].value[spec_index_one].name!=null}}">'{{result[1].value[spec_index_one].name}}'</text>
+            <text wx:if="{{result[2].value[spec_index_two].name!=null}}">'{{result[2].value[spec_index_two].name}}'</text>
+          </view>
+        </view>
+      </view>
+      <view class='stand_body'>
+        <view class='spec_big' wx:if="{{result.length>=1}}">
+          <view>{{result[0].spec_name}}</view>
+          <view>
+            <text bindtap='spec_index' data-index='{{index}}' class="{{index==spec_index?'back_one':'back_two'}}" wx:for="{{result[0].value}}" wx:key="*this" data-price='{{item.money}}'>{{item.name}}</text>
+          </view>
+        </view>
+        <view class='spec_big' wx:if="{{result.length>=2}}">
+          <view>{{result[1].spec_name}}</view>
+          <view>
+            <text bindtap='spec_index_one' data-index='{{index}}' class="{{index==spec_index_one?'back_one':'back_two'}}" wx:for="{{result[1].value}}" wx:key="*this" data-price='{{item.money}}'>{{item.name}}</text>
+          </view>
+        </view>
+        <view class='spec_big' wx:if="{{result.length>=3}}">
+          <view>{{result[2].spec_name}}</view>
+          <view>
+            <text bindtap='spec_index_two' data-index='{{index}}' class="{{index==spec_index_two?'back_one':'back_two'}}" wx:for="{{result[2].value}}" wx:key="*this" data-price='{{item.money}}'>{{item.name}}</text>
+          </view>
+        </view>
+        <view class='buy'>
+          <view>购买数量</view>
+          <view>
+            <view bindtap='subtraction'>-</view>
+            <view wx:if="{{num==1}}">1</view>
+            <view wx:if="{{num>1}}">{{num}}</view>
+            <view wx:if="{{num<1}}">0</view>
+            <view bindtap='add_num'>+</view>
+          </view>
+        </view>
+        <block wx:if="{{store_good.goods_num<=0}}">
+          <form bindsubmit="cartaddformSubmit" report-submit="true" bindreset="formReset">
+            <button style='background:{{system.color}}' formType="submit">立即购买</button>
+          </form>
+        </block>
+        <block wx:else>
+          <form bindsubmit="order" report-submit="true" bindreset="formReset">
+            <button style='background:{{system.color}}' formType="submit">立即购买</button>
+          </form>
+        </block>
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="cartaddformSubmit" report-submit="true" bindreset="formReset">
+    <button formType="submit" style='background:{{system.color}}'  class='immediately' bindtap='liji' wx:if="{{select_spec==false}}">立即购买</button>
+  </form>
+</view>
+<canvas style="top:-10000000000000000px;" canvas-id="ctx"></canvas>
+<view class="share-modal {{share_modal_active}}" catchtap='shareModalClose'>
+  <view class="share-modal-body">
+    <view class="share-modal-close flex-y-center flex-x-center" style='background:#fff'>去邀请好友</view>
+    <view class="flex-row">
+      <view class="flex-grow-1 flex-x-center">
+        <button open-type="share" bindtap='shareModalClose' class="share-bottom">
+          <image src="../image/weixin1.png"></image>
+          <view>微信</view>
+        </button>
+      </view>
+      <view class="flex-grow-1 flex-x-center">
+        <view bindtap="canvas" class="share-bottom">
+          <image src="../image/mdm.png"></image>
+          <view>海报</view>
+        </view>
+      </view>
+    </view>
+    <view bindtap="shareModalClose" class="share-modal-close flex-y-center flex-x-center">取消</view>
+  </view>
+</view>

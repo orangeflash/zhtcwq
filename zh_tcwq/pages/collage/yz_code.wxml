@@ -1,0 +1,6 @@
+<view class='yz_code rel'>
+  <!-- <icon type="success" class='ab udlr' size='100'/> -->
+</view>
+<button bindtap='add_market' style='background:{{color}}'>
+  确认核销
+</button>

@@ -1,0 +1,329 @@
+/* pages/tongcheng/tongchenginfo.wxss */
+page{
+  font-size: 28rpx;
+}
+.fxbtn{
+  margin: 0;
+  padding: 0;
+  line-height:normal; 
+  background: none;
+  font-size: 28rpx;
+  border: 0;
+  display: inline-block;
+}
+button::after{
+border: none;
+}
+/*—————————点赞部分开始———————  */
+
+.portrait {
+  padding-top: 10rpx;
+  padding-bottom: 15rpx;
+}
+
+.portrait_one {
+  width: 57rpx;
+  height: 57rpx;
+  /* background-color: #ededed; */
+  font-size: 20rpx;
+  color: #666;
+  border-radius: 50%;
+  margin-top: 10rpx;
+  margin-right: 13rpx;
+}
+
+.portrait_one>view:nth-child(2) {
+  margin-top: -5rpx;
+}
+
+.portrait_img {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+/* 评论模块开始 */
+
+.portrait_ctop {
+  background-color: white;
+  padding: 18rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.portrait_cxian {
+  width: 10rpx;
+  height: 35rpx;
+  background-color: #ed414a;
+  margin-right: 20rpx;
+}
+
+.portrait_com {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.portrait_ping {
+  color: #ff9913;
+  font-size: 26rpx;
+}
+
+.portrait_cimg {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 15rpx;
+}
+
+/* 评论--------- */
+
+.userwords {
+  background-color: white;
+  padding: 20rpx;
+  font-size: 26rpx;
+  display: flex;
+  border-bottom: 1rpx solid #eee;
+  /* padding-bottom: 100rpx; */
+}
+
+.userwords:last-child {
+  padding-bottom: 90rpx;
+}
+
+.userwords_img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.userwords_rit {
+  width: 590rpx;
+  margin-left: 20rpx;
+}
+
+.userwords_content {
+  margin-top: 20rpx;
+  color: #666;
+}
+.userwords_box {
+  background-color: #eee;
+  padding: 10rpx 15rpx;
+  line-height: 40rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.userwords_one {
+  color: #666;
+}
+
+.userwords_mar {
+  margin: 0rpx 10rpx;
+}
+
+.userwords_color {
+  color: #4395f5;
+}
+
+.userwords_color2 {
+  color: #999;
+}
+.cheader{
+  padding: 30rpx;
+  background-color: white;
+}
+.ctitle{
+  font-weight: bold;
+  font-size: 40rpx;
+  margin-bottom: 30rpx;
+}
+.cshareimg{
+  width: 50rpx;
+  height: 50rpx;
+}
+.cuserimg{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.cfont1{
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.share-bottom{
+  text-align: center;
+  font-size: 9pt;
+  margin: 0;
+  line-height: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  display: inline-block;
+}
+.cfont2{
+  margin-left: 30rpx;
+  font-size: 25rpx;
+}
+.tcsection1{
+  width: 100%;
+  overflow: hidden;
+  margin-top: 30rpx;
+}
+.tcsection1>video{
+  width: 100%;
+}
+.cfont3{
+  color: #FF7800;
+  margin-left: 15rpx;
+}
+.cyuedu{
+  color: #999;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.clikeimg{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+.like{
+  width: 330rpx;
+  height: 90rpx;
+  border-radius: 50rpx;
+  background-color: #FF5864;
+  color: white;
+}
+.clike{
+  width: 330rpx;
+  height: 90rpx;
+  border-radius: 50rpx;
+  background-color: #fff;
+  color: #FF5864;
+  border: 1rpx solid #FF5864;
+  box-sizing: border-box;
+}
+.cmore{
+  width: 60%;
+  border-bottom: 1rpx solid #ddd;
+  position: relative;
+  margin-top: 80rpx;
+  margin-bottom: 20rpx;
+}
+.cmore>view{
+  background-color: white;
+  padding: 0rpx 30rpx;
+  position: absolute;
+  left: 30%;
+  bottom: -20rpx;
+  color: #999;
+}
+.ibanner{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 30rpx;
+  font-size: 26rpx;
+}
+.ibanner>.flex3{
+  width: 25%;
+}
+.ibanimg{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 15rpx;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.tcinfo{
+  background-color: white;
+  margin-top: 15rpx;
+  padding: 0rpx 30rpx;
+}
+.tcbanner{
+  background-color: white;
+  padding: 30rpx 0rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.tcremark{
+  color: #999;
+  margin-top: 10rpx;
+}
+.tchuifuimg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+}
+.tchuifuimg1{
+  width: 30rpx;
+  height: 20rpx;
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+}
+.tcsection{
+  width: 100%;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.tcsection>video{
+  width: 100%;
+  border-radius: 20rpx;
+}
+.secremark{
+  width: 95%;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  padding: 20rpx;
+  z-index: 10;
+  color: #fff;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+.tcinfotext{
+  border-bottom: 1rpx solid #eee;
+  color: #666;
+  padding: 15rpx 0rpx;
+}
+
+
+
+
+.tcfootmenu{
+  width: 100%;
+  height: 130rpx;
+}
+.tcfoot{
+  position: fixed;
+  z-index: 99;
+  border-top: 1rpx solid #eee;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  box-shadow: 0rpx -5rpx 10rpx #c9c9c9;
+  background-color: white;
+}
+.tcfootbox{
+  padding: 15rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+.cfootinp{
+  border: 1rpx solid #ddd;
+  border-radius: 50rpx;
+  padding: 0rpx 20rpx;
+  width: 60%;
+  height: 65rpx;
+}
+.cpinlun{
+  width: 50rpx;
+  height: 50rpx;
+}
+.cfootrit{
+  width: 37%;
+  margin-left: 3%;
+}
+

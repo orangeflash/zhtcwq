@@ -1,0 +1,239 @@
+<view class='' style='overflow-x:hidden;'>
+  <!--  页面轮播图以及拼团详情  -->
+  <view class='head rel'>
+    <swiper autoplay="auto" indicator-color='#ccc' indicator-active-color='{{color}}' interval="5000" duration="500" indicator-dots='true' circular='true' class="swiper">
+      <block wx:for="{{goods_info.img}}">
+        <swiper-item>
+          <image src="{{url}}{{item}}" mode='aspectFill' class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='Collage ab pa' style='background:{{color}}'>
+      <view class='dis_in color_f pa fon_24'>
+        <view class='collMan'>
+          <!-- <image class='dis_in' mode='aspectFill' src='../../img/collage/collage.png'></image> -->
+          <text class='dis_in'>{{goods_info.people}}人拼</text>
+        </view>
+      </view>
+      <view class='dis_in'>
+        <text class=' fon_24 color_f'>￥</text>
+        <text class=' fon_36 color_f'>{{goods_info.pt_price}}</text>
+        <text class=' fon_24 color_e text_c pa_1'>￥{{goods_info.y_price}}</text>
+      </view>
+      <view class='dis_in fon_24 color_f coTime' style='float:right;'>
+        <view class='t_c' style='color:#fff'>距拼购结束还剩:</view>
+        <view class='' wx:if="{{clock!=false}}">
+          <text>{{day}}</text>
+          <text>天</text>
+          <text>{{hour}}</text>
+          <text>:</text>
+          <text>{{min}}</text>
+          <text>:</text>
+          <text>{{sec}}</text>
+        </view>
+        <view class='' wx:if="{{clock==false}}">
+          <text>00</text>
+          <text>天</text>
+          <text>00</text>
+          <text>:</text>
+          <text>00</text>
+          <text>:</text>
+          <text>00</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--  商品简介  -->
+  <view class='shop ba_f pa_0'>
+    <view class='dis_in'>
+      <view class='pa_1 gobyndsingle fon_36'>
+        {{goods_info.name}}
+      </view>
+      <view class='fon_24 pa_1'>
+        {{goods_info.introduction}}
+      </view>
+    </view>
+    <view class='dis_in t_c fon_24' bindtap='share'>
+      <image mode='aspectFill' src='../image/nav.png'></image>
+      <text>分享</text>
+    </view>
+  </view>
+  <!--  拼团信息  -->
+  <view class='collInfo mar_t ba_f' wx:if="{{group.length>0}}">
+    <view class='collInfoNum pa bor_bottom'>
+      <view class='dis_in fon_24'>已有{{group.length}}人在拼单,可直接参与</view>
+      <view class='dis_in fon_24 t_r' bindtap='more_group'>查看更多>></view>
+    </view>
+    <view class='group pa bor_bottom' wx:for="{{group}}" wx:if="{{index<2}}" wx:key="*this">
+      <view class='dis_in'>
+        <image class='dis_in' mode='aspectFill' src='{{item.img}}'></image>
+        <text class='dis_in fon_30 mar_l'>{{item.name}}的团</text>
+      </view>
+      <view class='dis_in t_r'>
+        <view class='fon_24'>
+          <text>还差</text>
+          <text style='color:{{color}}'>{{item.num}}人</text>
+          <text>拼成</text>
+        </view>
+        <view class='fon_24 color_c' wx:if="{{clock!=false}}">剩余{{day}}天{{hour}}:{{min}}:{{sec}}</view>
+        <view class='fon_24 color_c' wx:else>活动已结束</view>
+      </view>
+      <view class='dis_in color_f fon_28 parGroup t_c' bindtap='collageInfo' data-id='{{item.id}}' data-logo='{{item.img}}' data-name='{{item.name}}' data-num='{{item.num}}' data-userid='{{item.user_id}}' wx:if="{{clock!=false}}">
+        <text style='background:{{color}}'>去参团</text>
+      </view>
+      <view class='dis_in color_f fon_28 parGroup t_c' wx:else>
+        <text style='background:{{color}}'>已结束</text>
+      </view>
+    </view>
+  </view>
+  <!-- 活动时间  -->
+  <view class='pa_1 ba_f fon_24 mar_t'>
+    <view class='pa bor_bottom' style='padding：20rpx 0'>
+      <text>活动起止时间：</text>
+      <text style='color:{{color}}'>{{goods_info.start_time}}至{{goods_info.end_time}}</text>
+    </view>
+    <!-- <view class='pa bor_bottom'>
+      <text>活动结束时间：</text>
+      <text style='color:{{color}}'>{{goods_info.end_time}}</text>
+    </view> -->
+    <view class='pa'>
+      <text>报名结束时间：</text>
+      <text style='color:{{color}}'>{{goods_info.xf_time}}</text>
+    </view>
+  </view>
+  <!--  店铺地址  -->
+  <view class='ba_f mar_t pa_1'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>适用店铺</view>
+    <view class='address rel pa_0 bor_bottom'>
+      <image class='dis_in' mode='aspectFill' style='width:70rpx;height:70rpx;border-radius:50%;' src='{{url}}{{StoreInfo.logo}}'></image>
+      <view class='dis_in fon_28'>
+        <view class='color_6'>
+          {{StoreInfo.store_name}}
+        </view>
+        <view class='color_9'>
+          营业时间：{{StoreInfo.start_time}}-{{StoreInfo.end_time}}
+        </view>
+      </view>
+      <image bindtap='maketel' class='dis_in ab ud se_right' mode='aspectFit' src='../image/lxtel.png'></image>
+    </view>
+    <view class='address rel pa_0' bindtap='location'>
+      <image class='dis_in' mode='aspectFit' style='width:40rpx;height:40rpx;margin:0rpx 15rpx;' src='../image/address.png'></image>
+      <view class='dis_in fon_28'>
+        <view class='color_6'>
+          {{StoreInfo.address}}
+        </view>
+        <!-- <view class='color_9'>
+          距离您1293公里
+        </view> -->
+      </view>
+      <image class='dis_in ab ud se_right' mode='aspectFit' src='../image/huise@2x.png'></image>
+    </view>
+  </view>
+  <!--  拼购玩法  -->
+  <view class='playMethod pa_1 ba_f mar_t'>
+    <view class='pa_0 fon_30 bor_bottom'>
+      拼购玩法
+    </view>
+    <view class='fon_24 pa_0 rule'>
+      <view class='dis_in'>
+        <image mode='aspectFill' src='../image/collage/num_one.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        <text class='dis_in'>开团/参团</text>
+      </view>
+      <view class='dis_in t_c'>></view>
+      <view class='dis_in'>
+        <image mode='aspectFill' src='../image/collage/num_two.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        <text class='dis_in'>邀请好友</text>
+      </view>
+      <view class='dis_in t_c'>></view>
+      <view class='dis_in t_c'>
+        <view class='dis_in'>
+          <image mode='aspectFill' src='../image/collage/num_three.png' class='dis_in' style='width:30rpx;height:30rpx;margin-right:5rpx;'></image>
+        </view>
+        <view class='dis_in'>
+          <view>满员发货</view>
+          <view class='color_9'>(不满自动退款)</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--  商品详情  -->
+  <!-- <view class='shopInfo mar_t ba_f' wx:if="{{goods_info.introduction!=''}}">
+   <view class='pa_0 fon_30 bor_bottom'>
+      商品简介
+    </view>
+    <rich-text class='pa' nodes="{{goods_info.introduction}}"></rich-text>
+  </view> -->
+  <!--  商品详情  -->
+  <!-- <view class='shopInfo mar_t ba_f pa' wx:if="{{goods_info.details!=''}}">
+    <rich-text nodes="{{goods_info.details}}"></rich-text>
+  </view> -->
+  <view class='shop_detail pa_1 ba_f mar_t'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>商品详情</view>
+    <view class='yhxq'>
+      <rich-text nodes="{{goods_info.details}}"></rich-text>
+      <view class='yhxqimg' wx:if="{{goods_info.details_img!=''}}">
+        <image wx:for="{{goods_info.details_img}}" mode='widthFix' src='{{url}}{{item}}'></image>
+      </view>
+    </view>
+  </view>
+  <!--  分享  -->
+  <view class='share' hidden='{{share}}'>
+    <view class='ab'></view>
+    <view class='ab'>
+      <view class='share_info'>
+        <view class='dis_in rel'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/wxfx.png'></image>
+          </view>
+          <view class='t_c fon_24'>分享给朋友</view>
+          <button class='ab' open-type='share'></button>
+        </view>
+        <view class='dis_in' bindtap='canvas'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/schb.png'></image>
+          </view>
+          <view class='t_c fon_24'>生成商品海报</view>
+        </view>
+      </view>
+      <view class='pa_0 t_c fon_28 ba_f' bindtap='close'>
+        关闭
+      </view>
+    </view>
+  </view>
+  <!--  这是生成转发图片  -->
+  <view class='generateImage' hidden='{{friendsImage}}'>
+    <view class='ab'></view>
+    <view class='ab udlr'>
+      <view style='overflow:hidden'>
+        <image mode='aspectFill' src='{{genImage}}'></image>
+      </view>
+      <button class='fon_30' bindtap='toTemp'>保存图片</button>
+      <view class='color_e fon_24 t_c pa'>保存至相册可以分享至朋友圈</view>
+      <view class='ab t_c' bindtap='close'>×</view>
+    </view>
+  </view>
+  <view style='height:170rpx;'></view>
+  <!--  购买  -->
+  <view class='buyShop  ba_f'>
+    <view bindtap='back' class='dis_in t_C fon_24 t_c'>
+      <image mode='widthFix' src='../image/index.png'></image>
+      <text>首页</text>
+    </view>
+    <view class='dis_in color_f' bindtap='alone_pay'>
+      <view class=' t_c'>
+        <text class='fon_24'>￥</text>
+        <text class='fon_30'>{{goods_info.dd_price}}</text>
+      </view>
+      <view class='fon_30 t_c'>单独购买</view>
+    </view>
+    <view class='dis_in color_f' bindtap='group_pay' style='background:{{color}}'>
+      <view class=' t_c'>
+        <text class='fon_24'>￥</text>
+        <text class='fon_30'>{{goods_info.pt_price}}</text>
+      </view>
+      <view class='fon_30 t_c'>{{goods_info.people}}人成团</view>
+    </view>
+  </view>
+</view>
+<canvas style="width: 100%; height: 100%;top:-10000rpx;" canvas-id="firstCanvas"></canvas>
+<canvas style="width: 100%; height: 100%;top:-12000rpx;" canvas-id="ctx"></canvas>

@@ -1,0 +1,62 @@
+<!--zh_tcwq/pages/logs/order.wxml-->
+<view class="order">
+  <!-- 热门模块开始 -->
+  <view class="marry">
+    <view class="weuinavbar">
+      <block wx:for="{{luntext}}" wx:key="*this">
+        <view style="color:{{activeIndex == index ?System.color:''}};" id="{{index}}" class="navbaritem {{activeIndex == index ? 'itemon' : ''}}" bindtap="tabClick">
+          <view class="itemtext weuinavbartitle">{{item}}</view>
+          <view style="background:{{activeIndex == index ?System.color:''}};" id="{{index}}" class="zheline {{activeIndex == index ? 'block' : ''}}"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="banner" wx:for="{{order}}" wx:key="*this">
+    <view class="flex-bet bannertop">
+      <view class="bannertitle gobyndsingle">店家：{{item.store_name}}</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==1}}">待付款</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==2}}">待发货</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==3}}">待收货</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==4}}">已完成</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==5}}">退款中</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==6}}">已退款</view>
+      <view style='color:{{System.color}}' class="bannertype" wx:if="{{item.state==7}}">退款被拒绝</view>
+    </view>
+    <view class="bannercon" bindtap='order_info' data-id='{{item.id}}' data-store_id='{{item.store_id}}'>
+      <image mode='aspectFill' src="{{url}}{{item.good_img}}"></image>
+      <view class="bannerinfo">
+        <view class="bannernumber">订单编号：{{item.order_num}}</view>
+        <view class="flex-bet">
+          <view class="bannername gobyndsingle">{{item.good_name}}</view>
+          <view class="bannernum">¥{{item.good_money}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class='flex-bet'>
+        <view class="contentgong">共{{item.good_num}}件商品，合计：{{item.money}}
+          <text wx:if="{{item.freight==0}}"></text>
+          <text wx:else>（含运费¥{{item.freight}}）</text>
+        </view>
+        <view wx:if='{{item.is_zt=="1"}}'>自提订单</view>
+      </view>
+      <view class="contentfoot">
+        <view class="cancel" wx:if="{{item.state==1}}" bindtap='delorder' data-id='{{item.id}}'>取消订单</view>
+        <view class="cancel" wx:if="{{item.state==2}}" bindtap='toorder' data-id='{{item.id}}'>申请退款</view>
+        <view class="cancel" wx:if="{{item.state==3}}" bindtap='toorder' data-id='{{item.id}}'>申请退款</view>
+        <view class="cancel" wx:if="{{item.state==4}}" bindtap='delorder' data-id='{{item.id}}'>删除订单</view>
+        <!-- <view class="cancel" wx:if="{{item.state==5||item.state==6||item.state==7}}">删除订单</view> -->
+        <view class="fukuan" style='color:{{System.color}};border:1rpx solid {{System.color}}' wx:if="{{item.state==1}}" bindtap='pay' data-storeid='{{item.store_id}}' data-id='{{item.id}}' data-money='{{item.money}}'>付款</view>
+        <view class="fukuan" style='color:{{System.color}};border:1rpx solid {{System.color}}' wx:if="{{item.state==3}}" bindtap='complete' data-id='{{item.id}}'>确认收货</view>
+        <!-- <view class="fukuan" wx:if="{{item.state==3}}">申请退款</view> -->
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="nomore">无更多信息</view>
+
+
+</view>

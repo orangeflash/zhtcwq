@@ -1,0 +1,60 @@
+<view class='container'>
+  <view class='header'>
+    <view style="color:{{types==1?system.color:''}};border-color:{{types==1?system.color:''}}" bindtap='click1' class="{{item.click_class}} {{types==1? 'click2' : 'click1'}}">全部</view>
+    <view>
+      <scroll-view scroll-x="true">
+        <view style="color:{{active_index == index ?system.color:''}};border-color:{{active_index == index ?system.color:''}}" bindtap='click' class="{{active_index == index ? 'click3' : 'click4'}}" wx:for="{{zx}}" wx:key="*this" data-index='{{index}}'>{{item.type_name}}</view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='figure' wx:if="{{slide.length!=0}}">
+    <swiper autoplay="auto" indicator-color='white' indicator-active-color='#ccc' interval="5000" duration="500" indicator-dots='true' circular='true'>
+      <block wx:for="{{slide}}" wx:key="*this">
+        <swiper-item>
+          <image bindtap='jumps' data-name='{{item.xcx_name}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode='aspectFill' src="{{url}}{{item.logo}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='message_list'>
+    <view wx:if="{{info.length!=0}}" wx:for="{{info}}" wx:key="*this" bindtap='message' data-id='{{item.id}}'>
+      <block wx:if="{{item.imgs.length>1||item.imgs==''}}">
+        <view class='title'>{{item.title}}</view>
+        <view class='message_image' wx:if="{{item.imgs!=''}}">
+          <image wx:for="{{item.imgs}}" wx:key="*this" mode='aspectFill' src='{{url}}{{item}}'></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='message_hd'>
+          <view class='title'>{{item.title}}</view>
+          <image wx:for="{{item.imgs}}" wx:key="*this" mode='aspectFill' src='{{url}}{{item}}'></image>
+        </view>
+      </block>
+      <view class='message_info'>
+        <view>
+          <text wx:if="{{item.type==1}}">{{system.pt_name}}</text>
+          <text wx:else>{{item.name}}</text>
+          <image wx:if="{{item.type==1}}" src='../image/mine.png'></image>
+          <text wx:if="{{item.m<24}}">
+            <text wx:if="{{item.m==0}}">{{item.h}}分钟前发布</text>
+          <text wx:if="{{item.m>0}}">{{item.m}}小时{{item.h}}分钟前发布</text>
+          </text>
+          <text wx:if="{{item.m>=24}}">{{item.time}}  发布</text>
+        </view>
+        <text>{{item.yd_num}}阅读</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='loading rel' wx:if="{{refresh_top==true&&info.length!=0}}">
+  我也是有底线的
+</view>
+<view class='loading rel' wx:if="{{refresh_top==false&&info.length>8}}">
+  <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+</view>
+<view class='release' bindtap='release' wx:if="{{system.is_openzx==1}}">
+  <image mode='aspectFill' src='../image/release.png'></image>
+</view>
+<view class='welfare' wx:if="{{info.length==0}}" style='top:{{top}}rpx'>
+  <image mode='scaleToFill' src='../image/none_welfare.png'></image>
+</view>

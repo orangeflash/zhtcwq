@@ -1,0 +1,6 @@
+<!--zh_tcwq/pages/notice/notice.wxml-->
+<view class='container'>
+    <view class='details'>
+        <rich-text nodes = "{{newsinfo.details}}"></rich-text>
+    </view>
+</view> 

@@ -1,0 +1,6 @@
+/* zh_zbkq/pages/my/glyhq/glyhq.wxss */
+@import "../wdq.wxss";
+.hs{
+  color: #fff;
+  background: #d5d5d5;
+}

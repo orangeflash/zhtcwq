@@ -1,0 +1,147 @@
+<view class="home rel">
+  <view class='searchbox'>
+    <input style="border-color:{{system.color}}" class='input' bindinput='search' placeholder='请输入您要查询的关键词'></input>
+    <button style='background:{{system.color}}' class='search'>搜索</button>
+  </view>
+  <view class='search_yellow ab'>
+    <view wx:for="{{search_yellow}}" bindtap='yellow_info' data-id='{{item.id}}' data-user_id='{{item.user_id}}'>{{item.company_name}}</view>
+  </view>
+  <!-- 搜索模块结束 -->
+  <!-- 首页轮播图开始 -->
+  <view class="body" wx:if="{{slide.length!=0}}">
+    <view class='banner'>
+      <view class="swiper-container">
+        <swiper autoplay="true" circular='true' indicator-color="#fff" indicator-active-color="{{system.color}}" indicator-dots='true' interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+          <block wx:for="{{slide}}" wx:key="*this">
+            <swiper-item>
+              <image  bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 首页轮播图结束 -->
+
+  <view class='ad' wx:if="{{store_name!=null}}">
+    <block wx:for="{{msgList1}}">
+      <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image>
+      <view class='adinfo' style='color:#ED414A' bindtap='notice' data-id='{{item.id}}'>
+        <rich-text nodes="{{item.title}}"></rich-text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 导航模块开始 -->
+  <swiper class='classify' style='height:{{height}}rpx' autoplay="true" interval="5000" duration="1000" circular="true">
+    <block wx:for="{{nav}}">
+      <swiper-item>
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view bindtap='store_type_id' data-id='{{item.id}}' data-typename='{{item.type_name}}'>
+            <view class='classify_logo rel'>
+              <image class='ab udlr' mode='aspectFill' src='{{url}}{{item.img}}'></image>
+            </view>
+            <view class='classify_name center gobyndsingle'>{{item.type_name}}</view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 导航模块结束 -->
+<ad wx:for="{{unitid}}" unit-id="{{item.src}}"></ad>
+  <!-- 我要入驻开始 -->
+  <view class='join flex-center'>
+    <view style='background:{{system.color}}' class="jiony flex1" bindtap='sellted'>我要入驻</view>
+    <swiper class="jionbo gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{yellow_list1}}" wx:key="*this">
+        <swiper-item>
+          • 恭喜【
+          <text style='color:{{system.color}}' class='join-name'>{{item.company_name}}</text>】成功入驻
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 我要入驻结束 -->
+
+  <!-- 热门模块开始 -->
+  <view class="marry">
+    <view class="">
+      <block wx:for="{{luntext}}" wx:key="*this">
+        <view id="{{index}}" style="color:{{activeIndex == index ?system.color:''}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="luntext_Item_text weui-navbar__title">{{item}}</view>
+          <view style='background:{{activeIndex == index ? system.color:""}}' id="{{index}}" class="zheline {{activeIndex == index ? 'block' : ''}}"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="yelist">
+    <!--——————————1条数据结束————————————  -->
+    <view class='yellow_list' wx:for="{{yellow_list}}" bindtap='yellow_info' data-id='{{item.id}}' data-user_id='{{item.user_id}}'>
+      <view class='list_head'>
+        <view class='rel'>
+          <image class='ab ud yellow_logo' mode='aspectFill' src='{{url}}{{item.logo}}'></image>
+        </view>
+        <view class='list'>
+          <view class='list_name'>
+            <view class='rel gobyndsingle'>
+              {{item.company_name}}{{item.vip}}
+            </view>
+            <view class='rel' wx:if="{{item.vip==true}}">
+                <image class='ab ud' mode='aspectFill' src='../image/vip.png'></image>
+            </view>
+          </view>
+          <view>
+            <image mode='aspectFill' src='../image/dianhuahong.png'></image>
+            <text>{{item.link_tel}}</text>
+          </view>
+        </view>
+        <view class='rel tel_icon'>
+          <view class='ab ud' style='background:{{system.color}}'>
+            <image class='ab udlr yellow_tel' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+        </view>
+      </view>
+      <view class='list_body'>
+        <image mode='aspectFill' src='../image/address3.png'></image>
+        <text class='gobyndsingle' style='width:450rpx;'>{{item.company_address}}</text>
+        <text style='color:{{system.color}}' wx:if="{{item.distance!=NaN}}">{{item.distance}}km</text>
+        <text style='color:{{system.color}}' wx:if="{{item.distance==NaN}}">0.00km</text>
+      </view>
+    </view>
+    <view class='loading rel' wx:if="{{refresh_top==true&&yellow_list.length!=0}}">
+      我也是有底线的
+    </view>
+    <view class='loading rel' wx:if="{{refresh_top==false&&yellow_list.length!=0}}">
+      <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+    </view>
+  </view>
+  <!-- <view class='release' bindtap='sellted'>
+    <image class='ab udlr' mode='aspectFill' src='../image/upload.png'></image>
+  </view> -->
+</view>
+<view class='nav'>
+    <view bindtap='shouye'>
+        <view class='rel'>
+            <image mode='scaleToFill' src='../image/shouye.png' class='ab lr'></image>
+        </view>
+        <view  style='color:#333'>首页</view>
+    </view>
+    <view>
+        <view class='rel'>
+            <image mode='scaleToFill' src='../image/yellow-one.png' class='ab lr'></image>
+        </view>
+        <view style='color:#ed414a'>{{system.hy_title}}</view>
+    </view>
+    <view bindtap='sellted'>
+        <view class='rel'>
+            <image mode='scaleToFill' src='../image/zixun.png' class='ab lr'></image>
+        </view>
+        <view style='color:#333'>我要入驻</view>
+    </view>
+    <view bindtap='mine_yellow'>
+        <view class='rel'>
+            <image mode='scaleToFill' src='../image/wode.png' class='ab lr'></image>
+        </view>
+        <view style='color:#333'>我的入驻</view>
+    </view>
+</view>

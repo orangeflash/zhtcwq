@@ -1,0 +1,115 @@
+<!--pages/fabu/edit/edit.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <!-- <view class="header" style='background:{{System.color}}'>
+    <view class="header_title">发布{{info}}信息</view>
+    <view class="header_right" bindtap='know'>发布须知</view>
+  </view> -->
+  <view class="content">
+    <view class="content_miao">内容描述</view>
+    <view class="miaoshu_box">
+      <textarea maxlength='540' class="miaoshu" name="content" placeholder="请输入内容描述（最多540字符）" />
+    </view>
+  </view>
+  <view class='upload'>
+    <view class='content_add rel' wx:for="{{imgArray1}}" wx:key="*this">
+      <view class='delete ab' bindtap='delete' data-inde="{{index}}">
+        <image mode='aspectFill' class='ab' src='../../image/delete.png'></image>
+      </view>
+      <image bindtap='previewImage' data-index='{{index}}' mode='aspectFill' class="add_img" src="{{url1}}{{item}}"></image>
+    </view>
+    <view class='content_add' bindtap='imgArray1'>
+      <image class="add_img" src="../../image/add.png"></image>
+    </view>
+  </view>
+  <view class='label'>
+    <view style='border-color:{{System.color}};color:{{item.click_class=="selected1"?System.color:"#fff"}};background:{{item.click_class=="selected1"?"":System.color}}' wx:for="{{label}}" wx:key="*this" class='{{item.click_class}}' bindtap='label' data-inde='{{index}}' data-id='{{item.id}}'>{{item.label_name}}</view>
+  </view>
+  <view class="banner">
+    <view class="banner_list border flex-center">
+      <view class="banner_name">联系人：</view>
+      <input class="banner_text" name="name" value='{{name}}' placeholder-style="color:#999;font-size:28rpx;" />
+    </view>
+    <view class="banner_list2 border  flex-center">
+      <view class="banner_name">联系方式：</view>
+      <input class="banner_text" type='number' name="tel" placeholder="请输入您的联系方式" placeholder-style="color:#999;font-size:28rpx;" />
+    </view>
+    <view wx:if="{{System.is_tzdz=='1'}}" class="banner_list3 flex-center">
+      <view class="banner_name">具体位置</view>
+      <view style='flex:1'>
+        <input name="dzaddress" placeholder='输入地址或点击地图选择-->' value="{{address}}"></input>
+      </view>
+      <image bindtap='add' class='dt' src='../../image/address3.png'></image>
+    </view>
+    <view wx:if="{{System.is_qgb=='1'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after" style='padding:0rpx;'>
+          <view class="weui-label">发布地区</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+            <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{money>0}}">
+    <view hidden="{{isios&&System.is_pgzf == '2'}}" class="banner_list3 flex-center" style='border-top:1rpx solid #e5e5e5;'>
+      <view class="banner_name">发布费用：</view>
+      <view wx:if="{{money>0}}" class="banner_text">{{money}}元<text wx:if="{{System.is_qgb=='1'}}">({{countries[countryIndex]}})</text></view>
+      <view wx:else class="banner_text">免费</view>
+    </view>
+    </block>
+  </view>
+  <view hidden="{{isios&&System.is_pgzf == '2'}}" class="banner">
+    <view class="banner_fuli flex-bet">
+      <view style='font-size:28rpx;'>是否置顶</view>
+      <switch checked="{{iszdchecked}}" bindchange="switch1Change" />
+    </view>
+    <view class="banner_list3 flex-center" style='border-top:1rpx solid #e5e5e5;color:#ED414A' wx:if="{{stick_none==true}}">
+      <view class="banner_name">置顶：</view>
+      <view wx:if="{{money1>0}}" class="banner_text">{{stick_info}}{{money1}}元)({{countries[countryIndex]}})</view>
+      <view wx:else class="banner_text">免费</view>
+    </view>
+  </view>
+  <label class="weui-cell weui-check__label" bindtap='checkboxChange'>
+    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+      <icon class="weui-icon-checkbox_circle" type="circle" size="21" wx:if="{{!radiochecked}}"></icon>
+      <icon class="weui-icon-checkbox_success" color='{{System.color}}' type="success" size="21" wx:if="{{radiochecked}}"></icon>
+    </view>
+    <view class="weui-cell__bd" catchtap='know'>我已阅读并同意
+      <text style='color:{{System.color}}'>《发布须知》</text>
+    </view>
+  </label>
+  <view class='banner' style='height:150rpx;background:#F2F2F2'> </view>
+  <button style='background:{{System.color}}' class="confirm" disabled='{{disabled}}' form-type="submit">确认发布</button>
+  <view class='base' wx:if="{{checked==true}}">
+    <view style='background:{{System.color}}' class='rel'>选择置顶让更多人看到</view>
+    <!-- <view wx:if="{{countryIndex==0}}" class='array rel' wx:for="{{stick}}" wx:key="*this" bindtap='selected' id='{{index}}'>{{item.array}}{{item.money}}元)</view>
+    <view wx:if="{{countryIndex==1}}" class='array rel' wx:for="{{stick}}" wx:key="*this" bindtap='selected' id='{{index}}'>{{item.array}}{{item.money2}}元)</view> -->
+    <block wx:if="{{countryIndex==0}}">
+      <block wx:for="{{stick}}" wx:key="*this">
+        <view wx:if="{{item.money>0}}" class='array rel' bindtap='selected' id='{{index}}'>{{item.array}}{{item.money}}元)</view>
+        <view wx:else class='array rel' bindtap='selected' id='{{index}}'>免费</view>
+      </block>
+    </block>
+    <block wx:if="{{countryIndex==1}}">
+      <block wx:for="{{stick}}" wx:key="*this">
+        <view wx:if="{{item.money2>0}}" class='array rel' bindtap='selected' id='{{index}}'>{{item.array}}{{item.money2}}元)</view>
+        <view wx:else class='array rel' bindtap='selected' id='{{index}}'>免费</view>
+      </block>
+    </block>
+    <view class='rel' bindtap='cancel'>取消置顶</view>
+  </view>
+</form>
+<!-- <view class='notice' wx:if="{{know==true}}">
+    <view class='ab' bindtap='know'></view>
+    <view class='ab udlr'><rich-text nodes="{{System.ft_xuz}}"></rich-text></view>
+</view> -->
+<view class="zhezhao" wx:if="{{know==true}}"></view>
+<view class="kcrzxy" wx:if="{{know==true}}">
+  <view class="kcrzxyhd" style='background:{{System.color}}'>发布须知</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <rich-text nodes="{{System.ft_xuz}}" />
+  </scroll-view>
+  <view style='background:{{System.color}}' class="queren" bindtap="know">确定</view>
+</view>

@@ -1,0 +1,45 @@
+<!--zh_tcwq/pages/hdzx/hdzxtype.wxml-->
+<view class='tcbanner' wx:if="{{seller.length!=0}}">
+  <navigator url='../sellerinfo/yhqinfo?yhqid={{item.id}}&sjid={{item.store_id}}' class='yhq' wx:for="{{seller}}">
+    <image class='yhqbgimg' src='../image/yhqbgimg.png'></image>
+    <view class='yhqview'>
+      <view class='yhqleft'>
+        <view class='yhqleft1'>
+          <image mode='aspectFill' src='{{url}}{{item.store_logo}}'></image>
+          <!-- <view>{{item.store_name}}</view> -->
+          <!-- <view>{{item.reduce}}</view>
+            <view>元</view> -->
+        </view>
+        <view class='yhqleft2'>
+          <view class='gobyndsingle'>{{item.name}}</view>
+          <!-- <view class='yhqleft22'>{{item.full}}</view> -->
+          <view class='yhqleft23'>{{item.store_name}}门店有效期至：{{item.end_time}}</view>
+          <view class='yhqleft24 gobyndsingle'>
+            <text>{{item.reduce}}元</text>
+            <text>{{item.full}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='yhqright'>
+        <view class='yhqright1'>
+          <view class='yhqright11' style='width: {{item.rate}}%;'></view>
+        </view>
+        <view class='yhqright2'>已抢{{item.rate}}%</view>
+        <view wx:if="{{item.money!='0.00'}}" class='yhqright3'>{{item.money}}元领取</view>
+        <view wx:else class='yhqright3'>免费领取</view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+  没有更多了~
+</view>
+<view class='loading rel' wx:if="{{refresh_top==false}}">
+  <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+</view>
+<view class="none_store" wx:if="{{refresh_top==true&&seller.length==0}}">
+  <view class='rel'>
+    <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+  </view>
+  <view class='center'>该分类还没有优惠券</view>
+</view>

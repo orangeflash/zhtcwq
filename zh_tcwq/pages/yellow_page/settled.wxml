@@ -1,0 +1,94 @@
+<!--zh_zbkq/pages/my/txzl.wxml-->
+<view>
+  <view class='upload_logo rel'>
+    <view class='rel' wx:if="{{is_tel==1}}">
+      <image wx:if="{{logo.length==0}}" class='ab udlr' bindtap='choose' mode='aspectFill' src='../image/logo.png'></image>
+      <image wx:if="{{logo.length>0}}" class='ab udlr' bindtap='choose' mode='aspectFill' src='{{link}}{{logo[0]}}'></image>
+    </view>
+    <view class='ab udlr' wx:if="{{is_tel==2}}">
+      <image wx:if="{{logo.length==0}}" class='ab udlr' bindtap='choose' mode='aspectFill' src='../image/logo.png'></image>
+      <image wx:if="{{logo.length>0}}" class='ab udlr' bindtap='choose' mode='aspectFill' src='{{link}}{{logo[0]}}'></image>
+    </view>
+    <view class='yz_tel' wx:if="{{is_tel==1}}">
+      <view>验证手机号</view>
+      <view>
+        <text>{{num}}</text>
+        <button wx:if="{{num==null}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+        <button wx:if="{{num!=null}}" style='background:#ccc;'>验证成功</button>
+      </view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="container">
+      <view class="bottom">
+        <text>公司地址</text>
+        <textarea name='address' value="{{address}}" placeholder='请定位您的位置信息，定位后可再进行编辑' />
+        <view class="dw" bindtap='add'>
+          <image src="../image/hqwz.png"></image>
+          <view>定位</view>
+        </view>
+      </view>
+      <view class="main">
+        <view class="bd">
+          <view class="left">公司名称：</view>
+          <view class="right">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="name" placeholder="请输入公司名称" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="bd">
+          <view class="left">公司电话：</view>
+          <view class="right">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" type='number' name="tel" placeholder="请输入公司电话" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="bd">
+          <view class="left">所属行业：</view>
+          <view class="right">
+            <view class="weui-cell weui-cell_input" style="border:none">
+              <view class="weui-cell__bd bdpicker">
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{nav}}">
+                  <view style="width:180rpx;" class="weui-select weui-select_in-select-after">{{nav[index]}}</view>
+                </picker>
+                <picker wx:if="{{store2.length>0}}" bindchange="bindchange_two" value="{{index_two}}" range="{{store_type_two}}">
+                  <view style="width:180rpx;" class="weui-select weui-select_in-select-after">{{store_type_two[index_two]}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="gg">
+        <view class="left">公司简介：</view>
+        <view class="right">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea class="weui-textarea" bindinput="gongg" maxlength="100" name='details' value='{{mdgg}}' placeholder="请输入公司简介" style="height: 4.5em" />
+              <view class="weui-textarea-counter">
+                <text style="color:#f44444">{{zsnum}}</text>/100个字</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='foot'>
+        <view hidden="{{isios&&xtxx.is_pgzf == '2'}}">入驻{{hy_title}}</view>
+        <view hidden="{{isios&&xtxx.is_pgzf == '2'}}">
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{items}}" wx:key="*this">
+              <radio value="{{item.name}}" checked="{{item.checked}}" color="#ED414A" />{{item.value}}
+            </label>
+          </radio-group>
+        </view>
+        <button style='background:{{color}}' form-type='submit'>申请入驻</button>
+      </view>
+    </view>
+  </form>
+</view>

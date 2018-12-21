@@ -1,0 +1,5 @@
+<view class='body' style='width:{{v_wid}}px'>
+    <canvas bindtap='previewImage' style="width:100%;height:100%" canvas-id="firstCanvas"></canvas>
+</view>
+<button bindtap='totemp'>保存图片</button>
+<view class='title'>保存至相册可以分享至朋友圈</view>

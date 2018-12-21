@@ -1,0 +1,54 @@
+<!--pages/tongcheng/tongcheng.wxml-->
+<view class='home'>
+  <!-- 热门模块开始 -->
+  <scroll-view class="marry" scroll-x="true">
+    <block wx:for="{{infortype}}" wx:key="*this">
+      <view style="display:inline-block;color:{{activeIndex == index ?System.color:''}};border-color:{{activeIndex == index ?System.color:''}}" data-index="{{index}}" id="{{item.id}}" class="proitem {{activeIndex == index ? 'weuibaron' : ''}}" bindtap="tabClick">
+        <view>{{item.type_name}}</view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!--—————————————幻灯片—————————————  -->
+  <!-- <view class="swiper-container">
+    <swiper autoplay="true" circular='true' indicator-dots='true' interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+      <block wx:for="{{slide}}" wx:key="*this">
+        <swiper-item>
+          <image mode="aspectFill" src="{{item.img}}" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+
+  <view class='tcbanner' wx:if="{{seller.length!=0}}" wx:for="{{seller}}" wx:key="{{item.id}}">
+    <navigator url='spzxinfo?spid={{item.id}}'>
+      <view class="tcsection">
+        <video id="myVideo" src="{{item.url}}" danmu-list="{{danmuList}}" poster="{{url}}{{item.fm_logo}}" controls="true"></video>
+      </view>
+      <view class='vdtitle'>{{item.title}}</view>
+      <view class='tcremark flex-bet'>
+        <view>{{item.time}}</view>
+        <view class='flex-center'>
+          <image class='tchuifuimg1' src='../image/liulan.png'></image>
+          <view>{{item.yd_num}}</view>
+          <image class='tchuifuimg' src='../image/zan1.png'></image>
+          <view>{{item.dz_num}}</view>
+          <image class='tchuifuimg' src='../image/duihua.png'></image>
+          <view>{{item.pl_num}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==true&&seller.length!=0}}">
+    没有更多了~
+  </view>
+  <view class='loading rel' wx:if="{{refresh_top==false}}">
+    <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+  </view>
+  <view class="none_store" wx:if="{{refresh_top==true&&seller.length==0}}">
+    <view class='rel'>
+      <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+    </view>
+    <view class='center'>该分类还没有视频</view>
+  </view>
+</view>

@@ -1,0 +1,79 @@
+<view class="yelist" wx:if="{{yellow_list.length!=0}}">
+  <!--——————————1条数据结束————————————  -->
+  <view class='yellow_list' wx:for="{{yellow_list}}" bindtap='yellow_info' data-id='{{item.id}}'>
+    <view class='list_head'>
+      <view class='rel'>
+        <image class='ab ud yellow_logo' mode='aspectFill' src='{{url}}{{item.logo}}'></image>
+      </view>
+      <view class='list'>
+        <view>{{item.company_name}}</view>
+        <view>
+          <image mode='aspectFill' src='../image/dianhuahong.png'></image>
+          <text>{{item.link_tel}}</text>
+        </view>
+      </view>
+      <view class='rel tel_icon'>
+        <view class='ab ud'>
+          <image class='ab udlr yellow_tel' mode='aspectFill' src='../image/phone1.gif'></image>
+        </view>
+      </view>
+    </view>
+    <view class='list_body'>
+      <image mode='aspectFill' src='../image/address3.png'></image>
+      <text class='gobyndsingle'>{{item.company_address}}</text>
+      <text wx:if="{{item.distance!='NaN'}}">{{item.distance}}km</text>
+      <text wx:else>0.00km</text>
+    </view>
+    <view class="content_liulan1">
+      <view class='bjsc'>
+        <image src="../image/liulan.png" class="eye"></image>
+        <view class="content_num">{{item.views}}</view>
+        <view class="content_ren">人浏览</view>
+        <!-- <image src="../image/zan.png" class="zan"></image>
+        <view class="content_num">{{item.givelike}}</view>
+        <view class="content_ren">人点赞</view> -->
+      </view>
+      <view class="kuang"></view>
+      <view class='bjsc'>
+        <view wx:if="{{item.state=='2'&&item.hb_money=='0.00'}}" class='bj' bindtap='bianji' data-id='{{item.id}}'>
+          编辑
+        </view>
+        <view style='margin: 10rpx 25rpx;' catchtap='cancel' data-id='{{item.id}}'>
+          <image style='height:40rpx;width: 40rpx;vertical-align: middle' mode='aspectFill' src='../image/cancel.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='none' wx:else>
+  <view>
+    <image class='ab lr' mode='aspectFill' src='../image/tie2.png'></image>
+  </view>
+  <view>暂无入驻的信息</view>
+</view>
+<view class='nav'>
+  <view bindtap='shouye'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/shouye.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>首页</view>
+  </view>
+  <view bindtap='yellow'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/yellow.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>{{system.hy_title}}</view>
+  </view>
+  <view bindtap='settled'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/zixun.png' class='ab lr'></image>
+    </view>
+    <view style='color:#333'>我要入驻</view>
+  </view>
+  <view bindtap='mine_yellow'>
+    <view class='rel'>
+      <image mode='scaleToFill' src='../image/wode-foucs.png' class='ab lr'></image>
+    </view>
+    <view style='color:#ed414a'>我的入驻</view>
+  </view>
+</view>

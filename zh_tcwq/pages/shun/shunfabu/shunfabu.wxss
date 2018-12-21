@@ -1,0 +1,196 @@
+/* zh_tcwq/pages/shun/shunfabu/shunfabu.wxss */
+.publish{
+  width: 100%;
+  overflow-x: hidden;
+}
+.banner{
+  padding: 0rpx 20rpx;
+  background-color: white;
+  font-size: 26rpx;
+  color: #666;
+}
+.listone{
+  padding-left: 15rpx; 
+}
+.list{
+  height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.blue_box{
+  border: 10rpx solid #54D1D5;
+}
+.blue_box1{
+  width: 40rpx;
+  height: 40rpx;
+}
+.blue_box1 image{
+  width: 100%;
+  height: 100%;
+}
+.red_box{
+  border: 10rpx solid #F7574F;
+}
+.red_box,.blue_box{  
+  border-radius: 50%;
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 15rpx;
+}
+.list_name{
+  width: 150rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+}
+.list_inp{
+  width: 430rpx;
+  margin-right: 20rpx;
+}
+.list_clock{
+  width: 40rpx;
+  height: 38rpx;
+  margin-right: 15rpx;
+}
+.listflex{
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.list_pick{
+  margin-top: 15rpx;
+}
+.list_renqun{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+.section{
+  margin-top: 20rpx;
+  padding: 0rpx 20rpx;
+  background-color: white;
+  font-size: 26rpx;
+  color: #666;
+}
+.section>view:last-child{
+  border: none;
+}
+.prompt{
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 40rpx;
+}
+.content{
+  font-size: 26rpx;
+  color: #666;
+  background-color: white;
+  padding: 20rpx;
+}
+.content_xuqiu{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 250rpx;
+}
+.content_inp{
+  width: 100%;
+  height: 250rpx;
+}
+.conlabel{
+  border-radius: 6rpx;
+  padding: 10rpx;
+  margin-right: 15rpx;
+  margin-top: 15rpx;
+}
+.select1{
+  border: 1rpx solid #ddd;
+  box-sizing: border-box;
+}
+.select2{
+  border: 1rpx solid #ED414A;
+  background: #ED414A;
+  color: #fff;
+}
+.agree{
+  font-size: 24rpx;
+  color: #999;
+  height: 100rpx;
+}
+.agree_icon{
+  width: 33rpx;
+  height: 33rpx;
+  border: 3rpx solid #ccc;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.footer{
+  width: 100%;
+  height: 80rpx;
+}
+.confirm{
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  z-index: 3;
+}
+.confirm>button{
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  background-color: #ED414A;
+  color: white;
+  border: none;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+}
+.red{
+  background-color: #ED414A;
+  color: white;
+}
+
+/*—————————弹框部分———————————  */
+.duty{
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  position: fixed;
+  z-index: 50000;
+}
+.duty_box{
+  background-color: white;
+  border-radius: 6rpx;
+  padding: 20rpx;
+  width: 70%;
+  height: 65%;
+  font-size: 26rpx;
+  color: #666;
+  position: relative;
+}
+.duty_boxin{
+  overflow:scroll;
+  height: 90%;
+  width: 100%;
+  position: relative;
+  line-height: 40rpx;
+}
+.duty_boxin rich-text{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.duty_boxfoot{
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  border-top: 1rpx solid #eee;
+  text-align: center;
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+}
+

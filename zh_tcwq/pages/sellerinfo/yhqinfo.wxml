@@ -1,0 +1,113 @@
+<!--zh_tcwq/pages/sellerinfo/yhqinfo.wxml-->
+<view class='bgimg'>
+  <image mode='widthFix' src='{{url}}{{coupon_img}}'></image>
+</view>
+<view class='main'>
+  <view class='padding'>
+    <view class='qcyx'>全场有效</view>
+    <image wx:if="{{hxm!=null}}" class='hximg' src="data:image/png;base64,{{hxm}}"></image>
+    <form bindsubmit="qrmd" report-submit="true" bindreset="formReset">
+    <block wx:if="{{yhq.money!='0.00'}}">
+      <view class='yhqname'>{{yhq.money}}元{{yhq.name}}</view>
+      <button wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" formType="submit" class='lqbtn'>{{yhq.money}}元领取</button>
+      <button wx:if="{{yhq.user_state=='1'}}" class='lqbtn1'>已领取</button>
+      <button wx:if="{{yhq.user_state!='1'&&yhq.surplus=='0'}}" class='lqbtn1'>您手速慢了，已抢光</button>
+    </block>
+    <block wx:else>
+      <view class='yhqname'>{{yhq.name}}</view>
+      <button disabled='{{mflqdisabled}}' wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" formType="submit" class='lqbtn'>免费领取</button>
+      <button wx:if="{{yhq.user_state=='1'}}" class='lqbtn1' class='lqbtn1'>已领取</button>
+      <button wx:if="{{yhq.user_state!='1'&&yhq.surplus=='0'}}" class='lqbtn1'>您手速慢了，已抢光</button>
+    </block>
+    </form>
+    <view class='lqrs'>
+      <image src='../image/huodong.png'></image>
+      <view>{{yhq.lqrs}}人已领</view>
+    </view>
+    <view class='smbf'>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>{{yhq.full}}</text>
+      </view>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>剩余数量：{{yhq.surplus}}张</text>
+      </view>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>有效期至：{{yhq.end_time}}</text>
+      </view>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>领券限制：每个用户核销后可继续领取</text>
+      </view>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>不支持退款</text>
+      </view>
+      <view class='sm'>
+        <view class="yuan"></view>
+        <text>无需预约</text>
+      </view>
+    </view>
+  </view>
+  <view class='htitle'>
+    <view></view>
+    <view>使用流程</view>
+  </view>
+  <view class='sylc'>
+    <view class='lccel'>
+      <image src='../image/renqun.png'></image>
+      <view>参与领取</view>
+    </view>
+    <view class='hx'></view>
+    <view class='lccel'>
+      <image src='../image/hunqing.png'></image>
+      <view>领取成功</view>
+    </view>
+    <view class='hx'></view>
+    <view class='lccel'>
+      <image src='../image/roomc.png'></image>
+      <view>到店消费</view>
+    </view>
+  </view>
+  <view class='htitle'>
+    <view></view>
+    <view>适用门店</view>
+  </view>
+  <view class='symd'>
+    <view class='mdcel' bindtap='phone'>
+      <view class='mdcelimg1'>
+        <image src='{{url}}{{store.logo}}'></image>
+      </view>
+      <view class='mdcelhd'>
+        <view>{{store.store_name}}专用</view>
+        <view>营业时间：{{store.start_time}}-{{store.end_time}}</view>
+      </view>
+      <image mode='aspectFit' class='mdcelimg2' src='../image/huise@3x.png'></image>
+    </view>
+    <view class='mdcel' style='border:none' bindtap='dizhi'>
+      <view class='mdcelimg1'>
+        <image mode='aspectFit' style='width:30rpx;height: 30rpx;' src='../image/address3.png'></image>
+      </view>
+      <view class='mdcelhd'>
+        <view>{{store.address}}</view>
+        <!-- <view>营业时间：8：20-22：20</view> -->
+      </view>
+      <image mode='aspectFit' class='mdcelimg2' src='../image/huise@3x.png'></image>
+    </view>
+  </view>
+  <view class='htitle'>
+    <view></view>
+    <view>优惠详情</view>
+  </view>
+  <view class='yhxq'>
+    <view>{{yhq.details}}</view>
+    <view class='yhxqimg' wx:if="{{yhq.img!=''}}">
+      <image wx:for="{{yhq.img}}" mode='widthFix' src='{{url}}{{item}}'></image>
+    </view>
+  </view>
+</view>
+<!-- <view class='footbtn'>
+  <button>1元领取</button>
+</view> -->

@@ -1,0 +1,90 @@
+.container{
+  width: 100%;
+  overflow-x: hidden;
+}
+.head{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+}
+.head>view{
+  flex: 5;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  text-align: center;
+  box-sizing: border-box;
+  background: #fff;
+}
+.border_one{
+  border-bottom: 4rpx solid #ED414A;
+  color: #ED414A;
+}
+.border_two{
+   border-bottom: 4rpx solid #fff; 
+}
+.body{
+  background: #fff;
+  margin-top: 20rpx;
+}
+.list{
+  width: 95%;
+  height: 200rpx;
+  margin: 0 auto 0;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+.list:last-child{
+  border: none;
+}
+.list>view{
+  width: 100%;
+  height: 160rpx;
+}
+.list>view view{
+  float: left;
+}
+.list>view view:nth-child(1){
+  width: 160rpx;
+  height: 160rpx;
+}
+.list>view view:nth-child(2){
+  width: 500rpx;
+  height: 160rpx;
+  margin-left: 20rpx;
+}
+.list>view view text{
+  display: block;
+}
+.list>view view image{
+  width: 100%;
+  height: 100%;
+}
+.list>view view text:nth-child(1){
+  height: 50rpx;
+  font-size: 36rpx;
+  font-family:PingFangSC-Semibold;
+}
+.list>view view text:nth-child(2){
+  height: 40rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #999;
+}
+.list>view view text:nth-child(3){
+  height: 40rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #999;
+}
+.list>view view text:nth-child(4){
+  height: 40rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  color: #999;
+}
+.none{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+}

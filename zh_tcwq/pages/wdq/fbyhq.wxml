@@ -1,0 +1,237 @@
+<!--zh_zbkq/pages/my/fbyhq.wxml-->
+<!-- <view class="container">
+   <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="使用说明" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="门店电话" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="门店地址" />
+    </view>
+    <view class="weui-cell__ft">
+    <image src="../../img/hqwz.png"></image>
+     获取位置
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="sczp">
+      <image src="../../img/zxj.png"></image>
+      <text>照片</text>
+    </view>
+    <view class="sczp1">
+      <image src="../../img/1.jpg"></image>
+    </view>
+    <view class="text">点击上传图片</view>
+  </view> 
+</view> -->
+<block wx:if="{{issq}}">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="container">
+      <view class="head">
+        <view class="weui-cells weui-cells_after-title">
+          <!-- 优惠券类型 -->
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label">优惠券分类</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange="bindTypeChange" value="{{countryIndex}}" range-key='type_name' range="{{countries}}">
+                <view class="weui-select weui-select_in-select-after">{{countries[countryIndex].type_name}}</view>
+              </picker>
+            </view>
+          </view>
+          <!-- 优惠券名称 -->
+          <!-- <view wx:if="{{countryIndex==2}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">通用券名称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='tyqmc' placeholder="请输入通用券名称" />
+            </view>
+          </view> -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">优惠券名称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='tyqmc' placeholder="请输入优惠券名称" />
+            </view>
+          </view>
+          <!-- 优惠金额 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">优惠金额</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='yhje' type="digit" placeholder="请输入优惠金额" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              元
+            </view>
+          </view>
+          <!-- 优惠条件 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">优惠条件</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='yhtj' placeholder="请输入优惠条件,不填则为无门槛" />
+            </view>
+          </view>
+          <!-- 发放数量 -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">发放数量</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name='ffsl' type="number" placeholder="请输入数量" />
+            </view>
+            <view class="weui-cell__ft" style="color:black">
+              张
+            </view>
+          </view>
+          <!-- 日期 -->
+          <!-- <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">有效日期</view>
+            </view>
+            <view class="weui-cell__bd picker">
+              <picker mode="date" value="{{timestart}}" start="{{start}}" end="" bindchange="bindTimeChange">
+                <view class="weui-input">{{timestart}}</view>
+              </picker>
+              <view>至</view>
+              <picker mode="date" value="{{timeend}}" start="{{start}}" end="" bindchange="bindTimeChange1">
+                <view class="weui-input">{{timeend}}</view>
+              </picker>
+            </view>
+          </view> -->
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">有效日期</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="date" value="{{timeend}}" start="{{start}}" end="" bindchange="bindTimeChange1">
+                <view class="weui-input">{{timeend}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </view>
+      <view class="head" style='margin-top:20rpx;'>
+        <view class="weui-cells weui-cells_after-title">
+          <!-- 类型 -->
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label">领券设置</view>
+            </view>
+            <!-- <view class="weui-cell__bd">
+              <picker bindchange="bindTypeChange1" value="{{lqcountryIndex}}" range="{{lqcountries}}">
+                <view class="weui-select weui-select_in-select-after">{{lqcountries[lqcountryIndex]}}</view>
+              </picker>
+            </view> -->
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">
+                <image src="../image/cost.png"></image>
+              </view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="digit" name='lqje' placeholder="领取金额（设置为0则为免费领取）" />
+            </view>
+          </view>
+          <!-- <view wx:if="{{qssz}}" class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">
+                <image src="../../img/fxsl.png"></image>
+              </view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" bindinput='jyfxsl' type="number" name='fxsl' placeholder="分享领取的分享数量" />
+            </view>
+          </view> -->
+        </view>
+      </view>
+      <!-- 使用须知 -->
+      <view class="weui-cells__title">使用须知</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" name='syxz' bindinput="gongg" maxlength='100' placeholder="优惠券详情说明" style="height: 4.5em" />
+            <view class="weui-textarea-counter">
+              <text style='color:#f44444'>{{zsnum}}</text>/100</view>
+          </view>
+        </view>
+      </view>
+      <view class="mdtp">
+        <view class="left">轮播图片：</view>
+        <view class="right">
+          <view class='tpjy'>至多上传3张图片</view>
+        </view>
+      </view>
+      <view class='mdtp1' style='margin-bottom:15rpx;'>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{images}}" wx:key="*this">
+              <view class="weui-uploader__file">
+                <view class='x' bindtap='deleteImage' data-index='{{index}}'>
+                  <image src='../image/delete.png'></image>
+                </view>
+                <image class="weui-uploader__img" bindtap="previewImage" src="{{url2}}{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box" wx:if="{{images.length<3}}">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+        <view class='tpsl'>{{images.length}}/3</view>
+      </view>
+      <!-- <view class="read">
+        <radio style='zoom:80%' color='#ff6161' checked='true' />
+        <view>我已阅读并同意
+          <text class="readfont" bindtap='lookck'>《优惠券发布协议》</text>
+        </view>
+      </view> -->
+      <view class="weui-btn-area">
+        <button class="weui-btn" formType="submit" type="primary" style="background-color:{{color}}">发布</button>
+      </view>
+    </view>
+  </form>
+</block>
+<view wx:else class='sqzt'>
+  <view class='list_imgbk2' wx:if="{{is_check=='1'}}">
+    <image class='list_imgbk' src='../../img/wx.png'></image>
+    <view class='list_imgbk3'>您的门店申请正在审核中,请耐心等待</view>
+  </view>
+  <view class='list_imgbk2' wx:if="{{is_check=='2'&&mdinfo.is_open=='2'}}">
+    <image class='list_imgbk' src='../../img/wsj.png'></image>
+    <view class='list_imgbk3'>您的门店存在异常，请联系管理员</view>
+  </view>
+  <view class='list_imgbk2' wx:if="{{is_check=='3'}}">
+    <image class='list_imgbk' src='../../img/wsj.png'></image>
+    <view class='list_imgbk3'>您的门店申请已被拒绝，成功开通门店方能发布券</view>
+  </view>
+  <view class='list_imgbk2' wx:if="{{is_check==''}}">
+    <image class='list_imgbk' src='../../img/wsj.png'></image>
+    <view class='list_imgbk3'>您暂未开通门店，成功开通门店方能发布券</view>
+  </view>
+  <view class="button1" wx:if="{{is_check==''}}">
+    <button class="weui-btn" type="primary" style="background-color:#f44444" bindtap='qwkt'>前往开通</button>
+  </view>
+</view>
+<view class="zhezhao" hidden="{{fwxy}}"></view>
+<view class="kcrzxy" hidden="{{fwxy}}">
+  <view class="kcrzxyhd">优惠券发布协议</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <rich-text nodes="{{ptxx.kq_agreement}}" />
+  </scroll-view>
+  <view class="queren" bindtap="queren">确定</view>
+</view>

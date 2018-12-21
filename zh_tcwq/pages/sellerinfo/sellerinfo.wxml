@@ -1,0 +1,482 @@
+<view class='comments border_one color2 rel' bindtap='comments2'>
+  <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+    <button form-type='submit'></button>
+  </form>
+  分享
+</view>
+<view class='comments border_two color3 rel' bindtap='comments1'>
+  <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+    <button form-type='submit'></button>
+  </form>
+  微信
+</view>
+<view class='comments border_three color1 rel' bindtap='comments'>
+  <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+    <button form-type='submit'></button>
+  </form>
+  评论
+</view>
+<view class='comments border_four color5' bindtap='comment3'>
+  转发
+  <button open-type="share"></button>
+</view>
+<view class='wechat rel' wx:if="{{wechat==true}}">
+  <view class='ab' bindtap='comments1'></view>
+  <view class='udlr ab'>
+    <view class='baocun'>保存二维码添加微信</view>
+    <image class='ab' bindtap='previewImage' mode='aspectFill' src="{{url}}{{store.weixin_logo}}"></image>
+    <view class='sele'>点击图片预览保存图片</view>
+    <view class='queding'>
+      <text bindtap='comments1'>确定</text>
+    </view>
+  </view>
+  <!-- </canvas> -->
+</view>
+<view class='wechat rel' wx:if="{{share==true}}">
+  <view class='ab' bindtap='comments2'></view>
+  <view class='udlr ab'>
+    <view class='baocun'>分享商家二维码</view>
+    <image class='ab' bindtap='previewImage_logo' mode='aspectFill' src="{{logos}}"></image>
+    <view class='sele' style='margin-top:100rpx;'>点击图片预览保存图片</view>
+    <view class='queding'>
+      <text bindtap='comments2'>确定</text>
+    </view>
+  </view>
+  <!-- </canvas> -->
+</view>
+<view class='publish' wx:if="{{comments==true}}">
+  <view class='user_info'>
+    <view class='rel'>
+      <image class='ab udlr' style='width:80rpx;height:80rpx;' src='{{user_info.img}}'></image>
+    </view>
+    <view>
+      {{user_info.name}}
+    </view>
+    <view></view>
+  </view>
+  <view class='details rel'>
+    <view class='rel stt' wx:if="{{relpay==false}}">
+      <view class='ab udlr star'>
+        <view wx:for="{{star}}">
+          <image bindtap='star' data-index='{{index}}' mode='widthFix' src='{{item.img}}'></image>
+        </view>
+        <text>{{index}} 分</text>
+      </view>
+    </view>
+    <view class='texta'>
+      <textarea maxlength='140' auto-focus="true" fixed="true" bindblur="textarea" placeholder='请输入评论'></textarea>
+    </view>
+    <view class='dibu'>
+      <view class='fl cancel rel'>
+        <form class='plate_form' bindsubmit="formid_three" report-submit="true" bindreset="formReset">
+          <button form-type='submit'>取消</button>
+        </form>
+      </view>
+      <view class='fl ensure rel'>
+        <form class='plate_form' bindsubmit="formid_two" report-submit="true" bindreset="formReset">
+          <button form-type='submit'>确定</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="swiper-container" wx:if="{{store.img1!=''}}">
+  <!-- <view class='head' wx:if="{{store.details!=''}}">
+    <swiper autoplay="auto" interval="5000" duration="5000" class="swiper">
+      <swiper-item>
+        <view class='swiperitem'>{{store.details}}</view>
+      </swiper-item>
+      <swiper-item>
+        <view class='swiperitem'>{{store.details}}</view>
+      </swiper-item>
+    </swiper>
+  </view> -->
+  <scroll-view class="container" wx:if="{{store.announcement!=''}}">
+    <view class="scrolltxt">
+      <view class='sjgg'>
+        <image src='../image/guangbo.png'></image>
+      </view>
+      <view class="marquee">
+        <view class="content">
+          <text>{{store.announcement}}</text>
+          <text style="display: inline-block; width: 100%;"></text>
+          <text>{{store.announcement}}</text>
+          <text style="display: inline-block; width: 100%;"></text>
+          <text>{{store.announcement}}</text>
+          <text style="display: inline-block; width: 100%;"></text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <swiper autoplay="true" circular='true' indicator-dots='true' interval="5000" duration="500" class="swiper" bindtap='Demonstration'>
+    <block wx:for="{{store.img1}}" wx:key="*this">
+      <swiper-item>
+        <image mode="aspectFill" src="{{url}}{{item}}" class="img"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="header">
+  <view class="top flex-center rel">
+    <image class="top_tou" src="{{url}}{{store.logo}}"></image>
+    <view class="top_right">
+      <view class="top_title">{{store.store_name}}</view>
+      <view class="top_xing flex-center">
+        <image wx:for="{{star3}}" src="{{item.img}}"></image>
+        <view class="top_xingtext" wx:if="{{score==0}}">5分</view>
+        <view class="top_xingtext" wx:else>{{score}}分</view>
+      </view>
+    </view>
+    <view class='vr_store ab' bindtap='Demonstration' wx:if="{{store.vr_link!=''}}">VR演示</view>
+  </view>
+
+  <view class="top_renqi">
+    <text>分享：{{store.fx_num}}</text>
+    <text>浏览量：{{store.views}}</text>
+  </view>
+
+  <view class="dizhi">
+    <view class="dizhi_top flex-center" bindtap='dizhi'>
+      <image class="dizhi_topimg" src="../image/address.png"></image>
+      <view class="dizhi_toptext gobyndsingle">{{store.address}}</view>
+    </view>
+    <view class="dizhi_time flex-bet">
+      <view class="flex-center">
+        <image src="../image/naozhong@2x.png" class="dizhi_timeimg"></image>
+        <view class="dizhi_font1">{{store.start_time}}-{{store.end_time}}</view>
+      </view>
+      <view class="flex-center" bindtap='phone'>
+        <image class="dizhi_tellimg" src="../image/xiangqingdianhua@2x.png"></image>
+        <view class="dizhi_font2">电话</view>
+      </view>
+    </view>
+  </view>
+  <view class="dynamic_text" style='font-size:24rpx;'>
+    <view wx:if="{{store.skzf==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/shauka.png'></image>
+      </view>
+      <view>刷卡支付</view>
+    </view>
+    <view wx:if="{{store.wifi==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/wifi.png'></image>
+      </view>
+      <view>免费WIFI</view>
+    </view>
+    <view wx:if="{{store.mftc==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/car.png'></image>
+      </view>
+      <view>免费停车</view>
+    </view>
+    <view wx:if="{{store.jzxy==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/smoke.png'></image>
+      </view>
+      <view>禁止吸烟</view>
+    </view>
+    <view wx:if="{{store.tgbj==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/baojian.png'></image>
+      </view>
+      <view>提供包间</view>
+    </view>
+    <view wx:if="{{store.sfxx==1}}">
+      <view class='rel'>
+        <image class='ab udlr' mode='widthFix' src='../image/sahfa.png'></image>
+      </view>
+      <view>沙发休闲</view>
+    </view>
+  </view>
+  <view class="flex2">
+    <view class="set flex-center gobyndsingle" wx:for="{{setlist}}" wx:key="*this">
+      <image class="setimg" src="{{item.img}}"></image>
+      <view class="setext">{{item.text}}</view>
+    </view>
+  </view>
+</view>
+<official-account></official-account>
+<navigator wx:if="{{system.is_sy=='1'&&system.is_syqx=='1'}}" url='md?sjid={{id}}' class='dmf'>
+  <image mode='aspectFit' src='../image/selectbao.png'></image>
+  <view style='background:{{system.color}}'>去买单</view>
+</navigator>
+<!--yhq -->
+<block wx:if="{{coupons.length>0||order_list.length>0||group_list.length>0}}">
+  <view wx:if="{{tabs3.length>0}}" class="user flex-center">
+    <block wx:for="{{tabs3}}" wx:key="*this">
+      <view id="{{index}}" data-tabname='{{item}}' class="selle {{activeIndex2 == index ? 'selle_on' : ''}}" bindtap="tabClick2" style="color:{{activeIndex2 == index ?system.color:''}}">
+        <view>{{item}}</view>
+      </view>
+    </block>
+    <view class="user_slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset2}}px); -webkit-transform: translateX({{sliderOffset2}}px);background-color:{{system.color}}"></view>
+  </view>
+  <!-- yxcj -->
+  <block wx:if="{{tabs3.length>0}}">
+    <view class="yhqlist" wx:if="{{tabname=='优惠券'}}">
+      <navigator url='yhqinfo?yhqid={{item.id}}&sjid={{item.store_id}}' class='yhq' wx:for="{{coupons}}" wx:if="{{index<3}}">
+        <image class='yhqbgimg' src='../image/yhqbgimg.png'></image>
+        <view class='yhqview'>
+          <view class='yhqleft'>
+            <view class='yhqleft1'>
+              <view>{{item.reduce}}</view>
+              <view>元</view>
+            </view>
+            <view class='yhqleft2'>
+              <view class='gobyndsingle'>{{item.name}}</view>
+              <view class='yhqleft22'>{{item.full}}</view>
+              <view class='yhqleft23'>有效期至：{{item.end_time}}</view>
+            </view>
+          </view>
+          <view class='yhqright'>
+            <view class='yhqright1'>
+              <view class='yhqright11' style='width: {{item.rate}}%;'></view>
+            </view>
+            <view class='yhqright2'>已抢{{item.rate}}%</view>
+            <view wx:if="{{item.money!='0.00'}}" class='yhqright3'>{{item.money}}元领取</view>
+            <view wx:else class='yhqright3'>免费领取</view>
+          </view>
+        </view>
+      </navigator>
+      <view wx:if="{{coupons.length==0}}" class='zwsj'>暂无商家优惠券</view>
+      <navigator url='../wdq/yhqzx?storeid={{id}}' wx:else class='zwsj'>查看更多></navigator>
+    </view>
+    <view class="yhqlist" wx:if="{{tabname=='限时抢购'}}">
+      <block wx:for="{{order_list}}" wx:if="{{index<3}}" wx:for-item="oitem" wx:for-index="index">
+        <navigator url='../xsqg/xsqgxq?id={{oitem.id}}' class='qgcell mar_t flex-row'>
+          <view class='qgleft flex-grow-0 flex-y-center'>
+            <view class='discount' style="background: {{system.color}}">{{oitem.discount}}折</view>
+            <image mode='aspectFill' src='{{url}}{{oitem.logo}}'></image>
+          </view>
+          <view class='qgright flex-grow-1 flex-col'>
+            <view class='flex-row'>
+              <view class='flex-grow-1 name gobyndsingle'>{{oitem.name}}</view>
+              <view class='flex-grow-0 hotimg'>
+                <image src='../image/huodong.png'></image>
+                <view>
+                  {{oitem.hot}}人关注
+                </view>
+              </view>
+            </view>
+            <view class='address gobyndsingle'>{{oitem.store_name}}</view>
+            <view class='flex-bet flex-y-center' style="color:{{system.color}}">
+              <view class='xlfs' style="border-color: {{system.color}}">限量{{oitem.number}}份</view>
+              <!-- <view style='font-size:10pt;'>还剩{{oitem.surplus}}份</view> -->
+            </view>
+            <view class='flex-bet flex-y-center'>
+              <view class='money' style="color:{{system.color}}">￥{{oitem.money}}
+                <text>￥{{oitem.price}}</text>
+              </view>
+              <view style='font-size:9pt;margin-right:30rpx;color:{{system.color}}'>剩{{oitem.surplus}}份</view>
+              <!-- <view wx:if="{{oitem.surplus>0}}" class='msq' style="background:{{color}}">马上抢</view>
+          <view wx:else class='msq' style="background:#d5d5d5">抢光了</view> -->
+            </view>
+            <view class='flex-bet flex-y-center'>
+              <view class='bfb'>
+                <view class='qgtext'>{{oitem.yqnum}}%</view>
+                <view class='qgbfb1' style="border-color:{{system.color}}"></view>
+                <view wx:if="{{oitem.yqnum!='0.0'}}" class='qgbfb2' style='width: {{oitem.yqnum}}%;background:{{system.color}};border-color:{{system.color}}'></view>
+              </view>
+              <view wx:if="{{oitem.surplus>0}}" class='msq' style="background:{{system.color}}">马上抢></view>
+              <view wx:else class='msq' style="background:#d5d5d5">抢光了</view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <view wx:if="{{order_list.length==0}}" class='zwsj'>暂无抢购活动</view>
+      <navigator url='../xsqg/xsqg?storeid={{id}}' wx:else class='zwsj'>查看更多></navigator>
+    </view>
+    <view class="yhqlist" wx:if="{{tabname=='拼团商品'}}">
+      <navigator url='../collage/info?id={{item.id}}' wx:for="{{group_list}}" wx:if="{{index<3}}" class='pa_1 mar_t ba_f'>
+        <view style='border-radius:10rpx;' class='list' bindtap='index' data-storeid='{{item.store_id}}' data-id="{{item.id}}">
+          <view class=' pa_0'>
+            <image mode='aspectFill' src='{{url}}{{item.logo}}' class='logo'></image>
+          </view>
+          <view>
+            <view class='gobyndsingle fon_30'>
+              {{item.name}}
+            </view>
+            <view class='price'>
+              <view class='mar_t dis_in' style='color:{{system.color}}'>
+                <text class='fon_24'>{{item.people}}</text>
+                <text class='fon_24'>人团</text>
+                <text class='mar_l fon_36'>￥</text>
+                <text class=' fon_36'>{{item.pt_price}}</text>
+              </view>
+              <view class='dis_in t_r fon_30'>
+                <text style='background:{{system.color}};color:#fff' class='group'>去开团</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+      <view wx:if="{{group_list.length==0}}" class='zwsj'>暂无拼团商品</view>
+      <navigator url='../collage/nav?store_id={{id}}' wx:else class='zwsj'>查看更多></navigator>
+    </view>
+  </block>
+  <!--yhq -->
+</block>
+<block wx:if="{{system.is_sp=='1'&&system.is_spqx=='1'&&store_good.length!=0}}">
+<view class='more' bindtap='more'>
+  <text>商品</text>
+  <text>查看更多></text>
+</view>
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入商品名称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view style='color:{{system.color}}' class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="search">搜索</view>
+</view>
+<view class="weui-cells searchbar-result" wx:if="{{ssjgarr.length > 0}}">
+  <navigator wx:for="{{ssjgarr}}" url="good_info?id={{item.id}}&store_id={{id}}&logo={{url + store.logo}}" class="weui-cell" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">
+      <view>{{item.goods_name}}</view>
+    </view>
+  </navigator>
+</view>
+<view class='commodity'>
+  <view class='child'>
+    <view class='goods rel' wx:for="{{store_good}}" wx:key='{{item.value}}' id='{{item.id}}' bindtap='goods_info' wx:if="{{item.is_show==1}}">
+      <image class='goods_img' mode='aspectFill' src='{{url}}{{item.lb_imgs[0]}}'></image>
+      <view>{{item.goods_name}}</view>
+      <view style='color:#ED414A'>￥{{item.goods_cost}}</view>
+      <view class='ab'>
+        <text>推荐</text>
+      </view>
+      <view class='ab'>
+        <image mode='aspectFill' src='../image/car1.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+</block>
+<!--字体轮播开始  -->
+<view class="user flex-center">
+  <block wx:for="{{tabs2}}" wx:key="*this">
+    <view id="{{index}}" class="selle {{activeIndex == index ? 'selle_on' : ''}}" bindtap="tabClick" style="color:{{activeIndex == index ?system.color:''}};width:50%">
+      <view>{{item}}</view>
+    </view>
+  </block>
+  <view class="user_slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);background-color:{{system.color}};width:300rpx;"></view>
+</view>
+<!--字体轮播结束  -->
+
+<!--商家动态部分开始  -->
+<view class="dynamic" hidden="{{activeIndex != 0}}">
+  <view class='video' wx:if="{{store.video.length>6}}">
+    <video src='{{store.video}}'></video>
+  </view>
+  <view class="dynamic_box">
+    <view class="dynamic_text">
+      <text>{{store.details}}</text>
+    </view>
+    <view class="dynamic_img">
+      <image mode='widthFix' wx:for="{{store.images}}" bindtap='previewImage1' id="{{index}}" src='{{url}}{{item}}'></image>
+      <view class='store_ewm'>
+        <view>点击图中小程序码进行识别,即可进入门店</view>
+        <view class='rel'>
+          <image class='ab udlr' mode='aspectFill' bindtap='previewImage_logo' src='{{logos}}'></image>
+          <!-- <image class='ab udlr' mode='aspectFill' bindtap='previewImage3' wx:else src='{{url}}{{store.ewm_logo}}'></image> 
+          <canvas bindtap='previewImage' style="position:static;" canvas-id="firstCanvas"></canvas> -->
+        </view>
+        <view>
+          <text style='color:{{system.color}}'>{{store.store_name}}</text> 专属小程序码
+        </view>
+        <view class='rel' bindtap='settled'>
+          <view style='color:{{system.color}};border:2rpx solid {{system.color}};' class='ab udlr'>我是商家,我要入驻</view>
+        </view>
+      </view>
+      <view style='height:100rpx;width:100%;'></view>
+    </view>
+  </view>
+</view>
+<view hidden="{{activeIndex != 1}}">
+  <view class="comment" wx:if="{{comment.length!=0}}">
+    <view class="comment_one" wx:for="{{comment}}">
+      <image class="comment_tou" src="{{item.user_img}}"></image>
+      <view class="comment_banner">
+        <view class="comment_top flex-bet">
+          <view class="">{{item.name}}</view>
+          <view class="flex-center" wx:if="{{user_info.id==store.user_id}}">
+            <image class="comment_hui" src="../image/duihua.png"></image>
+            <view class="comment_huifu" bindtap='reply' data-id='{{item.id}}'>回复</view>
+          </view>
+        </view>
+        <!--星星部分  -->
+        <view class="top_xing2 flex-center">
+          <image wx:for="{{item.score}}" src="../image/xing.png"></image>
+          <image wx:for="{{5-item.score}}" src="../image/star_none.png"></image>
+          <view class="top_xingtext">{{item.score}}分</view>
+        </view>
+        <!--评论部分  -->
+        <view class="top_xing2">{{item.details}}</view>
+        <view class="top_xing3 background1" wx:if="{{item.reply!=''}}">
+          <text>商家回复：</text>{{item.reply}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="title" wx:if="{{comment.length==0}}">
+    暂无评论
+  </view>
+</view>
+<view class='footer'>
+  <view bindtap='shouye' class='rel'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/index.png'></image>
+    </view>
+    <view class='nav_title center'>首页</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button form-type='submit'></button>
+    </form>
+  </view>
+  <view bindtap='Collection' class='rel'>
+    <view class='icon rel'>
+      <image wx:if="{{Collection==true}}" mode='widthFix' class='ab udlr' src='../image/Already.png'></image>
+      <image wx:if="{{Collection==false}}" mode='widthFix' class='ab udlr' src='../image/collection.png'></image>
+    </view>
+    <view class='nav_title center'>
+      <text wx:if="{{Collection==true}}">已收藏</text>
+      <text wx:if="{{Collection==false}}">收藏</text>
+    </view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button form-type='submit'></button>
+    </form>
+  </view>
+  <view bindtap='dizhi' class='rel'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/nav.png'></image>
+    </view>
+    <view class='nav_title center'>导航</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button form-type='submit'></button>
+    </form>
+  </view>
+  <view bindtap='phone' class='nav_phone rel' style='background:{{system.color}}'>
+    <view>一键拨号</view>
+    <view>{{store.tel}}</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button form-type='submit'></button>
+    </form>
+  </view>
+</view>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>
+<canvas style="top:-10000000000000000px;" canvas-id="ctx"></canvas>

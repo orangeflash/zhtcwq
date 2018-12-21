@@ -1,0 +1,90 @@
+<view class="dqcs">当前位置</view>
+<view class="dwcs">
+  <view class="thisCityName gobyndsingle" data-city="{{city}}">{{dqwz}}</view>
+  <view class="cxdwcs" bindtap="getLocation">
+    <image src="../image/hqwz.png"></image>
+    <view class="classname">重新定位</view>
+  </view>
+</view>
+<!-- <view class="selectCity">
+  <view class="hotcity-common">热门城市</view>
+  <view class="weuigrids">
+    <block class="hotCity" wx:for-items="{{hotcityList}}" wx:key="{{index}}">
+      <view class="weuigrid" data-code="{{item.cityCode}}" data-city="{{item.city}}" bindtap="bindCity">
+        <view class="weuigrid__label">{{item.city}}</view>
+      </view>
+    </block>
+  </view>
+</view> -->
+<view class="weui-cells weui-cells_after-title xzdq">
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">选择地区</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker mode="region" name='picker' bindchange="bindRegionChange" value="{{region}}">
+        <view class="weui-select weui-select_in-select-after">{{region[0]}}—{{region[1]}}—{{region[2]}}</view>
+      </picker>
+    </view>
+  </view>
+</view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class='xzsq'>
+  <view class="weui-cells weui-cells_after-title">
+    <radio-group bindchange="radioChange" name='radiogroup'>
+      <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+        <radio class="weui-check" value="{{item.name}}" checked="{{item.checked}}" />
+
+        <view class="weui-cell__bd">{{item.name}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+          <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="button-sp-area">
+    <button class="weui-btn" formType="submit" type="primary">确定</button>
+  </view>
+</view>
+</form>
+<!-- <loading wx:if="{{show}}">加载中... </loading>
+<view wx:if="{{!show}}" class="container"> -->
+<!-- <view class='search rel' style='height:70px;'>
+    <view class='ab udlr'>
+      <input style='line-height:42px;' placeholder='请输入城市名字' bindinput="search"></input>
+      <view class='ab'>
+        <icon class='ab udlr' type="search" size="25" color='#f7f7f7' />
+      </view>
+    </view>
+  </view>
+  <view class='search_result' style='height:{{windowHeight}}px;top:70px' wx:if="{{result.length!=0}}">
+    <view wx:for="{{result}}" bindtap='select_citys' data-city='{{item}}'>{{item}}</view>
+  </view> -->
+<!-- <view class='search_jilu' wx:if="{{search_ji.length!=0}}">
+    <view>搜索记录</view>
+    <view>
+      <text wx:for="{{search_ji}}" bindtap='select_city' data-city='{{item.cityname}}'>{{item.cityname}}</text>
+    </view>
+  </view> -->
+<!-- <scroll-view class='scroll1' scroll-y="true" style='height:{{windowHeight}}px;top:{{search_top}}px;'>
+    <view class="{{activeIndex1 == index ? 'itemon' : 'none'}}" wx:for="{{many_city}}" wx:key="*this" bindtap="selectMenu" data-item-index="{{index}}">{{item.name}}</view>
+  </scroll-view>
+  <scroll-view class='scroll2' scroll-y="true" scroll-into-view="{{toView}}" style='height:{{windowHeight}}px;top:{{search_top}}px;'>
+    <view class='choosecity' bindtap='xzcs'>
+      <view>选择此城市</view>
+      <image src='../image/address3.png'></image>
+    </view>
+    <view class="{{activeIndex2 == index ? 'xz' : 'city_title'}}" wx:for="{{province_city}}" wx:key="*this" bindtap="selectMenu_city" data-item-index="{{index}}">
+      {{item.fullname}}
+    </view>
+  </scroll-view>
+  <scroll-view class='scroll3' scroll-y="true" scroll-into-view="{{toView}}" style='height:{{windowHeight}}px;top:{{search_top}}px;'>
+    <view class='choosecity' bindtap='xzqx'>
+      <view>选择此区县</view>
+      <image src='../image/address3.png'></image>
+    </view>
+    <view class="{{activeIndex3 == index ? 'xz' : 'city_title'}}" wx:for="{{province_area}}" wx:key="*this" bindtap="selectMenu_area" data-item-index="{{index}}">
+      {{item.fullname}}
+    </view>
+  </scroll-view>
+</view> -->

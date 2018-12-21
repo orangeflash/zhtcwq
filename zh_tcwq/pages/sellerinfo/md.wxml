@@ -1,0 +1,239 @@
+<!--zh_hyk/pages/index/md.wxml-->
+<!-- <view class='head' wx:if="{{mdinfo.announcement!=''}}">
+  <swiper autoplay="auto" interval="5000" duration="5000" circular='true' class="swiper">
+    <swiper-item>
+      <view class='swiperitem'>{{mdinfo.announcement}}</view>
+    </swiper-item>
+    <swiper-item>
+      <view class='swiperitem'>{{mdinfo.announcement}}</view>
+    </swiper-item>
+  </swiper>
+</view> -->
+<scroll-view class="container" wx:if="{{mdinfo.details!=''}}">
+  <view class="scrolltxt">
+    <view class='sjgg'>
+      <image src='../image/guangbo.png'></image>
+    </view>
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text style='margin-left:100vw'>{{mdinfo.details}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class='bdhimg'>
+  <image mode='aspectFill' src='{{url}}{{mdinfo.logo}}'></image>
+</view>
+<view class='bd'>
+  <view class='mdname'>{{mdinfo.store_name}}</view>
+  <view class='input {{focus?"inputjj":""}}' bindtap='hqjd'>
+    <view class='inputleft'>
+      <view class='inputleft1'>消费金额</view>
+      <view class='inputleft2'>￥</view>
+    </view>
+    <input bindinput='bindinput' bindblur='sqjd' class='inputright' focus='{{focus}}' cursor='200' type='digit' maxlength='8'></input>
+    <view>元</view>
+  </view>
+  <!-- <view><image></image><view></view></view> -->
+  <!-- <view class='hyzx'>
+    <view class='hyzxh'>
+      <view>会员专享</view>
+      <view>({{userInfo.name}}:{{userInfo.level_name}})</view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group class="radio-group1" name="checkbox-group" bindchange="checkboxChange">
+        <label>
+          <view class="weui-cell">
+            <view class="weui-cell__hd" class='zfimgtext'>
+              折
+            </view>
+            <view class="weui-cell__bd" bindtap='yuan'>
+              <view>您是{{userInfo.level_name}}，可享受{{userInfo.discount/10}}折优惠</view>
+              <image src='../../img/wenhao.png'></image>
+            </view>
+            <view class="weui-cell__ft">
+              <view class='kcje' style='margin-right:0'>-￥{{discounttext}}</view>
+            </view>
+          </view>
+        </label>
+        <view class="weui-cell">
+          <view class="weui-cell__hd" class='zfimgtext' style='background:#FE7400;'>
+            券
+          </view>
+          <view class="weui-cell__bd" bindtap='qlq'>
+            <view class='xzyhq'>优惠券(已选{{yhqnum}}张{{yhqname}})</view>
+            <image src='../../img/yhqsz.png'></image>
+          </view>
+          <label>
+            <view class="weui-cell__ft">
+              <view class='kcje'>-￥{{kdje}}</view>
+              <checkbox value="quan" />
+            </view>
+          </label>
+        </view>
+         <label>
+          <view class="weui-cell">
+            <view class="weui-cell__hd" class='zfimgtext' style='background:#FE7400;'>
+              积
+            </view>
+            <view class="weui-cell__bd" bindtap='ji'>
+              <view> 积分(可用积分0)</view>
+              <image src='../../img/wenhao.png'></image>
+            </view>
+            <view class="weui-cell__ft">
+              <view class='kcje'>-￥0</view>
+              <checkbox value="jf" />
+            </view>
+          </view>
+        </label> 
+      </checkbox-group>
+    </view>
+  </view> -->
+</view>
+<form bindsubmit="qrmd" report-submit="true" bindreset="formReset">
+  <view class="weui-btn-area">
+    <button class="weui-btn" formType="submit" type="primary" disabled='{{disabled}}' style='background:{{disabled?"#dedede":xtxx.color}};'>确认买单{{total}}元</button>
+  </view>
+</form>
+<!--尾部版权  -->
+<view class='copyright'>
+  <view class='copyright_logo' data-appid="{{xtxx.tz_appid}}" bindtap='tzxcx'>
+    <image mode='aspectFill' src="{{url}}{{xtxx.bq_logo}}" class='copyright_img'></image>
+    <view class='copyright_text'>{{xtxx.bq_name}}</view>
+  </view>
+  <!-- <view class='copyright_txt'>{{xtxx.support}}</view> -->
+</view>
+<!-- yhq -->
+<view class="zhezhao" hidden="{{qlq}}" catchtap="qdzz"></view>
+<view class="qlq" hidden="{{qlq}}">
+  <view class="paixu">
+    <block wx:for="{{listarr}}" wx:key="*this">
+      <view id="{{index}}" class="{{activeIndex == index ? 'selected' : 'default'}}" bindtap="tabClick">{{item}}
+      </view>
+    </block>
+  </view>
+  <view class='yhqsm'>折扣券与代金券不能同时使用</view>
+  <radio-group class="radio-group" name="radiogroup" bindchange="radioChange">
+    <scroll-view scroll-y style="height: 400rpx;">
+      <!-- 代金券 -->
+      <view hidden="{{activeIndex != 0}}">
+        <label wx:for="{{djq}}" data-type='代金券' data-rdid='{{item.coupons_id}}' data-full='{{item.full}}' data-kdje='{{item.reduction}}' bindtap='xzq'>
+          <view class='mdlist'>
+            <view class="coupon-item unreceive" id="{{item.id}}" wx:key="{{item.value}}">
+              <view class="item-left" style='background:#F65C5C'>
+                <text class="num">{{item.reduction}}</text>
+                <text class="unit">元</text>
+              </view>
+              <view class="item-right">
+                <text class="name">{{item.Coupons_name}}</text>
+                <text class="conditions" wx:if="{{item.full!='0'}}">满{{item.full}}可用</text>
+                <text class="conditions" wx:else>无门槛</text>
+                <text class="prefer">{{item.start_time}}至{{item.end_time}}</text>
+              </view>
+            </view>
+            <view class='radio'>
+              <radio color='#FF9700' checked='{{activeradio==item.coupons_id}}' disabled='{{xfje<item.full}}' value="{{item.coupons_id}}" />
+            </view>
+          </view>
+        </label>
+        <view wx:if="{{djq.length==0}}" class='kong'>
+          <image src='../../img/wushuju.png'></image>
+          <view>暂无此门店的代金券</view>
+        </view>
+      </view>
+      <!-- 折扣券 -->
+      <view hidden="{{activeIndex != 1}}">
+        <label wx:for="{{zkq}}" data-type='折扣券' data-rdid='{{item.coupons_id}}' data-full='{{item.full}}' data-kdje='{{item.reduction}}' bindtap='xzq'>
+          <view class='mdlist'>
+            <view class="coupon-item unreceive" id="{{item.id}}" wx:key="{{item.value}}">
+              <view class="item-left" style='background:#5CBDEA'>
+                <text class="num">{{item.reduction}}</text>
+                <text class="unit">折</text>
+              </view>
+              <view class="item-right">
+                <text class="name">{{item.Coupons_name}}</text>
+                <text class="conditions" wx:if="{{item.full!='0'}}">满{{item.full}}可用</text>
+                <text class="conditions" wx:else>无门槛</text>
+                <text class="prefer">{{item.start_time}}至{{item.end_time}}</text>
+              </view>
+            </view>
+            <view class='radio'>
+              <radio color='#FF9700' checked='{{activeradio==item.coupons_id}}' disabled='{{xfje<item.full}}' value="{{item.coupons_id}}" />
+            </view>
+          </view>
+        </label>
+        <view wx:if="{{zkq.length==0}}" class='kong'>
+          <image src='../../img/wushuju.png'></image>
+          <view>暂无此门店的折扣券</view>
+        </view>
+      </view>
+    </scroll-view>
+  </radio-group>
+  <view class='flex-bet qdbtn'>
+    <view>已选
+      <text>{{yhqnum}}</text>张{{yhqname}}，可抵
+      <text>{{kdje}}</text>元</view>
+    <button bindtap='qdzz'>确定</button>
+  </view>
+</view>
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <!-- 支付方式 -->
+  <view class="drawer_screen" bindtap='yczz' wx:if="{{showModal}}"></view>
+  <!--content-->
+  <view class="drawer_box" wx:if="{{showModal}}">
+    <!--drawer content-->
+    <view class="drawer_title">请选择支付方式</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group class="radio-group" name="radiogroup" bindchange="radioChange1">
+        <label>
+          <view class="weui-cell">
+            <view class="weui-cell__hd" class='zfimg'>
+              <image src="../../img/weixin.png"></image>
+            </view>
+            <view class="weui-cell__bd">微信支付</view>
+            <view class="weui-cell__ft">
+              <radio value="wxzf" checked="{{zffs==1}}" />
+            </view>
+          </view>
+        </label>
+        <label wx:if="{{kqyue}}">
+          <view class="weui-cell" style='border-top:1rpx solid #e6e6e6;'>
+            <view class="weui-cell__hd" class='zfimg'>
+              <image src="../../img/yeqb.png"></image>
+            </view>
+            <view class="weui-cell__bd">余额支付
+              <text class='yetext'>您的余额 {{userInfo.wallet}}</text>
+            </view>
+            <view class="weui-cell__ft">
+              <radio disabled='{{!kqyue}}' color='#FF9700' value="yezf" checked="{{zffs==2}}" />
+            </view>
+          </view>
+        </label>
+        <label wx:if="{{kqjf}}">
+          <view class="weui-cell" style='border-top:1rpx solid #e6e6e6;'>
+            <view class="weui-cell__hd" class='zfimg'>
+              <image style='height:50rpx;' src="../../img/cost.png"></image>
+            </view>
+            <view class="weui-cell__bd">积分支付
+              <text class='yetext' style='color:#F56E1D'>您的积分 {{integral}}</text>
+            </view>
+            <view class="weui-cell__ft">
+              <radio disabled='{{!kqjf}}' color='#F56E1D' value="jfzf" checked="{{zffs==3}}" />
+            </view>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="drawer_title1">您选择的{{zfwz}}
+      <text wx:if="{{zffs==3}}">({{jf_proportion}}积分可抵1元)</text>
+    </view>
+    <button class="{{btntype}}" disabled='{{zfz}}' formType="submit">
+      <view wx:if="{{!zfz}}">确定支付
+        <text class='zftext'>￥{{total}}</text>
+      </view>
+      <view wx:if="{{zfz}}">
+        <text class='zfztext'>支付中...</text>
+      </view>
+    </button>
+  </view>
+</form>

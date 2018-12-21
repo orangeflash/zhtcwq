@@ -1,0 +1,47 @@
+<!--zh_zbkq/pages/index/yhqdl.wxml-->
+<view class="container">
+  <view class="top">
+    <!-- <view wx:if="{{yhq.name=='代金券'}}">{{yhq.cost}}
+      <text style='font-size:40rpx;margin-left:10rpx;'>元代金券</text>
+    </view>
+    <view wx:if="{{yhq.name=='折扣券'}}">{{yhq.cost}}
+      <text style='font-size:40rpx;margin-left:10rpx;'>折扣券</text>
+    </view>
+    <view wx:if="{{yhq.name=='通用券'}}">{{yhq.cost}}
+      <text style='font-size:30rpx;margin-left:10rpx;'>{{yhq.kq_name}}</text>
+    </view> -->
+    <view>
+      <text style='font-size:30rpx;margin-left:10rpx;'>{{hdinfo.title}}</text>
+    </view>
+    <image src="data:image/png;base64,{{hxm}}"></image>
+    <view class="lq">
+      <button style='background:{{color}}'>核销员扫码核销</button>
+    </view>
+  </view>
+  <view class="xx">
+    <view class="hyuan1"></view>
+    <view class="hyuan2"></view>
+  </view>
+  <view class="bottom">
+    <navigator url="../index/sjdl?sjid={{yhq.md_id}}" class="bt-2">
+      <view>报名时间：{{hdinfo.time}}</view>
+      <!-- <image src="../../img/jiantou1.png"></image> -->
+    </navigator>
+    <view class="bt-1">
+      <view>活动时间：{{hdinfo.start_time}}至{{hdinfo.end_time}}</view>
+    </view>
+    <view class="bt-2" bindtap='maketel'>
+      <view>联系电话：{{hdinfo.tel}}</view>
+      <image src="../image/huise@2x.png"></image>
+    </view>
+    <view class="bt-2" bindtap='location'>
+      <view>活动地点：{{hdinfo.address}}</view>
+      <image src="../image/huise@2x.png"></image>
+    </view>
+    <view class="bt-3">
+      <view>活动详情</view>
+      <rich-text nodes="{{hdinfo.details}}"></rich-text>
+    </view>
+  </view>
+  <!-- <view class="wdyhq">我的优惠券</view> -->
+</view>

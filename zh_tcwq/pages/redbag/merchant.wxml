@@ -1,0 +1,219 @@
+<!--zh_tcwq/pages/merchant/merchant.wxml-->
+<view class="merchant">
+  <!--头部开始  -->
+  <view class='logs_header'>
+    <view class="headerimgbox rel" style='background:{{System.color}}'>
+      <image mode='widthFix' class="headerimg" src="../image/mybgimg.png"></image>
+      <view class="logs_box">
+        <image class="touxiang" mode='aspectFill' src="{{url}}{{seller.logo}}"></image>
+        <view class="gobyndsingle" style='width:500rpx;'>{{seller.store_name}}</view>
+      </view>
+      <view class='ab' bindtap='tuichu' style='background:#fff;color:{{System.color}}'>退出登录</view>
+      <view class='ab wddp' bindtap='more' style='background:#fff;color:{{System.color}}'>我的店铺</view>
+      <view class='ab'>到期时间:{{dqdate}}</view>
+    </view>
+    <!--我的钱包积分部分开始  -->
+    <view class='logs_content'>
+      <view class='content_left' bindtap='activeIndex_one'>
+        <view class='content_left1'>
+          <text class='content_font'>{{order_num}}</text>
+          <text class='content_coll'>个</text>
+        </view>
+        <view class='content_integral'>今日订单</view>
+      </view>
+
+      <view class='content_left'>
+        <view class='content_middle'>
+          <text class='content_font'>{{seller.wallet}}</text>
+          <text class='content_coll'>元</text>
+        </view>
+        <view class='content_integral'>余额</view>
+      </view>
+
+      <view class='content_left'>
+        <view class='content_right'>
+          <text class='content_font'>{{seller.views}}</text>
+          <text class='content_coll'>次</text>
+        </view>
+        <view class='content_integral'>访问量</view>
+      </view>
+    </view>
+    <!--我的钱包积分部分结束  -->
+    <!--我的订单部分  -->
+    <view class="myorder">我的订单</view>
+    <view class="flex-bet myorderbox">
+      <view class="flex3 myorderimg" bindtap='activeIndex_one'>
+        <image src="../image/huowu.png"></image>
+        <view>待发货</view>
+      </view>
+      <view class="flex3 myorderimg" bindtap='activeIndex_two'>
+        <image src="../image/collet.png"></image>
+        <view>待付款</view>
+      </view>
+      <view class="flex3 myorderimg" bindtap='activeIndex_three'>
+        <image src="../image/ping.png"></image>
+        <view>已完成</view>
+      </view>
+      <view class="flex3 myorderimg" bindtap='activeIndex_four'>
+        <image src="../image/jinqian@3x.png"></image>
+        <view>售后-退款</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="myyue">
+    <view class="flex-bet myyuelist" bindtap='yemx'>
+      <view>我的余额</view>
+      <view class="flex-center">
+        <view>余额明细</view>
+        <image class="myyueright" src="../image/huise@2x.png"></image>
+      </view>
+    </view>
+
+    <view class="cash flex-bet">
+      <view class="cashbox">
+        <view class="">今日收益</view>
+        <view class="">{{myye.jt}}</view>
+      </view>
+      <view class="cashbox">
+        <view class="">昨日收益</view>
+        <view class="">{{myye.zt}}</view>
+      </view>
+      <view class="cashbox">
+        <view class="">总收益</view>
+        <view class="">{{myye.all}}</view>
+      </view>
+      <view class="cashbox">
+        <view>可提现</view>
+        <view>{{seller.wallet}}</view>
+      </view>
+      <view class="cashbox" bindtap='cash'>
+        <view class="cashred" style="color:white;" style='background:{{System.color}}'>提现</view>
+      </view>
+    </view>
+  </view>
+  <!--头部结束  -->
+
+
+
+  <view class="section">
+    <view class="sec_title">商品管理</view>
+    <view class="flex2 secbox">
+      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist" bindtap='fuck'>
+        <image class="secimg" src="../image/upload.png"></image>
+        <view class="sectext">发布商品</view>
+      </view>
+      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist" bindtap='mine_shop'>
+        <image class="secimg" src="../image/mine_shop.png"></image>
+        <view class="sectext">我的商品</view>
+      </view>
+      <!-- <view class="seclist" bindtap='more'>
+        <image class="secimg" src="../image/mine_bussiness.png"></image>
+        <view class="sectext">我的店铺</view>
+      </view> -->
+      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist">
+        <image class="secimg" bindtap='hxdd' mode='aspectFill' src="../image/mdm.png"></image>
+        <view class="sectext">核销订单</view>
+      </view>
+    </view>
+  </view>
+  <view class="section" wx:if="{{System.g_open=='1'&&System.g_qx=='1'}}">
+    <view class="sec_title">拼团管理</view>
+    <view class="flex2 secbox">
+      <view class="seclist" bindtap='fptsp'>
+        <image class="secimg" src="../image/upload.png"></image>
+        <view class="sectext">发布商品</view>
+      </view>
+      <view class="seclist" bindtap='wptsp'>
+        <image class="secimg" src="../image/mine_shop.png"></image>
+        <view class="sectext">我的商品</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='ptdd' mode='aspectFill' src="../image/order.png"></image>
+        <view class="sectext">订单管理</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='ptgl' mode='aspectFill' src="../image/renqun.png"></image>
+        <view class="sectext">拼团管理</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='hxqgdd' mode='aspectFill' src="../image/mdm.png"></image>
+        <view class="sectext">核销订单</view>
+      </view>
+    </view>
+  </view>
+  <view class="section" wx:if="{{System.is_coupon==1&&System.is_yhqqx==1}}">
+    <view class="sec_title">优惠券管理</view>
+    <view class="flex2 secbox">
+      <view class="seclist">
+        <image class="secimg" bindtap='fbyhq' mode='aspectFill' src="../image/satubia1o@2x.png"></image>
+        <view class="sectext">发布券</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='hxyhq' mode='aspectFill' src="../image/hunqing.png"></image>
+        <view class="sectext">核销券</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='glyhq' mode='aspectFill' src="../image/gongju.png"></image>
+        <view class="sectext">管理券</view>
+      </view>
+    </view>
+  </view>
+  <view class="section" wx:if="{{System.is_xsqg=='1'&&System.is_qgqx=='1'}}">
+    <view class="sec_title">限时抢购管理</view>
+    <view class="flex2 secbox">
+      <view class="seclist" bindtap='fqgsp'>
+        <image class="secimg" src="../image/upload.png"></image>
+        <view class="sectext">发布商品</view>
+      </view>
+      <view class="seclist" bindtap='wqgsp'>
+        <image class="secimg" src="../image/mine_shop.png"></image>
+        <view class="sectext">我的商品</view>
+      </view>
+      <view class="seclist" bindtap='wqgdd'>
+        <image class="secimg" src="../image/order.png"></image>
+        <view class="sectext">抢购订单</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='hxqgdd' mode='aspectFill' src="../image/mdm.png"></image>
+        <view class="sectext">核销订单</view>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="sec_title">店铺设置</view>
+    <view class="flex2 secbox">
+      <view class="seclist">
+        <image class="secimg" bindtap='mechat' mode='aspectFill' src="../image/edit.png"></image>
+        <view class="sectext">修改资料</view>
+      </view>
+      <view class="seclist">
+        <image class="secimg" bindtap='dkxf' mode='aspectFill' src="../image/life.png"></image>
+        <view class="sectext">商家续费</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='base' wx:if="{{iszd==true}}">
+  <view class='rel' style='background:{{System.color}}'>入驻期限收费</view>
+  <view wx:if="{{System.is_qgb2=='1'}}" class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after" style='padding:0rpx;'>
+        <view class="weui-label">入驻地区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+          <view style='text-align: right' class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{countryIndex==0}}" class='array rel' wx:for="{{stick}}" wx:key="*this" bindtap='selected' id='{{index}}'>{{item.array}}{{item.money}})</view>
+  <view wx:if="{{countryIndex==1}}" class='array rel' wx:for="{{stick}}" wx:key="*this" bindtap='selected' id='{{index}}'>{{item.array}}{{item.money2}})</view>
+  <view class='rel' bindtap='qxzd'>关闭</view>
+</view>
+<form bindsubmit="cartaddformSubmit" report-submit="true" bindreset="formReset">
+  <view wx:if="{{isgly}}" class="weui-btn-area">
+    <button formType="submit" class="weui-btn" style='background:{{System.color}}' type="primary">消息提醒按钮<text>(剩余{{sycs}}次)</text></button>
+  </view>
+</form>

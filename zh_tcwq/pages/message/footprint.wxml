@@ -1,0 +1,20 @@
+<view class='container'>
+  <view class='message_list'>
+    <view wx:if="{{info.length!=0}}" wx:for="{{info}}" bindtap='message' data-id='{{item.zx_id}}'>
+      <view class='title'>{{item.title}}</view>
+      <view class='message_image' wx:if="{{item.imgs!=''}}">
+        <image wx:for="{{item.imgs}}" mode='aspectFill' src='{{url}}{{item}}'></image>
+      </view>
+      <view class='message_info'>
+        <text wx:if="{{item.type==1}}">{{system.pt_name}}</text>
+        <text wx:else>{{item.name}}</text>
+        <text></text>
+        <text wx:if="{{item.m<24}}">
+            <text wx:if="{{item.m==0}}">{{item.h}}分钟前发布</text>
+        <text wx:if="{{item.m>0}}">{{item.m}}小时{{item.h}}分钟前发布</text>
+        </text>
+        <text wx:if="{{item.m>=24}}">{{item.zx_time}}  发布</text>
+      </view>
+    </view>
+  </view>
+</view>

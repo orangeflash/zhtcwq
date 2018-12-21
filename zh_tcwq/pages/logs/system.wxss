@@ -1,0 +1,8 @@
+/* zh_tcwq/pages/logs/system.wxss */
+view{
+  width: 90%;
+  height: 100%;
+  padding-top: 10rpx;
+  margin: 0 auto 0;
+  font-size: 28rpx;
+}

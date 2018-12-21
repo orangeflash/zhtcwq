@@ -1,0 +1,124 @@
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="container">
+    <view class='header'>
+      <view class='border1 fixed'>
+        <text>商品名称:</text>
+        <input name="spec_name" placeholder='请输入商品名称'></input>
+      </view>
+      <view class='border3 fixed'>
+        <text>商品价格:</text>
+        <input type='digit' name="spec_price" placeholder='请输入商品价格'></input>
+      </view>
+      <view class='border2 fixed'>
+        <text>商品数量:</text>
+        <input type='number' name="spec_num" placeholder='请输入商品数量'></input>
+      </view>
+      <view class='goods_details border1 border2'>
+        <view>商品介绍</view>
+        <textarea name="goods_details" auto-height="true" maxlength="-1" placeholder='请输入商品介绍'></textarea>
+      </view>
+      <view class='border1 fixed'>
+        <text>运费:</text>
+        <input name="spec_freight" type='number' placeholder='请输入运费'></input>
+      </view>
+      <view class='border3 fixed'>
+        <text>关于发货:</text>
+        <input name="spec_delivery" placeholder='请输入发货说明'></input>
+      </view>
+      <!-- <view class=' fixed' style='border-bottom:1rpx solid #e5e5e5' bindtap='add_spec'>
+        <text wx:if="{{add_spec==false}}">添加规格</text>
+        <text wx:else style='color:#ED414A'>关闭规格</text>
+      </view> -->
+
+
+
+
+
+
+      <view wx:for="{{spec}}" class='border4' wx:key="{{item.aa}}" wx:if="{{add_spec==true}}">
+        <view class='fixed rel'>
+          <text>商品规格:</text>
+          <input disabled='true' bindtap='classification' style='width:60%;' placeholder='请选择商品规格' data-index="{{index}}" value='{{item.text}}'></input>
+          <view class='ab' bindtap='add1' data-index="{{index}}" wx:if="{{index==0}}">
+            <image class='ab udlr' mode='aspectFill' src='../image/release.png'></image>
+          </view>
+          <view class='ab' data-index='{{index}}' bindtap='add2' wx:if="{{index==0&&spec.length>1}}">
+            <image class='ab udlr' mode='aspectFill' src='../image/delete.png'></image>
+          </view>
+        </view>
+        <view class='spec' wx:for="{{item.spec}}" wx:key="*this">
+          <view class='one spec_one'>
+            <view>名称</view>
+            <view class='rel'>
+              <view class='entry ab udlr'>
+                <input bindblur='spec_{{item.id}}_{{index}}_name'></input>
+              </view>
+            </view>
+          </view>
+          <view class='one spec_two'>
+            <view>价格</view>
+            <view class='rel'>
+              <view class='entry ab udlr'>
+                <input bindblur='spec_{{item.id}}_{{index}}_price' type='digit'></input>
+              </view>
+            </view>
+          </view>
+          <view class='rel one spec_three' bindtap='delete_spec_small' data-id='{{item.id}}' data-index='{{index}}'>
+            <image class='ab udlr' wx:if="{{index==0&&spec[item.id].spec.length>=1}}" src='../image/delete_spec.png'></image>
+          </view>
+          <view class='rel one spec_three' bindtap='add' data-id='{{item.id}}' data-id='{{item.id}}' data-index='{{index}}'>
+            <image class='ab udlr' wx:if="{{index==0}}" src='../image/add_spec.png'></image>
+          </view>
+        </view>
+      </view>
+
+
+
+
+
+
+      <view class='fixed'>
+        <text>商品标签</text>
+      </view>
+      <view class='label border2'>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{items}}" wx:key="{{item.value}}">
+            <checkbox color="#ED414A" value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class='body'>
+      <view class='fix border1'>上传商品主图(最多4张)</view>
+      <view class='upload border2'>
+        <view class='rel upload_img1' wx:for="{{imgarr1}}" wx:key="{{item.value}}">
+          <image class='ab' mode='aspectFill' src='{{item}}'></image>
+          <image class='ab' bindtap='delete' data-index='{{index}}' mode='aspectFill' src='../image/delete.png'></image>
+        </view>
+        <view class='upload_img rel' bindtap='imgArray1' wx:if="{{imgarr1==null||imgarr1.length<4}}">
+          <image class='ab udlr' mode='aspectFill' src='../image/add.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='body bottom'>
+      <view class='fix border1'>上传商品详情页(最多8张)</view>
+      <view class='upload border2'>
+        <view class='rel upload_img2' wx:for="{{imgarr2}}" wx:key="{{item.value}}">
+          <image class='ab' mode='aspectFill' src='{{item}}'></image>
+          <image class='ab' bindtap='delete1' data-index='{{index}}' mode='aspectFill' src='../image/delete.png'></image>
+        </view>
+        <view class='upload_img rel' bindtap='imgArray2' wx:if="{{imgarr2==null||imgarr2.length<8}}">
+          <image class='ab udlr' mode='aspectFill' src='../image/add.png'></image>
+        </view>
+      </view>
+    </view>
+    <button form-type='submit'>立即发布</button>
+  </view>
+  <view class='classification' wx:if="{{classification==true}}">
+    <view>商品规格</view>
+    <view>
+      <view wx:for="{{label}}" wx:key="{{item.value}}" bindtap='select' data-id='{{item.id}}' data-name='{{item.spec_name}}'>{{item.spec_name}}</view>
+    </view>
+    <view bindtap='classification'>取消</view>
+  </view>
+</form>

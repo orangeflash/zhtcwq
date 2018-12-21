@@ -1,0 +1,116 @@
+<view>
+  <!--———————————————头部导航开始———————————————  -->
+  <view class="weui-navbar2">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" style="color:{{activeIndexe == index ?System.color:''}};" class="weuiitem2 {{activeIndexe == index ? 'item_on' : ''}}" bindtap="navClick">
+        <view>{{item}}</view>
+      </view>
+    </block>
+    <view class="weslider2" style="left: {{sliderLefte}}px; transform: translateX({{sliderOffsete}}px); -webkit-transform: translateX({{sliderOffsete}}px);background:{{System.color}}"></view>
+  </view>
+  <!--———————————————头部导航结束———————————————  -->
+  <view class="" hidden="{{activeIndexe != 0}}">
+    <view wx:if="{{classification_info.length>0}}">
+      <view class="weui-tab__content content" wx:for="{{classification_info}}">
+        <!--上面部分开始  -->
+        <view class="content_top">
+          <view class="content_left">
+            <image wx:if="{{item.user_img!=null}}" src="{{item.user_img}}" class="content_img"></image>
+            <image wx:else src="{{url}}{{item.user_img2}}" class="content_img"></image>
+            <view class="content_zhong">
+              <view class="content_name">{{item.user_name}}</view>
+              <view class="content_text">
+                <view class="content_zheng">{{item.type_name}}</view>
+                <!-- <image src="../image/hongbao.png" class="hongbao"></image>
+              <view class="content_status">已结束...</view> -->
+              </view>
+            </view>
+          </view>
+          <block wx:if="{{System.is_bdtel=='1'}}">
+            <view wx:if="{{System.is_ff=='2'}}" class="content_right" bindtap='phone' data-id='{{item.user_tel}}' style='background:{{System.color}}'>
+              <view class='rel'>
+                <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+              </view>
+              <view>拨打电话</view>
+            </view>
+            <view wx:if="{{System.is_ff=='1'}}" class="content_right" bindtap='see' data-id='{{item.id}}' style='background:{{System.color}}'>
+              <view class='rel'>
+                <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+              </view>
+              <view>拨打电话</view>
+            </view>
+          </block>
+        </view>
+        <!-- 上面部分结束   -->
+
+        <!--文字部分  -->
+        <view class="content_wen">{{item.details}}
+        </view>
+
+        <!--图片部分  -->
+        <view class="content_picture" wx:if="{{item.img1!=''}}">
+          <image wx:for="{{item.img1}}" src="{{url}}{{item}}"></image>
+        </view>
+
+        <view class="content_chakan">
+          <view class="content_info">{{item.time}}发布</view>
+          <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
+        </view>
+
+        <!-- <view class="content_liulan">
+        <image src="../image/liulan.png" class="eye"></image>
+        <view class="content_num">{{item.views}}</view>
+        <view class="content_ren">人浏览</view>
+        <image src='../image/zan.png' class='zan' wx:if="{{thumbs_ups==null}}" bindtap='thumbs_up' data-id='{{item.id}}' data-num='{{item.givelike}}'></image>
+        <image src='../image/thumbs_up.png' class='zan' wx:if="{{thumbs_ups==true}}"></image>
+        <view class='zannum' wx:if="{{thumbs_up==null}}">{{item.givelike}}</view>
+        <view class='zannum' wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>人点赞
+        <view class="kuang"></view>
+      </view> -->
+      </view>
+    </view>
+
+    <view class='none' wx:if="{{classification_info.length==0}}">
+      <view class='ab udlr'>
+        <view class='rel'>
+          <image mode='widthFix' class='ab udlr' src='../image/tie1.png'></image>
+        </view>
+        <view>暂无已经收藏的{{System.tzmc}}</view>
+      </view>
+    </view>
+  </view>
+  <view style='background:#fff' class="" hidden="{{activeIndexe != 1}}">
+
+    <view class='store rel' wx:for="{{sellers}}">
+      <view class='store_img fl rel'>
+        <image mode='aspectFill' class='ab udlr' src='{{url}}{{item.logo}}'></image>
+      </view>
+      <view class='store_info fl'  bindtap='store' data-id='{{item.store_id}}'>
+        <view>{{item.store_name}}</view>
+        <view class='rel gobyndsingle'>
+          <image class='store_icon ab ud' mode='widthFix' src='../image/address.png'></image>
+          {{item.address}}
+        </view>
+        <view class='store_star fl'>
+            <view class='rel' wx:for="{{item.star}}">
+                <image class='ab udlr' mode='widthFix' src='{{item.img}}'></image>
+            </view>
+        </view>
+      </view>
+      <view class='store_tel ab ud'>
+          <image mode='widthFix' src='../image/telephone.png'  bindtap='phone1' data-tel='{{item.tel}}'></image>
+          <view>{{item.distance}}KM</view>
+      </view>
+    </view>
+    <view class='none' wx:if="{{sellers.length==0||sellers==null}}">
+      <view class='ab udlr'>
+        <view class='rel'>
+          <image mode='widthFix' class='ab udlr' src='../image/tie1.png'></image>
+        </view>
+        <view>暂无已经收藏的商家</view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

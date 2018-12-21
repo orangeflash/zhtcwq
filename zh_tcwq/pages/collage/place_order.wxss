@@ -1,0 +1,122 @@
+@import "public.wxss";
+@import '/zh_tcwq/utils/takeoutform.wxss';
+@import "/zh_tcwq/utils/ccsc.wxss";
+.formmain{width:100%;position: relative;top: 0;left: 0;padding-bottom: 0;margin-top: 30rpx;background:none;}
+.formhdzq .zqaddress {text-align: left;padding: 20rpx;background: #fff;}
+.formftyh{border-top: none;margin-top: 30rpx;background: #fff;}
+.formbd{border-top: none;margin-top: 30rpx;}
+.formft{border-top: none;margin-top: 30rpx;}
+.sfk{padding: 20rpx 30rpx;}
+.cart-item{background: #fff;}
+.etitle {
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  position: relative;
+}
+
+.etitle>view:nth-child(3) {
+  position: absolute;
+  color: blue;
+  right: 5%;
+  font-size: 24rpx;
+}
+
+.exian {
+  width: 8rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+  background-color: #f66926;
+}
+
+.ticket, .total {
+  padding: 0 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+}
+
+.ticket {
+  border-bottom: 2rpx solid #e5e5e5;
+}
+
+.ticket>view {
+  float: left;
+}
+
+.ticket>view:nth-child(1) {
+  width: 76%;
+}
+
+.ticket>view:nth-child(2) {
+  width: 8%;
+}
+
+.ticket>view:nth-child(3) {
+  width: 16%;
+  color: #f66926;
+}
+
+.total>view {
+  float: right;
+}
+
+.total>view:nth-child(1) {
+  font-size: 34rpx;
+  color: #f66926;
+  font-family: '微软雅黑';
+}
+
+.total>view:nth-child(2) {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.sign {
+  margin-top: 20rpx;
+  padding-bottom: 120rpx;
+  background: #fff;
+}
+
+.sign_up {
+  padding: 0 40rpx;
+  background: #fff;
+}
+
+.sign_up>view:nth-child(1) {
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.sign_up>view:nth-child(2) {
+  line-height: 70rpx;
+  height: 70rpx;
+  border: 2rpx solid #e5e5e5;
+}
+
+.sign_up>view text {
+  color: #f66926;
+}
+
+.sign_up>view input {
+  width: 90%;
+  height: 100%;
+  margin-left: 2%;
+  font-size: 26rpx;
+}
+/* button{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  position: fixed;
+  bottom: 20rpx;
+  background: #f66926;
+  color: #fff;
+  left: 5%;
+  z-index: 5000000;
+} */
+button::after{
+  border: none;
+}

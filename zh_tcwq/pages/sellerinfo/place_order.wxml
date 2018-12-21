@@ -1,0 +1,112 @@
+<!--zh_tcwq/pages/sellerinfo/place_order.wxml-->
+<view class="place">
+
+  <!--———————————收货地址部分开始—————————————-->
+  <view hidden="{{dnzt}}" class="pheader flex-bet" bindtap='address'>
+    <view class="flex-center">
+      <view class="phaddimg">
+        <image src="../image/addbai.png"></image>
+      </view>
+      <view class="" wx:if="{{user_info.user_name!=''}}">
+        <view class="">{{user_info.user_name}}</view>
+        <view class="pbtitle">{{user_info.user_address}}</view>
+      </view>
+      <view class="" wx:if="{{user_info.user_name==''}}">请设置收货地址</view>
+    </view>
+    <image class="hright" src="../image/huise@2x.png"></image>
+  </view>
+  <view style='margin-top:20rpx;' class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd" style='font-size:30rpx;'>店内自取</view>
+      <view class="weui-cell__ft">
+        <switch color='#ff4544' checked='{{dnzt}}' bindchange="switch1Change" />
+      </view>
+    </view>
+  </view>
+  <view hidden="{{!dnzt}}" class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">自提日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date}}" start="{{datestart}}" bindchange="bindDateChange">
+          <view class="weui-input">{{date}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="pbanner">
+    <view class="flex-bet pbtop">
+      <view>{{store.store_name}}</view>
+      <image class="hright" src="../image/huise@2x.png"></image>
+    </view>
+    <view class="pbbox">
+      <image mode='aspectFill' src="{{url}}{{store_good.lb_imgs[0]}}"></image>
+      <view class="pbboxright">
+        <view class="pbtitle">{{store_good.goods_name}}</view>
+        <view class="pbtitle" wx:if="{{name1!=null}}">
+          <text style='font-size:26rpx;margin-right:15rpx;' wx:if="{{name1!=0}}">{{name1}}</text>
+          <text style='font-size:26rpx;margin-right:15rpx;' wx:if="{{name2!=0}}">{{name2}}</text>
+          <text style='font-size:26rpx;margin-right:15rpx;' wx:if="{{name3!=0}}">{{name3}}</text>
+        </view>
+
+        <view class="flex-bet pbtext">
+          <view>¥
+            <text class="pbtextfont">{{price}}</text>
+          </view>
+          <view class="flex-center">
+            <!-- <image class="jiahao" wx:if="{{num>1}}" src="../image/jianhao.png" bindtap='subtraction'></image>
+            <image class="jiahao" wx:if="{{num==1}}" src="../image/jianhao.png"></image> -->
+            <view class="placenum">×{{num}}</view>
+            <!-- <image class="jiahao" src="../image/jiahao.png" bindtap='add'></image> -->
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="psection">
+      <view class="flex-center">
+        <view class="psleft">店铺地址：</view>
+        <view class="pbtitle">{{store.address}}</view>
+      </view>
+      <view class="psbox">
+        <view class="psleft">备注：</view>
+        <textarea name="note" bindblur="note" auto-height='true' class="pstextarea" placeholder="请输入备注" placeholder-style="color:#999;" />
+      </view>
+      <view class="psbottom">共{{num}}件商品
+        <text class="psfont1">小计：¥</text>
+        <text class="psfont2">{{cost}}</text>
+      </view>
+      <view class="psbottom">运费：
+        <text class="psfont1">¥</text>
+        <text class="psfont2">{{freight}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="pfootbox"></view>
+  <view class="pfooter">
+    <view class="pfleft">
+      <view class="">共计：{{num}}件</view>
+      <view class="">合计：
+        <text class="pffont">¥{{cost2}}</text>
+      </view>
+    </view>
+    <view class="pfright">
+    <form bindsubmit="order" report-submit="true" bindreset="formReset">
+      <button formType="submit" style='background:{{system.color}}'>提交订单</button>
+    </form>
+    </view>
+  </view>
+
+</view>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>

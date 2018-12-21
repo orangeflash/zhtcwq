@@ -1,0 +1,99 @@
+<view class='container'>
+  <view>
+    <view>
+      <text>订单编号：</text>
+      <text>{{oreder_info.order_num}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>下单时间：</text>
+      <text>{{oreder_info.time}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>客户姓名：</text>
+      <text>{{oreder_info.user_name}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>客户电话：</text>
+      <text>{{oreder_info.tel}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>客户地址：</text>
+      <text style='line-height:{{height}}rpx'>{{oreder_info.address}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>商品名称：</text>
+      <text>{{oreder_info.good_name}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>商品价格：</text>
+      <text>{{oreder_info.good_money}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>商品数量：</text>
+      <text>{{oreder_info.good_num}}</text>
+    </view>
+  </view>
+  <view>
+    <view>
+      <text>运费：</text>
+      <text>{{oreder_info.freight}}</text>
+    </view>
+  </view>
+  <view wx:if="{{oreder_info.state==3&&oreder_info.is_zt==2}}">
+    <view>
+      <text>快递名称</text>
+      <text>{{oreder_info.kd_name}}</text>
+    </view>
+  </view>
+  <view wx:if="{{oreder_info.state==3&&oreder_info.is_zt==2}}">
+    <view>
+      <text>快递单号</text>
+      <text>{{oreder_info.kd_num}}</text>
+    </view>
+  </view>
+  <view  wx:if="{{oreder_info.state==2&&oreder_info.is_zt==2}}">
+    <view class='kd'>
+      <text>快递名称</text>
+      <input bindinput='bindnameInput' class="weui-input" placeholder="请输入快递公司名称" />
+    </view>
+  </view>
+  <view  wx:if="{{oreder_info.state==2&&oreder_info.is_zt==2}}">
+    <view class='kd'>
+      <text>快递单号</text>
+      <input bindinput='bindnumInput' class="weui-input" placeholder="请输入快递公司单号" />
+    </view>
+  </view>
+  <!-- <view wx:if="{{oreder_info.note!=''}}" style='height:auto;'>
+    <view style='height:auto;display:flex;flex-wrap:wrap;'>
+      <text>备注：</text>
+      <view style='width:500rpx;'>{{oreder_info.note}}</view>
+    </view>
+  </view> -->
+  <view>
+    <view class='rel'>
+      <text>订单状态：</text>
+      <text wx:if="{{oreder_info.state==1}}">等待买家付款</text>
+      <text wx:if="{{oreder_info.state==2}}">待发货</text>
+      <text wx:if="{{oreder_info.state==3}}">等待买家确认收货</text>
+      <text wx:if="{{oreder_info.state==4}}">订单已完成</text>
+      <text wx:if="{{oreder_info.state==5}}">退款中</text>
+      <text wx:if="{{oreder_info.state==6}}">已退款</text>
+      <text wx:if="{{oreder_info.state==7}}">退款已被拒绝</text>
+      <text style='background:{{color}}' class='ab ud' wx:if="{{oreder_info.state==2}}" bindtap='Deliver'>确认发货</text>
+    </view>
+  </view>
+</view>

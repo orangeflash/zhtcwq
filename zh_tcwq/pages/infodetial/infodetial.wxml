@@ -1,0 +1,358 @@
+<!--pages/infodetial/infodetial.wxml-->
+<!-- 信息详情开始 -->
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>
+<view class='receive rel' wx:if="{{receive==true}}">
+  <view bindtap='receive1'></view>
+  <view class='ab udlr' style='height:"{{height}};width:{{width}}"'>
+    <image mode='widthFix' src='../image/receive.png'></image>
+  </view>
+</view>
+<view class='infobody'>
+  <view style='height:20rpx;background:#fff'></view>
+  <view class='header rel'>
+    <!-- <image class='post ab' wx:if="{{system.is_zf=='1'}}" src='../image/onshare.png' bindtap='canvas'></image> -->
+    <view class='user_img fl rel'>
+      <image wx:if="{{post.user_img!=null}}" class='ab ud' src='{{post.user_img}}'></image>
+      <image wx:elif="{{post.user_img2!=''}}" class='ab ud' src='{{url}}{{post.user_img2}}'></image>
+      <image wx:else class='ab ud' src='{{url}}{{post.logo}}'></image>
+    </view>
+    <view class='user_info fl rel'>
+      <view class='info_name'>{{post.user_name}}</view>
+      <view class='info_label'>
+        <view class='fl color2 color' wx:if="{{post.top==1}}">置顶</view>
+        <view class='fl color1 color' wx:if="{{post.type_name!=null}}">{{post.type_name}}</view>
+        <view class='fl color1 color' wx:if="{{post.type2_name!=null}}">{{post.type2_name}}</view>
+        <!-- <view class='fr'>{{post.time2}}发布</view> -->
+      </view>
+      <view wx:if="{{system.is_tzdz=='1'&&post.address!=''}}" class='info_name1'>
+        <image mode='widthFix' src='../image/xiangqingdizhi@3x.png'></image>
+        <text>{{post.address}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- -------------------------------------------------------- -->
+  <view class='infodetial'>
+    <view class='ionfointro'>
+      <text>{{post.details}}</text>
+    </view>
+    <view class='label' wx:if="{{label.length!=0}}">
+      <view wx:for="{{label}}">{{item.label_name}}</view>
+    </view>
+    <view class='imgnum' wx:if="{{post.img!=''}}">
+      <image mode='widthFix' bindload='image' wx:for="{{post.img}}" src="{{url}}{{item}}" bindtap='previewImage' data-inde='{{index}}'></image>
+    </view>
+    <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+      <view class='viewnum rel'>
+        <image src='../image/view.png' class='views'></image>
+        <view class='viewsnum'>{{post.views}}</view>人浏览
+        <image src='../image/zan.png' class='zan' wx:if="{{thumbs_ups==null}}" bindtap='thumbs_up'></image>
+        <image src='../image/thumbs_up.png' class='zan' wx:if="{{thumbs_ups==true}}"></image>
+        <view class='zannum' wx:if="{{thumbs_up==null}}">{{post.givelike}}</view>
+        <view class='zannum' wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>
+        人点赞
+        <button class='zan_button ab' formType="submit"></button>
+      </view>
+    </form>
+
+    <view class="portrait flex2">
+      <view class="portrait_one flex3">
+        <view>{{post.givelike}}</view>
+        <view>赞</view>
+      </view>
+      <view class="portrait_one flex3" wx:for="{{dianzan}}" wx:key="*this">
+        <image class="portrait_img" src="{{item.user_img}}"></image>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!-- 信息详情结束 -->
+
+<!-- ————————————联系电话版块开始—————————————— -->
+<view class="portrait_tel">
+  <view class="flex-bet portrait_teltop">
+    <view class="portrait_telnum">发布时间：{{post.time2}}</view>
+  </view>
+  <block wx:if="{{system.is_bdtel=='1'}}">
+    <view wx:if="{{system.is_ff=='2'}}" class="flex-bet portrait_teltop">
+      <view class="portrait_telnum">联系电话：{{post.user_tel}}</view>
+      <view class="content_right" bindtap='phone' style='background:{{system.color}}'>
+        <view class='rel'>
+          <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+        </view>
+        <view>拨打电话</view>
+      </view>
+    </view>
+    <view wx:if="{{system.is_ff=='1'}}" class="flex-bet portrait_teltop">
+      <view wx:if="{{isff=='1'}}" class="portrait_telnum">联系电话：{{post.user_tel}}</view>
+      <view wx:else class="portrait_telnum">联系电话：***********</view>
+      <view class="content_right" bindtap='phone' style='background:{{system.color}}'>
+        <view class='rel'>
+          <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+        </view>
+        <view>拨打电话</view>
+      </view>
+    </view>
+  </block>
+  <view class="portrait_telbot">联系我时，请说是在{{system_name}}上看到的信息喔...</view>
+</view>
+<ad wx:for="{{unitid}}" unit-id="{{item.src}}"></ad>
+<!-- ————————————联系电话版块结束—————————————— -->
+<view class="shengxia" wx:if="{{post.hb_money>0}}">
+  <view class="content_ling" wx:if="{{post.hb_keyword!=''}}">口令：
+    <text class="section_num">{{post.hb_keyword}}</text>
+  </view>
+  <view class="content_count">
+    已抢
+    <text class="section_num">{{hongbao_len}}</text> /{{post.hb_num}}份，共计
+    <text class="section_num" wx:if="{{hongbao_len<post.hb_num}}">{{price}}</text>
+    <text class="section_num" wx:if="{{hongbao_len==post.hb_num}}">{{post.hb_money}}</text> /{{post.hb_money}}元
+  </view>
+</view>
+<!--—————————————用户列表部分开始—————————————  -->
+<view class="user" wx:for="{{hongbao}}">
+  <view class="user_list flex-bet">
+    <view class="user_text flex-center">
+      <image class="user_img1" src="{{item.img}}"></image>
+      <view class="user_name gobyndsingle">{{item.name}}</view>
+    </view>
+    <view class="flex-center">
+      <image class="user_moimg" src="../image/cost.png"></image>
+      <view class="section_num">{{item.money}}元</view>
+    </view>
+  </view>
+</view>
+<!--—————————————用户列表部分结束—————————————  -->
+<!-- 评论模块开始 -->
+<view class="portrait_ctop flex-bet">
+  <view class="flex-center">
+    <view class="portrait_cxian" style='background:{{system.color}}'></view>
+    <view class="portrait_com">评论</view>
+  </view>
+  <view class="flex-center">
+    <image class="portrait_cimg" src="../image/fang.png"></image>
+    <view class="portrait_ping" bindtap='comment'>我要评论</view>
+  </view>
+</view>
+<!-- 评论----------------- -->
+<view class='userwords' wx:for="{{criticism}}" wx:for-item="plitem">
+  <image class="userwords_img" src="{{plitem.user_img}}"></image>
+  <view class="userwords_rit">
+    <view class="flex-bet">
+      <view>
+        <view class="userwords_color">{{plitem.name}}</view>
+        <view class="userwords_color2">{{plitem.time}}</view>
+      </view>
+      <view class="userwords_color" bindtap="reply1" data-reflex_id='{{plitem.id}}' data-name='{{plitem.user_name}}'>回复</view>
+    </view>
+    <view class="userwords_content">
+      {{plitem.details}}
+    </view>
+    <view class="userwords_box" wx:if="{{plitem.hf.length!=0}}">
+      <view class="kuangs"></view>
+      <block wx:for="{{plitem.hf}}">
+        <view class="userwords_one" wx:if="{{item.hf_name!=null}}">
+          <view class='hftop'>
+            <image src='{{item.user_img}}'></image>
+            <view>
+              <text class="userwords_color">{{item.user_name}}</text>
+              <text style='margin-right:10rpx;'>：回复</text>
+              <text class="userwords_color">{{item.hf_name}}</text>
+              <text class='plxq'>{{item.details}}</text>
+            </view>
+          </view>
+          <view bindtap='openhf' data-reflex_id='{{plitem.id}}' data-name='{{item.user_name}}' data-hfid='{{item.user_id}}' class='hfbtm'>{{item.time}}
+            <text>回复</text>
+          </view>
+        </view>
+        <view class="userwords_one" wx:else>
+          <view class='hftop'>
+            <image src='{{item.user_img}}'></image>
+            <view>
+              <text class="userwords_color">{{item.user_name}}</text>
+              <text>：</text>
+              <text class='plxq'>{{item.details}}</text>
+            </view>
+          </view>
+          <view bindtap='openhf' data-reflex_id='{{plitem.id}}' data-name='{{item.user_name}}' data-hfid='{{item.user_id}}' class='hfbtm'>{{item.time}}
+            <text>回复</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<view class='no_comment' wx:if="{{criticism.length==0}}">
+  <image mode='aspectFill' style='width:19%;height:100rpx;margin-left:40.5%;margin-top:30rpx;' src='../image/none_commen.png'></image>
+  <view style='width:100%;height:40rpx;line-height:20rpx;font-size:24rpx;text-align:center'>没有评论喔</view>
+</view>
+<!-- 发表评论----------------- -->
+<view class="reply" wx:if="{{comment==true}}">
+  <view class="reply_box">
+    <view class="reply_title flex1">发表评论</view>
+    <view class="reply_area">
+      <textarea bindinput="complete" placeholder="请输入留言" placeholder-style="color:#999;" />
+    </view>
+    <view class="reply_bot">
+      <view class="reply_liu">
+        <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+          <button formType="submit">取消</button>
+        </form>
+      </view>
+      <view class="reply_liu reply_hui">
+        <form class='plate_form' bindsubmit="formid_two" report-submit="true" bindreset="formReset">
+          <button formType="submit">发表</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+<!--——————————————————————————————回复的弹框————————————————————————————————————  -->
+<view class="reply" wx:if="{{reply==true}}">
+  <view class="reply_box">
+    <view class="reply_title flex1">留言</view>
+    <view class="reply_area">
+      <textarea bindinput="complete1" placeholder="{{reflex_name}}" placeholder-style="color:#999;" />
+    </view>
+    <view class="reply_bot">
+      <view class="reply_liu" bindtap="reply2">
+        <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+          <button formType="submit">取消</button>
+        </form>
+      </view>
+      <view class="reply_liu reply_hui" bindtap="reply3">
+        <form class='plate_form' bindsubmit="SaveFormid" report-submit="true" bindreset="formReset">
+          <button formType="submit">回复</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="reply" wx:if="{{replyhf==true}}">
+  <view class="reply_box">
+    <view class="reply_title flex1">留言</view>
+    <view class="reply_area">
+      <textarea bindinput="complete2" placeholder="{{reflex_name}}" placeholder-style="color:#999;" />
+    </view>
+    <view class="reply_bot">
+      <view class="reply_liu">
+        <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+          <button formType="submit">取消</button>
+        </form>
+      </view>
+      <view class="reply_liu reply_hui" bindtap="huifu">
+        <form class='plate_form' bindsubmit="SaveFormid" report-submit="true" bindreset="formReset">
+          <button formType="submit">回复</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='footer'>
+  <view bindtap='shouye' class='rel'>
+    <view class='icon rel'>
+      <image mode='widthFix' class='ab udlr' src='../image/index.png'></image>
+    </view>
+    <view class='nav_title center'>首页</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button formType="submit"></button>
+    </form>
+  </view>
+  <view class='rel'>
+    <view class='icon rel' bindtap='fxbtn'>
+      <button bindtap='openshare' style='width:100%;height:100%'></button>
+      <image mode='widthFix' class='ab udlr' src='../image/nav.png'></image>
+    </view>
+    <view class='nav_title center'>转发</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button formType="submit"></button>
+    </form>
+  </view>
+  <view bindtap='Collection' class='rel'>
+    <view class='icon rel'>
+      <image wx:if="{{Collection==true}}" mode='widthFix' class='ab udlr' src='../image/Already.png'></image>
+      <image wx:if="{{Collection==false}}" mode='widthFix' class='ab udlr' src='../image/collection.png'></image>
+    </view>
+    <view class='nav_title center'>
+      <text wx:if="{{Collection==true}}">已收藏</text>
+      <text wx:if="{{Collection==false}}">收藏</text>
+    </view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button formType="submit"></button>
+    </form>
+  </view>
+  <view class='nav_phone rel' bindtap='comment' style='background:{{system.color}}'>
+    <view>我要评论</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button formType="submit"></button>
+    </form>
+  </view>
+</view>
+<view class='rob_image' wx:if="{{rob_redbag==true}}">
+  <image class='ab udlr' mode='aspectFill' src='../image/red_back.png'></image>
+  <view bindtap='rob_redbag'></view>
+</view>
+<view class='rob_redbag udlr' wx:if="{{rob_redbag==true}}">
+  <view class='rob_head rel'>
+    <image class='ab lr' mode='aspectFill' src='{{post.user_img}}'></image>
+  </view>
+  <view class='rob_name'>{{post.user_name}}</view>
+  <view class='rob_text' wx:if="{{hongbao_use!=1}}">发了一个{{system.hb_name}}，金额随机</view>
+  <view class='Congratulations rel' wx:if="{{post.hb_type == 2&&hongbao_use==3}}">
+    <input class='ab udlr' bindblur='hb_keyword' placeholder='请输入口令' placeholder-style='color: #f1e3b6;width:100%'></input>
+  </view>
+  <view class='Congratulations' wx:if="{{post.hb_type == 1&&hongbao_use==3}}">恭喜发财，大吉大利</view>
+  <view class='Congratulations' wx:if="{{hongbao_use==1}}">手慢了,{{system.hb_name}}派完了</view>
+  <view class='Congratulations' wx:if="{{hongbao_use==2}}">你已经抢过{{system.hb_name}}了</view>
+  <view class='redbag lr' wx:if="{{hongbao_use==3}}">
+    <button wx:if="{{post.hb_type==2&&sure==false}}"></button>
+    <view class='{{post.trans1}}' bindtap='trans1' style='z-index:{{post.trans_1}};display:{{post.dis1}}'>
+      <image mode='aspectFill' src='../image/red_one.png'></image>
+    </view>
+    <view class='{{post.trans1}}' bindtap='trans1' style='z-index:{{post.trans_2}};display:{{post.dis2}}'>
+      <image mode='aspectFill' src='../image/red_two.png'></image>
+    </view>
+  </view>
+  <view class='see_rob' wx:if="{{hongbao_use!=3}}" bindtap='trans2'>查看大家的手气></view>
+  <image class='lr red_small' wx:if="{{hongbao_use==3}}" mode='aspectFill' src='../image/red_small.png'></image>
+</view>
+<view class='redbag_animation' wx:if="{{post.hb_money>0}}" bindtap='rob_redbag'>
+  <image mode='aspectFill' src='../image/red_animation_one.gif'></image>
+  <image mode='aspectFill' src='../image/red_animation_two.gif'></image>
+</view>
+<view class='share_red' wx:if="{{share_red==true}}">
+  <view></view>
+  <view class='ab udlr'>
+    <button open-type='share' class='ab' bindtap='zfhbbtn'>{{post.hb_money}}元</button>
+    <image mode='aspectFit' src='../image/share_red.png'></image>
+  </view>
+</view>
+<view class="share-modal {{share_modal_active}}" catchtap='shareModalClose'>
+  <view class="share-modal-body">
+    <view class="share-modal-close flex-y-center flex-x-center" style='background:#fff'>去邀请好友</view>
+    <view class="flex-row">
+      <view class="flex-grow-1 flex-x-center">
+        <button open-type="share" bindtap='shareModalClose' class="share-bottom">
+          <image src="../image/weixin1.png"></image>
+          <view>微信</view>
+        </button>
+      </view>
+      <view class="flex-grow-1 flex-x-center">
+        <view bindtap="canvas" class="share-bottom">
+          <image src="../image/mdm.png"></image>
+          <view>海报</view>
+        </view>
+      </view>
+    </view>
+    <view bindtap="shareModalClose" class="share-modal-close flex-y-center flex-x-center">取消</view>
+  </view>
+</view>

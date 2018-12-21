@@ -1,0 +1,50 @@
+/* zh_gjhdbm/pages/collage/index.wxss */
+@import "public.wxss";
+.head{
+  width: 100%;
+  height: 450rpx;
+}
+swiper{
+  height: 100%;
+}
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+
+.nav_li{
+  width: 20%;
+  height: auto;
+}
+.nav_li image{
+  width: 70rpx;
+  height: 70rpx;
+  display: block;
+  margin: 20rpx auto;
+}
+.list>view:nth-child(1){
+  width: 100%;
+  height: 300rpx;
+}
+.list>view:nth-child(2){
+  width: 100%;
+  /* height: 100rpx; */
+}
+.price{
+  padding-bottom: 10rpx;
+}
+.price>view:nth-child(1){
+  width: 50%;
+}
+.price>view:nth-child(2){
+  width: 50%;
+}
+.logo{
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.group{
+  padding: 6rpx 20rpx;
+  border-radius: 5rpx;
+}

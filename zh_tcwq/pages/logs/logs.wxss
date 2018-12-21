@@ -1,0 +1,191 @@
+.header{
+  height: 260rpx;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  /* margin-top: -1rpx;   */
+  overflow: hidden;
+}
+.header_back{
+  width: 100%;
+  height: 260rpx;
+  position: absolute;
+  top: 0rpx;
+  left: 0%;
+  bottom: 0rpx;
+  right: 0rpx;
+  /* border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%; */
+  z-index: 10;
+}
+.logs_footer{
+  font-size: 28rpx;
+  text-align: center;
+  color: #ccc;
+  height: 40rpx;
+  width: 100%;
+  line-height: 40rpx;
+  background: orange;
+}
+.footer{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #999;
+  margin-bottom: 165rpx;
+}
+.footer text{
+  display: inline-block;
+  vertical-align: top;
+  text-indent: 10rpx;
+}
+.footer image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 3rpx;
+  /* display: block; */
+}
+.header_set{
+  height: 50rpx;
+  width: 50rpx;
+  position: absolute;
+  top: 0rpx;
+  right: 30rpx;
+  padding: 20rpx 30rpx 0rpx;
+  z-index: 12
+}
+.header_set1{
+  /* height: 50rpx;
+  width: 50rpx; */
+  position: absolute;
+  top: 50rpx;
+  right: 0rpx;
+  padding: 6rpx 10rpx 6rpx 20rpx;
+  background: #fff;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 26rpx;
+  color: #f44444;
+}
+.header_set2{
+  /* height: 50rpx;
+  width: 50rpx; */
+  position: absolute;
+  top: 150rpx;
+  right: 0rpx;
+  padding: 6rpx 10rpx 6rpx 20rpx;
+  background: #fff;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 26rpx;
+  color: #f44444;
+}
+.header_set>image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.header_set1>image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+.header_set2>image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+.header_box{
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  z-index: 11;
+  padding: 20rpx 30rpx 20rpx;
+  /* border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%; */
+}
+.picture{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.header_name{
+  font-size: 30rpx;
+  color: white;
+  margin-left: 20rpx;display: flex;flex-direction: column;align-items: flex-start;
+}
+.head_hhr{
+  padding: 5rpx 20rpx;font-size: 20rpx;border-radius: 20rpx;background: #000;opacity: 0.6;margin-top: 10rpx;
+}
+.head_hhr1{width: 25rpx;height: 25rpx;}
+.head_hhr2{margin: 0 10rpx;}
+.head_hhr3{width: 20rpx;height: 20rpx;}
+.list{
+  margin: -90rpx 30rpx 0;
+  height: 140rpx;
+  position: relative;
+  z-index: 999;
+}
+.list_content{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+  top: 0rpx;
+  left: 0rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.list_alllist{color: #999;}
+.list_top{border-bottom: 1rpx solid #eee;padding: 20rpx;font-size: 28rpx;}
+.list_alltext{color: #333;}
+.list_all{width: 300rpx;}
+.list_allimg1{width: 50rpx;height: 50rpx;margin-right: 20rpx;}
+.list_allimg{width: 70rpx;height: 70rpx;margin-bottom: 10rpx;}
+.banner{padding: 0rpx;}
+.list_right{width: 20rpx;height: 30rpx;margin-left: 10rpx;}
+.list_fukuan{height: 100%;}
+.list_fukuanimg{width: 64rpx;height: 56rpx;margin-bottom: 20rpx;}
+.list_fukuanimg2{width: 52rpx;height: 64rpx;margin-bottom: 12rpx;}
+.list_fukuanimg3{width: 49rpx;height: 56rpx;margin-bottom: 20rpx;}
+.list_fukuanimg4{width: 56rpx;height: 56rpx;margin-bottom: 20rpx;}
+.mytext{font-size: 30rpx;font-weight: bold;margin-bottom: 10rpx;}
+.list_collet{font-size: 26rpx;color: #333;flex: 1;height: 100%;}
+.banner{
+  background-color: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin: 30rpx;
+}
+.bbd{
+display: flex;flex-direction: row;align-items: center;flex-wrap: wrap;
+}
+.banner_list{
+  display: flex;flex-direction: column;align-items: center;justify-content: center;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 20rpx 0rpx;
+  font-size: 27rpx;
+}
+.banner_text{
+  font-size: 26rpx;
+  color: #999;
+}
+.bhead{
+display: flex;flex-direction: row;align-items: center;padding: 20rpx 30rpx;border-bottom: 2rpx solid #eee;
+font-size: 28rpx;font-weight: bold;
+}
+.bhead image{width: 40rpx;height: 40rpx;margin-right: 20rpx;}
+
+
+
+

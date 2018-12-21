@@ -1,0 +1,55 @@
+<!--zh_dianc/pages/logs/distribution/wdtd.wxml-->
+<view class='list_header'>
+  <block wx:for="{{tabs}}">
+    <view class="list_title {{activeIndex==index?'default':'selsect'}}" style="color:{{activeIndex == index ?color:''}};" id="{{index}}" bindtap="tabClick">
+      <view>{{item}}</view>
+      <view class='list_border' style="background-color:{{color}};" hidden='{{activeIndex!=index}}'></view>
+    </view>
+  </block>
+</view>
+<view class="list" hidden="{{activeIndex != 0}}">
+  <view class="list_imgbk2" hidden="{{yj.length!=0}}">
+    <image class="list_imgbk" src="../image/none_comment.png"></image>
+    <view class="list_imgbk3">您暂时没有一级团队哦！</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{yj}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <image src="{{item.img}}" class='himg'></image>
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.name}}</view>
+          <view class="sj">注册时间：{{item.time}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='kong' hidden="{{yj.length==0}}">
+    <image src='../../images/wushuju.png'></image>
+    <view>没有更多了</view>
+  </view>
+</view>
+<view class="list" hidden="{{activeIndex != 1}}">
+  <view class="list_imgbk2" hidden="{{ej.length!=0}}">
+    <image class="list_imgbk" src="../image/none_comment.png"></image>
+    <view class="list_imgbk3">您暂时没有一级团队哦！</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{ej}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <image src="{{item.img}}" class='himg'></image>
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.name}}</view>
+          <view class="sj">注册时间：{{item.time}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='kong' hidden="{{ej.length==0}}">
+    <image src='../../images/wushuju.png'></image>
+    <view>没有更多了</view>
+  </view>
+</view>

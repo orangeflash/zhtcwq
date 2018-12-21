@@ -1,0 +1,313 @@
+<!--pages/mypost/mypost.wxml-->
+<view class="page__bd">
+  <!--———————————————头部导航开始———————————————  -->
+  <view class="weui-navbar flex-bet">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weuiitem {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view style='color:{{activeIndex == index ?System.color:""}}'>{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);background:{{System.color}}"></view>
+  </view>
+  <!--———————————————头部导航结束———————————————  -->
+  <view style='background:#e5e5e5;width:100%;height:5rpx;'></view>
+  <!--——————————————————————我发布的全部部分开始——————————————————————  -->
+  <view class='rel' hidden="{{activeIndex != 0}}">
+    <view wx:if="{{slide!=null||slide.length!=0}}" class="content" wx:for="{{slide}}">
+      <!--上面部分开始  -->
+      <view class="content_top">
+        <view class="content_left">
+          <image src="{{user_img}}" class="content_img"></image>
+          <view class="content_zhong">
+            <view class="content_name">{{item.user_name}}</view>
+            <view class="content_text">
+              <view class="content_zheng color2" wx:if="{{item.top==1}}">置顶</view>
+              <view class="content_zheng color1" wx:if="{{item.type2_name!=null}}">{{item.type2_name}}</view>
+              <view class="content_zheng color1" wx:if="{{item.type_name!=null}}">{{item.type_name}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="content_right">
+          <view style='background:{{System.color}}' wx:if="{{item.state=='2'&&item.top=='1'}}" class='rel xufei' bindtap='dkxf' data-id='{{item.id}}'>
+            续费
+          </view>
+          <view style='background:{{System.color}}' wx:if="{{item.state=='2'&&item.top!='1'}}" class='rel xufei' bindtap='dkxf' data-id='{{item.id}}'>
+            置顶
+          </view>
+          <view wx:if="{{item.state=='2'&&item.hb_money=='0.00'}}" class='rel shuaxin' bindtap='shuaxin' data-typeid='{{item.type_id}}' data-id='{{item.id}}'>
+            刷新
+          </view>
+          <!-- <view style='margin: 10rpx 0rpx;' class='rel' bindtap='cancel' data-id='{{item.id}}'>
+            <image class='ab udlr' mode='aspectFill' src='../image/cancel.png'></image>
+          </view> -->
+        </view>
+      </view>
+      <!-- 上面部分结束   -->
+
+      <!--文字部分  -->
+      <view class="content_wen gobyndmulit">{{item.details}}
+      </view>
+
+      <!--图片部分  -->
+      <view class="content_picture" wx:if="{{item.img!=''}}">
+        <image wx:for="{{item.img}}" mode='aspectFill' src="{{url}}{{item}}"></image>
+      </view>
+
+      <view class="content_chakan">
+        <view class="content_info">{{item.time}}发布
+          <text wx:if="{{item.cityname!=''}}">({{item.cityname}})</text>
+        </view>
+        <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
+      </view>
+      <!-- <view class="content_chakan">
+        <view class="content_info">{{item.address}}</view>
+      </view> -->
+
+      <view class="content_liulan1">
+        <view class='bjsc'>
+          <image src="../image/liulan.png" class="eye"></image>
+          <view class="content_num">{{item.views}}</view>
+          <view class="content_ren">人浏览</view>
+          <image src="../image/zan.png" class="zan"></image>
+          <view class="content_num">{{item.givelike}}</view>
+          <view class="content_ren">人点赞</view>
+        </view>
+        <view class="kuang"></view>
+        <view class='bjsc'>
+          <view wx:if="{{item.state=='2'&&item.hb_money=='0.00'}}" class='bj' bindtap='bianji' data-id='{{item.id}}'>
+            编辑
+          </view>
+          <view style='margin: 10rpx 25rpx;' bindtap='cancel' data-id='{{item.id}}'>
+            <image style='height:40rpx;width: 40rpx;vertical-align: middle' mode='aspectFill' src='../image/cancel.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='loading rel' style='height: 60rpx;' wx:if="{{refresh_top==true&&slide.length!=0}}">
+      没有更多了~
+    </view>
+    <view class='loading rel' style='height: 60rpx;' wx:if="{{refresh_top==false&&slide.length!=0}}">
+      <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+    </view>
+    <view class='none ab udlr' wx:if="{{slide==null||slide.length==0}}">
+      <view>
+        <image mode='widthFix' src='../image/tie2.png'></image>
+        <view class='center'>你还没有发布{{System.tzmc}}喔</view>
+      </view>
+    </view>
+  </view>
+  <!--——————————————————————我发布的全部部分结束——————————————————————  -->
+
+  <!--——————————————————————我发布的审核中部分开始——————————————————————  -->
+  <view hidden="{{activeIndex != 1}}" class='rel'>
+    <view wx:if="{{audit!=null||audit.length!=0}}" class="content" wx:for="{{audit}}">
+      <!--上面部分开始  -->
+      <view class="content_top">
+        <view class="content_left">
+          <image src="{{user_img}}" class="content_img"></image>
+          <view class="content_zhong">
+            <view class="content_name">{{item.user_name}}</view>
+            <view class="content_text">
+              <!-- <view class="content_zhi">置顶</view> -->
+              <view class="content_zheng">{{item.type2_name}}</view>
+              <!-- <image src="../image/hongbao.png" class="hongbao"></image>
+              <view class="content_status">已结束...</view> -->
+            </view>
+          </view>
+        </view>
+        <view class="content_right" bindtap='phone' data-id='{{item.user_tel}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+        </view>
+      </view>
+      <!-- 上面部分结束   -->
+
+      <!--文字部分  -->
+      <view class="content_wen">{{item.details}}
+      </view>
+
+      <!--图片部分  -->
+      <view class="content_picture" wx:if="{{item.img!=''}}">
+        <image wx:for="{{item.img}}" src="{{url}}{{item}}"></image>
+      </view>
+
+      <view class="content_chakan">
+        <view class="content_info">{{item.time}}发布
+          <text wx:if="{{item.cityname!=''}}">({{item.cityname}})</text>
+        </view>
+        <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
+      </view>
+
+      <view class="content_liulan">
+        <image src="../image/liulan.png" class="eye"></image>
+        <view class="content_num">{{item.views}}</view>
+        <view class="content_ren">人浏览</view>
+        <image src="../image/zan.png" class="zan"></image>
+        <view class="content_num">{{item.givelike}}</view>
+        <view class="content_ren">人点赞</view>
+        <view class="kuang"></view>
+      </view>
+    </view>
+    <view class='none ab udlr' wx:if="{{audit==null||audit.length==0}}">
+      <view>
+        <image mode='widthFix' src='../image/tie2.png'></image>
+        <view class='center'>暂无审核中的{{System.tzmc}}</view>
+      </view>
+    </view>
+  </view>
+  <!--——————————————————————我发布的审核中部分结束——————————————————————  -->
+
+  <!--——————————————————————我发布的已通过部分开始——————————————————————  -->
+  <view class='rel' hidden="{{activeIndex != 2}}">
+    <view wx:if="{{adopt!=null||adopt.length!=0}}" class="content" wx:for="{{adopt}}">
+      <!--上面部分开始  -->
+      <view class="content_top">
+        <view class="content_left">
+          <image src="{{user_img}}" class="content_img"></image>
+          <view class="content_zhong">
+            <view class="content_name">{{item.user_name}}</view>
+            <view class="content_text">
+              <!-- <view class="content_zhi">置顶</view> -->
+              <view class="content_zheng">{{item.type2_name}}</view>
+              <!-- <image src="../image/hongbao.png" class="hongbao"></image>
+              <view class="content_status">已结束...</view> -->
+            </view>
+          </view>
+        </view>
+        <view class="content_right" bindtap='phone' data-id='{{item.user_tel}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+      </view>
+      <!-- 上面部分结束   -->
+
+      <!--文字部分  -->
+      <view class="content_wen">{{item.details}}
+      </view>
+
+      <!--图片部分  -->
+      <view class="content_picture" wx:if="{{item.img!=''}}">
+        <image wx:for="{{item.img}}" src="{{url}}{{item}}"></image>
+      </view>
+
+      <view class="content_chakan">
+        <view class="content_info">{{item.time}}发布
+          <text wx:if="{{item.cityname!=''}}">({{item.cityname}})</text>
+        </view>
+        <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
+      </view>
+
+      <view class="content_liulan">
+        <image src="../image/liulan.png" class="eye"></image>
+        <view class="content_num">{{item.views}}</view>
+        <view class="content_ren">人浏览</view>
+        <image src="../image/zan.png" class="zan"></image>
+        <view class="content_num">{{item.givelike}}</view>
+        <view class="content_ren">人点赞</view>
+        <view class="kuang"></view>
+      </view>
+    </view>
+    <view class='none ab udlr' wx:if="{{adopt==null||adopt.length==0}}">
+      <view>
+        <image mode='widthFix' src='../image/tie2.png'></image>
+        <view class='center'>暂无已通过的{{System.tzmc}}</view>
+      </view>
+    </view>
+  </view>
+  <!--——————————————————————我发布的已通过部分结束——————————————————————  -->
+
+  <!--——————————————————————我发布的已拒绝部分开始——————————————————————  -->
+  <view class='rel' hidden="{{activeIndex != 3}}">
+    <view class="content" wx:if="{{refuse!=null||refuse.length!=0}}" wx:for="{{refuse}}">
+      <!--上面部分开始  -->
+      <view class="content_top">
+        <view class="content_left">
+          <image src="{{user_img}}" class="content_img"></image>
+          <view class="content_zhong">
+            <view class="content_name">{{item.user_name}}</view>
+            <view class="content_text">
+              <view class="content_zheng">{{item.type2_name}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="content_right" bindtap='phone' data-id='{{item.user_tel}}'>
+          <view class='rel'>
+            <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+          </view>
+          <view>拨打电话</view>
+        </view>
+      </view>
+      <!-- 上面部分结束   -->
+
+      <!--文字部分  -->
+      <view class="content_wen">{{item.details}}
+      </view>
+
+      <!--图片部分  -->
+      <view class="content_picture" wx:if="{{item.img!=''}}">
+        <image wx:for="{{item.img}}" src="{{url}}{{item}}"></image>
+      </view>
+
+      <view class="content_chakan">
+        <view class="content_info">{{item.time}}发布
+          <text wx:if="{{item.cityname!=''}}">({{item.cityname}})</text>
+        </view>
+        <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
+      </view>
+
+      <view class="content_liulan">
+        <image src="../image/liulan.png" class="eye"></image>
+        <view class="content_num">{{item.views}}</view>
+        <view class="content_ren">人浏览</view>
+        <image src="../image/zan.png" class="zan"></image>
+        <view class="content_num">{{item.givelike}}</view>
+        <view class="content_ren">人点赞</view>
+        <view class="kuang"></view>
+      </view>
+    </view>
+    <view class='none ab udlr' wx:if="{{refuse==null||refuse.length==0}}">
+      <view>
+        <image mode='widthFix' src='../image/tie2.png'></image>
+        <view class='center'>暂无被拒绝的{{System.tzmc}}</view>
+      </view>
+    </view>
+  </view>
+  <!--——————————————————————我发布的审核中部分结束——————————————————————  -->
+</view>
+<view hidden="{{isios&&System.is_pgzf == '2'}}">
+  <view class='base' wx:if="{{iszd==true}}">
+    <view class='rel' style='background:{{System.color}}'>选择置顶让更多人看到</view>
+    <block wx:if="{{countryIndex==0}}">
+      <block wx:for="{{stick}}" wx:key="*this">
+        <view wx:if="{{item.money>0}}" class='array rel' bindtap='selected' id='{{index}}'>{{item.array}}{{item.money}}元)</view>
+        <view wx:else class='array rel' bindtap='selected' id='{{index}}'>免费</view>
+      </block>
+    </block>
+    <block wx:if="{{countryIndex==1}}">
+      <block wx:for="{{stick}}" wx:key="*this">
+        <view wx:if="{{item.money2>0}}" class='array rel' bindtap='selected' id='{{index}}'>{{item.array}}{{item.money2}}元)</view>
+        <view wx:else class='array rel' bindtap='selected' id='{{index}}'>免费</view>
+      </block>
+    </block>
+    <view class='rel' bindtap='qxzd'>取消置顶</view>
+  </view>
+</view>
+<view wx:if="{{xzdq}}" bindtap='qxxzdq' class='xzfbdqzz'></view>
+<view wx:if="{{xzdq}}" class="weui-cells weui-cells_after-title xzfbdq">
+  <view class="weui-cell">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after" style='padding:0rpx;'>
+      <view class="weui-label">选择发布地区</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+        <view class="weui-select weui-select_in-select-after" style='text-align: right'>{{countries[countryIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+</view>

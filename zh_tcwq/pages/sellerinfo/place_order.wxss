@@ -1,0 +1,152 @@
+/* zh_tcwq/pages/sellerinfo/place_order.wxss */
+.place{
+  width: 100%;
+  overflow-x: hidden;
+  font-size: 30rpx;
+  color: #666;
+}
+.pheader{
+  background-color: white;
+  margin-top: 20rpx;
+  padding: 30rpx;
+}
+.phaddimg{
+  width: 45rpx;
+  height: 45rpx;
+  background-color: #D7DFEA;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  margin-right: 50rpx;
+}
+.phaddimg>image{
+  width: 100%;
+  height: 100%;
+}
+.hright{
+  width: 20rpx;
+  height: 30rpx;
+}
+.pbanner{
+  margin-top: 20rpx;
+  background-color: white;
+  padding: 0rpx 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.pbtop{
+  height: 90rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.pbbox{
+  padding: 20rpx 0rpx;
+  display: flex;
+  border-bottom: 2rpx solid #eee;
+}
+.pbbox>image{
+  width: 200rpx;
+  height: 180rpx;
+}
+.pbboxright{
+  width: 475rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+.pbtitle{
+  display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+}
+.pbtext>view{
+  font-weight: bold;
+}
+.pbtext>view:nth-child(1){
+  color:#ED414A;
+}
+.pbtextfont{
+  font-size: 40rpx;
+}
+.psection{
+  padding: 0rpx 20rpx;
+}
+.psection>.flex-center{
+  height: 80rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.psbox{
+  padding: 20rpx 0rpx;
+  display: flex;
+  border-bottom: 2rpx solid #eee;
+}
+.pstextarea{
+  width: 500rpx;
+  height: auto;
+  min-height: 100rpx;
+}
+.psbottom{
+  height: 80rpx;
+  border-bottom: 2rpx solid #eee;
+  line-height: 80rpx;
+  text-align: right;
+}
+.psleft{
+  width: 160rpx;
+}
+.psfont1{
+  margin-left: 10rpx;
+}
+.psfont2{
+  color: #ED414A;
+  font-size: 34rpx;
+  margin-left: 5rpx;
+}
+.pfootbox{
+  height: 100rpx;
+}
+.pfooter{
+  height: 120rpx;
+  border-top: 1rpx solid #eee;
+  width: 100%;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.pfleft{
+  width: 70%;
+  text-align: right;
+  font-weight: bold;
+  font-size: 34rpx;
+  line-height: 50rpx;
+}
+.pfleft>view{
+  padding-right: 30rpx;
+}
+.pfright{
+  width: 30%;
+  color: white;
+  height: 120rpx;
+  text-align: center;
+  font-size: 36rpx;
+}
+.pfright button{
+  width: 100%;
+  height: 100%;margin: 0;padding: 0;line-height: 120rpx;color: #fff;border-radius: 0;
+}
+.pffont{
+  color: #ED414A;
+}
+.jiahao{
+  width: 40rpx;
+  height: 40rpx;
+}
+.placenum{
+  margin: 0rpx 10rpx;
+}
+.weui-cell{
+  padding:10rpx 30rpx; 
+  font-size: 28rpx; 
+}

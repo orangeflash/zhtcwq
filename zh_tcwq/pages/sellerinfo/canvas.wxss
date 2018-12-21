@@ -1,0 +1,26 @@
+/* zh_tcwq/pages/sellerinfo/canvas.wxss */
+page{
+  width: 100%;
+  background: #fff;
+  height: 100%;
+}
+.body{
+  width: 90%;
+  height: 90%;
+  margin: 5% auto;
+  box-shadow: #e5e5e5 0px 0px 10px;  
+}
+.title{
+  text-align: center;
+  font-size: 24rpx;
+  color: #ccc;
+  padding: 20rpx;
+}
+button{
+  width: 50%;
+  background: orange;
+  margin-top: 30rpx;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 60rpx;
+}

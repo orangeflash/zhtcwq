@@ -1,0 +1,77 @@
+<!--zh_tcwq/pages/partner/partner.wxml-->
+<view class="header">
+    <image style='width:100%;height:100%' mode='aspectFill' src='../image/partner.jpg'></image>
+</view>
+<!--公告部分开始  -->
+<view class='ad'>
+  <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image>
+  <swiper class="newest_content gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+    <block wx:for="{{msgList}}">
+      <swiper-item>
+        <view class='adinfo flex-bet'>
+          <!-- <view class="adinfo2">{{item.name}}获得收益¥{{item.money}}</view>
+          <view class="adinfo3">{{item.time}}</view> -->
+          <view class="adinfo2">暂无数据</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--公告部分结束  -->
+
+<!-- ———————————————专属部分开始————————————————— -->
+<view class="section">
+  <view class="section_top flex1">
+    <image class="section_img" src="../image/zuo.png"></image>
+    <view class="section_text">专属权利</view>
+    <image class="section_img" src="../image/you.png"></image>
+  </view>
+  <view class="section_list flex-bet">
+    <view class="section_con">
+      <view class="section_title">1 <text class="secxian">/ </text>推荐奖励</view>
+      <view class="section_nei">你推荐的朋友只要进入志汇同城，他付费发布、刷新、置顶信息、入驻好店、参与抢购你都可以获得奖励。</view>
+    </view>
+    <image class="section_rit" src="../image/img1.png"></image>
+  </view>
+
+  <view class="section_list flex-bet">
+    <view class="section_con">
+      <view class="section_title">2 <text class="secxian">/ </text>随时提现</view>
+      <view class="section_nei">所有收益都由系统自动计算，并可以申请提现到你的微信零钱包。</view>
+    </view>
+    <image class="section_rit" src="../image/img2.png"></image>
+  </view>
+
+  <view class="section_list flex-bet">
+    <view class="section_con">
+      <view class="section_title">3 <text class="secxian">/ </text>简单容易</view>
+      <view class="section_nei">你的朋友只要通过你分享的链接或者海报即可进入，无需强制关注或者注册</view>
+    </view>
+    <image class="section_rit" src="../image/img3.png"></image>
+  </view>
+</view>
+<!-- ———————————————专属部分结束————————————————— -->
+
+<!-- ———————————————常见问题部分开始————————————————— -->
+<view class="section">
+  <view class="section_top flex1">
+    <image class="section_img" src="../image/zuo.png"></image>
+    <view class="section_text">常见问题</view>
+    <image class="section_img" src="../image/you.png"></image>
+  </view>
+  <view class="section_list">
+    <view class="section_title">Q1 常见问题一</view>
+    <view class="section_nei">常见问题一</view>
+  </view>
+  <view class="section_list">
+    <view class="section_title">Q2 常见问题二</view>
+    <view class="section_nei">常见问题二</view>
+  </view>
+</view>
+<!-- ———————————————常见问题部分结束————————————————— -->
+
+<!-- ———————————————底部固定按钮部分开始————————————————— -->
+<view class="footer">
+  <input type="submit" value="成为合伙人支付¥0.01" />
+</view>
+<!-- ———————————————底部固定按钮部分结束————————————————— -->

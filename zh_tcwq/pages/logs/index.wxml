@@ -1,0 +1,201 @@
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class='container'>
+    <view class='detailed'>
+      <view>
+        <view class='hotel_name flex-center border1'>
+          <view class='total'>商家名称：</view>
+          <view class='input'>
+            <input name='business_name' placeholder='请输入商家名称' value='{{store_info.store_name}}'></input>
+          </view>
+        </view>
+        <view class='hotel_name flex-center border2'>
+          <view class='total'>行业分类：</view>
+          <picker bindchange="bindPickerChanges" value="{{index}}" range="{{store_type}}">
+            <view class='input' style="width:250rpx;">
+              {{store_type[index]}}
+            </view>
+          </picker>
+          <picker bindchange="bindchange_two" disabled='{{store_type_two.length==0}}' value="{{index_two}}" range="{{store_type_two}}">
+            <view class='input' style="width:250rpx;">
+              {{store_type_two[index_two]}}
+            </view>
+          </picker>
+        </view>
+        <!-- <view class='hotel_name flex-center border1' style='margin-top:30rpx;'>
+          <view class='total'>所属区域：</view>
+          <picker bindchange="bindRegionChange" value="{{inde}}" range="{{city}}">
+            <view class='input'>
+              {{city[inde]}}
+            </view>
+          </picker>
+        </view> -->
+        <view class='hotel_name flex-center'>
+          <view class='total'>关 键 字：</view>
+          <view class='input'>
+            <input name="business_keyword" class='hotel_tel' placeholder='请输入行业关键字' value='{{store_info.keyword}}'></input>
+          </view>
+        </view>
+        <view class='hotel_name flex-center border2'>
+          <view class='total'>详细地址</view>
+          <!-- <view class='input'>
+            <text>{{store_info.address}}</text>
+          </view> -->
+          <view class='input' style='flex:1'>
+            <input name="address" placeholder='输入地址或点击地图选择-->' value="{{address}}"></input>
+          </view>
+          <image bindtap='add' class='dt' src='../image/address3.png'></image>
+        </view>
+        <view class='hotel_name' style='border-radius:20rpx;height:auto;min-height:40px;margin-top:30rpx;margin-bottom:30rpx'>
+          <view class='total fl' style='line-height:80rpx;'>店内设施</view>
+          <view class='input iinlin_block'>
+            <text wx:if="{{facilities==null||facilities==''}}" bindtap='choice'>选择店内设施</text>
+            <text wx:if="{{facilities!=null}}" bindtap='choice'>
+                <text wx:for="{{facilities}}" wx:key="{{item.value}}">{{item}}</text>
+            </text>
+          </view>
+          <view class='checkbox rel iinlin_block border2'>
+            <checkbox-group bindchange="checkboxChange">
+              <label class="checkboxs" wx:for="{{items}}" wx:key="{{item.value}}">
+                <checkbox style='transform:scale(.8)' value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+              </label>
+            </checkbox-group>
+          </view>
+        </view>
+        <view class='hotel_name flex-center border1' style='margin-top:30rpx;'>
+          <view class='total'>营业时间：</view>
+          <picker mode="time" bindchange="bindTimeChange" value="{{store_info.yy_time[0]}}">
+            <view class='input center' style="width:150rpx;">
+              {{time}}
+            </view>
+          </picker>
+          <view class='total'>——</view>
+          <picker mode="time" bindchange="bindTimeChange1" value="{{store_info.yy_time[1]}}">
+            <view class='input center' style="width:150rpx;">
+              {{time1}}
+            </view>
+          </picker>
+        </view>
+        <view class='hotel_name flex-center'>
+          <view class='total fl'>联系电话：</view>
+          <view class='input fl'>
+            <input name='business_number' type='number' placeholder='请输入您的联系电话' value='{{store_info.tel}}'></input>
+          </view>
+        </view>
+        <view class='hotel_name flex-center'>
+          <view class='total'>商家公告：</view>
+          <view class='input'>
+            <input name="business_notice" placeholder='请输入公告' value='{{store_info.announcement}}'></input>
+          </view>
+        </view>
+        <view class='hotel_name flex-center border2'>
+          <view class='total'>VR演示</view>
+          <view class='input'>
+            <input name="vr_demo" placeholder='请输入VR演示站点' value='{{store_info.vr_link}}'></input>
+          </view>
+        </view>
+
+        <!------------------------------------选择照片的部分开始----------------------------------  -->
+        <view class="select select2 flex-center">
+          <view class="flex3 select_box">
+            <view class="select_top" bindtap='choose'>选择图片</view>
+            <view class="select_img flex3" bindtap='choose'>
+              <image mode='aspectFill' src='{{url1}}{{hotel_logo}}'></image>
+            </view>
+            <view class="select_text">商家LOGO(200*200)</view>
+          </view>
+          <view class="flex3 select_box">
+            <view class="select_top" bindtap='choose1'>选择图片</view>
+            <view class="select_img flex3" bindtap='choose1'>
+              <image mode='aspectFill' src='{{url1}}{{wechat}}'></image>
+            </view>
+            <view class="select_text">老板微信(200*200)</view>
+          </view>
+        </view>
+        <!------------------------------------选择照片的部分结束----------------------------------  -->
+
+        <!------------------------------------上传商家图片 ---------------------------------- -->
+        <view class="select select3">
+          <view class="carousel">
+            <text style='margin-left:30rpx;'>商家幻灯片(640*370)</text>
+            <text wx:if="{{lunbo_len>=1}}" style='color:#999;float:right'>已选择{{lunbo_len}}张</text>
+          </view>
+          <view class="store_image">
+            <view class="carousel_img1 rel" wx:for="{{imgArray}}" wx:if="{{imgArray!=null}}" wx:key="{{item.value}}">
+              <view class='delete ab' bindtap='delete' data-index="{{index}}">
+                <image mode='aspectFill' class='ab' src='../image/delete.png'></image>
+              </view>
+              <image class='ab udlr' mode='aspectFill' data-index="{{index}}" src="{{url1}}{{item}}"></image>
+            </view>
+            <view class="carousel_img2 rel" wx:if="{{lunbo_len<9}}" style='border:2rpx solid #ccc;' bindtap='chooseImage2'>
+              <image class='ab udlr' src="../image/add.png"></image>
+            </view>
+          </view>
+        </view>
+        <!------------------------------------选择轮播图部分结束----------------------------------  -->
+        <view class='verification border1'>商家介绍</view>
+        <view class='supplement'>
+          <textarea name="textarea" placeholder='请输入商家介绍' maxlength="-1" value='{{store_info.details}}'></textarea>
+        </view>
+        <view class="select4 select3 border2">
+          <view class="carousel">
+            <text style='margin-left:30rpx;'>商家详情图(640*370)</text>
+            <text style='color:#999;float:right'>已选择{{upload_img_length}}张</text>
+          </view>
+          <view class="store_image">
+            <view class="carousel_img1 rel" wx:for="{{uploaded}}" wx:if="{{upload_img_length!=null}}" wx:key="{{item.value}}">
+              <view class='delete ab' bindtap='delete2' data-index="{{index}}">
+                <image mode='aspectFill' class='ab' src='../image/delete.png'></image>
+              </view>
+              <image class='ab udlr' mode='aspectFill' data-index="{{index}}" src="{{url1}}{{item}}"></image>
+            </view>
+            <view class="carousel_img2 rel" wx:if="{{upload_img_length<9}}" style='border:2rpx solid #ccc;' bindtap='upload_image'>
+              <image class='ab udlr' src="../image/add.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class='verification border1' wx:if="{{sms==true}}">验证真实性</view>
+        <view class='hotel_name' style='margin-top:-2rpx;' wx:if="{{sms==true}}">
+          <view class='total fl'>手机号</view>
+          <view class='input fl'>
+            <input name='yz_tel' type='digit' bindblur="user_name" placeholder='请输入你现在的手机号'></input>
+          </view>
+        </view>
+        <view class='hotel_name rel border2' wx:if="{{sms==true}}">
+          <view class='total fl'>验证码</view>
+          <view class='input fl'>
+            <input name='yz_code' bindblur="user_code" placeholder='请输入验证码' style='width:60%'></input>
+          </view>
+          <view class='ab code' wx:if="{{getmsg=='获取验证码'}}" bindtap='sendmessg'>
+            {{getmsg}}
+          </view>
+          <view class='ab code' wx:if="{{getmsg!='获取验证码'}}" bindtap='sendmessg'>
+            {{getmsg}}
+          </view>
+        </view>
+        <view class='getPhoneNumber' wx:if="{{sms==false}}">
+          手机号验证：
+          <text wx:if="{{num!=null}}">{{num}}</text>
+          <button wx:if="{{num==null}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+        </view>
+
+        <!------------------------------------入驻费用部分开始----------------------------------  -->
+        <!-- <view class="cost border1 border2">
+          <view class="carousel">入驻同城</view>
+          <view class="cost_content">
+            <view class="flex-center cost_money2" bindtap="cost1" id="{{index}}" wx:for="{{stick}}" wx:key="{{item.value}}">
+              <view class="cost_border">
+                <image mode='aspectFill' src='../image/radio.png' wx:if="{{item.hidden1==false}}"></image>
+              </view>
+              <view class="cost_money">{{item.array}}</view>
+            </view>
+          </view>
+        </view> -->
+        <!------------------------------------入驻费用部分结束----------------------------------  -->
+        <view class='footer'>
+          <button form-type="submit" wx:if="{{store_info.time_over==2}}">确认修改</button>
+          <button form-type="submit" wx:if="{{store_info.time_over==1}}">重新入驻</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</form>

@@ -1,0 +1,25 @@
+<!--zh_zbkq/pages/my/bzzx/bzzx.wxml-->
+<view class="page__hd">
+  <!-- <view class="page__title">WeUI</view> -->
+  <!-- <view class="page__desc">优惠券常见问题</view> -->
+</view>
+<view class="page__bd page__bd_spacing">
+  <view class="kind-list">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="kind-list__item">
+        <view id="{{index}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+          <view class="weui-flex__item">{{item.question}}</view>
+          <image class="kind-list__img" src="../../../img/icon_nav_{{item.id}}.png"></image>
+        </view>
+        <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+          <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+            <view class="weui-cell__bd">{{item.answer}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- <view class="page__ft">
+  <image src="images/icon_footer.png" style="width: 84px; height: 19px;"></image>
+</view> -->

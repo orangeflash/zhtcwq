@@ -1,0 +1,514 @@
+/* pages/seller/seller.wxss */
+.ssjg{
+  position: absolute;
+  top: 116rpx;
+  left: 0;
+  background: #fff;
+  z-index: 999;
+  width: 100%;
+  border-bottom: 1rpx solid #d5d5d5;
+  padding: 20rpx 30rpx 0;
+  box-sizing: border-box;
+}
+.ssjg view{
+  color: #666;
+  font-size: 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #d5d5d5;
+}
+.ssjg button{
+  width: 200rpx;
+  margin: 10rpx auto;
+  background: #eb414a;
+  color: #fff;
+  font-size: 28rpx;
+}
+.color2 {
+  background-color: #ff8915;
+}
+
+.content_zhi {
+  padding: 2rpx 6rpx;
+  font-size: 22rpx;
+  text-align: center;
+  border-radius: 6rpx;
+  color: white;
+  margin-right: 10rpx;
+}
+.plate_form {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.plate_form button {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+}
+
+.plate_form button::after{
+  border: none;
+}
+/*首页轮播图  */
+
+/*首页轮播图  */
+
+.container {
+  width: 100%;
+  /* overflow-x: hidden; */
+  /* padding-bottom: 50rpx; */
+}
+.loading{
+  width: 100%;
+  height: 60rpx;
+  background: #fff;
+  color: #999;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 22rpx;
+}
+.loading image{
+  width: 69rpx;
+  height: 15rpx;
+}
+page {
+  width: 100%;
+}
+
+.body {
+  width: 100%;
+  height: auto;
+}
+
+.banner {
+  width: 100%;
+  height: 360rpx;
+}
+
+.newest_content {
+  flex: 1;
+  height: 70rpx;
+  float: left;
+  line-height: 70rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.zanwu {
+  line-height: 50rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #333;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50rpx;
+}
+
+/*轮播  */
+
+.selleryg {
+  width: 100%;
+  height: 50rpx;
+}
+
+.swiper-container {
+  position: relative;
+}
+
+.swiper-container .swiper {
+  height: 360rpx;
+}
+
+.swiper-container .swiper .img {
+  width: 100%;
+  height: 100%;
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  /* background: #000; */
+  width: 238rpx;
+  margin: auto;
+  border-radius: 10rpx;
+  height: 20rpx;
+  justify-content: center;
+}
+
+.dot {
+  margin: 4rpx 8rpx;
+  width: 30rpx;
+  height: 6rpx;
+  background: rgb(255, 255, 255);
+  border: rgb(218, 69, 70) solid 1rpx;
+  border-radius: 8rpx;
+  transition: all 0.6s;
+}
+
+.active {
+  width: 30rpx;
+  background: #f80;
+}
+
+/* 搜索模块开始 */
+
+.searchbox {
+  height: 116rpx;
+  padding: 0 30rpx;
+  background-color: white;
+  position: relative;
+}
+
+.input {
+  font-size: 26rpx;
+  color: #666;
+  height: 64rpx;
+  border: 5rpx solid #ff4847;
+  width: 483rpx;
+  position: absolute;
+  top: 26rpx;
+  padding-left: 40rpx;
+  border-radius: 37rpx 0 0 37rpx;
+}
+
+.search {
+  padding: 0;
+  width: 158rpx;
+  height: 72rpx;
+  color: white;
+  background-color: #ff4847;
+  position: absolute;
+  top: 26rpx;
+  left: 555rpx;
+  line-height: 74rpx;
+  border-radius: 0 37rpx 37rpx 0;
+}
+
+/* 搜索模块结束 */
+
+.ad {
+  margin: 12rpx 0;
+  display: flex;
+  flex-direction: row;align-items: center;
+  background-color: white;
+  overflow: hidden;
+}
+.tctt{margin-left: 30rpx;font-weight: bolder;font-size: 30rpx;}
+.ad-icon {
+  line-height: 64rpx;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+  float: left;
+  height: 35rpx;
+  width: 40rpx;
+}
+
+.adinfo {
+  font-size: 26rpx;
+  width: 500rpx;
+}
+/* 导航模块开始 */
+.classify swiper-item view .classify_logo image {
+  border-radius: 10rpx;
+}
+
+/* 导航模块结束 */
+
+/* 我要入驻开始 */
+
+.join {
+  width: 100%;
+  height: 109rpx;
+  padding: 0 30rpx;
+  background-color: white;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.jion-img {
+  display: inline-block;
+  width: 79rpx;
+  height: 79rpx;
+  position: absolute;
+  top: 15rpx;
+}
+
+.jion-one {
+  font-size: 26rpx;
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 133rpx;
+  /* vertical-align: top; */
+}
+
+.jion-two {
+  font-size: 26rpx;
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  /* width: 200rpx; */
+  position: absolute;
+  left: 133rpx;
+  top: 63rpx;
+  /* vertical-align: middle; */
+}
+
+.join-name {
+  color: #ed4149;
+  font-size: 26rpx;
+}
+
+.jiony {
+  background-color: #ff6160;
+  border-radius: 10rpx;
+  width: 158rpx;
+  font-size: 26rpx;
+  height: 59rpx;
+  color: white;
+}
+
+.jionbo {
+  width: 500rpx;
+  height: 35rpx;
+  margin-left: 20rpx;
+  line-height: 35rpx;
+  font-size: 26rpx;
+}
+
+/* 我要入驻结束 */
+
+/* 热门模块开始 */
+
+.marry {
+  width: 100%;
+  overflow-x: hidden;
+  height: auto;
+  background-color: white;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #eee;
+  text-align: center;
+}
+
+.luntext {
+  height: auto;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+}
+
+.luntext_Item {
+  padding: 1rpx;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.luntext_Item_text {
+  font-size: 30rpx;
+}
+
+.weui-navbar__item {
+  width: 33.3%;
+  padding: 15rpx 0;
+  position: relative;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color: #eb414a;
+  position: relative;
+}
+
+.zheline.block {
+  display: block;
+  background-color: #eb414a;
+}
+
+.weui-navbar__slider {
+  width: 120rpx;
+  height: 3rpx;
+  margin-top: 10rpx;
+}
+
+.weui-navbar {
+  background-color: white;
+  border-bottom: none;
+}
+
+.weui-tab__content {
+  padding-top: 0;
+}
+
+.weui-cells {
+  margin-top: 20rpx;
+}
+
+.zheline {
+  background-color: #eb414a;
+  height: 5rpx;
+  width: 74%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 14%;
+  display: none;
+}
+
+/* ------------------------------------------------ */
+
+.sellers {
+  padding: 0 30rpx;
+  height: 207rpx;
+  background-color: white;
+  position: relative;
+  margin-bottom: 22rpx;
+}
+
+.sellers-img {
+  display: inline-block;
+  width: 158rpx;
+  height: 158rpx;
+  position: absolute;
+  top: 25rpx;
+}
+
+.sellersname {
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  top: 38rpx;
+  left: 219rpx;
+  font-size: 30rpx;
+}
+
+.compone {
+  position: absolute;
+  height: 40rpx;
+  line-height: 40rpx;
+  top: 88rpx;
+  left: 219rpx;
+  width: 400rpx;
+  font-size: 26rpx;
+  color: #808080;
+}
+
+.componeimg {
+  width: 33rpx;
+  height: 30rpx;
+}
+
+.hot {
+  position: absolute;
+  top: 135rpx;
+  left: 444rpx;
+  font-size: 26rpx;
+  color: #808080;
+}
+
+.starbox {
+  display: inline-block;
+  height: 32rpx;
+  width: 200rpx;
+  position: absolute;
+  top: 137rpx;
+  left: 219rpx;
+  /* background-color: red; */
+}
+
+.star {
+  float: left;
+  width: 35rpx;
+  height: 32rpx;
+}
+
+.telephone {
+  width: 78rpx;
+  height: 78rpx;
+  position: absolute;
+  top: 40rpx;
+  right: 30rpx;
+}
+
+.distance {
+  position: absolute;
+  top: 143rpx;
+  right: 30rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #f28488;
+}
+
+/* 热门模块结束 */
+
+.store {
+  width: 95%;
+  height: 200rpx;
+  background: #fff;
+  margin: 0 auto 0;
+}
+
+.store_img {
+  width: 25%;
+  height: 100%;
+}
+
+.store_info {
+  width: 75%;
+  height: 80%;
+  margin-top: 20rpx;
+}
+
+.store_img image {
+  width: 90%;
+  height: 150rpx;
+}
+
+.store_info>view {
+  width: 100%;
+  height: 53rpx;
+}
+
+.store_info>view:nth-child(1) {
+  line-height: 60rpx;
+  font-size: 30rpx;
+  text-indent: 15rpx;
+  color: #333;
+}
+
+.store_info>view:nth-child(2) {
+  line-height: 53rpx;
+  font-size: 26rpx;
+  text-indent: 55rpx;
+  color: #333;
+}
+
+.store_info>view:nth-child(3) {
+  line-height: 53rpx;
+  font-size: 26rpx;
+  text-indent: 55rpx;
+  color: #333;
+}
+
+.store_icon {
+  width: 30rpx;
+  height: 30rpx;
+  left: 15rpx;
+}

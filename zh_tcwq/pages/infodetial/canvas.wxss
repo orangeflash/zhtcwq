@@ -1,0 +1,12 @@
+/* zh_tcwq/pages/infodetial/canvas.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+view{
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  margin-top: 50rpx;
+}

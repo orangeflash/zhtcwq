@@ -1,0 +1,134 @@
+<!--pages/seller/seller.wxml-->
+<!-- 搜索模块开始 -->
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view style='width:100%;overflow-x:hidden'>
+  <view class='container pbnavbar'>
+    <view class='searchbox'>
+      <input style='border:5rpx solid {{System.color}}' class='input' bindinput="bindinput" placeholder='请输入您要查询的关键词'></input>
+      <button style='background:{{System.color}}' class='search' bindtap='search'>搜索</button>
+      <view wx:if="{{djss}}" class='ssjg'>
+        <scroll-view style='height:450rpx;' scroll-y='true'>
+          <view wx:if="{{ssjgarr.length>0}}" wx:for="{{ssjgarr}}" bindtap='store' data-id='{{item.id}}'>{{item.store_name}}</view>
+          <view wx:if="{{ssjgarr.length==0}}">暂无符合你搜索的商家~</view>
+        </scroll-view>
+        <button style='background:{{System.color}}' bindtap='sqss'>收起</button>
+      </view>
+    </view>
+
+    <!-- 搜索模块结束 -->
+    <!-- 首页轮播图开始 -->
+    <view class="body" wx:if="{{slide.length!=0}}">
+      <view class='banner'>
+        <view class="swiper-container">
+          <swiper autoplay="auto" interval="5000" indicator-dots="true" indicator-color="#e5e5e5" indicator-active-color="{{System.color}}" class="swiper">
+            <block wx:for="{{slide}}" wx:key="unique">
+              <swiper-item>
+                <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.state}}' data-name='{{item.xcx_name}}' data-wb_src='{{item.wb_src}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode="aspectFill" src="{{url}}{{item.logo}}" class="img"></image>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+    </view>
+    <!-- 首页轮播图结束 -->
+    <view class='ad' wx:if="{{store_name!=null}}">
+      <!-- <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image> -->
+      <view class='tctt' style='color:{{System.color}}'>{{System.sjgg_name}}</view>
+      <swiper class="newest_content gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{msgList}}" wx:key="unique">
+          <swiper-item>
+            <view class='adinfo gobyndsingle' bindtap='notice' data-id='{{item.id}}'>
+              <rich-text nodes="{{item.title}}"></rich-text>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <!-- 导航模块开始 -->
+    <swiper wx:if="{{nav.length>0}}" indicator-dots='{{nav.length>1}}' indicator-color="#e5e5e5" indicator-active-color="{{System.color}}" class='classify' style='height:{{height}}rpx' autoplay="true" interval="4000" duration="1000" circular="true">
+      <block wx:for="{{nav}}" wx:key="unique">
+        <swiper-item>
+          <block wx:for="{{item}}" wx:key="{{item.value}}">
+            <view bindtap='store_type_id' data-id='{{item.id}}' data-name='{{item.type_name}}'>
+              <view class='classify_logo rel'>
+                <image class='ab udlr' mode='aspectFill' src='{{url}}{{item.img}}'></image>
+              </view>
+              <view class='classify_name gobyndsingle center'>{{item.type_name}}</view>
+            </view>
+          </block>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 导航模块结束 -->
+
+    <!-- 我要入驻开始 -->
+    <view class='join flex-center'>
+      <view class="jiony flex1" style='background:{{System.color}}' wx:if="{{System.is_rz=='1'}}" bindtap='sellted'>我要入驻</view>
+      <view class="jiony flex1" style='background:{{System.color}}' wx:else>最新入驻</view>
+      <!-- <view class="jionbo gobyndsingle">• 恭喜【<text class='join-name'>黑猫</text>】入驻</view> -->
+      <swiper class="jionbo gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{store}}" wx:key="unique">
+          <swiper-item>
+            • 恭喜【
+            <text class='join-name' style='color:{{System.color}}'>{{item.store_name}}</text>】成功入驻
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 我要入驻结束 -->
+
+    <!-- 热门模块开始 -->
+    <view class="marry">
+      <view>
+        <block wx:for="{{luntext}}" wx:key="*this">
+          <view id="{{index}}" style='display:inline-block' class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view style="color:{{activeIndex == index ?System.color:''}}" class="luntext_Item_text weui-navbar__title">{{item}}</view>
+            <view style='background:{{System.color}}' id="{{index}}" class="zheline {{activeIndex == index ? 'block' : ''}}"></view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- -----------------------附近部分------------------------ -->
+    <view class='sellers rel' bindtap="sellerinfo" wx:for="{{store}}" wx:key="unique">
+      <image mode='aspectFill' src='{{url}}{{item.logo}}' class='sellers-img' bindtap='store' data-id='{{item.id}}'></image>
+      <text class='sellersname rel' bindtap='store' data-id='{{item.id}}'><text class="content_zhi color2" wx:if="{{item.is_top=='1'}}">置顶</text>{{item.store_name}}</text>
+      <view class='compone flex-center' bindtap='store' data-id='{{item.id}}'>
+        <image class='componeimg' src='../image/address3.png'></image>
+        <view style='width:370rpx;height:40rpx;margin-left:10rpx;' class='gobyndsingle'>{{item.address}}</view>
+      </view>
+      <view class='starbox' wx:if="{{item.score==0||item.score==5}}">
+        <image class='star' wx:for="{{star}}" wx:key="unique" src='{{item.img}}'></image>
+      </view>
+      <view class='starbox' wx:if="{{item.score==1}}">
+        <image class='star' wx:for="{{star1}}" wx:key="unique" src='{{item.img}}'></image>
+      </view>
+      <view class='starbox' wx:if="{{item.score==2}}">
+        <image class='star' wx:for="{{star2}}" wx:key="unique" src='{{item.img}}'></image>
+      </view>
+      <view class='starbox' wx:if="{{item.score==3}}">
+        <image class='star' wx:for="{{star3}}" wx:key="unique" src='{{item.img}}'></image>
+      </view>
+      <view class='starbox' wx:if="{{item.score==4}}">
+        <image class='star' wx:for="{{star4}}" wx:key="unique" src='{{item.img}}'></image>
+      </view>
+      <text class='hot'>人气：{{item.views}}</text>
+      <image class='telephone' src='../image/telephone.png' bindtap='phone' data-tel='{{item.tel}}'></image>
+      <text class='distance'>{{item.distance}}km</text>
+    </view>
+    <view class='sellers rel hot_store' wx:if="{{store==''||store==null}}" style='width:100%;height:350rpx;padding:0'>
+      <image class='ab lr' mode='aspectFill' style='width:400rpx;height:300rpx;' src='../image/tie2.png'></image>
+      <view class='ab zanwu'>暂无附近的商家</view>
+    </view>
+    <view class='loading rel' wx:if="{{refresh_top==true&&store.length>0}}">
+      我也是有底线的
+    </view>
+    <view class='loading rel' wx:if="{{refresh_top==false&&store.length>0}}">
+      <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+    </view>
+  </view>
+</view>
+<button wx:if="{{System.is_kf=='1'}}" session-from='{{userinfo.name}}' open-type='contact' class='kefu'>客服</button>
+<button wx:if="{{System.is_kf=='1'}}" class='hddb' bindtap='hddb'>
+  <image src='../image/zd.png'></image>
+</button>

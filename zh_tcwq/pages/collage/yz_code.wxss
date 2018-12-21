@@ -1,0 +1,38 @@
+/* zh_cjdianc/pages/collage/yz_code.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.yz_code{
+  width: 100%;
+  height: 400rpx;
+}
+icon{
+  /* display: block; */
+  /* background: red; */
+  margin: 0 auto 0;
+  width: 100rpx;
+  height: 100rpx;
+}
+.rel{
+  /* position: relative; */
+}
+.ab{
+  /* position: absolute; */
+}
+.udlr{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+button{
+  font-size: 28rpx;
+  color: #fff;
+  height: 80rpx;
+  width: 80%;
+}
+button::after{
+  border: none;
+}

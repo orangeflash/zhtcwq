@@ -1,0 +1,229 @@
+<!-- <form  bindsubmit="formSubmit"  report-submit="true" bindreset="formReset"> -->
+<!-- <view>
+    <view class='etitle fon_30'>
+      <view class='exian'></view>
+      <view>已选商品</view>
+    </view>
+    <view class='ticket fon_30'>
+      <view class='gobyndsingle'>{{options.name}}</view>
+      <view>×1</view>
+      <view style='color:{{color}}'>￥{{options.price}}</view>
+    </view>
+    <view class='total'>
+      <view style='color:{{color}}'>￥{{options.price}}</view>
+      <view>总计：</view>
+    </view>
+  </view>
+  <view class='sign'>
+    <view class='etitle fon_30'>
+      <view class='exian'></view>
+      <view>报名信息</view>
+    </view>
+    <view class='sign_up fon_30'>
+      <view>姓名
+        <text>*</text>
+      </view>
+      <view>
+        <input name="name" placeholder='请输入您的名字' value=''></input>
+      </view>
+    </view>
+    <view class='sign_up fon_30'>
+      <view>联系方式
+        <text>*</text>
+      </view>
+      <view>
+        <input type='number' name="tel" placeholder='请输入您的联系方式' value=''></input>
+      </view>
+    </view>
+  </view> -->
+<!-- <button form-type='submit' style='background:{{color}}' wx:if="{{place_num!=2}}">提交报名</button>
+  <button style='background:{{color}}' wx:else>提交报名</button> -->
+<!-- </form> -->
+<!--zh_dianc/pages/takeout/takeoutform.wxml-->
+<view wx:if="{{isloading}}" class='loadinggif'>
+  <image src='../../img/loading.gif'></image>
+</view>
+<block wx:if="{{!isloading}}">
+  <import src="/zh_cjdianc/pages/commons/xy.wxml" />
+  <view class='formmain'>
+    <view class='formhdzq'>
+      <view class="weui-cells weui-cells_after-title">
+        <view bindtap='ckwz' data-jwd='{{store.coordinates}}' url="" class="weui-cell weui-cell_access zqaddress" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image mode='aspectFit' src="../image/address.png" style="margin-right: 20rpx;vertical-align: middle;width:40rpx; height: 40rpx;"></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class='zqdz1'>
+              商家地址
+            </view>
+            <view class='zqdz2'>{{store.address}}</view>
+            <view class='zqdz3'>
+              <!-- 商家距离当前位置273米 -->
+              <!-- <text>查看地图</text> -->
+            </view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <!-- <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">自取时间</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access picker" style='color:{{color}}'>
+            <picker mode="date" style=' width: 220rpx' start='{{datestart}}' bindchange="bindDateChange">
+              <view class="weui-input flex-row flex-y-center">{{date}}</view>
+            </picker>
+            <view>日</view>
+            <picker mode="time" style=' width: 120rpx' value="{{time}}" start="{{timestart}}" end="23:59" bindchange="bindTimeChange">
+              <view class="weui-input flex-row flex-y-center flex-x-center">{{time}}</view>
+            </picker>
+            <view>分</view>
+          </view>
+        </view> -->
+        <view style='padding:8rpx 30rpx;' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">联系人</view>
+          <view class="weui-cell__ft">
+            <input class="weui-input" bindinput='KeyName' value='{{name}}' placeholder="请输入联系人" />
+          </view>
+        </view>
+        <view style='padding:8rpx 30rpx;' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">联系电话</view>
+          <view class="weui-cell__ft">
+            <input class="weui-input" type='number' bindinput='KeyMobile' value='{{mobile}}' placeholder="请输入联系电话" />
+          </view>
+        </view>
+        <!-- <label class="weui-cell weui-check__label" bindtap='checkboxChange'>
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="21" wx:if="{{!checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" color='#34aaff' type="success" size="21" wx:if="{{checked}}"></icon>
+          </view>
+          <view class="weui-cell__bd" catchtap='openxy'>同意
+            <text>《到店自取服务协议》</text>
+          </view>
+        </label> -->
+      </view>
+    </view>
+    <view class='formbd'>
+      <view class="flex-row sjname">
+        <image src='{{url}}{{store.logo}}'></image>
+        <view class="flex-grow-1">
+          {{store.store_name}}
+        </view>
+      </view>
+      <block wx:for="1" wx:key="*this" wx:for-item="item" wx:for-index="index">
+        <view class="cart-item flex-row flex-y-center">
+          <view class="flex-grow-0 flex-y-center">
+            <image class="goods-pic" mode="aspectFill" src="{{url}}{{goods.logo}}"></image>
+          </view>
+          <view class="flex-grow-1 flex-col">
+            <view class="flex-grow-1">
+              <view class="goods-name">{{goods.name}}</view>
+              <view class="attr-list">
+                <!-- <block wx:for="{{item.attr_list}}" wx:for-item="attr" wx:for-index="index"> -->
+                <view class="attr-item">{{QgGoodInfo.spec}}
+                </view>
+                <!-- </block> -->
+              </view>
+            </view>
+            <view class="flex-grow-0 flex-row">
+              <view class="flex-grow-1 num">×1</view>
+              <view class="flex-grow-0 price">￥{{goods.money}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class='formftyh'>
+        <view class="sfk flex-row flex-y-center">
+          <view class='sfk-fv flex-grow-0'>实付款</view>
+          <view class="flex-grow-1 xiaoji">
+            <view>已优惠￥{{goods.yh}}</view>
+            <view>小计</view>
+            <view>￥{{goods.money}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='formft'>
+        <view class="weui-cells weui-cells_after-title">
+          <view style='border-bottom: 1rpx solid #efeff4;' class="weui-cell weui-cell_access">
+            <view class="weui-cell__hd" style='min-width:120rpx;'>留言</view>
+            <view class="weui-cell__bd"><input bindinput='bindinput' maxlength='50' placeholder="50字以内（选填）"></input></view>
+          </view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <view class='dbtjdd flex-row flex-y-center'>
+    <view class='dbtjddl flex-row flex-y-center'>
+      <view class='flex-grow-0'>已优惠￥{{goods.yh}}</view>
+      <view class='flex-grow-1'>合计
+        <text>￥{{goods.money}}</text>
+      </view>
+    </view>
+    <view class='dbtjddr'>
+      <!-- <button formType="submit" style='background:{{color}}'>
+          提交订单
+        </button> -->
+      <form  bindsubmit="tjddformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit" style='background:{{color}}' bindtap='alone' wx:if="{{place_num!=2}}">提交订单</button>
+      <button formType="submit" style='background:{{color}}' wx:else>提交订单</button>
+      </form>
+    </view>
+  </view>
+  <view class="modalzz" hidden="{{mdoaltoggle}}" bindtap="mdoalclose"></view>
+  <view class="modal {{mdoaltoggle?'':'active'}}">
+    <view class='modalbd'>
+      <icon type='success' size='50'></icon>
+      <view class='xdcg'>下单成功!</view>
+    </view>
+  </view>
+  <template is="xytemp" data="{{fwxy,xymc,xynr}}" />
+  <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+    <!-- 支付方式 -->
+    <view class="drawer_screen" bindtap='yczz' wx:if="{{showModal}}"></view>
+    <!--content-->
+    <view class="drawer_box" wx:if="{{showModal}}">
+      <!--drawer content-->
+      <view class="drawer_title">支付方式</view>
+      <view class="weui-cells weui-cells_after-title">
+        <radio-group class="radio-group" name="radiogroup" bindchange="radioChange1">
+          <label>
+            <view class="weui-cell">
+              <view class="weui-cell__hd" class='zfimg'>
+                <image src="../image/weixin1.png"></image>
+              </view>
+              <view class="weui-cell__bd">微信支付</view>
+              <view class="weui-cell__ft">
+                <radio value="wxzf" checked="{{zffs==1}}" />
+              </view>
+            </view>
+          </label>
+          <label wx:if="{{kqyue}}">
+            <view class="weui-cell" style='border-top:1rpx solid #e6e6e6;'>
+              <view class="weui-cell__hd" class='zfimg'>
+                <image src="../../img/yeqb.png"></image>
+              </view>
+              <view class="weui-cell__bd">余额支付
+                <text class='yetext'>您的余额 {{userInfo.wallet}}</text>
+              </view>
+              <view class="weui-cell__ft">
+                <radio disabled='{{!kqyue}}' color='#FF9700' value="yezf" checked="{{zffs==2}}" />
+              </view>
+            </view>
+          </label>
+
+        </radio-group>
+      </view>
+      <view class="drawer_title1">您选择的{{zfwz}}
+        <text wx:if="{{zffs==3}}">({{jf_proportion}}积分可抵1元)</text>
+      </view>
+      <button class="{{btntype}}" disabled='{{zfz}}' formType="submit">
+        <view wx:if="{{!zfz&&zffs!=4}}">确定支付
+          <text class='zftext'>￥{{QgGoodInfo.money}}</text>
+        </view>
+        <view wx:if="{{!zfz&&zffs==4}}">确定到付
+          <text class='zftext'>￥{{totalPrice}}</text>
+        </view>
+        <view wx:if="{{zfz}}">
+          <text class='zfztext'>支付中...</text>
+        </view>
+      </button>
+    </view>
+  </form>
+</block>

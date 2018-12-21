@@ -1,0 +1,99 @@
+<scroll-view scroll-y="true" style='height:{{windowHeight}}px;' bindscrolltolower="EventHandle">
+  <view>
+    <!-- <view class="search">
+    <input type="text" class="search_inp" placeholder="后台可自定义" placeholder-style="color:#999;" />
+    <image class="search_img" src="../image/sousuo@3x.png"></image>
+  </view> -->
+    <!--字体轮播开始  -->
+    <view class="marry">
+      <view bindtap='wole' style="border-bottom:{{activeIndex1 == 1 ?5:'0'}}rpx solid {{system.color}};color:{{activeIndex1 == 1 ?system.color:''}}" class="{{activeIndex1 == 1 ? 'colora' : 'colorb'}}">全部</view>
+      <scroll-view class='scroll_view_x' scroll-x="true">
+        <view wx:for="{{classification}}" style="color:{{activeIndex == index ?system.color:''}};border-bottom:{{activeIndex == index ?5:'0'}}rpx solid {{system.color}}" wx:key="*this" id="{{index}}" class="classification gobyndsingle {{activeIndex == index ? 'weui-bar__item_on' : 'weui-bar__item_to'}}"
+          bindtap="tabClick">
+          {{item.name}}
+        </view>
+      </scroll-view>
+    </view>
+    <!--字体轮播结束  -->
+    <view>
+      <view class="weui-tab__content content" wx:for="{{classification_info}}" wx:key="*this" wx:if="{{classification_info.length!=0}}">
+        <!--上面部分开始  -->
+        <view class="content_top">
+          <view class="content_left">
+            <image wx:if="{{item.tz.user_img!=null}}" src="{{item.tz.user_img}}" class="content_img"></image>
+            <image wx:elif="{{item.tz.user_img2!=''}}" src="{{url}}{{item.tz.user_img2}}" class="content_img"></image>
+            <image wx:else src="{{url}}{{item.tz.logo}}" class="content_img"></image>
+            <view class="content_zhong">
+              <view class="content_name">{{item.tz.user_name}}</view>
+              <view class="content_text">
+                <view class="content_zhi color2" wx:if="{{item.tz.top==1}}">置顶</view>
+                <view class="content_zhi color1" wx:if="{{item.tz.type_name!=null}}">{{item.tz.type_name}}</view>
+                <view class="content_zhi color2" wx:if="{{item.tz.type2_name!=null}}">{{item.tz.type2_name}}</view>
+                <view class="content_zheng" wx:if="{{item.tz.type2_name!=null}}">{{item.tz.type2_name}}</view>
+              </view>
+            </view>
+          </view>
+          <block wx:if="{{system.is_bdtel=='1'}}">
+            <view wx:if="{{system.is_ff=='2'}}" class="content_right" bindtap='phone' data-id='{{item.tz.user_tel}}' style='background:{{system.color}}'>
+              <view class='rel'>
+                <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+              </view>
+              <view>拨打电话</view>
+            </view>
+            <view wx:if="{{system.is_ff=='1'}}" class="content_right" bindtap='see' data-id='{{item.tz.id}}' style='background:{{system.color}}'>
+              <view class='rel'>
+                <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
+              </view>
+              <view>拨打电话</view>
+            </view>
+          </block>
+        </view>
+        <!--文字部分  -->
+        <view class="content_wen gobyndsingle" bindtap='see' data-id='{{item.tz.id}}'>
+          {{item.tz.details}}
+        </view>
+        <view class="content_wen">
+          <view wx:for="{{item.label}}" wx:key="*this" style='border:1rpx solid {{item.number}};color:{{item.number}}'>{{item.label_name}}</view>
+        </view>
+        <!--图片部分  -->
+        <view class="content_picture" wx:if="{{item.tz.img!=''}}">
+          <image wx:for="{{item.tz.img}}" src="{{url}}{{item}}" wx:key="*this"></image>
+        </view>
+
+        <view class="content_chakan">
+          <view class="content_info">{{item.tz.time}}发布</view>
+          <view wx:if="{{item.tz.lat!=''}}" class="content_info">离你{{item.tz.juli}}</view>
+        </view>
+
+        <view class="content_liulan">
+          <image src="../image/liulan.png" class="eye"></image>
+          <view class="content_num">{{item.tz.views}}</view>
+          <view class="content_ren">人浏览</view>
+          <image src='../image/zan.png' class='zan' wx:if="{{thumbs_ups==null}}" bindtap='thumbs_up' data-id='{{item.tz.id}}' data-num='{{item.tz.givelike}}'></image>
+          <image src='../image/thumbs_up.png' class='zan' wx:if="{{thumbs_ups==true}}"></image>
+          <view class='zannum' wx:if="{{thumbs_up==null}}">{{item.tz.givelike}}</view>
+          <view class='zannum' wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>人点赞
+           <view class='zannum rel' bindtap='see' data-id='{{item.tz.id}}' style='margin-left:150rpx;'>
+            查看详情>></view>
+          <view class="kuang"></view>
+        </view>
+      </view>
+      <view class='none_info rel' wx:if="{{classification_info.length==0}}">
+        <image class='ab udlr' mode='aspectFill' src='../image/tie2.png'></image>
+      </view>
+      <view wx:if="{{classification_info.length==0}}" style='color:#999;background:#fff;text-align:center;font-size:26rpx;padding:20rpx 0 60rpx 0;'>该分类暂无发布的帖子</view>
+    </view>
+  </view>
+</scroll-view>
+<view class='comments border_two rel' bindtap='hdsy'>
+  <button></button>
+  首页
+</view>
+<view class='comments border_three rel' bindtap='hdft'>
+  <button></button>
+  发布
+</view>
+<view class='comments border_four '>
+  转发
+  <button open-type="share"></button>
+</view>

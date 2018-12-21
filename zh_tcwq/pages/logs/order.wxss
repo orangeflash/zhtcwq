@@ -1,0 +1,149 @@
+/* zh_tcwq/pages/logs/order.wxss */
+.ewm{
+  padding: 20rpx;
+}
+.ewm image{
+  width: 70vw;
+  height: 70vw;
+}
+.order{
+  width: 100%;
+  overflow-x: hidden;
+}
+/* 热门模块开始 */
+
+.marry {
+  width: 100%;
+  overflow-x: hidden;
+  height: auto;
+  background-color: white;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #eee;
+  text-align: center;
+}
+.luntextItem {
+  padding: 1rpx;
+  flex: 1;
+  margin-right: 20rpx;
+}
+.itemtext {
+  font-size: 30rpx;
+}
+.navbaritem {
+  padding: 25rpx 0;
+  position: relative;
+}
+.navbaritem.itemon {
+  color: #eb414a;
+  position: relative;
+}
+.zheline.block {
+  display: block;
+  background-color: #eb414a;
+}
+.weui-navbarslider {
+  width: 120rpx;
+  height: 3rpx;
+  margin-top: 10rpx;
+}
+.weuinavbar {
+  background-color: white;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.weuicells {
+  margin-top: 20rpx;
+}
+.zheline {
+  background-color: #eb414a;
+  height: 5rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0%;
+  display: none;
+}
+.banner{
+  margin-top: 20rpx;
+  background-color: white;
+  font-size: 28rpx;
+  color: #333;
+}
+.bannertop{
+  padding: 30rpx;
+}
+.bannertype{
+  color: #eb414a;
+}
+.bannertitle{
+  max-width: 550rpx;
+}
+.bannercon{
+  background-color: #f5f5f5;
+  padding: 20rpx;
+  display: flex;
+}
+.bannercon>image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.bannerinfo{
+  width: 530rpx;
+  margin-left: 20rpx;
+}
+.bannername{
+  width: 400rpx;
+}
+.bannernum{
+  color: #333;
+  font-weight: bold;
+}
+.bannermoney{
+  text-align: right;
+  margin-top: 5rpx;
+  color: #666;
+}
+.content{
+  background-color: white;
+  padding: 20rpx;
+}
+.contentgong{
+  text-align: right;
+  color: #666;
+  /* margin-bottom: 20rpx;   */
+}
+.contentfoot{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.fukuan,.cancel{
+  width: 150rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+}
+.cancel{
+  border: 1rpx solid #666;
+}
+.fukuan{
+  border: 1rpx solid #eb414a;
+  color: #eb414a;
+}
+.nomore{
+  color: #999;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.bannernumber{
+  margin-bottom: 8rpx;
+  color: #999;
+}
+

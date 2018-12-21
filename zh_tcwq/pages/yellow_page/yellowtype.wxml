@@ -1,0 +1,106 @@
+<!-- 热门模块开始 -->
+<!-- <scroll-view wx:if="{{infortype.length>1}}" class="marry1" scroll-x="true">
+  <block wx:for="{{infortype}}" wx:key="*this">
+    <view data-index="{{index}}" id="{{item.id}}" style='display:inline-block' class="proitem {{scactiveIndex == index ? 'weuibaron' : ''}}" bindtap="sctabClick">
+      <view>{{item.name}}</view>
+    </view>
+  </block>
+</scroll-view>
+<view class="marry">
+  <view>
+    <block wx:for="{{luntext}}" wx:key="*this">
+      <view id="{{index}}" style='display:inline-block' class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="luntext_Item_text weui-navbar__title">{{item}}</view>
+        <view id="{{index}}" class="zheline {{activeIndex == index ? 'block' : ''}}"></view>
+      </view>
+    </block>
+  </view>
+</view> -->
+<view class="choice-bar">
+  <view style="color:{{borbtm==2?System.color:''}};border-color:{{borbtm==2?System.color:''}}" bindtap="choiceItem" data-item="2" class="chioce-item chioce-item-first {{borbtm==2?'border-bottom':'border-bottom1'}} gobyndsingle" hover-class="click-once-opaque">{{activeTypeIndexname}}
+    <image class="icon-chioce" src="{{sortingChioceIcon}}"></image>
+  </view>
+  <view style="color:{{borbtm==1?System.color:''}};border-color:{{borbtm==1?System.color:''}}" bindtap="choiceItem" data-item="1" class="chioce-item chioce-item-first {{borbtm==1?'border-bottom':'border-bottom1'}}" hover-class="click-once-opaque">{{activeSortingIndexname}}
+    <image class="icon-chioce" src="{{districtChioceIcon}}"></image>
+  </view>
+  <!-- <view bindtap="choiceItem" data-item="3" class="chioce-item chioce-item-last" hover-class="click-once-opaque">筛选
+    <image class="icon-chioce" src="/images/icon-chioce.png"></image>
+  </view> -->
+  <!-- <view class="district-list{{!chioceDistrict?' chioce-list-hide':' chioce-list-show'}}">
+    <view class="district-left">
+      <view wx:for="{{districtList}}" catchtap="selectDistrictParent" data-index="{{index}}" class="district-parent{{index==activeDistrictParentIndex||index==0&&activeDistrictParentIndex==-1?' district-parent-active':''}}" hover-class="click-once">{{item.district_name}}</view>
+    </view>
+    <view class="district-right">
+      <scroll-view scroll-y class="scroll-district" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollIntoView}}">
+        <view id="{{index}}" wx:for="{{districtList[activeDistrictParentIndex==-1?0:activeDistrictParentIndex].district_children_list}}" catchtap="selectDistrictChildren" data-index="{{index}}" class="district-children" hover-class="click-once">{{item.district_name}}</view>
+      </scroll-view>
+    </view>
+  </view> -->
+  <view class="sorting-list{{!chioceSorting?' chioce-list-hide':' chioce-list-show'}}">
+    <scroll-view scroll-y='true' style='height:500rpx;'>
+      <view wx:for="{{typeList}}" id="{{item.id}}" catchtap="selectType" data-index="{{index}}" class="sorting-item" hover-class="click-once">{{item.name}}</view>
+    </scroll-view>
+  </view>
+  <view class="sorting-list{{!chioceDistrict?' chioce-list-hide':' chioce-list-show'}}">
+    <view wx:for="{{sortingList}}" catchtap="selectSorting" data-index="{{index}}" class="sorting-item" hover-class="click-once">{{item}}</view>
+  </view>
+  <!-- <view class="filter-list{{!chioceFilter?' chioce-list-hide':' chioce-list-show'}}">
+    <view wx:for="{{filterList}}" catchtap="selectFilter" data-index="{{index}}" class="filter-item" hover-class="click-once">{{item.value}}
+      <image hidden="{{!item.selected}}" class="icon-selected" src="/images/icon-selected.png"></image>
+    </view>
+    <view class="filter-footer">
+      <button catchtap="resetFilter" plain="true" class="button-reset" type="default" size="mini" hover-class="click-once">重置</button>
+      <button catchtap="filterButtonClick" class="button-submit" type="primary" size="mini">确定</button>
+    </view>
+  </view> -->
+</view>
+<view bindtap="hideAllChioce" class="mask" hidden="{{!chioceDistrict&&!chioceSorting&&!chioceFilter}}">
+</view>
+<view class='sxhd'>
+  <view></view>
+</view>
+<view class="container">
+    <view class="yelist" wx:if="{{store.length!=0}}">
+      <view class='yellow_list' wx:for="{{store}}" bindtap='yellow_info' data-id='{{item.id}}' data-user_id='{{item.user_id}}'>
+        <view class='list_head'>
+          <view class='rel'>
+            <image class='ab ud yellow_logo' mode='aspectFill' src='{{url}}{{item.logo}}'></image>
+          </view>
+          <view class='list'>
+            <view class='list_name'>
+              <view class='rel gobyndsingle'>
+                {{item.company_name}}{{item.vip}}
+              </view>
+              <view class='rel' wx:if="{{item.vip==true}}">
+                <image class='ab ud' mode='aspectFill' src='../image/vip.png'></image>
+              </view>
+            </view>
+            <view>
+              <image mode='aspectFill' src='../image/dianhuahong.png'></image>
+              <text>{{item.link_tel}}</text>
+            </view>
+          </view>
+          <view class='rel tel_icon'>
+            <view class='ab ud' style='background:{{System.color}}'>
+              <image class='ab udlr yellow_tel' mode='aspectFill' src='../image/phone1.gif'></image>
+            </view>
+          </view>
+        </view>
+        <view class='list_body'>
+          <image mode='aspectFill' src='../image/address3.png'></image>
+          <text class='gobyndsingle' style='width:450rpx;'>{{item.company_address}}</text>
+          <text style='color:{{System.color}}' wx:if="{{item.distance!=NaN}}">{{item.distance}}km</text>
+          <text style='color:{{System.color}}' wx:if="{{item.distance==NaN}}">0.00km</text>
+        </view>
+      </view>
+    </view>
+    <view class='loading rel' style='height: 60rpx;' wx:if="{{refresh_top==true&&store.length!=0}}">
+      没有更多了~
+    </view>
+    <view class='loading rel' style='height: 60rpx;' wx:if="{{refresh_top==false&&store.length!=0}}">
+      <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+    </view>
+</view>
+<view class='none udlr' wx:if="{{store.length==0}}">
+  <image mode='widthFix' src='../image/none_welfare.png'></image>
+</view>

@@ -1,0 +1,132 @@
+<!--pages/tongcheng/tongchenginfo.wxml-->
+<view class='home'>
+  <view class='cheader'>
+    <view class='ctitle'>{{spinfo.info.title}}</view>
+    <view class='flex-bet'>
+      <view class='flex-center'>
+        <image class='cuserimg' src='{{url}}{{spinfo.info.logo}}'></image>
+        <view class='cfont1'>
+          <text class='cfont2'>{{spinfo.info.nick_name}}</text>
+          <text class='cfont2'>{{spinfo.info.time}}</text>
+        </view>
+      </view>
+      <button open-type="share" class="share-bottom">
+        <image class='cshareimg' src='../image/onshare.png'></image>
+      </button>
+    </view>
+    <view class="tcsection1">
+      <video id="myVideo" src="{{spinfo.info.url}}" poster="{{url}}{{spinfo.info.fm_logo}}" controls="true"></video>
+    </view>
+    <view class='flex1 cyuedu'>阅读数
+      <text class='cfont3'>{{spinfo.info.yd_num}}</text>
+    </view>
+    <view class='flex1' bindtap='dz'>
+      <view class='flex1 {{dz?"clike":"like"}}'>
+        <image class='clikeimg' src='../image/{{dz?"staoxin":"taoxin"}}.png'></image>
+        <text>{{spinfo.dz.length}}人喜欢</text>
+      </view>
+    </view>
+    <view class='flex1'>
+      <view class='cmore'>
+        <view>更多操作</view>
+      </view>
+    </view>
+  </view>
+  <view class='ibanner'>
+    <view class='flex3' bindtap='jrzy'>
+      <image class='ibanimg' src='../image/tubia1o@2x.png'></image>
+      <view>进入主页</view>
+    </view>
+    <button class='flex3 fxbtn' open-type='share'>
+      <image class='ibanimg' src='../image/qtubia1o@2x.png'></image>
+      <view>分享好友</view>
+    </button>
+    <view class='flex3' bindtap='fbxx'>
+      <image class='ibanimg' src='../image/satubia1o@2x.png'></image>
+      <view>发布信息</view>
+    </view>
+    <view class='flex3' bindtap='gdzx'>
+      <image class='ibanimg' src='../image/tubiao@2x.png'></image>
+      <view>更多资讯</view>
+    </view>
+  </view>
+  <ad wx:for="{{unitid}}" unit-id="{{item.src}}"></ad>
+  <view class="portrait flex2">
+    <view class="portrait_one flex3">
+      <view>{{spinfo.dz.length}}</view>
+      <view>赞</view>
+    </view>
+    <view class="portrait_one flex3" wx:for="{{spinfo.dz}}" wx:key="*this">
+      <image class="portrait_img" src="{{item.user_img}}"></image>
+    </view>
+  </view>
+  <!-- 评论模块开始 -->
+  <view class="portrait_ctop flex-bet">
+    <view class="flex-center">
+      <view class="portrait_cxian"></view>
+      <view class="portrait_com">评论</view>
+    </view>
+    <!-- <view class="flex-center">
+    <image class="portrait_cimg" src="../image/fang.png"></image>
+    <view class="portrait_ping" bindtap='comment'>我要评论</view>
+  </view> -->
+  </view>
+  <!-- 评论----------------- -->
+  <view class='userwords' wx:for="{{spinfo.pl}}">
+    <image class="userwords_img" src="{{item.user_img}}"></image>
+    <view class="userwords_rit">
+      <view class="flex-bet">
+        <view>
+          <view class="userwords_color">{{item.user_name}}</view>
+          <view class="userwords_color2">{{item.time}}</view>
+        </view>
+        <!-- <view class="userwords_color" bindtap="reply1" data-reflex_id='{{item.id}}' data-name='{{item.name}}'>回复</view> -->
+      </view>
+      <view class="userwords_content">
+        {{item.content}}
+      </view>
+      <!-- <view class="userwords_box" wx:if="{{item.reply!=''}}">
+      <view class="kuangs"></view>
+      <view class="userwords_one">
+        <text class="userwords_color">{{user_name}}</text>
+        <text class="userwords_mar" bindtap='reflex'>回复</text>
+        <text class="userwords_color">{{item.name}}</text>
+        <text>：</text>
+        <text>{{item.reply}}</text>
+      </view>
+    </view> -->
+    </view>
+  </view>
+  <!-- <view class='tcinfo'>
+    <view class='tcinfotext'>相关推荐</view>
+    <view class='tcbanner'>
+      <view class="tcsection">
+        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+          danmu-list="{{danmuList}}" poster="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=570437944,358180613&fm=27&gp=0.jpg" objectFit="cover" enable-danmu danmu-btn controls="true"></video>
+      </view>
+      <view class='tcremark flex-bet'>
+        <view>一天前</view>
+        <view class='flex-center'>
+          <image class='tchuifuimg1' src='../image/liulan.png'></image>
+          <view>38</view>
+          <image class='tchuifuimg' src='../image/zan1.png'></image>
+          <view>38</view>
+          <image class='tchuifuimg' src='../image/duihua.png'></image>
+          <view>38</view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!--——————————底部固定部分————————————  -->
+  <view class='tcfootmenu'></view>
+  <view class='tcfoot'>
+    <view class='tcfootbox'>
+      <input class='cfootinp' bindinput='bindinput' bindconfirm='bindconfirm' type='text' placeholder='写评论'></input>
+      <view class='flex-bet cfootrit'>
+        <image class='cpinlun' src='../image/fang.png' bindtap='pl'></image>
+        <image bindtap='back' class='cpinlun' src='../image/index.png'></image>
+        <button class='fxbtn' open-type='share'><image class='cpinlun' src='../image/nav1.png'></image></button>
+      </view>
+    </view>
+  </view>
+</view>

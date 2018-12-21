@@ -1,0 +1,138 @@
+<!--index.wxml-->
+<view class="zhezhao" hidden="{{djqd}}"></view>
+<view class='qdym' hidden='{{djqd}}'>
+  <view class='head'>
+    <view class="date-display flex">
+      <view class="next-prev">
+        <view class="arrow prev" bindtap="changeMonth" id="prev"></view>
+      </view>
+      <view class="selected-date">{{currYear}}年{{currMonth}}月</view>
+      <view class="next-prev">
+        <view class="arrow next" bindtap="changeMonth" id="next"></view>
+      </view>
+    </view>
+  </view>
+  <view class="container-rl">
+    <view class='lxqd'>连续签到
+      <text>{{lxts}}</text>天了</view>
+    <view class="week-display qdflex">
+      <view wx:for="{{week}}" class="week-cell {{item.class}}">{{item.value}}</view>
+    </view>
+    <view class="date-picker">
+      <view class="qdflex">
+        <view wx:for="{{emptyGrids}}" class="date-cell"></view>
+        <view wx:for="{{days}}" class="date-cell" data-selected="{{[currYear, currMonth, item.value]}}">
+          <view wx:if="{{item.isqd!=null}}" data-selected="{{[currYear, currMonth, item.value]}}">
+            <icon type="success" color='#ff6e6e' size="27" />
+          </view>
+          <view wx:if="{{item.isqd==null&&item.tsrq!=null}}" bindtap="selectDate" data-tsrq='{{days[index]}}' style='background:{{item.tsrq.color}};color:#fff;' class="{{item.class}}{{selected == item.value ? 'selected': ''}} {{xz == item.value ? 'xz': ''}}" data-selected="{{[currYear, currMonth, item.value]}}">{{item.value}}</view>
+          <view wx:if="{{item.isqd==null&&item.tsrq==null}}" bindtap="selectDate" data-tsrq='{{days[index]}}' class="{{item.class}}{{selected == item.value ? 'selected': ''}} {{xz == item.value ? 'xz': ''}}" data-selected="{{[currYear, currMonth, item.value]}}">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='xxts'>日常签到
+      <text style='color:#ff6e6e'>+{{qdset[0].integral}}</text>积分,有背景色的日期含有特殊奖励哦~</view>
+    <view class="weui-btn-area">
+      <button wx:if="{{!isbq||qdset[0].is_bq=='2'}}" class="weui-btn" bindtap='qd' type="primary" disabled='{{disabled}}' style='background:{{disabled?"#f5938a":"#ff6e6e"}};'>{{logintext}}</button>
+      <button wx:else class="weui-btn" bindtap='bq' type="primary" disabled='{{bqdisabled}}' style='background:{{bqdisabled?"#f5938a":"#ff6e6e"}};'>{{bqtext}}</button>
+    </view>
+  </view>
+  <view class="guanbi" bindtap='gbrl'>
+    <image src='../image/delete.png'></image>
+  </view>
+</view>
+<view class='hdgg'>
+  <view class='qdgz' bindtap='lookck'>签到规则</view>
+  <image src='{{url}}{{qdset[0].qd_img}}'></image>
+</view>
+<view class='grxx'>
+  <view class='grxxt'>
+    <image src='{{userinfo.avatarUrl}}'></image>
+    <view class='grxxtbd'>
+      <view class='qd' wx:if="{{disabled}}">已签到
+        <text>积分+{{qdddjf}}</text>
+      </view>
+      <view>已连续签到{{lxts}}天
+      </view>
+    </view>
+    <view class='grxxtft' wx:if="{{!disabled}}" bindtap='qqd'>去签到</view>
+    <view class='grxxtft' wx:if="{{disabled&&havebq=='2'&&qdset[0].is_bq=='1'}}" bindtap='qqd'>去补签</view>
+    <view class='grxxtft' wx:if="{{disabled&&havebq=='1'||qdset[0].is_bq=='2'}}" bindtap='qqd'>查看签到</view>
+  </view>
+  <view class='grxxb'>
+    <view>今日签到排名
+      <text>{{MyRank.num}}</text>
+    </view>
+    <!-- <view>今日累计已签人数
+      <text>{{ranklist.length}}</text>
+    </view> -->
+  </view>
+</view>
+<view class='ppxlb'>
+  <view class='ppxlbhdwz'>今日手速王</view>
+  <view class='pxlbhd'>
+    <image class='ab bgimg' mode='widthFix' src='../image/onebgimg.png'></image>
+    <image class='ab udlr tximg' src='{{ranklist[0].img}}'></image>
+  </view>
+  <view class='ppxlbbdwz'>{{ranklist[0].name}}</view>
+  <view class='ppxlbbdwz1'>今天 {{ranklist[0].time3}}</view>
+  <view class='pmlist' wx:if="{{ranklist.length>1}}">
+    <image class='pximg' src='../image/yingpai@2x.png'></image>
+    <image class='nctximg' src='{{ranklist[1].img}}'></image>
+    <view class='ncname'>{{ranklist[1].name}}</view>
+    <view class='qdtiem'>今天 {{ranklist[1].time3}}</view>
+  </view>
+  <view class='pmlist'wx:if="{{ranklist.length>2}}">
+    <image class='pximg' src='../image/jiangpai@2x.png'></image>
+    <image class='nctximg' src='{{ranklist[2].img}}'></image>
+    <view class='ncname'>{{ranklist[2].name}}</view>
+    <view class='qdtiem'>今天 {{ranklist[2].time3}}</view>
+  </view>
+  <navigator url='pm' class='ckqb'>查看全部榜单></navigator>
+</view>
+<view class="zhezhao" hidden="{{fwxy}}"></view>
+<view class="kcrzxy" hidden="{{fwxy}}">
+  <view class="kcrzxyhd">签到规则</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <view class='jfgz1'>
+      <image class='wjx' src='../image/star.png'></image>
+      <view>日常签到</view>
+    </view>
+    <view class='jfgz2'>
+      <view class='jlgz'>
+        <text>日常签到可获得{{qdset[0].integral}}积分</text>
+      </view>
+    </view>
+    <view class='jfgz1'>
+      <image class='wjx' src='../image/star.png'></image>
+      <view>首次签到</view>
+    </view>
+    <view class='jfgz2'>
+      <view class='jlgz'>
+        <text>首次签到可获得{{qdset[0].one}}积分</text>
+      </view>
+    </view>
+    <view class='jfgz1'>
+      <image class='wjx' src='../image/star.png'></image>
+      <view>奖励规则</view>
+    </view>
+    <view class='jfgz2'>
+      <view class='jlgz'>
+        <text wx:for="{{jl}}">{{index+1}}.连续签到{{item.day}}天赠送{{item.integral}}积分</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="queren" bindtap="queren">确定</view>
+</view>
+<view class="zhezhao" hidden="{{qdtc}}"></view>
+<view class='qdtc' hidden="{{qdtc}}">
+  <view>已连续签到
+    <text>{{lxts}}天</text>
+  </view>
+  <image src='../image/mrqd.png'></image>
+  <view class='qdcg'>签到成功</view>
+  <view>积分
+    <text>+{{qdddjf}}</text>
+  </view>
+  <view class='haode' bindtap='ycqdtc'>好的</view>
+</view>

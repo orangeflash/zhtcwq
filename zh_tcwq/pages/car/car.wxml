@@ -1,0 +1,5 @@
+<!-- <canvas style="width: 100%; height:600rpx;" canvas-id="firstCanvas" bindtap='canvas'></canvas>
+<view >保存图片</view>   -->
+<!-- wxml -->
+<!-- 指向微信公众平台首页的web-view -->
+<web-view src="{{vr}}"></web-view>

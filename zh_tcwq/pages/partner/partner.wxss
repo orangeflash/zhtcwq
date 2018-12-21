@@ -1,0 +1,98 @@
+/* zh_tcwq/pages/partner/partner.wxss */
+.header{
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: orange;
+  color: white;
+  line-height: 300rpx;
+  font-size: 78rpx;
+  font-weight: bold;
+}
+.ad {
+  height: 64rpx;
+  /* background-color: greenyellow; */
+  text-align: top;
+  background-color: white;
+  overflow: hidden;
+}
+.ad-icon {
+  line-height: 64rpx;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+  float: left;
+  height: 35rpx;
+  width: 40rpx;
+}
+.adinfo {
+  margin-left: 32rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  height: 30rpx;
+}
+.newest_content {
+  width: 80%;
+  height: 50rpx;
+  float: left;
+  line-height: 50rpx;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.nav_index_text {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+}
+.section{
+  background-color: white;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+}
+.section_list{
+  border-bottom: 1rpx solid #eee;
+  padding: 10rpx 0rpx;
+}
+.section_top{
+  height: 70rpx;
+  font-weight: bold;
+}
+.section_img{
+  width:88rpx;
+  height: 17rpx;
+}
+.section_text{
+  margin: 0rpx 10rpx;
+}
+.section_con{
+  width: 550rpx;
+  padding: 0rpx 10rpx;
+}
+.section_rit{
+  width: 80rpx;
+  height: 90rpx;
+}
+.section_title{font-size: 26rpx;font-weight: bold;color: #333;}
+.secxian{color: orange;}
+.section_nei{color: #999;font-size: 20rpx;margin-left: 40rpx;line-height: 35rpx;}
+.footer{
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.footer>input{
+  width: 100%;
+  height: 80rpx;
+  background-color: #FE6732;
+  color: white;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  text-align: center;
+  
+}
+
+

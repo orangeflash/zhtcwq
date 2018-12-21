@@ -1,0 +1,42 @@
+<!--pages/fabu/fabu.wxml-->
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class='pbnavbar'>
+<view class="header">
+  <view class="header_text">免责声明：平台发布的所有信息（收费、免费）；平台只负责发布、展示，与平台本身无关，平台不负任何责任。</view>
+</view>
+<view wx:if="{{System.is_rz=='1'}}" class="banner flex-bet" bindtap='settled'>
+  <view class="banner_left flex-center">
+    <image src="../../image/dianpu.png" class="banner_seller"></image>
+    <view>
+      <view class="banner_font1">我是商家，入驻{{pt_name}}</view>
+      <view class="banner_font2">超低成本，网络宣传，简单有效，方便快捷！</view>
+    </view>
+  </view>
+  <image src="../../image/huise@2x.png" class="banner_addimg"></image>
+</view>
+
+<view class="select flex1">
+  <view class="xian"></view>
+  <view class="select_text">请选择您要发布的栏目</view>
+  <view class="xian"></view>
+</view>
+
+<view class="content flex2">
+  <block wx:for="{{nav}}" wx:key="*this">
+    <view class="content_list flex3 rel" bindtap='edit' data-id='{{item.id}}' data-index='{{index}}'>
+      <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      <image src="{{url}}{{item.img}}" class="content_img"></image>
+      <view class='gobyndsingle' style='width:100%'>{{item.type_name}}</view>
+    </view>
+  </block>
+</view>
+<view class='base' wx:if="{{base==true}}">
+  <view style='background:{{System.color}}'>请选择发布栏目</view>
+  <view class='array'>
+    <view wx:for="{{array}}" bindtap='selected' id='{{index}}'>{{item}}</view>
+  </view>
+  <view bindtap='cancel'>取消</view>
+</view>
+</view>

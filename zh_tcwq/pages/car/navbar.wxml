@@ -1,0 +1,27 @@
+<block wx:if="{{_navbar&&_navbar.navs&&_navbar.navs.length>0}}">
+  <view class="navbar flex-row" style="background-image: url({{_navbar.background_image}});border:1rpx solid {{_navbar.border_color}}">
+    <block wx:for="{{_navbar.navs}}" wx:for-item="item" wx:for-index="index">
+      <navigator wx:if="{{item.item=='1'||item.item==null}}" class="flex-grow-1 flex-y-center" openType="redirect" url="{{item.url}}">
+        <view>
+          <image class="navbar-icon" src="{{item.active?item.logo:item.logo2}}"></image>
+          <view class="navbar-text" style="color: {{item.active?item.title_color:item.title_color2}};">{{item.title}} \n
+          </view>
+        </view>
+      </navigator>
+      <navigator wx:if="{{item.item=='2'}}" class="flex-grow-1 flex-y-center" openType="navigate" url="/zh_tcwq/pages/car/car?weburl={{item.src2}}">
+        <view>
+          <image class="navbar-icon" src="{{item.active?item.logo:item.logo2}}"></image>
+          <view class="navbar-text" style="color: {{item.active?item.title_color:item.title_color2}};">{{item.title}} \n
+          </view>
+        </view>
+      </navigator>
+      <navigator wx:if="{{item.item=='3'}}" target="miniProgram" open-type="navigate" app-id="{{item.appid}}" path="" extra-data="" version="release" class="flex-grow-1 flex-y-center">
+        <view>
+          <image class="navbar-icon" src="{{item.active?item.logo:item.logo2}}"></image>
+          <view class="navbar-text" style="color: {{item.active?item.title_color:item.title_color2}};">{{item.title}} \n
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</block>

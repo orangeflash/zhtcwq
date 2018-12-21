@@ -1,0 +1,141 @@
+<!--zh_tcwq/pages/active/activeinfo.wxml-->
+<view class="info">
+  <view class="header">    
+    <image class="headerback" src="../image/background2.png"></image>
+    <view class="headerbox">
+      <view class="headertitle">春天我们出去玩一玩，去三生三世的地方看看</view>
+      <view class="flex-center">
+        <image class="timeimg" src="../image/timebai.png"></image>
+        <text>02-28 15:27 开始</text>
+      </view>
+      <view class="flex-center">
+        <image class="timeimg2" src="../image/jinqian.png"></image>
+        <text>报名费用，费用：¥5.00</text>
+      </view>
+      <view class="flex-center">
+        <image class="timeimg2" src="../image/baojianbai.png"></image>
+        <text>2017-4-12</text>
+      </view>
+      <view class="flex-center">
+        <image class="timeimg2" src="../image/addressbai.png"></image>
+        <text>湖北武汉</text>
+      </view>
+      
+    </view>
+
+    <view class="headersan">
+      <image class="touxiang" src="../image/card.png"></image>
+    </view>
+  </view>
+  <view class="headerlist">
+    <view class="headerone">
+      <view>2157</view>
+      <view>浏览次数</view>
+    </view>
+    <view class="headerone">
+      <view>48</view>
+      <view>已报人数</view>
+    </view>
+    <view class="headerone">
+      <view>53</view>
+      <view>关注人数</view>
+    </view>
+    <view class="headerone">
+      <view>64</view>
+      <view>分享次数</view>
+    </view>
+  </view>
+
+  <view class="huodong">
+    <view class="huodongtime">
+      <image class="timeimg" src="../image/time.png"></image>
+      <view class="">活动时间：2017-4-20</view>
+    </view>
+    <view class="huodongtime">
+      <image class="timeimg3" src="../image/address.png"></image>
+      <view class="">活动地址：湖北省武汉市</view>
+    </view>
+    <view class="huocontent">
+      这是活动内容。。。
+    </view>
+
+    <view class="huoxuzhi">报名须知</view>
+    <view class="huoxuzhi2">这次的队伍总共有6台车，20多个伙伴。</view>
+  </view>
+
+  <view class="enroll">
+    <view class="flex-center enrolltop">
+      <view class="shuxian"></view>
+      <text>报名已通过（10人）</text>
+    </view>
+    <view class="flex-center enrolluser">
+      <image src="../image/card.png"></image>
+      <text>系统客服--小米：</text>
+      <text class="userfont1">已支付10.00元</text>
+    </view>
+    <view class="flex-center enrolluser">
+      <image src="../image/card.png"></image>
+      <text>系统客服--小米：</text>
+      <text class="userfont1">已支付10.00元</text>
+    </view>
+
+    <view class="flex-center chakan">
+      <text>查看更多</text>
+      <image src="../image/huangadd.png"></image>
+    </view>
+  </view>
+
+  <!--——————留言部分开始——————————-->
+  <view class="message">
+    <view class="flex-bet">
+      <view class="flex-center enrolltop">
+        <view class="shuxian"></view>
+        <text>留言</text>
+      </view>
+      <view class="fabu">发布留言</view>
+    </view>
+
+    <view class="messagelist">
+      <image class="usertouxiang" src="../image/card.png"></image>
+      <view class="messagebox">
+        <view class="flex-bet">
+          <view class="username">系统客服--小米</view>
+          <view class="flex-center">
+            <image class="messagedui" src="../image/duihua.png"></image>
+            <text>回复</text>
+          </view>
+        </view>
+        <view class="mhuifu">7-20</view>
+        <view>这个活动还不错的，我很喜欢。</view>
+        <view class="mhuifubox">
+          <view class="kuang"></view>
+          <view class="mhuifulist">
+            <text>系统客服小米：</text>
+            <text>大家一起来玩，很不错的。</text>
+          </view>
+          <view class="mhuifulist">
+            <text>系统客服小米：</text>
+            <text>大家一起来玩，很不错的。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="nomore">无更多信息</view>
+
+  </view>
+  <!--——————留言部分结束——————————-->
+  <view class="footerbox1"></view>
+  <view class="footer">
+    <view class="footbox">
+      <image class="fshoucang" src="../image/collection.png"></image>
+      <text>817</text>
+    </view>
+    <view class="footbox">
+      <image class="fshoucang" src="../image/onshare.png"></image>
+      <text>25</text>
+    </view>
+    <view class="fbaoming">我要报名</view>
+  </view>
+
+</view>

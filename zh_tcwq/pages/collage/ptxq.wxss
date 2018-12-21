@@ -1,0 +1,40 @@
+@import "/zh_tcwq/utils/ddlb.wxss";
+.spimage {
+  min-width: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.statejd{
+  background: #fff;margin-bottom: 20rpx;
+}
+.statebg{
+  height: 100rpx;
+}
+.statetop{
+  margin-top: -30rpx;
+  display: flex;
+  flex-direction: row;align-items: center;
+}
+.stateyd{
+  flex: 1;display: flex;justify-content: center;align-items: center;
+}
+.stateyd>view{
+  width: 60rpx;height: 60rpx;border-radius: 50%;
+  background: rgb(175, 174, 174);
+  border: 10rpx solid #fff;
+}
+.statefot{
+  padding: 30rpx 0;
+  display: flex;
+  flex-direction: row;align-items: center;
+}
+.statewz{
+   flex: 1;display: flex;justify-content: center;align-items: center;
+}
+.stateydhx{
+  width: 100rpx;height: 2rpx;
+}
+.statehx{
+  width: 100rpx;height: 2rpx;background: #999;
+}

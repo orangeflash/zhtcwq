@@ -1,0 +1,63 @@
+<view>
+  <view class='head rel'>
+    <view class='ab udlr'>
+      <image mode='aspectFill' src='../image/dianpu.png'></image>
+      <view>上传老板微信二维码</view>
+    </view>
+  </view>
+  <view class='body'>
+    <view>
+      <view>公司名称</view>
+      <view>
+        <input bindblur="name" placeholder='请输入公司名称'></input>
+      </view>
+    </view>
+    <view>
+      <view>公司地址</view>
+      <view>
+        <input bindblur="address" placeholder='请输入公司地址'></input>
+      </view>
+    </view>
+    <view>
+      <view>所属地区</view>
+      <view>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <text wx:if="{{region!=null}}">{{region[0]}} {{region[1]}} {{region[2]}}</text>
+          <input wx:if="{{region==null}}" disabled='true' placeholder='请选择所属地区'></input>
+        </picker>
+      </view>
+
+    </view>
+    <view>
+      <view>行业分类</view>
+      <view>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" custom-item="{{customItem}}" range="{{nav}}">
+          <text>{{nav[0][multiIndex[0]]}} {{nav[1][multiIndex[1]]}}</text>
+        </picker>
+      </view>
+    </view>
+    <view>
+      <view>联系电话</view>
+      <view>
+        <input  bindblur="tel" type='number' placeholder='请输入联系电话'></input>
+      </view>
+    </view>
+    <view>
+      <view>关键字</view>
+      <view>
+        <input bindblur="text" placeholder='可以让更多的用户搜索到您'></input>
+      </view>
+    </view>
+  </view>
+  <view class='foot'>
+    <view>入驻黄页114</view>
+    <view>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{items}}" wx:key="*this">
+          <radio value="{{item.name}}" checked="{{item.checked}}" color="#ED414A" />{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <button bindtap='apply'>申请入驻</button>
+  </view>
+</view>

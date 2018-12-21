@@ -1,0 +1,51 @@
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class='container pbnavbar'>
+  <view class='head' wx:if="{{imgArray.length>0}}">
+    <swiper autoplay="auto" indicator-color='#ccc' indicator-active-color='{{color}}' interval="5000" duration="500" indicator-dots='true' circular='true' class="swiper">
+      <block wx:for="{{imgArray}}" wx:key="*this">
+        <swiper-item>
+          <image bindtap='jumps' data-id='{{item.id}}' data-type='{{item.item}}' data-name='{{item.title}}' data-wb_src='{{item.src2}}' data-src='{{item.src}}' data-appid='{{item.appid}}' mode='aspectFill' src='{{url}}{{item.logo}}' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--  拼团分类  -->
+  <view class='nav ba_f mar_t'>
+    <swiper style='height:{{height}}rpx;' autoplay="auto" indicator-color='#f7f7f7' indicator-active-color='{{color}}' interval="5000" duration="500" indicator-dots='true' circular='true' class="swiper">
+      <block wx:for="{{nav_array}}" wx:key="*this">
+        <swiper-item>
+          <view wx:for="{{item}}" class='dis_in nav_li' wx:key="*this" bindtap='nav_child' data-id='{{item.id}}'>
+            <image mode='aspectFill' src='{{item.img}}'></image>
+            <view class='t_c fon_28 gobyndsingle'>{{item.name}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--  活动列表  -->
+  <view class='pa_1 mar_t ba_f'>
+    <view class='list' wx:for="{{group_list}}" bindtap='index' data-id='{{item.id}}'>
+      <view class=' pa_0'>
+        <image mode='aspectFill' src='{{url}}{{item.logo}}' class='logo'></image>
+      </view>
+      <view>
+        <view class='gobyndsingle fon_30'>
+          {{item.name}}
+        </view>
+        <view class='price'>
+          <view class='mar_t dis_in' style='color:{{color}}'>
+            <text class='fon_24'>{{item.people}}</text>
+            <text class='fon_24'>人团</text>
+            <text class='mar_l fon_36'>￥</text>
+            <text class=' fon_36'>{{item.pt_price}}</text>
+            <text class=' fon_24 mar_l' style='color:#999;text-decoration:line-through'>{{item.y_price}}</text>
+          </view>
+          <view class='dis_in t_r fon_30'>
+            <text style='background:{{color}};color:#fff' class='group'>去开团</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

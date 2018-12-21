@@ -1,0 +1,25 @@
+
+  <!--  拼团信息  -->
+  <view class='collInfo mar_t ba_f'>
+    <view class='group pa bor_bottom' wx:for="{{group}}" wx:key="*this">
+      <view class='dis_in'>
+        <image class='dis_in' mode='aspectFill' src='{{item.img}}'></image>
+        <text class='dis_in fon_30 mar_l'>{{item.name}}的团</text>
+      </view>
+      <view class='dis_in t_r'>
+        <view class='fon_24'>
+          <text>还差</text>
+          <text style='color:{{color}}'>{{item.num}}人</text>
+          <text>拼成</text>
+        </view>
+        <view class='fon_24 color_c' wx:if="{{clock!=false}}">剩余{{day}}天{{hour}}:{{min}}:{{sec}}</view>
+        <view class='fon_24 color_c' wx:else>活动已结束</view>
+      </view>
+      <view class='dis_in color_f fon_28 parGroup t_c' bindtap='collageInfo' data-id='{{item.id}}' data-logo='{{item.img}}' data-name='{{item.name}}' data-num='{{item.num}}' data-userid='{{item.user_id}}' wx:if="{{clock!=false}}">
+        <text style='background:{{color}}'>去参团</text>
+      </view>
+      <view class='dis_in color_f fon_28 parGroup t_c' wx:else>
+        <text style='background:{{color}}'>已结束</text>
+      </view>
+    </view>
+  </view>

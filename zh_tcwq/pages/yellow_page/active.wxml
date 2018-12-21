@@ -1,0 +1,119 @@
+<!--zh_tcwq/pages/active/active.wxml-->
+<view class="home">
+  <view class='searchbox'>
+    <input class='input' placeholder='请输入您要查询的关键词'></input>
+    <button class='search'>搜索</button>
+  </view>
+
+  <!-- 搜索模块结束 -->
+  <!-- 首页轮播图开始 -->
+  <view class="body">
+    <view class='banner'>
+      <view class="swiper-container">
+        <swiper autoplay="true" circular='true' indicator-dots='true' interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+          <block wx:for="{{slide}}" wx:key="*this">
+            <swiper-item>
+              <image mode="aspectFill" src="{{item.img}}" class="img"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 首页轮播图结束 -->
+
+  <view class='ad' wx:if="{{store_name!=null}}">
+    <block wx:for="{{msgList1}}">
+      <image mode='scaleToFill' class='ad-icon' src='../image/guangbo.png'></image>
+      <view class='adinfo' style='color:#ED414A' bindtap='notice' data-id='{{item.id}}'>
+        <rich-text nodes="{{item.title}}"></rich-text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 导航模块开始 -->
+  <swiper class='classify' style='height:{{height}}rpx' autoplay="true" interval="4000" duration="1000" circular="true">
+    <block wx:for="{{nav}}">
+      <swiper-item>
+        <block wx:for="{{item}}" wx:key="{{item.value}}">
+          <view bindtap='store_type_id' data-id='{{item.id}}'>
+            <view class='classify_logo rel'>
+              <image class='ab udlr' mode='widthFix' src='{{url}}{{item.img}}'></image>
+            </view>
+            <view class='classify_name center'>{{item.type_name}}</view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 导航模块结束 -->
+
+  <!-- 我要入驻开始 -->
+  <view class='join flex-center'>
+    <view class="jiony flex1" bindtap='sellted'>我要入驻</view>
+    <!-- <view class="jionbo gobyndsingle">• 恭喜【<text class='join-name'>黑猫</text>】入驻</view> -->
+    <swiper class="jionbo gobyndsingle" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{store}}" wx:key="*this">
+        <swiper-item>
+          • 恭喜【
+          <text class='join-name'>{{item.store_name}}</text>】入驻
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 我要入驻结束 -->
+
+  <view class="enrrol">
+
+    <!--——————————1个活动开始————————————-->
+    <view class="enrrolwai">
+      <view class="enrrolbox">
+        <image class="enrrolimg" src="../image/background2.png"></image>
+        <view class="enrroltype">
+          <view>报名进行中</view>
+        </view>
+      </view>
+      <view class="flex-bet entitle">
+        <view class="gobyndsingle">春天我们出去玩一玩，去山生三世的地方看看</view>
+        <view>4242人已报名</view>
+      </view>
+      <view class="flex-bet enaddress">
+        <view class="flex-center">
+          <image class="enaddimg" src="../image/address.png"></image>
+          <view class="gobyndsingle">春天我们出去玩一玩，去山生三世的地方看看</view>
+        </view>
+        <view class="flex-center">
+          <image class="entime" src="../image/time.png"></image>
+          <text>2017-4-20</text>
+        </view>
+      </view>
+    </view>
+    <!--——————————1个活动结束————————————-->
+    
+    <!--——————————2个活动开始————————————-->
+    <view class="enrrolwai">
+      <view class="enrrolbox">
+        <image class="enrrolimg" src="../image/background2.png"></image>
+        <view class="enrroltype2">
+          <view>报名已截止</view>
+        </view>
+      </view>
+      <view class="flex-bet entitle">
+        <view class="gobyndsingle">春天我们出去玩一玩，去山生三世的地方看看</view>
+        <view>4242人已报名</view>
+      </view>
+      <view class="flex-bet enaddress">
+        <view class="flex-center">
+          <image class="enaddimg" src="../image/address.png"></image>
+          <view class="gobyndsingle">春天我们出去玩一玩，去山生三世的地方看看</view>
+        </view>
+        <view class="flex-center">
+          <image class="entime" src="../image/time.png"></image>
+          <text>2017-4-20</text>
+        </view>
+      </view>
+    </view>
+    <!--——————————2个活动结束————————————-->
+
+  </view>
+</view>

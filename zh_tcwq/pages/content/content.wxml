@@ -1,0 +1,13 @@
+<!--zh_jd/pages/kefu/kefu.wxml-->
+<view class="font">
+  <view class="kefu1">
+    <view class="kefu_one" bindtap='tel'>
+      <image src="../image/dianhuahong.png"></image>
+      <view>联系电话</view>
+    </view>
+    <button class="kefu_one kefu_two" session-from='{{userinfo.name}}' open-type="contact">
+      <image src="../image/renwu.png"></image>
+      <view>在线客服</view>
+    </button>
+  </view>
+</view>

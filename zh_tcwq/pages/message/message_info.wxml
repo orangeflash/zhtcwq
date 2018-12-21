@@ -1,0 +1,130 @@
+<view class='container'>
+  <view class='header'>
+    <view class='title'>{{info.title}}</view>
+    <view class='header_info'>
+      <text>{{info.yd_num}}阅读量</text>
+      <text>{{info.pl.length}}评论</text>
+      <text style='color:{{system.color}}'>{{info.type_name}}</text>
+    </view>
+  </view>
+  <view class='body'>
+    <view class='body_info'>
+      <view class='rel'>
+        <image wx:if="{{info.type==2}}" class='ab' mode='aspectFill' src='{{info.img}}'></image>
+        <image wx:else class='ab' mode='aspectFill' src='{{url}}{{system.link_logo}}'></image>
+      </view>
+      <view>
+        <view>
+          <text wx:if="{{info.type==1}}" style='font-weight:500;color:#333'>{{system.pt_name}}</text>
+          <text wx:else style='font-weight:500;color:#333'>{{info.name}}</text>
+        </view>
+        <view>
+          <text wx:if="{{info.m<24}}">
+            <text wx:if="{{info.m==0}}">{{info.h}}分钟前发布</text>
+          <text wx:if="{{info.m>0}}">{{info.m}}小时前发布</text>
+          </text>
+          <text wx:if="{{info.m>=24}}">{{info.time}}  发布</text>
+        </view>
+      </view>
+    </view>
+    <view class='video' wx:if="{{info.video.length>6}}">
+      <video src='{{info.video}}'></video>
+    </view>
+    <view class='body_content' wx:if="{{info.type==1}}">
+      <rich-text style='font-size:30rpx;' nodes="{{info.content}}"></rich-text>
+      <image wx:if="{{info.imgs[0]!=''}}" bindtap='previewImage' data-inde='{{index}}' wx:for="{{info.imgs}}" mode='widthFix' src='{{url}}{{item}}'></image>
+    </view>
+    <view class='body_content' wx:if="{{info.type==2}}">
+      <text style='font-size:30rpx;'>{{info.content}}</text>
+      <image wx:if="{{info.imgs[0]!=''}}" bindtap='previewImage' data-inde='{{index}}' wx:for="{{info.imgs}}" mode='widthFix' src='{{url}}{{item}}'></image>
+    </view>
+  </view>
+  <view class='thumbs' wx:if="{{thumbs_up.length!=0}}">
+    <view>
+      <image mode='aspectFill' src='../image/zan.png'></image>
+      <image mode='aspectFill' wx:for="{{thumbs_up}}" src='{{item.user_img}}'></image>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class='footer_head rel'>
+      <view class='ab udlr'>
+        全部评论
+      </view>
+    </view>
+    <view class='footer_body' wx:for="{{info.pl}}" wx:if="{{info.pl.length!=0}}">
+      <view class='foot_left rel'>
+        <image class='ab lr' mode='aspectFill' src='{{item.user_img}}'></image>
+      </view>
+      <view class='foot_right'>
+        <view class='color1'>{{item.name}}</view>
+        <view>{{item.cerated_time}}
+          <text class='replay' bindtap='speak3' id='{{item.id}}'>回复</text>
+        </view>
+        <view>{{item.content}}</view>
+        <view wx:if="{{item.reply!=''}}">
+          <text class='color1'>{{info.name}} </text>
+          <text>回复</text>
+          <text class='color1'> {{item.name}}</text> {{item.reply}} </view>
+      </view>
+    </view>
+    <view class='footer_body' wx:if="{{info.pl.length==0}}">
+      <view class='none_comment'>
+        <view class='rel'>
+          <image class='ab udlr' mode='widthFix' src='../image/none_comment.png'></image>
+        </view>
+        <view>还没有评论，看完了去评论一下哦</view>
+      </view>
+    </view>
+  </view>
+  <view style='width:100%;height:130rpx;'></view>
+  <view class='footers'>
+    <view bindtap='shouye'>
+      <view class='icon rel'>
+        <image mode='widthFix' class='ab udlr' src='../image/index.png'></image>
+      </view>
+      <view class='nav_title center'>首页</view>
+    </view>
+    <view bindtap='Collection'>
+      <view class='icon rel'>
+        <image wx:if="{{info.dz!='1'}}" mode='widthFix' class='ab udlr' src='../image/zan1.png'></image>
+        <image wx:else mode='widthFix' class='ab udlr' src='../image/yzan1.png'></image>
+      </view>
+      <view class='nav_title center'>
+        <text wx:if="{{info.dz!='1'}}">点赞</text>
+        <text wx:else style='color:#ED414A'>已点赞</text>
+      </view>
+    </view>
+    <view bindtap='dizhi'>
+      <view class='icon rel'>
+        <image mode='widthFix' class='ab udlr' src='../image/nav1.png'></image>
+      </view>
+      <view class='nav_title center'>分享</view>
+       <button class="btn" open-type="share"></button>
+    </view>
+    <view style='background:{{system.color}}' bindtap='speak' class='nav_phone'>
+      <view>发表评论</view>
+    </view>
+  </view>
+  <view class='bussniess udlr' wx:if="{{speak==true}}">
+    <view wx:if="{{speak_type==1}}">评论</view>
+    <view wx:if="{{speak_type==2}}">回复</view>
+    <view>
+      <textarea wx:if="{{speak_type==1}}" bindblur="speaks" placeholder='请输入评论内容' maxlength='180'></textarea>
+      <textarea wx:if="{{speak_type==2}}" bindblur="speaks" placeholder='请输入回复内容' maxlength='180'></textarea>
+    </view>
+    <view>
+      <view bindtap='speak1'>取消</view>
+      <view bindtap='speak2'>确定</view>
+    </view>
+  </view>
+</view>
+<view class="hydlzhezhao" wx:if="{{hydl==true}}"></view>
+<view class="hydlbd" wx:if="{{hydl==true}}">
+  <image class='hydlimg' src='{{url}}{{system.tc_img}}'></image>
+  <view class='hydl'>
+    <!-- <icon type='success' size='50'></icon> -->
+    <view class='hydltt'>平台公告</view>
+    <view class='hydlnr'>{{system.tc_gg}}</view>
+  </view>
+  <button class="hydlqueren" style='background:{{system.color}}' open-type='getUserInfo' bindgetuserinfo='updateUserInfo'>朕已阅</button>
+</view>

@@ -1,0 +1,216 @@
+<view class='container'>
+  <view class='head rel '>
+    <swiper autoplay="auto" indicator-color='white' indicator-active-color='{{color}}' interval="5000" duration="500" indicator-dots='true' circular='true'>
+      <block wx:for="{{QgGoodInfo.img}}">
+        <swiper-item>
+          <image mode='aspectFill' src="{{url}}{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <navigator url='canvas?id={{QgGoodInfo.id}}&url={{url}}' class='fxhb'>
+      <image mode='aspectFit' src='../image/xcxm.png'></image>
+    </navigator>
+    <view class='ab rush_info'>
+      <!--  商品名称  -->
+      <view class='rel info_name'>
+        <view class='ab'></view>
+        <view class='ab'>{{QgGoodInfo.money}}元抢{{QgGoodInfo.name}}</view>
+      </view>
+      <view class='dis_in limit color_f' style='background:{{color}}'>
+        <text style='margin-right:30rpx'>限时特惠</text>
+        <text wx:if="{{QgGoodInfo.surplus>0}}">抢购中</text>
+        <text wx:else>抢光了</text>
+      </view>
+      <!--  结束时间以及进度条  -->
+      <view class='dis_in color_f' style='background:{{color}}'>
+        <view class='fon_26 jljs'>距离结束
+          <text class='timefk'>{{clock.day}}</text>天
+          <text class='timefk'>{{clock.hr}}</text>:
+          <text class='timefk'>{{clock.min}}</text>:
+          <text class='timefk'>{{clock.sec}}</text>
+        </view>
+        <view class='end rel fon_24'>
+          <view class='ab end3' wx:if="{{QgGoodInfo.surplus>0}}">仅剩{{QgGoodInfo.surplus}}份,总{{QgGoodInfo.number}}份</view>
+          <view class='ab end1' wx:if="{{QgGoodInfo.surplus>0&&QgGoodInfo.yqnum!='0.0'}}" style='width:{{QgGoodInfo.yqnum}}%;background:{{color}}'></view>
+          <view class='ab end1' wx:if="{{QgGoodInfo.surplus==0}}" style='width:100%;background:{{color}}'>抢光了</view>
+          <view class='ab end2' wx:if="{{QgGoodInfo.surplus>0}}"></view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <view class='pa_1 ba_f'>
+    <!--  商品价格以及关注人数  -->
+    <view class='price ba_f pa_0 bor_bottom'>
+      <view>
+        <text class='fon_24' style='color:#f44444'>￥</text>
+        <text class='fon_36 mar_r' style='color:#f44444;font-weight:bold'>{{QgGoodInfo.money}}</text>
+        <text class='fon_24 text_d color_9'>{{QgGoodInfo.price}}元</text>
+      </view>
+      <view class='t_r'>
+        <image class='dis_in mar_r' mode='aspectFill' src='../image/fire.png'></image>
+        <text class='fon_24 dis_in color_6'>{{QgGoodInfo.hot}}人关注</text>
+      </view>
+    </view>
+    <view>
+      <!--  抢购时间  -->
+      <view class=' ba_f pa_0 bor_bottom time'>
+        <text class='color_6 fon_30'>抢购时间</text>
+        <text class='t_r color_9 fon_26'>{{QgGoodInfo.start_time}}至{{QgGoodInfo.end_time}}</text>
+      </view>
+      <!--  已报名人数  -->
+      <view wx:if="{{QgPeople.length>0}}" class='Purchased pa_0' bindtap='bought'>
+        <view class='dis_in'>
+          <image class="logo {{index!=0?'mar_l':''}}" wx:for="{{QgPeople}}" wx:if="{{index<6}}" mode='aspectFill' src='{{item.user_img}}'></image>
+        </view>
+        <view class='dis_in fon_28 color_6 t_r'>
+          <text class='mar_r dis_in'>已有{{QgPeople.length}}人购买</text>
+          <image class='se_right dis_in' mode='aspectFit' src='../image/huise@2x.png'></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='ba_f mar_t pa_1' wx:if="{{QgGoodInfo.content!=''}}">
+    <view class='pa_0 bor_bottom fon_30 color_6'>商品简介</view>
+    <view class='spjj'>
+    {{QgGoodInfo.content}}
+    </view>
+  </view>
+  <!--  店铺地址  -->
+  <view class='ba_f mar_t pa_1'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>适用店铺</view>
+    <view class='address rel pa_0 bor_bottom'>
+      <image class='dis_in' mode='aspectFill' style='width:70rpx;height:70rpx;border-radius:50%;' src='{{url}}{{StoreInfo.logo}}'></image>
+      <view class='dis_in fon_28'>
+        <view class='color_6'>
+          {{StoreInfo.store_name}}
+        </view>
+        <view class='color_9'>
+          营业时间：{{StoreInfo.start_time}}-{{StoreInfo.end_time}}
+        </view>
+      </view>
+      <image bindtap='maketel' class='dis_in ab ud se_right' mode='aspectFit' src='../image/lxtel.png'></image>
+    </view>
+    <view class='address rel pa_0' bindtap='location'>
+      <image class='dis_in' mode='aspectFit' style='width:40rpx;height:40rpx;margin:0rpx 15rpx;' src='../image/address.png'></image>
+      <view class='dis_in fon_28'>
+        <view class='color_6'>
+          {{StoreInfo.address}}
+        </view>
+        <!-- <view class='color_9'>
+          距离您1293公里
+        </view> -->
+      </view>
+      <image class='dis_in ab ud se_right' mode='aspectFit' src='../image/huise@2x.png'></image>
+    </view>
+  </view>
+  <view class='ba_f mar_t pa_1'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>抢购流程</view>
+    <view class='sylc'>
+      <view class='lccel'>
+        <image src='../image/renqun.png'></image>
+        <view>参与抢购</view>
+      </view>
+      <view class='hx'></view>
+      <view class='lccel'>
+        <image src='../image/radio.png'></image>
+        <view>付款成功</view>
+      </view>
+      <view class='hx'></view>
+      <view class='lccel'>
+        <image src='../image/mine_bussiness.png'></image>
+        <view>到店验证</view>
+      </view>
+    </view>
+  </view>
+  <view class='ba_f mar_t pa_1'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>购买须知</view>
+    <view class='sm'>
+      <view class="yuan"></view>
+      <text style='color:{{color}}'>商品限购：</text>
+      <text>每人限购1份</text>
+    </view>
+    <view class='sm'>
+      <view class="yuan"></view>
+      <text style='color:{{color}}'>消费截止时间：</text>
+      <text>购买后{{QgGoodInfo.consumption_time}}天</text>
+    </view>
+  </view>
+  <!--  商品详情  -->
+  <view class='shop_detail pa_1 ba_f mar_t'>
+    <view class='pa_0 bor_bottom fon_30 color_6'>商品详情</view>
+    <view class='yhxq'>
+    <rich-text nodes="{{QgGoodInfo.details}}"></rich-text>
+    <view class='yhxqimg' wx:if="{{QgGoodInfo.details_img!=''}}">
+      <image wx:for="{{QgGoodInfo.details_img}}" mode='widthFix' src='{{url}}{{item}}'></image>
+    </view>
+  </view>
+  </view>
+  <view style='height:120rpx;'></view>
+  <!--  底部按钮  -->
+  <view class='fixd'>
+    <view bindtap='tzsj' class='fon_24 color_9 rel'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      <image mode='aspectFit' src='../image/index.png'></image>
+      <view>首页</view>
+    </view>
+    <view bindtap='maketel' class='fon_24 color_9 rel'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      <image mode='aspectFit' src='../image/lxtel.png'></image>
+      <view>联系</view>
+    </view>
+    <view class='fon_24 color_9 rel comments'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      <image mode='aspectFit' src='../image/nav1.png'></image>
+      <button open-type="share"></button>
+      <view>转发</view>
+    </view>
+    <view wx:if="{{QgGoodInfo.surplus>0&&IsPay!=1}}" bindtap='ljqg' class='fon_30 color_f rel' style='background:{{color}}'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      立即抢购
+    </view>
+    <view wx:if="{{QgGoodInfo.surplus<=0&&IsPay!=1}}" class='fon_30 color_f rel' style='background:#d5d5d5'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      已抢光了
+    </view>
+    <view wx:if="{{IsPay==1}}" class='fon_30 color_f rel' style='background:#d5d5d5'>
+      <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+        <button formType="submit"></button>
+      </form>
+      您抢过了
+    </view>
+  </view>
+</view>
+<!-- kjdh -->
+<!-- <view wx:if="{{opendh}}" class='kjdhzz'></view>
+<view class='kjdhv'>
+  <view class='kjdh' bindtap='opennav'>
+    快捷导航
+  </view>
+  <image bindtap='opennav' wx:if="{{opendh}}" style='background:{{color}}' class='kjdhx' src='../image/dhclose.png'></image>
+  <view class='kjlb {{opendh?"kjlb-show":"kjlb-hide"}}'>
+    <navigator wx:if="{{xtxx.model=='1'}}" openType="reLaunch" url='/zh_cjdianc/pages/index/index' class='kjlbv'>
+      <image src='../image/gssjjs.png'></image>
+      <view>首页</view>
+    </navigator>
+    <navigator openType="reLaunch" url='/zh_cjdianc/pages/wddd/order' class='kjlbv'>
+      <image src='../image/gssj.png'></image>
+      <view>订单</view>
+    </navigator>
+    <navigator openType="reLaunch" url='/zh_cjdianc/pages/my/index' class='kjlbv'>
+      <image src='../image/gstel.png'></image>
+      <view>我的</view>
+    </navigator>
+  </view>
+</view> -->

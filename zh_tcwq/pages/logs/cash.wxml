@@ -1,0 +1,131 @@
+<!--zh_hdbm/pages/cash/cash.wxml-->
+<view class="font cash_font">
+  <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+    <view class="cash">
+      <view class="cash_left">可提现金额：¥{{money}}</view>
+      <!-- <view class="cash_right" bindtap="whole">全部提现</view> -->
+    </view>
+    <view class="cash_box">
+      <view class="cash_left">提现金额</view>
+      <view class="cash_money">¥
+        <input bindinput="bindblur" type="digit" name="value" class="cash_box_text" />
+      </view>
+    </view>
+
+    <view class="cash_style">
+      <view class="cash_style_title">提现方式</view>
+      <!--第一个微信开始  -->
+      <view class="">
+        <view class="stylewei" bindtap="check" wx:if="{{system.tx_type==2}}">
+          <view class="stylewei_left">
+            <image class="stylewei_img" src="../image/weixin.png"></image>
+            <view class="stylewei_text">提现到微信钱包</view>
+          </view>
+          <view wx:if="{{hidden==true}}" class="stylewei_right"></view>
+          <icon wx:if="{{hidden2==true}}" type="success" size="20" color="#FF5555" />
+        </view>
+        <view class="cash_style3 {{cash_wei == false ? ' cash_zhi' : ''}}" wx:if="{{system.tx_type==2}}">
+          <view class="cash_style2 {{cash_wei2 == false ? ' cash_zhi2' : ''}}">
+            <view class="cash_write">
+              <view class="write_left">姓名</view>
+              <input class="write_inp" type="text" name="wxname" placeholder="请输入姓名" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">微信账号</view>
+              <input class="write_inp" type="text" name="wxka" placeholder="请填写微信账号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">确认账号</view>
+              <input class="write_inp" type="text" name="wxkahao" placeholder="请确认账号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+          </view>
+        </view>
+        <!--第一个微信结束  -->
+
+        <!--第二个支付宝开始  -->
+        <view class="stylewei" bindtap="check2" wx:if="{{system.tx_type==1}}">
+          <view class="stylewei_left">
+            <image class="stylewei_img2" src="../image/zhifubao.png"></image>
+            <view class="stylewei_text">提现到支付宝</view>
+          </view>
+          <view wx:if="{{hidden3==true}}" class="stylewei_right"></view>
+          <icon wx:if="{{hidden4==true}}" type="success" size="20" color="#FF5555" />
+        </view>
+        <view class="cash_style3 {{cash_zhi == false ? ' cash_zhi' : ''}}" wx:if="{{system.tx_type==1}}">
+          <view class="cash_style2 {{cash_zhi2 == false ? ' cash_zhi2' : ''}}">
+            <view class="cash_write">
+              <view class="write_left">姓名</view>
+              <input class="write_inp" type="text" name="zfname" placeholder="请输入姓名" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">支付宝账号</view>
+              <input class="write_inp" type="text" name="zfka" placeholder="请填写支付宝账号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">确认账号</view>
+              <input class="write_inp" type="text" name="zfkahao" placeholder="请确认账号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+          </view>
+        </view>
+        <!--第二个支付宝结束  -->
+
+        <!--第三个银行卡开始  -->
+        <view class="stylewei" bindtap="check3" wx:if="{{system.tx_type==3}}">
+          <view class="stylewei_left">
+            <image class="stylewei_img" src="../image/yinhangka.png"></image>
+            <view class="stylewei_text">提现到银行卡</view>
+          </view>
+          <view wx:if="{{hidden5==true}}" class="stylewei_right"></view>
+          <icon wx:if="{{hidden6==true}}" type="success" size="20" color="#FF5555" />
+        </view>
+        <view class="cash_style3 {{cash_ka == false ? ' cash_ka' : ''}}" wx:if="{{system.tx_type==3}}">
+          <view class="cash_style2 {{cash_ka2 == false ? ' cash_ka2' : ''}}">
+            <view class="cash_write">
+              <view class="write_left">姓名</view>
+              <input class="write_inp" type="text" name="ylname" placeholder="请输入姓名" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">银行卡号</view>
+              <input class="write_inp" type="text" name="ylka" placeholder="请填写银行卡号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">确认卡号</view>
+              <input class="write_inp" type="text" name="ylkahao" placeholder="请确认银行卡号" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+            <view class="cash_write">
+              <view class="write_left">银行名称</view>
+              <input class="write_inp" type="text" name="ylyhmc" placeholder="请填写银行名称" maxlength="-1" placeholder-style="color:#ccc;" />
+            </view>
+          </view>
+        </view>
+        <!--第三个银行卡结束  -->
+
+      </view>
+    </view>
+    <view class="read">
+      <radio style='zoom:80%' color='#ff6161' checked='true' />
+      <view>我已阅读并同意
+        <text class="readfont" bindtap='lookck'>《提现须知》</text>
+      </view>
+    </view>
+    <view class="cash_btn">
+      <button class="cash_btnin" wx:if="{{button==false}}">提现</button>
+      <button class="cash_btnin1" formType="submit" wx:if="{{button==true}}">提现</button>
+    </view>
+    <view class="cash_info">
+      <view>详细说明</view>
+      <view>提现门槛为{{tx_price}}元</view>
+      <view>提现手续费为{{tx_sxf1}}%</view>
+      <view>本次提现将扣除手续费¥{{sxf}}元</view>
+      <view>本次提现实际到账金额¥{{sh_money}}元</view>
+    </view>
+  </form>
+</view>
+<view class="zhezhao" hidden="{{fwxy}}"></view>
+<view class="kcrzxy" hidden="{{fwxy}}">
+  <view class="kcrzxyhd">提现须知</view>
+  <scroll-view class="kcrzxybd" scroll-y style="height: 600rpx;">
+    <rich-text nodes="{{system.tx_details}}" />
+  </scroll-view>
+  <view class="queren" bindtap="queren">确定</view>
+</view>
