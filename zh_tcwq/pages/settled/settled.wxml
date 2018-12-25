@@ -234,7 +234,7 @@
                 <view wx:else class="cost_money">免费</view>
               </block>
               <block wx:if="{{countryIndex==1}}">
-                <view wx:if="{{item.money>2}}" class="cost_money">{{item.array}}{{item.money2}})</view>
+                <view wx:if="{{item.money2>0}}" class="cost_money">{{item.array}}{{item.money2}})</view>
                 <view wx:else class="cost_money">免费</view>
               </block>
             </view>

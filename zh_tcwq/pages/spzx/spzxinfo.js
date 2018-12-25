@@ -109,12 +109,12 @@ Page({
     })
   },
   jrzy:function(){
-    wx.switchTab({
+    wx.reLaunch({
       url: '../index/index',
     })
   },
   fbxx: function () {
-    wx.switchTab({
+    wx.reLaunch({
       url: '../fabu/fabu/fabu',
     })
   },
