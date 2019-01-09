@@ -2,7 +2,7 @@
 <include src="/zh_tcwq/pages/car/navbar.wxml" />
 <view class='pbnavbar'>
 <view class="header">
-  <view class="header_text">免责声明：平台发布的所有信息（收费、免费）；平台只负责发布、展示，与平台本身无关，平台不负任何责任。</view>
+  <view class="header_text">免责声明：平台发布的所有信息只负责发布、展示，与平台本身无关，平台不负任何责任。</view>
 </view>
 <view wx:if="{{System.is_rz=='1'}}" class="banner flex-bet" bindtap='settled'>
   <view class="banner_left flex-center">
