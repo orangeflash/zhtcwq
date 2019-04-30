@@ -1,4 +1,5 @@
-<view class='container'>
+<include src="/zh_tcwq/pages/car/navbar.wxml" />
+<view class='container' style='margin-bottom:115rpx'>
   <view class='header'>
     <view style="color:{{types==1?system.color:''}};border-color:{{types==1?system.color:''}}" bindtap='click1' class="{{item.click_class}} {{types==1? 'click2' : 'click1'}}">全部</view>
     <view>

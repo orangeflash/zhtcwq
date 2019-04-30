@@ -33,6 +33,7 @@ Page({
         })
       },
     })
+    app.pageOnLoad(this);
     app.util.request({
       'url': 'entry/wxapp/Url',
       'cachetime': '0',

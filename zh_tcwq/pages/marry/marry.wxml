@@ -68,11 +68,11 @@
         <view class="content_liulan">
           <image src="../image/liulan.png" class="eye"></image>
           <view class="content_num">{{item.tz.views}}</view>
-          <view class="content_ren">人浏览</view>
+          <view class="content_ren">浏览</view>
           <image src='../image/zan.png' class='zan' wx:if="{{thumbs_ups==null}}" bindtap='thumbs_up' data-id='{{item.tz.id}}' data-num='{{item.tz.givelike}}'></image>
           <image src='../image/thumbs_up.png' class='zan' wx:if="{{thumbs_ups==true}}"></image>
           <view class='zannum' wx:if="{{thumbs_up==null}}">{{item.tz.givelike}}</view>
-          <view class='zannum' wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>人点赞
+          <view class='zannum' wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>赞
            <view class='zannum rel' bindtap='see' data-id='{{item.tz.id}}' style='margin-left:150rpx;'>
             查看详情>></view>
           <view class="kuang"></view>

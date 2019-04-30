@@ -22,7 +22,7 @@ Page({
     refresh_top: false,
     scroll_top: true,
     index_class: false,
-    seller: [], store1: [], yellow_list: [], pc: [], hdlist: [],
+    seller: [], store1: [], yellow_list: [], pc: [], hdlist: [], zxlist: [],
     page: 1,
     star: [
       {
@@ -501,6 +501,7 @@ Page({
                       if (systemres.is_hd == '1' && systemres.is_hdqx == '1') {
                         bkarr.push({ type: '5', name: '活动报名' })
                       }
+                      bkarr.push({ type: '6', name: '最新资讯' })
                       that.seller()
                     }
                     else {
@@ -519,6 +520,9 @@ Page({
                       }
                       if (bkarr[0].type == '5') {
                         that.hdbmbk()
+                      }
+                      if (bkarr[0].type == '6') {
+                        that.zxbk()
                       }
                     }
                     that.setData({
@@ -1043,6 +1047,51 @@ Page({
       },
     })
   },
+  zxbk: function () {
+    var that = this
+    var time = Data.formatTime(new Date)
+    var city = wx.getStorageSync('city'), zxlist = that.data.zxlist;
+    app.util.request({
+      'url': 'entry/wxapp/ZxList',
+      data: { page: that.data.page, cityname: city },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.length == 0) {
+          that.setData({
+            refresh_top: true
+          })
+        } else {
+          that.setData({
+            refresh_top: false,
+            page: that.data.page + 1,
+            issljz: true,
+          })
+        }
+        for (let i in res.data) {
+          res.data[i].time = res.data[i].time.slice(0, 16)
+          if (res.data[i].img == null) {
+            res.data[i].type = 1
+          } else {
+            res.data[i].type = 2
+          }
+          var dt1 = time;
+          var dt2 = res.data[i].time.replace(/-/g, "/")
+          var regTime = /(\d{4})-(\d{1,2})-(\d{1,2})( \d{1,2}:\d{1,2})/g;
+          var interval = Math.abs(Date.parse(dt1.replace(regTime, "$2-$3-$1$4")) - Date.parse(dt2.replace(regTime, "$2-$3-$1$4"))) / 1000;
+          var h = Math.floor(interval / 3600);
+          var m = Math.floor(interval % 3600 / 60);
+          res.data[i].m = h
+          res.data[i].h = m
+          console.log(h + " 小时 " + m + " 分钟");
+          res.data[i].imgs = res.data[i].imgs.split(",").slice(0, 3)
+        }
+        zxlist = zxlist.concat(res.data)
+        that.setData({
+          zxlist: zxlist
+        })
+      },
+    })
+  },
   bkswiperChange(e) {
     let that = this;
     console.log("===== swiperChange " + e.detail.current);
@@ -1082,24 +1131,27 @@ Page({
       bkname: bkname,
       refresh_top: false,
       swipecurrent: e.currentTarget.id,
-      seller: [], store1: [], yellow_list: [], pc: [], hdlist:[],
+      seller: [], store1: [], yellow_list: [], pc: [], hdlist: [], zxlist:[],
       page: 1,
       issljz:false,
     })
     if (bkname == '1') {
       that.seller()
     }
-    if (bkname == '2') {
+    else if (bkname == '2') {
       that.sjbk()
     }
-    if (bkname == '3') {
+    else if (bkname == '3') {
       that.hybk()
     }
-    if (bkname == '4') {
+    else if (bkname == '4') {
       that.sfcbk()
     }
-    if (bkname == '5') {
+    else if (bkname == '5') {
       that.hdbmbk()
+    }
+    else if (bkname == '6') {
+      that.zxbk()
     }
   },
   // 选择全部
@@ -1377,6 +1429,13 @@ Page({
       complete: function (res) { },
     })
   },
+  message: function (e) {
+    console.log(e)
+    var id = e.currentTarget.dataset.id
+    wx: wx.navigateTo({
+      url: '../message/message_info?id=' + id,
+    })
+  },
   // ---------------------------------------查看详情
   see: function (e) {
     var that = this
@@ -1464,7 +1523,7 @@ Page({
     var that = this
     this.setData({
       page: 1,
-      seller: [], store1: [], yellow_list: [], pc: [], hdlist: [],
+      seller: [], store1: [], yellow_list: [], pc: [], hdlist: [], zxlist:[],
       activeIndex: 0,
       swipecurrent: 0,
       refresh_top: false,
@@ -1497,17 +1556,20 @@ Page({
       if (bkname == '1') {
         that.seller()
       }
-      if (bkname == '2') {
+      else if (bkname == '2') {
         that.sjbk()
       }
-      if (bkname == '3') {
+      else if (bkname == '3') {
         that.hybk()
       }
-      if (bkname == '4') {
+      else if (bkname == '4') {
         that.sfcbk()
       }
-      if (bkname == '5') {
+      else if (bkname == '5') {
         that.hdbmbk()
+      }
+      else if (bkname == '6') {
+        that.zxbk()
       }
     } else {
       console.log('dobutno')

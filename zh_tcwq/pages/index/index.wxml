@@ -219,11 +219,11 @@
           </form>
           <image src="../image/liulan.png" class="eye"></image>
           <view class="content_num">{{item.tz.views}}</view>
-          <view class="content_ren">人浏览</view>
+          <view class="content_ren">浏览</view>
           <image src='../image/zan.png' class='zan' wx:if="{{item.tz.thumbs_ups==null}}" catchtap='thumbs_up' data-id='{{item.tz.id}}' data-num='{{item.tz.givelike}}'></image>
           <image src='../image/thumbs_up.png' class='zan' wx:if="{{item.tz.thumbs_ups==true}}"></image>
           <view class='zannum' wx:if="{{item.tz.thumbs_up==null}}">{{item.tz.givelike}}</view>
-          <view class='zannum' wx:if="{{item.tz.thumbs_up!=null}}">{{item.tz.givelike}}</view>人点赞
+          <view class='zannum' wx:if="{{item.tz.thumbs_up!=null}}">{{item.tz.givelike}}</view>赞
           <view class='zannum rel' catchtap='see' data-id='{{item.tz.id}}' style='margin-left:150rpx;'>
             查看详情>></view>
           <view class="kuang"></view>
@@ -419,6 +419,49 @@
           <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
         </view>
         <view class='center'>暂无活动信息</view>
+      </view>
+    </view>
+    <view hidden='{{bkname!="6"}}' class="yelist message_list">
+      <view>
+      <view class='message_listview' wx:if="{{zxlist.length!=0}}" wx:for="{{zxlist}}" wx:key="*this" bindtap='message' data-id='{{item.id}}'>
+        <block wx:if="{{item.imgs.length>1||item.imgs==''}}">
+          <view class='title'>{{item.title}}</view>
+          <view class='message_image' wx:if="{{item.imgs!=''}}">
+            <image wx:for="{{item.imgs}}" wx:key="*this" mode='aspectFill' src='{{url}}{{item}}'></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='message_hd'>
+            <view class='title'>{{item.title}}</view>
+            <image wx:for="{{item.imgs}}" wx:key="*this" mode='aspectFill' src='{{url}}{{item}}'></image>
+          </view>
+        </block>
+        <view class='message_info'>
+          <view>
+            <text wx:if="{{item.type==1}}">{{System.pt_name}}</text>
+            <text wx:else>{{item.name}}</text>
+            <image wx:if="{{item.type==1}}" src='../image/mine.png'></image>
+            <text wx:if="{{item.m<24}}">
+            <text wx:if="{{item.m==0}}">{{item.h}}分钟前发布</text>
+            <text wx:if="{{item.m>0}}">{{item.m}}小时{{item.h}}分钟前发布</text>
+            </text>
+            <text wx:if="{{item.m>=24}}">{{item.time}}  发布</text>
+          </view>
+          <text>{{item.yd_num}}阅读</text>
+        </view>
+      </view>
+      </view>
+      <navigator url='../message/message' class='loading rel' wx:if="{{refresh_top==true&&zxlist.length!=0}}">
+        点击查看更多 >
+      </navigator>
+      <view class='loading rel' wx:if="{{refresh_top==false}}">
+        <image class='ab udlr' mode='widthFix' src='../image/loading.gif'></image>
+      </view>
+      <view class="none_store" wx:if="{{zxlist.length==0}}">
+        <view class='rel'>
+          <image class='ab udlr img2' mode='aspectFill' src='../image/tie2.png'></image>
+        </view>
+        <view class='center'>暂无资讯信息</view>
       </view>
     </view>
     <!-- </scroll-view>
