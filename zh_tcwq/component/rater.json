@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-icon": "/zh_tcwq/component/icon"
+    }
+}

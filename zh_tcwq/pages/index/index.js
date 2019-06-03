@@ -784,7 +784,10 @@ Page({
       data: { type: 1, lat: wx.getStorageSync('Location').latitude, lng: wx.getStorageSync('Location').longitude, page: page, cityname: city },
       success: function (res) {
         console.log(res)
-        for (let x in res.data) res.data[x].distance = (parseFloat(res.data[x].juli) / 1000).toFixed(2)
+        for (let x in res.data){
+          res.data[x].distance = (parseFloat(res.data[x].juli) / 1000).toFixed(2)
+          res.data[x].ad = res.data[x].ad.split(",")
+        }
         if (res.data.length == 0) {
           that.setData({
             refresh_top: true

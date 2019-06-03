@@ -380,7 +380,10 @@ Page({
       'cachetime': '0',
       data: { type: type, lat: that.data.lat, lng: that.data.lng, storetype_id: storetype_id, storetype2_id: storetype2_id, page: page, pagesize: 10, cityname: city },
       success: function (res) {
-        for (let x in res.data) res.data[x].distance = (parseFloat(res.data[x].juli) / 1000).toFixed(2)
+        for (let x in res.data){
+          res.data[x].distance = (parseFloat(res.data[x].juli) / 1000).toFixed(2)
+          res.data[x].ad = res.data[x].ad.split(",")
+        }
         that.setData({
           page: page + 1,
         })

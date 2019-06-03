@@ -90,32 +90,7 @@
       </view>
     </view>
     <!-- -----------------------附近部分------------------------ -->
-    <view class='sellers rel' bindtap="sellerinfo" wx:for="{{store}}" wx:key="unique">
-      <image mode='aspectFill' src='{{url}}{{item.logo}}' class='sellers-img' bindtap='store' data-id='{{item.id}}'></image>
-      <text class='sellersname rel' bindtap='store' data-id='{{item.id}}'><text class="content_zhi color2" wx:if="{{item.is_top=='1'}}">置顶</text>{{item.store_name}}</text>
-      <view class='compone flex-center' bindtap='store' data-id='{{item.id}}'>
-        <image class='componeimg' src='../image/address3.png'></image>
-        <view style='width:370rpx;height:40rpx;margin-left:10rpx;' class='gobyndsingle'>{{item.address}}</view>
-      </view>
-      <view class='starbox' wx:if="{{item.score==0||item.score==5}}">
-        <image class='star' wx:for="{{star}}" wx:key="unique" src='{{item.img}}'></image>
-      </view>
-      <view class='starbox' wx:if="{{item.score==1}}">
-        <image class='star' wx:for="{{star1}}" wx:key="unique" src='{{item.img}}'></image>
-      </view>
-      <view class='starbox' wx:if="{{item.score==2}}">
-        <image class='star' wx:for="{{star2}}" wx:key="unique" src='{{item.img}}'></image>
-      </view>
-      <view class='starbox' wx:if="{{item.score==3}}">
-        <image class='star' wx:for="{{star3}}" wx:key="unique" src='{{item.img}}'></image>
-      </view>
-      <view class='starbox' wx:if="{{item.score==4}}">
-        <image class='star' wx:for="{{star4}}" wx:key="unique" src='{{item.img}}'></image>
-      </view>
-      <text class='hot'>人气：{{item.views}}</text>
-      <image class='telephone' src='../image/telephone.png' bindtap='phone' data-tel='{{item.tel}}'></image>
-      <text class='distance'>{{item.distance}}km</text>
-    </view>
+    <store-cell wx:for="{{store}}" wx:key="unique" url="{{url}}" content="{{item}}"/>
     <view class='sellers rel hot_store' wx:if="{{store==''||store==null}}" style='width:100%;height:350rpx;padding:0'>
       <image class='ab lr' mode='aspectFill' style='width:400rpx;height:300rpx;' src='../image/tie2.png'></image>
       <view class='ab zanwu'>暂无附近的商家</view>

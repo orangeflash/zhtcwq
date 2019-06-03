@@ -1,0 +1,38 @@
+<!--zh_tcwq/component/store-cell.wxml-->
+<view style='margin-bottom:22rpx;'>
+  <view class='sellers rel' bindtap='store' data-id='{{content.id}}'>
+    <image mode='aspectFill' src='{{url}}{{content.logo}}' class='sellers-img'></image>
+    <text class='sellersname rel'><text class="content_zhi color2" wx:if="{{content.is_top=='1'}}">置顶</text>{{content.store_name}}</text>
+    <view class='compone flex-center'>
+      <image class='componeimg' src='/zh_tcwq/pages/image/address3.png'></image>
+      <view style='width:370rpx;height:40rpx;margin-left:10rpx;' class='gobyndsingle'>{{content.address}}</view>
+    </view>
+    <view class='starbox'>
+      <wux-rater slot="footer" default-value="{{ content.score==0?5:content.score }}" font-size="{{ 16 }}" disabled />
+    </view>
+    <!-- <view class='starbox' wx:if="{{content.score==0||content.score==5}}">
+    <image class='star' wx:for="{{star}}" wx:key="unique" src='{{content.img}}'></image>
+  </view>
+  <view class='starbox' wx:if="{{content.score==1}}">
+    <image class='star' wx:for="{{star1}}" wx:key="unique" src='{{content.img}}'></image>
+  </view>
+  <view class='starbox' wx:if="{{content.score==2}}">
+    <image class='star' wx:for="{{star2}}" wx:key="unique" src='{{content.img}}'></image>
+  </view>
+  <view class='starbox' wx:if="{{content.score==3}}">
+    <image class='star' wx:for="{{star3}}" wx:key="unique" src='{{content.img}}'></image>
+  </view>
+  <view class='starbox' wx:if="{{content.score==4}}">
+    <image class='star' wx:for="{{star4}}" wx:key="unique" src='{{content.img}}'></image>
+  </view> -->
+    <text class='hot'>人气：{{content.views}}</text>
+    <image class='telephone' src='/zh_tcwq/pages/image/telephone.png' bindtap='phone' data-tel='{{content.tel}}'></image>
+    <text class='distance'>{{content.distance}}km</text>
+  </view>
+  <view class='store-cell' bindtap='store' data-id='{{content.id}}'>
+    <view class='gobyndmulit'>{{content.details}}</view>
+    <view class='flex-raw'>
+      <image mode='aspectFill' wx:for="{{content.ad}}" catchtap='preimg' data-idx='{{index}}' class='img' src='{{url}}{{item}}'></image>
+    </view>
+  </view>
+</view>

@@ -76,23 +76,7 @@
     </view>
   </view>
   <view class="container">
-    <view class='rel' wx:for="{{store}}" bindtap='store' data-id='{{item.id}}' wx:key="{{item.calue}}" wx:if="{{store.length!=0}}">
-      <view class='store ab udlr'>
-        <view class='store_img'>
-          <image mode='aspectFill' src='{{url}}{{item.logo}}'></image>
-        </view>
-        <view class='store_info'>
-          <view>{{item.store_name}}</view>
-          <view>{{item.start_time}}-{{item.end_time}}营业</view>
-          <view class='gobyndsingle'>
-            <image mode='widthFix' src='../image/xiangqingdizhi@3x.png'></image>{{item.address}}</view>
-        </view>
-        <view class='ab ud phone' catchtap='phone' data-tel='{{item.tel}}'>
-          <image mode='widthFix' src='../image/telephone.png'></image>
-          <text>{{item.distance}}km</text>
-        </view>
-      </view>
-    </view>
+    <store-cell wx:for="{{store}}" wx:key="unique" url="{{url}}" content="{{item}}"/>
     <view class='loading rel' style='height: 60rpx;' wx:if="{{refresh_top==true&&store.length!=0}}">
       没有更多了~
     </view>
