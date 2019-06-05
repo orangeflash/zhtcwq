@@ -29,10 +29,10 @@
     <image class='telephone' src='/zh_tcwq/pages/image/telephone.png' bindtap='phone' data-tel='{{content.tel}}'></image>
     <text class='distance'>{{content.distance}}km</text>
   </view>
-  <view class='store-cell' bindtap='store' data-id='{{content.id}}'>
+  <view wx:if="{{content.details||content.ad.length>0}}" class='store-cell' bindtap='store' data-id='{{content.id}}'>
     <view class='gobyndmulit'>{{content.details}}</view>
     <view class='flex-raw'>
-      <image mode='aspectFill' wx:for="{{content.ad}}" catchtap='preimg' data-idx='{{index}}' class='img' src='{{url}}{{item}}'></image>
+      <image mode='aspectFill' wx:for="{{content.ad}}" wx:if="{{index<4}}" catchtap='preimg' data-idx='{{index}}' class='img' src='{{url}}{{item}}'></image>
     </view>
   </view>
 </view>

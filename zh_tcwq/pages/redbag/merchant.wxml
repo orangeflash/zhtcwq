@@ -96,14 +96,14 @@
 
 
 
-  <view class="section">
+  <view class="section" wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'&&seller.is_shop=='1'}}">
     <view class="sec_title">商品管理</view>
     <view class="flex2 secbox">
-      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist" bindtap='fuck'>
+      <view class="seclist" bindtap='fuck'>
         <image class="secimg" src="../image/upload.png"></image>
         <view class="sectext">发布商品</view>
       </view>
-      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist" bindtap='mine_shop'>
+      <view class="seclist" bindtap='mine_shop'>
         <image class="secimg" src="../image/mine_shop.png"></image>
         <view class="sectext">我的商品</view>
       </view>
@@ -111,13 +111,13 @@
         <image class="secimg" src="../image/mine_bussiness.png"></image>
         <view class="sectext">我的店铺</view>
       </view> -->
-      <view wx:if="{{System.is_sp=='1'&&System.is_spqx=='1'}}" class="seclist">
+      <view class="seclist">
         <image class="secimg" bindtap='hxdd' mode='aspectFill' src="../image/mdm.png"></image>
         <view class="sectext">核销订单</view>
       </view>
     </view>
   </view>
-  <view class="section" wx:if="{{System.g_open=='1'&&System.g_qx=='1'}}">
+  <view class="section" wx:if="{{System.g_open=='1'&&System.g_qx=='1'&&seller.is_pt=='1'}}">
     <view class="sec_title">拼团管理</view>
     <view class="flex2 secbox">
       <view class="seclist" bindtap='fptsp'>
@@ -142,7 +142,7 @@
       </view>
     </view>
   </view>
-  <view class="section" wx:if="{{System.is_coupon==1&&System.is_yhqqx==1}}">
+  <view class="section" wx:if="{{System.is_coupon==1&&System.is_yhqqx==1&&seller.is_yhq=='1'}}">
     <view class="sec_title">优惠券管理</view>
     <view class="flex2 secbox">
       <view class="seclist">
@@ -159,7 +159,7 @@
       </view>
     </view>
   </view>
-  <view class="section" wx:if="{{System.is_xsqg=='1'&&System.is_qgqx=='1'}}">
+  <view class="section" wx:if="{{System.is_xsqg=='1'&&System.is_qgqx=='1'&&seller.is_qg=='1'}}">
     <view class="sec_title">限时抢购管理</view>
     <view class="flex2 secbox">
       <view class="seclist" bindtap='fqgsp'>

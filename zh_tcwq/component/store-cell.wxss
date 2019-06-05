@@ -16,3 +16,11 @@
   height: 120rpx;
   margin: 20rpx 10rpx 0 10rpx
 }
+.gobyndmulit {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
