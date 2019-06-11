@@ -12,7 +12,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.2",
+	"libVersion": "2.7.1",
 	"appid": "wx80fa1d36c435231a",
 	"projectname": "%E5%90%8C%E5%9F%8E",
 	"cloudfunctionTemplateRoot": "",
