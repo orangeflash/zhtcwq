@@ -85,6 +85,7 @@ Page({
                           // ----------------------------------异步保存用户信息----------------------------------
                           wx.setStorageSync('users', res.data)
                           wx.setStorageSync('uniacid', res.data.uniacid)
+                          that.reload()
                           that.setData({
                             user_id: res.data.id,
                             user_name: name
@@ -180,7 +181,7 @@ Page({
       that.setData({
         post_info_id: options.my_post,
       })
-      that.reload()
+      // that.reload()
     } else {
       if (options.scene != null) {
         that.setData({
@@ -242,7 +243,7 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/PostInfo',
       'cachetime': '0',
-      data: { id: post_info_id },
+      data: { id: post_info_id, user_id: wx.getStorageSync('users').id },
       success: function (res) {
         console.log(res)
         if (res.data.tz.type2_name == null) {
@@ -324,6 +325,19 @@ Page({
         res.data.tz.dis1 = 'block'
         res.data.tz.trans_1 = 2
         res.data.tz.trans_2 = 1
+        res.data.tz.copyuser_tel = res.data.tz.user_tel.substr(0, 3) + '****' + res.data.tz.user_tel.substr(7);
+        let alreadyCharge;
+        if (res.data.call){
+          alreadyCharge = true;
+        }
+        else{
+          if (+res.data.tz.tel_money > 0) {
+            alreadyCharge = false;
+          }
+          else {
+            alreadyCharge = true;
+          }
+        }
         that.setData({
           post: res.data.tz,
           dianzan: res.data.dz,
@@ -332,7 +346,8 @@ Page({
           post_info_id: post_info_id,
           tei_id: res.data.tz.id,
           criticism: res.data.pl,
-          label: res.data.label
+          label: res.data.label,
+          alreadyCharge,
         })
       },
     })
@@ -905,11 +920,59 @@ Page({
   },
   // -----------------------------------拨打电话
   phone: function (e) {
-    var that = this
-    var post = that.data.post
-    wx.makePhoneCall({
-      phoneNumber: post.user_tel
-    })
+    var that = this, user_id = wx.getStorageSync('users').id, openid = wx.getStorageSync("openid"), post = that.data.post
+    if (this.data.alreadyCharge) {
+      wx.makePhoneCall({
+        phoneNumber: post.user_tel
+      })
+    }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '拨打电话需支付' + post.tel_money + '元',
+        success: () => {
+          app.util.request({
+            'url': 'entry/wxapp/Call',
+            data: { post_id: post.id, user_id, },
+            success: function (res) {
+              let order_id=res.data
+              app.util.request({
+                'url': 'entry/wxapp/CallPay',
+                data: { order_id, },
+                success: function (res) {
+                  wx.requestPayment({
+                    'timeStamp': res.data.timeStamp,
+                    'nonceStr': res.data.nonceStr,
+                    'package': res.data.package,
+                    'signType': res.data.signType,
+                    'paySign': res.data.paySign,
+                    'success': function (res) {
+                      console.log('这里是支付成功')
+                    },
+                    'complete': function (res) {
+                      console.log(res);
+                      if (res.errMsg == 'requestPayment:fail cancel') {
+                        wx.showToast({
+                          title: '取消支付',
+                          icon: 'loading',
+                          duration: 1000
+                        })
+                      }
+                      if (res.errMsg == 'requestPayment:ok') {
+                        that.reload()
+                        wx.showToast({
+                          title: '支付成功',
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            },
+          })
+        }
+      })
+    }
   },
   // ----------------------------------动态改变样式
   move: function (e) {

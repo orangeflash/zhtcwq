@@ -44,7 +44,7 @@ App({
       success: function (t) {
         console.log(t)
         getApp().xtxx = t.data
-        e.globalData.color = t.data.color
+        e.globalData.color = t.data.color ||'ED414A'
         e.setNavigationBarColor(n)
         // 0 == t.code && (wx.setStorageSync("_navigation_bar_color", t.data), e.setNavigationBarColor())
       }

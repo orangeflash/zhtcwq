@@ -83,8 +83,8 @@
     <view class="portrait_telnum">发布时间：{{post.time2}}</view>
   </view>
   <block wx:if="{{system.is_bdtel=='1'}}">
-    <view wx:if="{{system.is_ff=='2'}}" class="flex-bet portrait_teltop">
-      <view class="portrait_telnum">联系电话：{{post.user_tel}}</view>
+    <view class="flex-bet portrait_teltop">
+      <view class="portrait_telnum">联系电话：{{alreadyCharge?post.user_tel:post.copyuser_tel}}</view>
       <view class="content_right" bindtap='phone' style='background:{{system.color}}'>
         <view class='rel'>
           <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
@@ -92,7 +92,7 @@
         <view>拨打电话</view>
       </view>
     </view>
-    <view wx:if="{{system.is_ff=='1'}}" class="flex-bet portrait_teltop">
+    <!-- <view wx:if="{{system.is_ff=='1'}}" class="flex-bet portrait_teltop">
       <view wx:if="{{isff=='1'}}" class="portrait_telnum">联系电话：{{post.user_tel}}</view>
       <view wx:else class="portrait_telnum">联系电话：***********</view>
       <view class="content_right" bindtap='phone' style='background:{{system.color}}'>
@@ -101,7 +101,7 @@
         </view>
         <view>拨打电话</view>
       </view>
-    </view>
+    </view> -->
   </block>
   <view class="portrait_telbot">联系我时，请说是在{{system_name}}上看到的信息喔...</view>
 </view>
