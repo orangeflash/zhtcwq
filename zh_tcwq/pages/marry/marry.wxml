@@ -34,13 +34,7 @@
             </view>
           </view>
           <block wx:if="{{system.is_bdtel=='1'}}">
-            <view wx:if="{{system.is_ff=='2'}}" class="content_right" bindtap='phone' data-id='{{item.tz.user_tel}}' style='background:{{system.color}}'>
-              <view class='rel'>
-                <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
-              </view>
-              <view>拨打电话</view>
-            </view>
-            <view wx:if="{{system.is_ff=='1'}}" class="content_right" bindtap='see' data-id='{{item.tz.id}}' style='background:{{system.color}}'>
+            <view class="content_right" bindtap='see' data-id='{{item.tz.id}}' style='background:{{system.color}}'>
               <view class='rel'>
                 <image class='ab udlr' mode='aspectFill' src='../image/phone1.gif'></image>
               </view>
