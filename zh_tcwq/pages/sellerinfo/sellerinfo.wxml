@@ -10,7 +10,7 @@
   </form>
   微信
 </view>
-<view class='comments border_three color1 rel' bindtap='comments'>
+<view wx:if="{{system.is_pl==1}}" class='comments border_three color1 rel' bindtap='comments'>
   <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
     <button form-type='submit'></button>
   </form>

@@ -20,7 +20,7 @@ Page({
     comments: false,
     wechat: false,
     share: false,
-    tabs2: ["商家详情", "用户评论"],
+    tabs2: ["商家详情"],
     tabs3: [],
     star: [
       {
@@ -341,7 +341,7 @@ Page({
       'url': 'entry/wxapp/System',
       'cachetime': '0',
       success: function (res) {
-        let sys = res.data, tabs = [];
+        let sys = res.data, tabs = [], tabs2 = that.data.tabs2;
         console.log(res, sys.is_coupon != '1' || sys.is_yhqqx != '1')
         if (sys.is_coupon == '1' && sys.is_yhqqx == '1') {
           tabs.push('优惠券')
@@ -352,9 +352,13 @@ Page({
         if (sys.g_qx == '1' && sys.g_open == '1') {
           tabs.push('拼团商品')
         }
+        if(res.data.is_pl==1){
+          tabs2.push('用户评论')
+        }
         that.setData({
           system: res.data,
           tabs3: tabs,
+          tabs2,
           tabname: tabs[0]
         })
         wx.setNavigationBarColor({

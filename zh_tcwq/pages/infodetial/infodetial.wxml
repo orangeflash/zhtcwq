@@ -133,6 +133,7 @@
 </view>
 <!--—————————————用户列表部分结束—————————————  -->
 <!-- 评论模块开始 -->
+<block wx:if="{{system.is_pl==1}}">
 <view class="portrait_ctop flex-bet">
   <view class="flex-center">
     <view class="portrait_cxian" style='background:{{system.color}}'></view>
@@ -195,6 +196,7 @@
   <image mode='aspectFill' style='width:19%;height:100rpx;margin-left:40.5%;margin-top:30rpx;' src='../image/none_commen.png'></image>
   <view style='width:100%;height:40rpx;line-height:20rpx;font-size:24rpx;text-align:center'>没有评论喔</view>
 </view>
+</block>
 <!-- 发表评论----------------- -->
 <view class="reply" wx:if="{{comment==true}}">
   <view class="reply_box">
@@ -290,8 +292,14 @@
       <button formType="submit"></button>
     </form>
   </view>
-  <view class='nav_phone rel' bindtap='comment' style='background:{{system.color}}'>
+  <view wx:if="{{system.is_pl==1}}" class='nav_phone rel' bindtap='comment' style='background:{{system.color}}'>
     <view>我要评论</view>
+    <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
+      <button formType="submit"></button>
+    </form>
+  </view>
+  <view wx:else class='nav_phone rel' bindtap='wyfb' style='background:{{system.color}}'>
+    <view>我要发布</view>
     <form class='plate_form' bindsubmit="formid_one" report-submit="true" bindreset="formReset">
       <button formType="submit"></button>
     </form>

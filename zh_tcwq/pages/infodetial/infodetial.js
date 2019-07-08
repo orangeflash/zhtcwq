@@ -17,6 +17,11 @@ Page({
     hb_share: false,
     share_red: false,
   },
+  wyfb(){
+    wx.navigateTo({
+      url: '/zh_tcwq/pages/fabu/fabu/fabu',
+    })
+  },
   openshare: function () {
     var page = this;
     page.setData({
