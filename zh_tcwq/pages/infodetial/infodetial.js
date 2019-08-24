@@ -789,12 +789,29 @@ Page({
     var reflex_name = e.currentTarget.dataset.name
     var user_id = that.data.user_id
     var post_user_id = that.data.post.user_id
+    app.util.request({
+      'url': 'entry/wxapp/GetUserInfo',
+      'cachetime': '0',
+      data: { user_id: user_id },
+      success: function (res) {
+        console.log(res)
+        if (res.data.state == 1) {
+          that.setData({
+            reply: true,
+            reflex_id: id,
+            reflex_name: '回复' + reflex_name
+          })
+        } else {
+          wx: wx.showModal({
+            title: '提示',
+            content: '您的账号异常，请尽快联系管理员',
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }
+      },
+    })
     // if (post_user_id == user_id) {
-      that.setData({
-        reply: true,
-        reflex_id: id,
-        reflex_name: '回复' + reflex_name
-      })
     // }
     // else {
     //   wx.showToast({
@@ -880,11 +897,28 @@ Page({
     var id = e.currentTarget.dataset.reflex_id
     var reflex_name = e.currentTarget.dataset.name
     var hfid = e.currentTarget.dataset.hfid
-    that.setData({
-      replyhf: true,
-      reflex_id: id,
-      hfid: hfid,
-      reflex_name: '回复' + reflex_name
+    app.util.request({
+      'url': 'entry/wxapp/GetUserInfo',
+      'cachetime': '0',
+      data: { user_id: that.data.user_id },
+      success: function (res) {
+        console.log(res)
+        if (res.data.state == 1) {
+          that.setData({
+            replyhf: true,
+            reflex_id: id,
+            hfid: hfid,
+            reflex_name: '回复' + reflex_name
+          })
+        } else {
+          wx: wx.showModal({
+            title: '提示',
+            content: '您的账号异常，请尽快联系管理员',
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }
+      },
     })
   },
   huifu: function (e) {
@@ -1156,6 +1190,16 @@ Page({
       var title = that.data.system.hb_content.replace('name', that.data.user_name)
       title = title.replace('type', '【' + that.data.post.type_name + '】')
     }
+    app.util.request({
+      'url': 'entry/wxapp/HbFx',
+      'cachetime': '0',
+      data: { information_id: that.data.post.id, user_id: uid },
+      success: function (res) {
+      },
+    })
+    that.setData({
+      share_red: false
+    })
     if (hb_money > 0 && res.from == "button" && ishbzf == '1') {
       return {
         title: title,
@@ -1163,18 +1207,6 @@ Page({
         imageUrl: fxhbimg,
         success: function (res) {
           console.log('这是转发成功')
-          app.util.request({
-            'url': 'entry/wxapp/HbFx',
-            'cachetime': '0',
-            data: { information_id: that.data.post.id, user_id: uid },
-            success: function (res) {
-              console.log(res)
-            },
-          })
-          console.log(res)
-          that.setData({
-            share_red: false
-          })
           var user_id = that.data.user_id
           var id = that.data.post_info_id
           console.log(id, user_id)
@@ -1216,23 +1248,6 @@ Page({
         path: '/zh_tcwq/pages/infodetial/infodetial?user_id=' + that.data.user_id + '&my_post=' + my_post + '&type=' + 1,
         success: function (res) {
           console.log('这是转发成功')
-          app.util.request({
-            'url': 'entry/wxapp/HbFx',
-            'cachetime': '0',
-            data: { information_id: that.data.post.id, user_id: uid },
-            success: function (res) {
-              console.log(res)
-            },
-          })
-          console.log(res)
-          that.setData({
-            share_red: false
-          })
-          // that.setData({
-          //   share: true,
-          //   hb_share: false,
-          //   rob_redbag: true
-          // })
         },
         fail: function (res) {
           // 转发失败
@@ -1245,23 +1260,6 @@ Page({
         path: '/zh_tcwq/pages/infodetial/infodetial?user_id=' + that.data.user_id + '&my_post=' + my_post + '&type=' + 1,
         success: function (res) {
           console.log('这是转发成功')
-          app.util.request({
-            'url': 'entry/wxapp/HbFx',
-            'cachetime': '0',
-            data: { information_id: that.data.post.id, user_id: uid },
-            success: function (res) {
-              console.log(res)
-            },
-          })
-          console.log(res)
-          that.setData({
-            share_red: false
-          })
-          // that.setData({
-          //   share: true,
-          //   hb_share: false,
-          //   rob_redbag: true
-          // })
         },
         fail: function (res) {
           // 转发失败
@@ -1274,23 +1272,6 @@ Page({
         path: '/zh_tcwq/pages/infodetial/infodetial?user_id=' + that.data.user_id + '&my_post=' + my_post + '&type=' + 1,
         success: function (res) {
           console.log('这是转发成功')
-          app.util.request({
-            'url': 'entry/wxapp/HbFx',
-            'cachetime': '0',
-            data: { information_id: that.data.post.id, user_id: uid },
-            success: function (res) {
-              console.log(res)
-            },
-          })
-          console.log(res)
-          that.setData({
-            share_red: false
-          })
-          // that.setData({
-          //   share: true,
-          //   hb_share: false,
-          //   rob_redbag: true
-          // })
         },
         fail: function (res) {
           // 转发失败

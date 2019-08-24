@@ -58,6 +58,9 @@ Page({
       data: { type_id: typeid, store_id: store_id, page: page, pagesize: 10, cityname: cityname },
       success: function (res) {
         console.log(res.data)
+        for (let i = 0; i < res.data.length; i++) {
+          res.data[i].rate = parseInt((1 - Number(res.data[i].surplus) / Number(res.data[i].number)) * 100)
+        }
         if (res.data.length < 10) {
           that.setData({
             refresh_top: true

@@ -1163,18 +1163,18 @@ Page({
     var user_id = wx.getStorageSync('users').id
     var name = that.data.store.store_name
     var store_id = that.data.store.id
+    app.util.request({
+      'url': 'entry/wxapp/StoreFxNum',
+      'cachetime': '0',
+      data: { store_id: store_id },
+      success: function (res) {
+        that.reload()
+      },
+    })
     return {
       title: name,
       path: '/zh_tcwq/pages/sellerinfo/sellerinfo?user_id=' + user_id + '&id=' + store_id + '&type=' + 1,
       success: function (res) {
-        app.util.request({
-          'url': 'entry/wxapp/StoreFxNum',
-          'cachetime': '0',
-          data: { store_id: store_id },
-          success: function (res) {
-            that.reload()
-          },
-        })
       },
       fail: function (res) {
         // 转发失败

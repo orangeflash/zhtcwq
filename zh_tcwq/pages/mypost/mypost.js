@@ -297,7 +297,8 @@ Page({
     console.log(e)
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      activeIndex: e.currentTarget.id,
+      clickE:e,
     });
   },
   /**
@@ -550,12 +551,12 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      activeIndex: 0,
       refresh_top: false,
       postlist: [],
       page: 1,
     })
     this.reload()
+    this.tabClick(this.data.clickE)
     wx: wx.stopPullDownRefresh()
   },
 
