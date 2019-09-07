@@ -304,17 +304,17 @@ Page({
       success: function (res) {
         var code = res.code
         wx.setStorageSync("code", code)
-        wx.getSetting({
-          success: function (res) {
-            console.log(res)
-            if (res.authSetting['scope.userInfo']) {
-              // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-              wx.getUserInfo({
-                success: function (res) {
-                  console.log(res)
-                  wx.setStorageSync("user_info", res.userInfo)
-                  var nickName = res.userInfo.nickName
-                  var avatarUrl = res.userInfo.avatarUrl
+        // wx.getSetting({
+        //   success: function (res) {
+        //     console.log(res)
+        //     if (res.authSetting['scope.userInfo']) {
+        //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+        //       wx.getUserInfo({
+        //         success: function (res) {
+        //           console.log(res)
+        //           wx.setStorageSync("user_info", res.userInfo)
+        //           var nickName = res.userInfo.nickName
+        //           var avatarUrl = res.userInfo.avatarUrl
                   app.util.request({
                     'url': 'entry/wxapp/openid',
                     'cachetime': '0',
@@ -327,7 +327,7 @@ Page({
                       app.util.request({
                         'url': 'entry/wxapp/Login',
                         'cachetime': '0',
-                        data: { openid: openid, img: avatarUrl, name: nickName },
+                        data: { openid: openid, },
                         success: function (res) {
                           console.log(res)
                           that.setData({
@@ -350,17 +350,17 @@ Page({
                       })
                     },
                   })
-                }
-              })
-            }
-            else {
-              console.log('未授权过')
-              that.setData({
-                hydl: true,
-              })
-            }
-          }
-        })
+        //         }
+        //       })
+        //     }
+        //     else {
+        //       console.log('未授权过')
+        //       that.setData({
+        //         hydl: true,
+        //       })
+        //     }
+        //   }
+        // })
       }
     })
     //---------------------------------- 获取用户的地理位置----------------------------------

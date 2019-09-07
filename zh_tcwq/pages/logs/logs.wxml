@@ -14,7 +14,14 @@
       <image src="../image/jifen.png"></image>
       <view>我的积分</view>
     </navigator> -->
-    <view class="flex-center">
+    <view class="mrtxc" wx:if='{{hydl}}'>
+      <image class="mrtxl" src="../image/mtx.png"></image>
+      <view class="mrtxr">
+        <view class="wxyh">微信用户</view>
+        <button wx:if="{{hydl}}" open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo' style="background:{{color}}" class='djsq'>点击授权</button>
+      </view>
+    </view>
+    <view wx:else class="flex-center">
       <image class="picture" src="{{avatarUrl}}"></image>
       <view class="header_name">
         <view>{{nickName}}</view>
