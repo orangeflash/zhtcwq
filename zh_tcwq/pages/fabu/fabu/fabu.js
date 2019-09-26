@@ -173,34 +173,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getSetting({
-      success: function (res) {
-        console.log(res)
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-        }
-        else {
-          console.log('未授权过')
-          wx.reLaunch({
-            url: '../../index/index',
-          })
-        }
-        // if (res.authSetting['scope.userLocation']) {
-        //   // 已经授权
-        // }
-        // else {
-        //   wx.showModal({
-        //     title: '提示',
-        //     content: '您暂未授权位置信息无法正常使用,请在（右上角 - 关于 - 右上角 - 设置）中开启位置信息授权后，首页下拉刷新即可正常使用',
-        //     success: function (res) {
-        //       wx.reLaunch({
-        //         url: '../../index/index',
-        //       })
-        //     }
-        //   })
-        // }
-      }
-    })
+    // wx.getSetting({
+    //   success: function (res) {
+    //     console.log(res)
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //     }
+    //     else {
+    //       console.log('未授权过')
+    //       wx.reLaunch({
+    //         url: '../../index/index',
+    //       })
+    //     }
+    //     // if (res.authSetting['scope.userLocation']) {
+    //     //   // 已经授权
+    //     // }
+    //     // else {
+    //     //   wx.showModal({
+    //     //     title: '提示',
+    //     //     content: '您暂未授权位置信息无法正常使用,请在（右上角 - 关于 - 右上角 - 设置）中开启位置信息授权后，首页下拉刷新即可正常使用',
+    //     //     success: function (res) {
+    //     //       wx.reLaunch({
+    //     //         url: '../../index/index',
+    //     //       })
+    //     //     }
+    //     //   })
+    //     // }
+    //   }
+    // })
   },
 
   /**

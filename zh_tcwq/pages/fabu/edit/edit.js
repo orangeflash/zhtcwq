@@ -14,22 +14,23 @@ Page({
     checked_password: false,
     know: false,
     num: 1,
-    disabled:false,
-    money1:0,
-  countries: ["本地", "全国"],
-  countryIndex: 0,
+    disabled: false,
+    money1: 0,
+    countries: ["本地", "全国"],
+    countryIndex: 0,
     radiochecked: true,
   },
-  checkboxChange: function (e) {
+  checkboxChange: function(e) {
     var that = this;
     this.setData({
       radiochecked: !that.data.radiochecked,
     })
   },
-  bindCountryChange: function (e) {
-    var zdindex = this.data.zdindex, stick = this.data.stick
-    console.log('picker country 发生选择改变，携带值为', e.detail.value, zdindex,stick);
-    var that=this;
+  bindCountryChange: function(e) {
+    var zdindex = this.data.zdindex,
+      stick = this.data.stick
+    console.log('picker country 发生选择改变，携带值为', e.detail.value, zdindex, stick);
+    var that = this;
     this.setData({
       countryIndex: e.detail.value,
       money: that.data.moneyarr[e.detail.value],
@@ -40,12 +41,12 @@ Page({
       })
     }
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindPickerChange: function (e) {
+  bindPickerChange: function(e) {
     var array = this.data.stock
     var index = e.detail.value
     var text = array[index]
@@ -57,15 +58,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     var that = this
     var user_id = wx.getStorageSync('users').id
     app.util.request({
       'url': 'entry/wxapp/GetUserInfo',
       'cachetime': '0',
-      data: { user_id: user_id },
-      success: function (res) {
+      data: {
+        user_id: user_id
+      },
+      success: function(res) {
         if (res.data.state == 2) {
           wx: wx.showModal({
             title: '提示',
@@ -73,13 +76,13 @@ Page({
             showCancel: true,
             cancelText: '取消',
             confirmText: '确定',
-            success: function (res) {
+            success: function(res) {
               wx: wx.navigateBack({
                 delta: 1,
               })
             },
-            fail: function (res) { },
-            complete: function (res) { },
+            fail: function(res) {},
+            complete: function(res) {},
           })
         }
       },
@@ -87,7 +90,7 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/GetSensitive',
       'cachetime': '0',
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         if (res.data) {
           that.setData({
@@ -95,7 +98,9 @@ Page({
           })
         } else {
           that.setData({
-            mgnr: { content: '' },
+            mgnr: {
+              content: ''
+            },
           })
         }
       },
@@ -107,28 +112,27 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/System',
       'cachetime': '0',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           System: res.data
         })
       },
     })
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         if (res.system.indexOf("iOS") != -1) {
           console.log('ios')
           that.setData({
             isios: true
           })
-        }
-        else {
+        } else {
           console.log('andr')
         }
       },
     })
     var info = options.info
-    var moneyarr = options.money.split(','); 
+    var moneyarr = options.money.split(',');
     var type_id = options.type_id
     var type2_id = options.type2_id
     var procedures = wx.getStorageSync('System')
@@ -144,7 +148,7 @@ Page({
       info: info,
       procedures: Number(procedures.hb_sxf),
       money: moneyarr[0],
-      moneyarr:moneyarr,
+      moneyarr: moneyarr,
       url: wx.getStorageSync('url2'),
       url1: wx.getStorageSync('url'),
       name: wx.getStorageSync('users').name
@@ -152,14 +156,16 @@ Page({
     //---------------------------------- 获取用户的地理位置----------------------------------
     wx.getLocation({
       type: 'wgs84',
-      success: function (res) {
+      success: function(res) {
         let latitude = res.latitude
         let longitude = res.longitude
         let op = latitude + ',' + longitude;
         app.util.request({
           'url': 'entry/wxapp/map',
           'cachetime': '0',
-          data: { op: op },
+          data: {
+            op: op
+          },
           success: res => {
             that.setData({
               lat: latitude,
@@ -174,8 +180,8 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/Top',
       'cachetime': '0',
-      success: function (res) {
-        console.log('top',res.data)
+      success: function(res) {
+        console.log('top', res.data)
         var stick = res.data
         for (let i in stick) {
           if (stick[i].type == 1) {
@@ -187,7 +193,7 @@ Page({
           }
         }
         var stock = []
-        stick.map(function (item) {
+        stick.map(function(item) {
           var arr = {}
           arr = item.array
           stock.push(arr)
@@ -203,8 +209,10 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/Label',
       'cachetime': '0',
-      data: { type2_id: type2_id },
-      success: function (res) {
+      data: {
+        type2_id: type2_id
+      },
+      success: function(res) {
         for (let i in res.data) {
           res.data[i].click_class = 'selected1'
         }
@@ -215,8 +223,9 @@ Page({
     })
   },
   // --------------------------------------选择的置顶信息-------------------------------------
-  selected: function (e) {
-    var that = this, countryIndex = this.data.countryIndex
+  selected: function(e) {
+    var that = this,
+      countryIndex = this.data.countryIndex
     var index = e.currentTarget.id
     var stick = that.data.stick
     that.setData({
@@ -230,11 +239,11 @@ Page({
     console.log(countryIndex, this.data.money1)
   },
   // ----------------------------------选择具体地址和经纬度----------------------------------
-  add: function (e) {
+  add: function(e) {
     var that = this
     wx.chooseLocation({
       type: 'wgs84',
-      success: function (res) {
+      success: function(res) {
         var latitude = res.latitude
         var longitude = res.longitude
         var speed = res.speed
@@ -284,7 +293,7 @@ Page({
   //   })
   // },
   // ----------------------------------标签----------------------------------
-  label: function (e) {
+  label: function(e) {
     var that = this
     var label = that.data.label
     var index = e.currentTarget.dataset.inde
@@ -298,7 +307,7 @@ Page({
     })
   },
   // -----------------------------------跳转发布须知
-  know: function (e) {
+  know: function(e) {
     var that = this
     wx.navigateTo({
       url: '../../logs/system?ftxz=1',
@@ -315,7 +324,7 @@ Page({
     // }
   },
   // ----------------------------------上传图片----------------------------------
-  imgArray1: function (e) {
+  imgArray1: function(e) {
     var that = this
     var uniacid = wx.getStorageSync('uniacid')
     var img_length = 9 - imgArray1.length
@@ -325,7 +334,7 @@ Page({
         count: img_length,
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
-        success: function (res) {
+        success: function(res) {
           wx.showToast({
             icon: "loading",
             title: "正在上传"
@@ -338,19 +347,14 @@ Page({
         }
       })
     } else {
-      wxd: wx.showModal({
+      wx.showModal({
         title: '上传提示',
         content: '最多上传9张图片',
-        showCancel: true,
-        cancelText: '取消',
         confirmText: '确定',
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
       })
     }
   },
-  uploadimg: function (data) {
+  uploadimg: function(data) {
     var that = this,
       i = data.i ? data.i : 0,
       success = data.success ? data.success : 0,
@@ -362,17 +366,16 @@ Page({
       formData: null,
       success: (resp) => {
         console.log(resp)
-        if (resp.data != '') {
+        if (resp.data != '图片内容违规,请重新上传!') {
           success++;
           imgArray1.push(resp.data)
           that.setData({
             imgArray1: imgArray1
           })
-        }
-        else {
+        } else {
           wx.showToast({
-            icon: "loading",
-            title: "请重试"
+            icon: "none",
+            title: '您所选的第' + (i + 1) + '张图片内容违规，系统已过滤'
           })
         }
       },
@@ -381,12 +384,7 @@ Page({
       },
       complete: () => {
         i++;
-        if (i == data.path.length) {
-          that.setData({
-            images: data.path
-          });
-          wx.hideToast();
-        } else {
+        if (i == data.path.length) {} else {
           data.i = i;
           data.success = success;
           data.fail = fail;
@@ -396,15 +394,15 @@ Page({
       }
     });
   },
-  delete: function (e) {
+  delete: function(e) {
     var that = this
-    Array.prototype.indexOf = function (val) {
+    Array.prototype.indexOf = function(val) {
       for (var i = 0; i < this.length; i++) {
         if (this[i] == val) return i;
       }
       return -1;
     };
-    Array.prototype.remove = function (val) {
+    Array.prototype.remove = function(val) {
       var index = this.indexOf(val);
       if (index > -1) {
         this.splice(index, 1);
@@ -417,7 +415,7 @@ Page({
     })
   },
   // -------------------------------开关1----------------------------
-  switch1Change: function (e) {
+  switch1Change: function(e) {
     console.log(e.detail.value)
     if (!e.detail.value) {
       this.setData({
@@ -431,24 +429,24 @@ Page({
     })
   },
   // -------------------------------开关2----------------------------
-  switch2Change: function (e) {
+  switch2Change: function(e) {
     this.setData({
       checked_welfare: e.detail.value
     })
   },
   // -------------------------------平均分配----------------------------
-  switch3Change: function (e) {
+  switch3Change: function(e) {
     this.setData({
       checked_average: e.detail.value
     })
   },
   // -------------------------------口令模式----------------------------
-  switch4Change: function (e) {
+  switch4Change: function(e) {
     this.setData({
       checked_password: e.detail.value
     })
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     console.log('这是保存formid2')
     console.log(e)
     app.util.request({
@@ -459,7 +457,7 @@ Page({
         form_id: e.detail.formId,
         openid: wx.getStorageSync('openid')
       },
-      success: function (res) {
+      success: function(res) {
 
       },
     })
@@ -482,8 +480,7 @@ Page({
     //是否开启地址
     if (that.data.System.is_tzdz == '1') {
       var address = e.detail.value.dzaddress
-    }
-    else {
+    } else {
       var address = ''
     }
     console.log(address)
@@ -507,7 +504,7 @@ Page({
       }
     }
     var sz = []
-    selected.map(function (item) {
+    selected.map(function(item) {
       var arr = {}
       arr.label_id = item.id
       sz.push(arr)
@@ -517,8 +514,9 @@ Page({
     var form_id = e.detail.formId
     // 输入的内容
 
-    var details = e.detail.value.content.replace("\n", "↵"), mgnr = this.data.mgnr.content.split(",");
-    console.log(mgnr, details)
+    var details = e.detail.value.content.replace("\n", "↵"),
+      mgnr = this.data.mgnr.content.split(",");
+    console.log(mgnr, details, imgArray1)
     if (this.data.mgnr.content != '') {
       for (let i = 0; i < mgnr.length; i++) {
         if (details.indexOf(mgnr[i]) != -1) {
@@ -617,15 +615,15 @@ Page({
       title = '电话不能为空'
     } else if (checked_welfare == true) {
       if (hb_money == '') {
-        title = that.data.System.hb_name +'金额不能为空'
-      } else if ((!that.data.checked_average)&&hb_money < 1) {
-        title = that.data.System.hb_name+'金额不能小于1元'
+        title = that.data.System.hb_name + '金额不能为空'
+      } else if ((!that.data.checked_average) && hb_money < 1) {
+        title = that.data.System.hb_name + '金额不能小于1元'
       } else if (hb_num == '') {
-        title = that.data.System.hb_name +'个数不能为空'
+        title = that.data.System.hb_name + '个数不能为空'
       } else if (beishu < 0.1) {
-        title = that.data.System.hb_name +'份数过大，请合理设置'
+        title = that.data.System.hb_name + '份数过大，请合理设置'
       } else if ((that.data.checked_average) && hb_money < 0.1) {
-        title = '单个'+that.data.System.hb_name+'最小金额不能小于0.1元'
+        title = '单个' + that.data.System.hb_name + '最小金额不能小于0.1元'
       } else if (checked_password == true) {
         if (hb_keyword == '') {
           title = '口令不能为空'
@@ -638,11 +636,12 @@ Page({
       wx: wx.showModal({
         title: '提示',
         content: title,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
       })
-    } else {
+    }
+    else {
       money = money
       var procedures = wx.getStorageSync('System')
       // 有上传轮播图
@@ -680,28 +679,36 @@ Page({
             hb_random: hb_random,
             cityname: city
           },
-          success: function (res) {
+          success: function(res) {
             // -----------------------------------发布成功跳转到首页-----------------------------------------
-            wx: wx.showToast({
-              title: '发布成功',
-              mask: true,
-            })
-            // app.util.request({
-            //   'url': 'entry/wxapp/AddScore',
-            //   'cachetime': '0',
-            //   data: { user_id: user_id },
-            //   success: res => {
-            //     console.log(res)
-            //   }
-            // })
-            setTimeout(function () {
-              wx: wx.reLaunch({
-                url: '../../index/index',
-                success: function (res) { },
-                fail: function (res) { },
-                complete: function (res) { },
+            if (+res.data > 0) {
+              wx: wx.showToast({
+                title: '发布成功',
+                mask: true,
               })
-            }, 1000)
+              // app.util.request({
+              //   'url': 'entry/wxapp/AddScore',
+              //   'cachetime': '0',
+              //   data: { user_id: user_id },
+              //   success: res => {
+              //     console.log(res)
+              //   }
+              // })
+              setTimeout(function() {
+                wx: wx.reLaunch({
+                  url: '../../index/index',
+                })
+              }, 1000)
+            }
+            else {
+              that.setData({
+                disabled: false,
+              })
+              wx.showToast({
+                icon: "none",
+                title: res.data
+              })
+            }
           },
         })
       } else {
@@ -718,25 +725,31 @@ Page({
         that.setData({
           disabled: true,
         })
-        console.log(that.data.money, that.data.money1,hb_money,money,tz_money, Number(that.data.money) + Number(that.data.money1))
+        console.log(that.data.money, that.data.money1, hb_money, money, tz_money, Number(that.data.money) + Number(that.data.money1))
         // -----------------------------------有金额执行这一步-----------------------------------------
         app.util.request({
           'url': 'entry/wxapp/Pay',
           'cachetime': '0',
-          data: { openid: openid, money: money },
-          success: function (res) {
+          data: {
+            openid: openid,
+            money: money
+          },
+          success: function(res) {
             wx.requestPayment({
               'timeStamp': res.data.timeStamp,
               'nonceStr': res.data.nonceStr,
               'package': res.data.package,
               'signType': res.data.signType,
               'paySign': res.data.paySign,
-              'success': function (res) {
-                if (Number(that.data.money) + Number(that.data.money1)>0){
+              'success': function(res) {
+                if (Number(that.data.money) + Number(that.data.money1) > 0) {
                   app.util.request({
                     'url': 'entry/wxapp/fx',
                     'cachetime': '0',
-                    data: { user_id: user_id, money: Number(that.data.money) + Number(that.data.money1) },
+                    data: {
+                      user_id: user_id,
+                      money: Number(that.data.money) + Number(that.data.money1)
+                    },
                     success: res => {
                       console.log(res)
                     }
@@ -766,52 +779,53 @@ Page({
                     hb_random: hb_random,
                     cityname: city
                   },
-                  success: function (res) {
-                    if (tz_money == 0 || tz_money == null || tz_money == '') {
+                  success: function(res) {
+                    if (+res.data > 0) {
+                      if (tz_money == 0 || tz_money == null || tz_money == '') {
 
+                      } else {
+                        app.util.request({
+                          'url': 'entry/wxapp/SaveTzPayLog',
+                          'cachetime': '0',
+                          data: {
+                            tz_id: res.data,
+                            money: money,
+                            money1: that.data.money,
+                            money2: that.data.money1,
+                            money3: hb_money
+                          },
+                        })
+                      }
+                      // -----------------------------------发布成功跳转到首页-----------------------------------------
+                      wx: wx.showToast({
+                        title: '发布成功',
+                        mask: true,
+                      })
+                      setTimeout(function() {
+                        wx: wx.reLaunch({
+                          url: '../../index/index',
+                        })
+                      }, 1000)
                     } else {
-                      app.util.request({
-                        'url': 'entry/wxapp/SaveTzPayLog',
-                        'cachetime': '0',
-                        data: { tz_id: res.data, money: money,money1: that.data.money,money2:that.data.money1,money3:hb_money },
-                        success: res => {
-
-                        }
+                      that.setData({
+                        disabled: false,
+                      })
+                      wx.showToast({
+                        icon: "none",
+                        title: res.data
                       })
                     }
-
-                    // -----------------------------------发布成功跳转到首页-----------------------------------------
-                    wx: wx.showToast({
-                      title: '发布成功',
-                      mask: true,
-                    })
-                    // app.util.request({
-                    //   'url': 'entry/wxapp/AddScore',
-                    //   'cachetime': '0',
-                    //   data: { user_id: user_id },
-                    //   success: res => {
-                    //     console.log(res)
-                    //   }
-                    // })
-                    setTimeout(function () {
-                      wx: wx.reLaunch({
-                        url: '../../index/index',
-                        success: function (res) { },
-                        fail: function (res) { },
-                        complete: function (res) { },
-                      })
-                    }, 1000)
                   },
                 })
               },
 
-              'fail': function (res) {
+              'fail': function(res) {
                 wx.showToast({
                   title: '支付失败',
                   duration: 1000
                 })
               },
-              'complete': function (res) {
+              'complete': function(res) {
                 console.log(res);
                 if (res.errMsg == 'requestPayment:fail cancel') {
                   wx.showToast({
@@ -831,7 +845,7 @@ Page({
     }
 
   },
-  cancel: function (e) {
+  cancel: function(e) {
     this.setData({
       money1: 0,
       type: 0,
@@ -843,28 +857,28 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
     console.log(this.data)
     imgArray1.splice(0, imgArray1.length)
   },
@@ -872,14 +886,14 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
