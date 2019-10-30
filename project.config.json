@@ -38,6 +38,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 1,
 			"list": [
@@ -53,6 +57,13 @@
 					"name": "帖子详情",
 					"pathName": "zh_tcwq/pages/infodetial/infodetial",
 					"query": "id=8",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "zh_tcwq/pages/xsqg/xsqgxq",
+					"pathName": "zh_tcwq/pages/xsqg/xsqgxq",
+					"query": "id=1",
 					"scene": null
 				}
 			]

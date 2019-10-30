@@ -59,9 +59,9 @@
         </view>
         <view class="content_info2" bindtap='see' data-id='{{item.id}}'>查看详情>></view>
       </view>
-      <!-- <view class="content_chakan">
-        <view class="content_info">{{item.address}}</view>
-      </view> -->
+      <view bindtap="detailed2" id='{{item.id}}' class="content_chakan">
+        <view class="content_info2">电话查看记录></view>
+      </view>
 
       <view class="content_liulan1">
         <view class='bjsc'>

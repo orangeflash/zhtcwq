@@ -25,8 +25,17 @@
 </view>
 <view class='container' wx:for="{{detaileds}}" wx:if="{{state==2}}">
   <view class='detailed'>
-    <view>抢{{system.fl_name}}</view>
+    <view wx:if='{{item.type==2}}'>查看信息电话</view>
+    <view wx:else>抢{{system.fl_name}}</view>
     <view>{{item.time}}</view>
     <view>+{{item.money}} 元</view>
   </view>
+</view>
+<view class='container flex' wx:for="{{ckdh}}" wx:if="{{state==3}}">
+  <image class="himg" src='{{item.img}}'></image>
+  <view class="hbd">
+    <view>{{item.userName}} 查看信息电话</view>
+    <view>{{item.time}}</view>
+  </view>
+  <view>+{{item.money}} 元</view>
 </view>

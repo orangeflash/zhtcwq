@@ -18,6 +18,11 @@ Page({
      countryIndex: 0,
      xzdq:false,
   },
+  detailed2: function (e) {
+    wx.navigateTo({
+      url: '../logs/detailed?state=' +3+'&postId='+e.currentTarget.id,
+    })
+  },
   bindCountryChange: function (e) {
     var stick = this.data.stick
     console.log('picker country 发生选择改变，携带值为', e.detail.value, stick);

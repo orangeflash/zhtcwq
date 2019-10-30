@@ -12,7 +12,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     console.log(options)
     var state = options.state
@@ -31,13 +31,13 @@ Page({
       data: {
         user_id: user_id
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         var detailed = []
         for (let i in res.data) {
           res.data[i].time = that.ormatDate(res.data[i].time).slice(0, 16)
           that.setData({
-            detailed:res.data
+            detailed: res.data
           })
           // if (res.data[i].state == state) {
           //   detailed.concat(res.data[i])
@@ -46,7 +46,7 @@ Page({
           //   })
           // }
         }
-        
+
       }
     })
     app.util.request({
@@ -55,8 +55,8 @@ Page({
       data: {
         user_id: user_id
       },
-      success: function (res) {
-        var compare = function (a, b) {
+      success: function(res) {
+        var compare = function(a, b) {
           var a = Number(a.time);
           var b = Number(b.time);
           if (a < b) {
@@ -67,7 +67,7 @@ Page({
             return 0
           }
         }
-        for(let i in res.data){
+        for (let i in res.data) {
           res.data[i].time = that.ormatDate(res.data[i].time).slice(0, 16)
         }
         var detaileds = res.data.sort(compare)
@@ -77,10 +77,27 @@ Page({
         })
       }
     })
+    if (state == 3) {
+      app.util.request({
+        'url': 'entry/wxapp/CallList',
+        data: {
+          post_id: options.postId
+        },
+        success: function(res) {
+          for (let i in res.data) {
+            res.data[i].time = that.ormatDate(res.data[i].time).slice(0, 16)
+          }
+          that.setData({
+            ckdh: res.data
+          })
+        }
+      })
+    }
   },
-  ormatDate: function (dateNum) {
+  ormatDate: function(dateNum) {
     var date = new Date(dateNum * 1000);
     return date.getFullYear() + "-" + fixZero(date.getMonth() + 1, 2) + "-" + fixZero(date.getDate(), 2) + " " + fixZero(date.getHours(), 2) + ":" + fixZero(date.getMinutes(), 2) + ":" + fixZero(date.getSeconds(), 2);
+
     function fixZero(num, length) {
       var str = "" + num;
       var len = str.length;
@@ -90,53 +107,5 @@ Page({
       }
       return s + str;
     }
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })
