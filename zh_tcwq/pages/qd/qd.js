@@ -128,8 +128,7 @@ Page({
       }
     })
     console.log(this.data.days, this.data.selected)
-    function getNowFormatDate() {
-      var date = new Date();
+    function getNowFormatDate(date) {
       var seperator1 = "/";
       var seperator2 = ":";
       var month = date.getMonth() + 1;
@@ -143,9 +142,7 @@ Page({
       var currentdate = [date.getFullYear(), month, strDate]
       return currentdate;
     }
-    console.log(getNowFormatDate())
     this.setData({
-      nowtime: getNowFormatDate(),
       url:wx.getStorageSync('url')
     })
     var that = this;
@@ -158,6 +155,7 @@ Page({
         console.log('签到设置', res)
         that.setData({
           qdset: res.data,
+          nowtime: getNowFormatDate(new Date(res.data[0].time*1000)),
           userinfo:user_info
         })
         that.reLoad();

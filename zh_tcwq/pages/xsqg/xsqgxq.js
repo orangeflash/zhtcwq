@@ -142,6 +142,7 @@ Page({
         res.data.end_time = util.ormatDate(res.data.end_time)
         that.setData({
           QgGoodInfo: res.data,
+          isGq: Math.round(new Date().getTime() / 1000) >= res.data.end_time
         })
         app.util.request({
           'url': 'entry/wxapp/StoreInfo',

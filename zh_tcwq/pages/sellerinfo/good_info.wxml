@@ -53,7 +53,7 @@
           </view>
         </block>
       </view>
-      <view class='none_shop' wx:if="{{activeIndex==1}}">暂无商品推荐</view>
+      <!-- <view class='none_shop' wx:if="{{activeIndex==1}}">暂无商品推荐</view> -->
       <block wx:if="{{activeIndex==0}}">
         <view class='info_bogy'>
           <view>{{store_good.goods_details}}</view>

@@ -215,6 +215,16 @@ Page({
         })
       },
     })
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        if (res.system.indexOf("iOS") != -1) {
+          that.setData({
+            isios: true
+          })
+        }
+      },
+    })
   },
   reload: function (e) {
     var that = this
@@ -966,10 +976,20 @@ Page({
       })
     }
     else {
+      if (this.data.isios && this.data.system.is_pgzf == '2'){
+        return wx.showModal({
+          title: '暂不支持',
+          content: '由于相关规范，iOS功能暂不可用',
+          showCancel: false,
+          confirmText: '好的',
+          confirmColor: '#666'
+        })
+      }
       wx.showModal({
         title: '提示',
         content: '拨打电话需支付' + post.tel_money + '元',
-        success: () => {
+        success: (res) => {
+          if(res.confirm){
           app.util.request({
             'url': 'entry/wxapp/Call',
             data: { post_id: post.id, user_id, },
@@ -1009,6 +1029,7 @@ Page({
               })
             },
           })
+          }
         }
       })
     }

@@ -94,6 +94,8 @@
       <text wx:if="{{oreder_info.state==6}}">已退款</text>
       <text wx:if="{{oreder_info.state==7}}">退款已被拒绝</text>
       <text style='background:{{color}}' class='ab ud' wx:if="{{oreder_info.state==2}}" bindtap='Deliver'>确认发货</text>
+      <text style='background:#ddd;right:190rpx;' class='ab ud' wx:if="{{oreder_info.state==5}}" id='2' bindtap='tk'>拒绝退款</text>
+      <text style='background:{{color}}' class='ab ud' wx:if="{{oreder_info.state==5}}" id='1' bindtap='tk'>确认退款</text>
     </view>
   </view>
 </view>

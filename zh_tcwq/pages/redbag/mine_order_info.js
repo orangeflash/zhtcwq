@@ -90,31 +90,44 @@ Page({
     })
   },
   // -----------------------------确认收货----------------------------
-  complete: function (e) {
+  tk: function (e) {
     var that = this
     console.log(e)
-    var id = that.data.id
-    app.util.request({
-      'url': 'entry/wxapp/CompleteOrder',
-      'cachetime': '0',
-      data: { order_id: id },
-      success: function (res) {
-        console.log(res)
-        wx: wx.showToast({
-          title: '操作成功',
-          icon: '',
-          image: '',
-          duration: 2000,
-          mask: true,
-          success: function (res) {
-            setTimeout(function () {
-              that.refresh()
-            }, 2000)
-          },
-          fail: function (res) { },
-          complete: function (res) { },
-        })
-      },
+    var id = that.data.id, type=e.currentTarget.id
+    wx.showModal({
+      title: '提示',
+      content: `${type==1?'确认退款':'拒绝退款'}吗？`,
+      success(res){
+        if (res.confirm) {
+          wx.showLoading({
+            title: '加载中',
+          })
+          app.util.request({
+            'url': 'entry/wxapp/RefundOrder',
+            data: { order_id: id, type, },
+            success: function (res) {
+              console.log(res)
+              if (res.data == 1) {
+                wx: wx.showToast({
+                  title: '操作成功',
+                  duration: 1000,
+                  mask: true,
+                  success: function (res) {
+                    setTimeout(function () {
+                      that.refresh()
+                    }, 1000)
+                  },
+                })
+              } else {
+                wx.showToast({
+                  title: res.data,
+                  icon: 'none',
+                })
+              }
+            },
+          })
+        }
+      }
     })
   },
   /**

@@ -45,6 +45,16 @@
   text-align: center;
   border-radius: 15rpx;
 }
+.container>view view text:nth-child(4) {
+  width: 170rpx;
+  height: 80%;
+  background: #ed414a;
+  right: 0;
+  line-height: 64rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 15rpx;
+}
 .address>view{
   display: inline-block;
   min-height: 80rpx;

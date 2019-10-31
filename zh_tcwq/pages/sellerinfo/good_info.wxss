@@ -175,7 +175,7 @@
   margin: 0 auto;
 }
 .info_head>view {
-  width: 50%;
+  width: 100%;
   display: inline-block;
   vertical-align: top;
   font-size: 28rpx;

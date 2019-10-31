@@ -65,6 +65,13 @@
 					"pathName": "zh_tcwq/pages/xsqg/xsqgxq",
 					"query": "id=1",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "zh_tcwq/pages/sellerinfo/good_info",
+					"pathName": "zh_tcwq/pages/sellerinfo/good_info",
+					"query": "id=1&store_id=2&logo=http%3A%2F%2Ftmp%2Fwx80fa1d36c435231a.o6zAJs3f5_fPp5KeVC4eqKGrVS9k.dSwXPgZaoW9tb58b8a52da8a77d8a76ded4a829d2ed1.png",
+					"scene": null
 				}
 			]
 		}

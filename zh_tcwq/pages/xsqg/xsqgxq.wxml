@@ -180,6 +180,14 @@
         商品已下架
       </view>
     </block>
+    <block wx:elif='isGq'>
+      <view class='fon_30 color_f rel' style='background:#d5d5d5'>
+        <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">
+          <button formType="submit"></button>
+        </form>
+        抢购已结束
+      </view>
+    </block>
     <block wx:else>
     <view wx:if="{{QgGoodInfo.surplus>0&&IsPay!=1}}" bindtap='ljqg' class='fon_30 color_f rel' style='background:{{color}}'>
       <form class='plate_form' bindsubmit="addformSubmit" report-submit="true" bindreset="formReset">

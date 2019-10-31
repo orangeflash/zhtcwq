@@ -8,7 +8,7 @@ Page({
   data: {
     activeIndex: 0,
     index: 0,
-    tabs2: ["商品信息", "商品推荐"],
+    tabs2: ["商品信息"],
     select_spec:false,
     spec_index_one:0,
     spec_index:0,

@@ -27,7 +27,7 @@
             </view>
           </view>
         </view>
-        <view class="content_right">
+        <view hidden="{{isios&&System.is_pgzf == '2'}}" class="content_right">
           <view style='background:{{System.color}}' wx:if="{{item.state=='2'&&item.top=='1'}}" class='rel xufei' bindtap='dkxf' data-id='{{item.id}}'>
             续费
           </view>
