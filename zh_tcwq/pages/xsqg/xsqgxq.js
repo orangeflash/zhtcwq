@@ -136,13 +136,13 @@ Page({
         res.data.yqnum = (((Number(res.data.number) - Number(res.data.surplus)) / Number(res.data.number) * 100)).toFixed(1)
         res.data.img = res.data.img.split(",");
         res.data.details_img = res.data.details_img.split(",");
-        var time1 = new Date(res.data.end_time).getTime();
+        var time1 = res.data.end_time;
         countdown(res.data.end_time)
         res.data.start_time = util.ormatDate(res.data.start_time)
         res.data.end_time = util.ormatDate(res.data.end_time)
         that.setData({
           QgGoodInfo: res.data,
-          isGq: Math.round(new Date().getTime() / 1000) >= res.data.end_time
+          isGq: Math.round(new Date().getTime() / 1000) >= time1
         })
         app.util.request({
           'url': 'entry/wxapp/StoreInfo',

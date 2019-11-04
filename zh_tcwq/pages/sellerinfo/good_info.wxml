@@ -124,9 +124,10 @@
       </view>
     </view>
   </view>
-  <form bindsubmit="cartaddformSubmit" report-submit="true" bindreset="formReset">
+  <form wx:if='{{store_good.is_show==1}}' bindsubmit="cartaddformSubmit" report-submit="true" bindreset="formReset">
     <button formType="submit" style='background:{{system.color}}'  class='immediately' bindtap='liji' wx:if="{{select_spec==false}}">立即购买</button>
   </form>
+  <button wx:else formType="submit" style='background:#d5d5d5'  class='immediately'>商品已下架</button>
 </view>
 <canvas style="top:-10000000000000000px;" canvas-id="ctx"></canvas>
 <view class="share-modal {{share_modal_active}}" catchtap='shareModalClose'>

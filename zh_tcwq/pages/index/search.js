@@ -87,7 +87,7 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         that.setData({
           lat: res.latitude,
           lng: res.longitude
@@ -146,7 +146,7 @@ Page({
     app.util.request({
       'url': 'entry/wxapp/list2',
       'cachetime': '0',
-      data: { keywords: ssnr,page: page},
+      data: { keywords: ssnr, page: page, lat: that.data.lat,lng:that.data.lng},
       success: function (res) {
         that.setData({
           page: page + 1,
