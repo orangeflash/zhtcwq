@@ -446,6 +446,9 @@ Page({
       checked_password: e.detail.value
     })
   },
+  requestSM(){
+    app.util.requestSM('post').then(res=>{ })
+  },
   formSubmit: function(e) {
     console.log('这是保存formid2')
     console.log(e)

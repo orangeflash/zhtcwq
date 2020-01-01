@@ -763,5 +763,32 @@ util.date = function(){
 		return newDate.getDate();
 	}
 };
-
+util.getSmConfig=(cb)=>{
+	var app = getApp(), info = app.smconfig;
+  console.log('getSmConfiggetSmConfiggetSmConfig',info)
+  if (info) { cb(info) }
+  else {
+  	util.request({
+  		'url': 'entry/wxapp/TemplateList',
+  		success: function (res) {
+				app.smconfig = res.data
+				console.log('TemplateListTemplateListTemplateList',res)
+				cb(res.data)
+  		},
+  	})
+  }
+}
+util.requestSM = function (type) {
+	return new Promise((resolve, reject) => {
+		this.getSmConfig((data) => {
+			wx.requestSubscribeMessage({
+				tmplIds: data[type],
+				complete: (res) => {
+					resolve()
+					console.log('requestSubscribeMessage',res)
+				}
+			})
+		})
+	});
+}
 module.exports = util;

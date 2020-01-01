@@ -6,20 +6,20 @@
   <view class='padding'>
     <view class='qcyx'>全场有效</view>
     <image wx:if="{{hxm!=null}}" class='hximg' src="data:image/png;base64,{{hxm}}"></image>
-    <form bindsubmit="qrmd" report-submit="true" bindreset="formReset">
+    <!-- <form bindsubmit="qrmd" report-submit="true" bindreset="formReset"> -->
     <block wx:if="{{yhq.money!='0.00'}}">
       <view class='yhqname'>{{yhq.money}}元{{yhq.name}}</view>
-      <button wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" formType="submit" class='lqbtn'>{{yhq.money}}元领取</button>
+      <button bindtap='qrmd' wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" class='lqbtn'>{{yhq.money}}元领取</button>
       <button wx:if="{{yhq.user_state=='1'}}" class='lqbtn1'>已领取</button>
       <button wx:if="{{yhq.user_state!='1'&&yhq.surplus=='0'}}" class='lqbtn1'>您手速慢了，已抢光</button>
     </block>
     <block wx:else>
       <view class='yhqname'>{{yhq.name}}</view>
-      <button disabled='{{mflqdisabled}}' wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" formType="submit" class='lqbtn'>免费领取</button>
+      <button bindtap='qrmd' disabled='{{mflqdisabled}}' wx:if="{{yhq.user_state!='1'&&yhq.surplus!='0'}}" class='lqbtn'>免费领取</button>
       <button wx:if="{{yhq.user_state=='1'}}" class='lqbtn1' class='lqbtn1'>已领取</button>
       <button wx:if="{{yhq.user_state!='1'&&yhq.surplus=='0'}}" class='lqbtn1'>您手速慢了，已抢光</button>
     </block>
-    </form>
+    <!-- </form> -->
     <view class='lqrs'>
       <image src='../image/huodong.png'></image>
       <view>{{yhq.lqrs}}人已领</view>

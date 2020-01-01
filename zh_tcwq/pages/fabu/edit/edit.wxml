@@ -81,7 +81,7 @@
     </view>
   </label>
   <view class='banner' style='height:150rpx;background:#F2F2F2'> </view>
-  <button style='background:{{System.color}}' class="confirm" disabled='{{disabled}}' form-type="submit">确认发布</button>
+  <button bindtap='requestSM' style='background:{{System.color}}' class="confirm" disabled='{{disabled}}' form-type="submit">确认发布</button>
   <view class='base' wx:if="{{checked==true}}">
     <view style='background:{{System.color}}' class='rel'>选择置顶让更多人看到</view>
     <!-- <view wx:if="{{countryIndex==0}}" class='array rel' wx:for="{{stick}}" wx:key="*this" bindtap='selected' id='{{index}}'>{{item.array}}{{item.money}}元)</view>

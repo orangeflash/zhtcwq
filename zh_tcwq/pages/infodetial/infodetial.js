@@ -662,6 +662,7 @@ Page({
   // ---------------------------------------点击评论弹出评论框
   comment: function (e) {
     var that = this
+    app.util.requestSM('comment').then(res=>{ 
     var user_id = wx.getStorageSync('users').id
     app.util.request({
       'url': 'entry/wxapp/GetUserInfo',
@@ -691,7 +692,7 @@ Page({
         }
       },
     })
-
+  })
   },
   // ------------------------------发表评论的内容
   complete: function (e) {

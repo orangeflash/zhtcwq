@@ -37,8 +37,10 @@ Page({
   },
   wybm: function () {
     var that = this;
-    that.setData({
-      kpgg: false,
+    app.util.requestSM('activity').then(res => {
+      that.setData({
+        kpgg: false,
+      })
     })
   },
   updateUserInfo: function (res) {

@@ -12,8 +12,8 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.1",
-	"appid": "wx80fa1d36c435231a",
+	"libVersion": "2.9.4",
+	"appid": "wx7849266fad6a384b",
 	"projectname": "%E5%90%8C%E5%9F%8E",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
@@ -53,10 +53,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "帖子详情",
 					"pathName": "zh_tcwq/pages/infodetial/infodetial",
-					"query": "id=8",
+					"query": "id=31",
 					"scene": null
 				},
 				{

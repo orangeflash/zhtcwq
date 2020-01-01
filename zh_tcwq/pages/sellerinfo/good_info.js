@@ -273,8 +273,10 @@ Page({
   },
   // ---------规格选择
   liji:function(e){
-    this.setData({
-      select_spec:true
+    app.util.requestSM('order').then(res => {
+      this.setData({
+        select_spec: true
+      })
     })
   },
   // 添加商品数量

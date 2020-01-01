@@ -30,19 +30,20 @@ Page({
   qrmd: function (e) {
     var xfje = Number(this.data.yhq.money), uid = wx.getStorageSync('users').id, sjid = this.data.store.id, openid = wx.getStorageSync("openid"), form_id = e.detail.formId, coupons_id = this.data.yhq.id;
     console.log(xfje, uid, sjid, openid, form_id, coupons_id)
+    app.util.requestSM('receiveCard').then(res=>{ 
     // return
-    app.util.request({
-      'url': 'entry/wxapp/SaveFormid',
-      'cachetime': '0',
-      data: {
-        user_id: uid,
-        form_id: form_id,
-        openid: openid
-      },
-      success: function (res) {
+    // app.util.request({
+    //   'url': 'entry/wxapp/SaveFormid',
+    //   'cachetime': '0',
+    //   data: {
+    //     user_id: uid,
+    //     form_id: form_id,
+    //     openid: openid
+    //   },
+    //   success: function (res) {
 
-      },
-    })
+    //   },
+    // })
     this.setData({
       mflqdisabled: true,
     })
@@ -118,6 +119,7 @@ Page({
         }
       }
     })
+  })
     // this.setData({
     //   showModal: true,
     // })
